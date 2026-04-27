@@ -20,9 +20,9 @@ const projects: Project[] = [
     id: 1,
     title: 'BAI Formation Consulting',
     description: 'Plateforme d\'e-learning bancaire complète. Digitalisation de la formation pour les employés avec architecture scalable.',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBi8aK9TIotmo6xpa8kOCCKCqXoD9-EJGpc4ncf-MqZ0g4BMYmJLovKtROV6Qpl_CKIvgPF4d8m_KCjjSXhbTIM8gSUY7MZT_x6bh_y8J_0JYtpDDu67zRk_XxfzAlz2hTUu-k4j1D2MJazrBZXJOCfNOlrCZBRMr-PQL4Pvv4vPxwJ4UNybtrWOoc1PKdbKoby5fqfRNSgHfQoV2kR6o8aZrjDE4czIvmGCPBG1vy0IW8PwtVKB0CqwxGnSLgZ-61HSnAdVWMXzIQ',
+    image: '/bai-project-2.png',
     alt: 'Dashboard e-learning bancaire',
-    tags: ['React', 'Node', 'Scalable Arch'],
+    tags: ['React', 'Node', 'Scalable Arch', 'Admin Dashboard', 'DevOps'],
     githubLink: 'https://github.com/adams598/bai-consulting-et-formation',
     siteLink: 'https://olivedrab-hornet-656554.hostingersite.com/',
   },
@@ -30,9 +30,9 @@ const projects: Project[] = [
     id: 2,
     title: 'Réservation Cinéma',
     description: 'Système complet de réservation. Intégration QR codes, paiement sécurisé et tableau de bord administrateur robuste.',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDuTZnykJvhz6EQh0y8xavTl0WT4w1qEMY-5jLrwXRNgBbMKMBTeXrzbtEc-PpzM2UI94iqBJDFU1v4MHaN3BD88L6FL4OxF9zFZXcq-cNXspjPM7xiD8KXk8mOueX1e4VDUHVMnUNlhDbNwmoZHZwBrBpCfPXWq9L6QR5PZkyEPRRIFVi8ur_DmiGk45-aJtBMJShheyMhD1MhK_ana40u7JHW2XO-fStaVQwFRiwa0NmZNZ0Gyo1NAMFceJGnF944jusIZN2YBhY',
+    image: '/drivinchill.png',
     alt: 'Application mobile de réservation',
-    tags: ['Web', 'Mobile', 'Admin Dashboard'],
+    tags: ['Web & Mobile', 'Responsive', 'Admin Dashboard', 'DevOps'],
     githubLink: 'https://github.com/adams598/drivin-chill',
     siteLink: 'https://drivinnchill.fr/',
   },
@@ -55,11 +55,11 @@ export const Projects = () => {
                 className="bg-surface-container-low rounded-2xl overflow-hidden group border border-outline-variant/5 hover:border-primary/20 transition-colors"
               >
                 {/* Image Container */}
-                <div className="h-64 bg-surface-container relative overflow-hidden">
+                <div className="h-96 bg-surface-container relative overflow-hidden">
                   <motion.img
                     src={project.image}
                     alt={project.alt}
-                    className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
+                    className="w-full h-full object-contain opacity-60 group-hover:opacity-80 transition-opacity duration-500"
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.5 }}
                   />

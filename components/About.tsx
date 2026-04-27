@@ -10,15 +10,30 @@ export const About = () => {
         {/* Image Container */}
         <FadeInUp className="lg:w-1/2">
           <div className="relative">
-            <div className="absolute -inset-4 bg-primary-container/5 rounded-2xl blur-2xl pointer-events-none" />
+            {/* Glow effect derrière l'image */}
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+              className="absolute -inset-6 rounded-full blur-3xl opacity-40 pointer-events-none"
+              style={{
+                background: 'radial-gradient(circle, rgba(var(--color-primary), 0.4) 0%, transparent 70%)',
+              }}
+            />
+            
+            {/* Cadre décoratif */}
+            <div className="absolute -inset-3 rounded-full border-2 border-primary/5" />
+            
             <motion.img
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBikol9UWb5YCzVM838sjBT2yEiEviTrTOvGS_TU_z401J-FyQEMKGLCA2X8A7FAazP1Jql2Ir_1MLtfjybJZuAGRXlqdj8KOP5q_1PhiRvcYvgFq2_9aUA4CVjyBEhLKdt_SbFEYgMY4fSyJ-gVH3d0oA7btoGjlhsrBYuVdXH9zOSqjzErrVmYSF1XOqutWBJsGXlL1QxvlV78AbFHFOaD-_CjV3YM3poaPVn7CKXEar-Htz2i_CmZHGxQK5RdxP4pMAhe-K9ICY"
+              src="/photo.jpg"
               alt="Développeur au travail"
-              className="rounded-2xl w-full h-auto object-cover border border-outline-variant/10 relative z-10 shadow-[0_40px_80px_rgba(0,240,255,0.05)]"
+              className="relative z-10 w-full h-auto object-cover shadow-2xl"
+              style={{
+                clipPath: 'polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)',
+              }}
             />
           </div>
         </FadeInUp>

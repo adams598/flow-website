@@ -28,7 +28,7 @@ export const Hero = () => {
       {/* Subtitle */}
       <FadeInUp delay={0.2} className="relative z-10">
         <p className="font-body text-lg md:text-xl text-on-surface-variant leading-relaxed max-w-2xl">
-          Développeur Fullstack & Expert DevOps. J&apos;accompagne les startups et entreprises dans la création de
+          Développeur Fullstack & Expert DevOps. J&apos;accompagne les particuliers, les startups et entreprises dans la création de
           plateformes performantes, de l&apos;architecture initiale au déploiement automatisé.
         </p>
       </FadeInUp>
