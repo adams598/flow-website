@@ -30,9 +30,9 @@ export const Navbar = () => {
           className="flex items-center gap-3"
         >
           <img src="/export.png" alt="Adams.Dev Logo" className="h-10 w-10 object-contain" />
-          <div className="text-2xl font-black text-primary tracking-tighter font-headline">
+          {/* <div className="text-2xl font-black text-primary tracking-tighter font-headline">
             Adams.Dev
-          </div>
+          </div> */}
         </motion.div>
 
         {/* Desktop Navigation */}

@@ -31,7 +31,7 @@ export const Hero = () => {
           {/* Subtitle */}
           <FadeInUp delay={0.2} className="relative z-10 mt-6 md:mt-8">
             <p className="font-body text-base sm:text-lg md:text-xl text-on-surface-variant leading-relaxed">
-              Développeur Fullstack & Expert DevOps. J&apos;accompagne les particuliers, les startups et entreprises dans la création de
+              Je suis Adams Dexter, ingénieur développeur Fullstack, & Expert IA et DevOps. J&apos;accompagne les particuliers, les startups et entreprises dans la création de
               plateformes performantes, de l&apos;architecture initiale au déploiement automatisé.
             </p>
           </FadeInUp>
