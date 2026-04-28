@@ -24,7 +24,7 @@ const projects: Project[] = [
     alt: 'Dashboard e-learning bancaire',
     tags: ['React', 'Node', 'Scalable Arch', 'Admin Dashboard', 'DevOps'],
     githubLink: 'https://github.com/adams598/bai-consulting-et-formation',
-    siteLink: 'https://olivedrab-hornet-656554.hostingersite.com/',
+    siteLink: 'https://bai-consultingetformation.com/',
   },
   {
     id: 2,

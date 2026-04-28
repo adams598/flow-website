@@ -32,7 +32,10 @@ export const Footer = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
           >
-            <div className="text-2xl font-black text-primary font-headline">Adams.Dev</div>
+            <div className="flex items-center gap-3">
+              <img src="/export.png" alt="Adams.Dev Logo" className="h-8 w-8 object-contain" />
+              <div className="text-2xl font-black text-primary font-headline">Adams.Dev</div>
+            </div>
             <p className="text-on-surface-variant text-sm mt-2">Building scalable digital products</p>
           </motion.div>
 
