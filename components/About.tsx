@@ -2,15 +2,21 @@
 
 import { motion } from 'framer-motion'
 import { FadeInUp } from './AnimationWrappers'
+import { Zap, ShieldCheck, Smartphone, Rocket } from 'lucide-react'
+
+const reasons = [
+  { title: 'Livraison rapide', description: 'Un suivi clair et une exécution efficace pour avancer sans perdre de temps.', icon: Zap },
+  { title: 'Accompagnement personnalisé', description: 'Chaque projet est pensé autour de vos objectifs et de votre contexte.', icon: ShieldCheck },
+  { title: 'Développement sur mesure', description: 'Des solutions adaptées à votre métier, pas des templates génériques.', icon: Smartphone },
+  { title: 'Performant et évolutif', description: 'Une base technique solide pour faire grandir votre produit.', icon: Rocket },
+]
 
 export const About = () => {
   return (
     <section className="mt-32 md:mt-48 max-w-7xl mx-auto px-6 md:px-8 scroll-mt-20" id="apropos">
       <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center">
-        {/* Image Container */}
         <FadeInUp className="lg:w-1/2">
           <div className="relative">
-            {/* Glow effect derrière l'image */}
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
@@ -19,10 +25,7 @@ export const About = () => {
                 background: 'radial-gradient(circle, rgba(var(--color-primary), 0.4) 0%, transparent 70%)',
               }}
             />
-            
-            {/* Cadre décoratif */}
             <div className="absolute -inset-3 rounded-full border-2 border-primary/5" />
-            
             <motion.img
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -38,19 +41,9 @@ export const About = () => {
           </div>
         </FadeInUp>
 
-        {/* Contenu du texte */}
         <FadeInUp delay={0.2} className="lg:w-1/2">
-          <h2 className="font-headline font-bold text-4xl tracking-tight text-on-surface mb-8">À propos</h2>
-
-          <motion.blockquote
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="font-body text-xl text-primary leading-relaxed mb-8 border-l-4 border-primary pl-6 italic"
-          >
-            "L&apos;ingénierie au service de l&apos;impact business."
-          </motion.blockquote>
+          <p className="font-label text-sm uppercase tracking-[0.2em] text-primary mb-4">Pourquoi travailler avec moi ?</p>
+          <h2 className="font-headline font-bold text-4xl tracking-tight text-on-surface mb-8">Un développement orienté impact business</h2>
 
           <motion.p
             initial={{ opacity: 0 }}
@@ -59,28 +52,30 @@ export const About = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="font-body text-on-surface-variant leading-relaxed text-lg"
           >
-            Freelance passionné par les défis techniques complexes, je combine développement fullstack et expertise
-            infrastructure pour garantir des produits rapides, sécurisés et évolutifs. Mon approche est résolument
-            pragmatique : bâtir des fondations solides aujourd&apos;hui pour supporter la croissance de demain.
+            Je combine développement web, applications métier et automatisations IA pour créer des outils utiles, performants et prêts à évoluer. L’objectif n’est pas seulement de coder : c’est de résoudre un vrai besoin avec une solution claire et fiable.
           </motion.p>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="mt-8 flex gap-4"
-          >
-            {['1+ ans d\'expérience', 'Fullstack Developer', 'DevOps Specialist'].map((badge) => (
-              <motion.span
-                key={badge}
-                whileHover={{ scale: 1.05 }}
-                className="px-4 py-2 bg-surface-container-high rounded-lg font-label text-xs uppercase tracking-wider text-primary border border-primary/20"
-              >
-                {badge}
-              </motion.span>
-            ))}
-          </motion.div>
+          <div className="mt-8 grid sm:grid-cols-2 gap-4">
+            {reasons.map((reason) => {
+              const Icon = reason.icon
+              return (
+                <motion.div
+                  key={reason.title}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4 }}
+                  className="rounded-2xl border border-outline-variant/10 bg-surface-container-low p-5"
+                >
+                  <div className="mb-3 text-primary">
+                    <Icon size={20} />
+                  </div>
+                  <h3 className="font-headline font-semibold text-lg text-on-surface">{reason.title}</h3>
+                  <p className="mt-2 text-sm text-on-surface-variant">{reason.description}</p>
+                </motion.div>
+              )
+            })}
+          </div>
         </FadeInUp>
       </div>
     </section>

@@ -5,8 +5,9 @@ import { Github, Linkedin, Mail } from 'lucide-react'
 
 export const Footer = () => {
   const footerLinks = [
-    { label: 'Mentions Légales', href: '#' },
-    { label: 'Confidentialité', href: '#' },
+    { label: 'Services', href: '#services' },
+    { label: 'Réalisations', href: '#projets' },
+    { label: 'Contact', href: 'mailto:adamsdexter3@gmail.com' },
   ]
 
   const socialLinks = [
@@ -36,7 +37,7 @@ export const Footer = () => {
               <img src="/export.png" alt="Adams.Dev Logo" className="h-8 w-8 object-contain" />
               <div className="text-2xl font-black text-primary font-headline">Adams.Dev</div>
             </div>
-            <p className="text-on-surface-variant text-sm mt-2">Building scalable digital products</p>
+            <p className="text-on-surface-variant text-sm mt-2">Solutions web, applications et automatisations orientées résultat.</p>
           </motion.div>
 
           {/* Links */}
@@ -92,7 +93,7 @@ export const Footer = () => {
           className="border-t border-outline-variant/10 pt-8 text-center"
         >
           <p className="font-label text-sm text-on-surface-variant">
-            © 2024 Adams.Dev. All rights reserved. Built with premium craftsmanship.
+            © 2026 Adams.Dev. Tous droits réservés.
           </p>
         </motion.div>
       </div>

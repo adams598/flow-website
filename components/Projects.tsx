@@ -36,6 +36,16 @@ const projects: Project[] = [
     githubLink: 'https://github.com/adams598/drivin-chill',
     siteLink: 'https://drivinnchill.fr/',
   },
+  {
+    id: 3,
+    title: 'Objectif TCF',
+    description: 'Plateforme de préparation aux examens TCF, TEF et IELTS pour l’immigration au Canada. Simulations immersives, correction, abonnements et dashboard admin (paiements, utilisateurs, séries).',
+    image: '/objectif-tcf.png',
+    alt: 'Plateforme Objectif TCF — préparation aux examens',
+    tags: ['Next.js', 'Admin Dashboard', 'Paiements', 'Multi-examens', 'Analytics'],
+    githubLink: 'https://github.com/adams598/objectif_tcf',
+    siteLink: 'https://objectif-tcf-blue.vercel.app/',
+  },
 ]
 
 export const Projects = () => {

@@ -18,12 +18,11 @@ export const CTA = () => {
 
           <div className="relative z-10">
             <h2 className="font-headline font-bold text-3xl md:text-4xl text-on-surface mb-6">
-              Prêt à optimiser votre infrastructure ?
+              Prêt à transformer votre idée en solution concrète ?
             </h2>
 
             <p className="font-body text-on-surface-variant text-lg mb-10 max-w-2xl mx-auto">
-              Discutons de vos enjeux techniques et découvrez comment une architecture moderne peut accélérer votre
-              croissance.
+              Discutons de votre besoin, de votre objectif et du meilleur moyen de lancer ou améliorer votre produit.
             </p>
 
             <motion.a
@@ -35,7 +34,7 @@ export const CTA = () => {
               whileTap={{ scale: 0.95 }}
               className="inline-block bg-gradient-to-r from-primary to-primary-fixed text-on-primary px-10 py-5 rounded-lg font-label text-base font-bold uppercase tracking-wider transition-all shadow-lg"
             >
-              Demander un Audit Gratuit
+              Prendre rendez-vous
             </motion.a>
           </div>
         </motion.div>
