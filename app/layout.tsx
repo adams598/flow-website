@@ -33,6 +33,10 @@ export const metadata: Metadata = {
     'France',
   ],
   authors: [{ name: SITE.name }],
+  icons: {
+    icon: [{ url: '/icon.png?v=3', type: 'image/png', sizes: '512x512' }],
+    apple: [{ url: '/apple-icon.png?v=3', sizes: '180x180' }],
+  },
   openGraph: {
     title: `${SITE.name} — Build digital. Make it flow.`,
     description:
