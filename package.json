@@ -1,7 +1,8 @@
 {
-  "name": "architecte-dev-portfolio",
+  "name": "flow-website",
   "version": "1.0.0",
-  "description": "Premium portfolio website for fullstack developer & DevOps expert",
+  "description": "Site web officiel de Flow — solutions digitales sur mesure",
+  "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",

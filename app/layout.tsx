@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { Manrope, Inter } from 'next/font/google'
 import './globals.css'
+import { SITE } from '@/lib/site'
+import { ThemeProvider } from '@/components/ThemeProvider'
 
 const manrope = Manrope({
   variable: '--font-manrope',
@@ -15,16 +17,46 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Adams.Dev - Développeur Fullstack & DevOps Freelance',
-  description: 'Expert en création de produits scalables et automatisation. Services fullstack, infrastructure, et DevOps.',
-  keywords: ['Fullstack Developer', 'DevOps', 'Next.js', 'React', 'Architecture', 'Freelance'],
-  authors: [{name: 'Adams.Dev'}],
+  title: {
+    default: `${SITE.name} — Solutions digitales sur mesure`,
+    template: `%s · ${SITE.name}`,
+  },
+  description:
+    'Flow conçoit et développe des sites web, applications métier et plateformes digitales sur mesure pour transformer vos idées et vos processus en solutions concrètes.',
+  keywords: [
+    'Flow',
+    'site web sur mesure',
+    'application métier',
+    'plateforme digitale',
+    'développement web',
+    'Next.js',
+    'France',
+  ],
+  authors: [{ name: SITE.name }],
   openGraph: {
-    title: 'Adams.Dev - Développeur Fullstack & DevOps',
-    description: 'Expert en architecture et DevOps pour startups et entreprises',
+    title: `${SITE.name} — Build digital. Make it flow.`,
+    description:
+      'Sites web, applications métier et plateformes digitales conçus pour faire avancer votre activité.',
     type: 'website',
+    locale: 'fr_FR',
+    siteName: SITE.name,
   },
 }
+
+const themeInitScript = `
+(function() {
+  try {
+    var stored = localStorage.getItem('flow-theme');
+    var theme = stored === 'light' || stored === 'dark' ? stored : 'dark';
+    var root = document.documentElement;
+    root.classList.remove('dark', 'light');
+    root.classList.add(theme);
+    root.style.colorScheme = theme;
+  } catch (e) {
+    document.documentElement.classList.add('dark');
+  }
+})();
+`
 
 export default function RootLayout({
   children,
@@ -32,12 +64,14 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="fr" className="dark scroll-smooth">
-      <head></head>
+    <html lang="fr" className="dark scroll-smooth" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body
         className={`${manrope.variable} ${inter.variable} bg-background text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container`}
       >
-        {children}
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   )

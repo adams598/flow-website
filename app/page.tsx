@@ -1,15 +1,14 @@
 import { Navbar } from '@/components/Navbar'
 import { Hero } from '@/components/Hero'
-import { Services } from '@/components/Services'
+import { Problems } from '@/components/Problems'
+import { Offers } from '@/components/Offers'
+import { Realisations } from '@/components/Realisations'
+import { Difference } from '@/components/Difference'
+import { Method } from '@/components/Method'
+import { WhyUs } from '@/components/WhyUs'
 import { About } from '@/components/About'
-import { Projects } from '@/components/Projects'
-import { CaseStudies } from '@/components/CaseStudies'
-import { Testimonials } from '@/components/Testimonials'
-import { Process } from '@/components/Process'
-import { Solutions } from '@/components/Solutions'
-import { FAQ } from '@/components/FAQ'
 import { Stack } from '@/components/Stack'
-import { CTA } from '@/components/CTA'
+import { ProjectForm } from '@/components/ProjectForm'
 import { Footer } from '@/components/Footer'
 
 export default function Home() {
@@ -17,16 +16,15 @@ export default function Home() {
     <main className="min-h-screen">
       <Navbar />
       <Hero />
-      <Services />
+      <Problems />
+      <Offers />
+      <Realisations />
+      <Difference />
+      <Method />
+      <WhyUs />
       <About />
-      <Projects />
-      <CaseStudies />
-      <Testimonials />
-      <Process />
-      <Solutions />
-      <FAQ />
       <Stack />
-      <CTA />
+      <ProjectForm />
       <Footer />
     </main>
   )

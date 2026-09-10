@@ -2,6 +2,109 @@
 @tailwind components;
 @tailwind utilities;
 
+:root,
+html.dark {
+  color-scheme: dark;
+  --color-background: 19 19 19;
+  --color-surface: 19 19 19;
+  --color-surface-dim: 19 19 19;
+  --color-surface-bright: 58 57 57;
+  --color-surface-container-lowest: 14 14 14;
+  --color-surface-container-low: 28 27 27;
+  --color-surface-container: 32 31 31;
+  --color-surface-container-high: 42 42 42;
+  --color-surface-container-highest: 53 53 52;
+  --color-surface-variant: 53 53 52;
+  --color-on-surface: 229 226 225;
+  --color-on-background: 229 226 225;
+  --color-on-surface-variant: 185 202 203;
+  --color-outline: 132 148 149;
+  --color-outline-variant: 59 73 75;
+  --color-primary: 219 252 255;
+  --color-primary-container: 0 240 255;
+  --color-primary-fixed: 125 244 255;
+  --color-primary-fixed-dim: 0 219 233;
+  --color-on-primary: 0 54 58;
+  --color-on-primary-container: 0 105 112;
+  --color-on-primary-fixed: 0 32 34;
+  --color-on-primary-fixed-variant: 0 79 84;
+  --color-inverse-primary: 0 105 112;
+  --color-surface-tint: 0 219 233;
+  --color-secondary: 150 209 214;
+  --color-secondary-container: 7 79 84;
+  --color-secondary-fixed: 177 237 243;
+  --color-secondary-fixed-dim: 150 209 214;
+  --color-on-secondary: 0 54 58;
+  --color-on-secondary-container: 132 191 197;
+  --color-on-secondary-fixed: 0 32 34;
+  --color-on-secondary-fixed-variant: 7 79 84;
+  --color-tertiary: 255 245 222;
+  --color-tertiary-container: 254 214 57;
+  --color-tertiary-fixed: 255 225 121;
+  --color-tertiary-fixed-dim: 234 195 36;
+  --color-on-tertiary: 59 47 0;
+  --color-on-tertiary-container: 113 93 0;
+  --color-on-tertiary-fixed: 35 27 0;
+  --color-on-tertiary-fixed-variant: 85 69 0;
+  --color-error: 255 180 171;
+  --color-error-container: 147 0 10;
+  --color-on-error: 105 0 5;
+  --color-on-error-container: 255 218 214;
+  --color-inverse-surface: 229 226 225;
+  --color-inverse-on-surface: 49 48 48;
+}
+
+html.light {
+  color-scheme: light;
+  --color-background: 248 251 252;
+  --color-surface: 248 251 252;
+  --color-surface-dim: 232 240 242;
+  --color-surface-bright: 255 255 255;
+  --color-surface-container-lowest: 255 255 255;
+  --color-surface-container-low: 255 255 255;
+  --color-surface-container: 238 245 246;
+  --color-surface-container-high: 228 238 240;
+  --color-surface-container-highest: 216 229 232;
+  --color-surface-variant: 216 229 232;
+  --color-on-surface: 16 28 30;
+  --color-on-background: 16 28 30;
+  --color-on-surface-variant: 60 82 86;
+  --color-outline: 110 134 138;
+  --color-outline-variant: 196 214 218;
+  --color-primary: 0 95 102;
+  --color-primary-container: 0 188 198;
+  --color-primary-fixed: 0 168 178;
+  --color-primary-fixed-dim: 0 140 150;
+  --color-on-primary: 255 255 255;
+  --color-on-primary-container: 0 42 46;
+  --color-on-primary-fixed: 255 255 255;
+  --color-on-primary-fixed-variant: 0 54 58;
+  --color-inverse-primary: 125 244 255;
+  --color-surface-tint: 0 168 178;
+  --color-secondary: 45 110 116;
+  --color-secondary-container: 210 238 241;
+  --color-secondary-fixed: 177 237 243;
+  --color-secondary-fixed-dim: 120 190 196;
+  --color-on-secondary: 255 255 255;
+  --color-on-secondary-container: 0 54 58;
+  --color-on-secondary-fixed: 0 32 34;
+  --color-on-secondary-fixed-variant: 7 79 84;
+  --color-tertiary: 90 72 0;
+  --color-tertiary-container: 254 214 57;
+  --color-tertiary-fixed: 255 225 121;
+  --color-tertiary-fixed-dim: 200 165 20;
+  --color-on-tertiary: 255 255 255;
+  --color-on-tertiary-container: 59 47 0;
+  --color-on-tertiary-fixed: 35 27 0;
+  --color-on-tertiary-fixed-variant: 85 69 0;
+  --color-error: 186 26 26;
+  --color-error-container: 255 218 214;
+  --color-on-error: 255 255 255;
+  --color-on-error-container: 65 0 2;
+  --color-inverse-surface: 32 40 42;
+  --color-inverse-on-surface: 236 242 243;
+}
+
 * {
   @apply m-0 p-0;
 }
@@ -11,18 +114,16 @@ html {
 }
 
 body {
-  @apply bg-background text-on-surface;
+  @apply bg-background text-on-surface transition-colors duration-300;
   overflow-x: hidden;
 }
 
-/* Glass Panel Effect */
 .glass-panel {
-  background: rgba(185, 202, 203, 0.05);
+  background: rgb(var(--color-on-surface-variant) / 0.05);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
 }
 
-/* Gradient Text */
 .gradient-text {
   @apply bg-gradient-to-r from-primary via-primary-container to-primary-fixed bg-clip-text text-transparent;
 }
@@ -31,7 +132,6 @@ body {
   @apply bg-gradient-to-r from-primary to-primary-fixed;
 }
 
-/* Smooth Scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -44,7 +144,6 @@ body {
   @apply bg-primary/30 rounded-full hover:bg-primary/50 transition-colors;
 }
 
-/* Animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -68,14 +167,13 @@ body {
 @keyframes glow {
   0%,
   100% {
-    box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+    box-shadow: 0 0 20px rgb(0 240 255 / 0.2);
   }
   50% {
-    box-shadow: 0 0 40px rgba(0, 240, 255, 0.4);
+    box-shadow: 0 0 40px rgb(0 240 255 / 0.4);
   }
 }
 
-/* Loading Animation */
 @keyframes shimmer {
   0% {
     background-position: -1000px 0;
@@ -85,37 +183,130 @@ body {
   }
 }
 
-/* Link Underline Animation */
 a {
   @apply transition-all duration-300;
 }
 
-/* Button Styles */
 button {
   @apply transition-all duration-300 font-label font-semibold;
 }
 
-/* Section Spacing */
 section {
   @apply py-0;
 }
 
-/* Image Loading Skeleton */
 .skeleton {
   @apply animate-pulse bg-surface-container-high;
 }
 
-/* Focus States for Accessibility */
 button:focus-visible,
 a:focus-visible {
   @apply outline-2 outline-offset-2 outline-primary;
 }
 
-/* Selection Color */
 ::selection {
   @apply bg-primary-container text-on-primary-container;
 }
 
 ::-moz-selection {
   @apply bg-primary-container text-on-primary-container;
+}
+
+/* Hover cards « Votre contexte » — uniquement thème clair */
+@keyframes card-border-spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.context-card-beam-wrap,
+.context-card-fill {
+  display: none;
+}
+
+.card-border-beam {
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    transparent 72%,
+    rgb(var(--color-primary-container) / 0.15) 78%,
+    rgb(var(--color-primary-container)) 86%,
+    rgb(var(--color-primary-fixed)) 92%,
+    transparent 100%
+  );
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+html.light .context-card-beam-wrap {
+  display: block;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+html.light .context-card:hover .context-card-beam-wrap {
+  opacity: 1;
+}
+
+html.light .context-card:hover .card-border-beam {
+  animation: card-border-spin 1s linear 1 forwards;
+}
+
+html.light .context-card-fill {
+  display: block;
+  background: rgb(var(--color-primary-container) / 0.15);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+html.light .context-card:hover .context-card-fill {
+  opacity: 1;
+}
+
+html.light .context-card-surface {
+  transition: border-color 0.3s ease;
+}
+
+html.light .context-card:hover .context-card-surface {
+  border-color: transparent;
+}
+
+html.light .context-card-icon {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+html.light .context-card:hover .context-card-icon {
+  transform: scale(1.1);
+  color: rgb(var(--color-primary-fixed-dim));
+}
+
+/* Thème sombre : uniquement le léger mouvement d’icône */
+html.dark .context-card-icon {
+  transition: transform 0.3s ease;
+}
+
+html.dark .context-card:hover .context-card-icon {
+  transform: scale(1.1);
+}
+
+html.light .context-card-title,
+html.light .context-card-text {
+  transition: color 0.3s ease;
+}
+
+html.light .context-card:hover .context-card-title {
+  color: rgb(var(--color-primary));
+}
+
+html.light .context-card:hover .context-card-text {
+  color: rgb(var(--color-on-primary-container) / 0.8);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.light .context-card:hover .card-border-beam {
+    animation: none;
+    background: rgb(var(--color-primary-container) / 0.55);
+  }
 }
