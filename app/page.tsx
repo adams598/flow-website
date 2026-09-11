@@ -23,7 +23,7 @@ export default function Home() {
       <Method />
       <WhyUs />
       <About />
-      <Stack />
+      {/* <Stack /> */}
       <ProjectForm />
       <Footer />
     </main>

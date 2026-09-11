@@ -42,6 +42,15 @@ export const About = () => {
                 besoin jusqu’à la mise en production, vous échangez avec la personne qui construit
                 votre solution.
               </p>
+              <p>
+                Un appel suffit :{' '}
+                <a
+                  href={SITE.phoneHref}
+                  className="text-primary hover:opacity-80 transition-opacity font-medium"
+                >
+                  {SITE.phoneDisplay}
+                </a>
+              </p>
             </div>
           </FadeInUp>
         </div>

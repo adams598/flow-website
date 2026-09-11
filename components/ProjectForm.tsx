@@ -163,6 +163,16 @@ export const ProjectForm = () => {
             <p className="font-body text-on-surface-variant leading-relaxed">
               Une idée, un besoin métier ou un processus que vous souhaitez digitaliser ? Parlons-en.
             </p>
+            <p className="font-body text-on-surface-variant mt-3">
+              Ou appelez directement au{' '}
+              <a
+                href={SITE.phoneHref}
+                className="text-primary hover:opacity-80 transition-opacity font-medium"
+              >
+                {SITE.phoneDisplay}
+              </a>
+              .
+            </p>
           </div>
         </FadeInUp>
 

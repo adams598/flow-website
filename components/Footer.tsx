@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Github, Linkedin, Mail } from 'lucide-react'
+import { Github, Linkedin, Mail, Phone } from 'lucide-react'
 import Link from 'next/link'
 import { SITE } from '@/lib/site'
 
@@ -38,6 +38,13 @@ export const Footer = () => {
               <br />
               Sites, applications métier et plateformes digitales sur mesure.
             </p>
+            <a
+              href={SITE.phoneHref}
+              className="inline-flex items-center gap-2 mt-4 font-label text-sm text-on-surface hover:text-primary transition-colors"
+            >
+              <Phone size={16} />
+              {SITE.phoneDisplay}
+            </a>
           </div>
 
           <div className="flex flex-wrap gap-6">
