@@ -3,6 +3,7 @@ import { Manrope, Inter } from 'next/font/google'
 import './globals.css'
 import { SITE } from '@/lib/site'
 import { ThemeProvider } from '@/components/ThemeProvider'
+import { Analytics } from '@vercel/analytics/next'
 
 const manrope = Manrope({
   variable: '--font-manrope',
@@ -76,6 +77,7 @@ export default function RootLayout({
         className={`${manrope.variable} ${inter.variable} bg-background text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container`}
       >
         <ThemeProvider>{children}</ThemeProvider>
+        <Analytics />
       </body>
     </html>
   )
