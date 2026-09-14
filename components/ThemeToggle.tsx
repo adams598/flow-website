@@ -3,9 +3,11 @@
 import { Moon, Sun } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { useTheme } from './ThemeProvider'
+import { useI18n } from './LocaleProvider'
 
 export function ThemeToggle({ className = '' }: { className?: string }) {
   const { theme, toggleTheme } = useTheme()
+  const { dict } = useI18n()
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
@@ -19,8 +21,8 @@ export function ThemeToggle({ className = '' }: { className?: string }) {
       type="button"
       onClick={toggleTheme}
       className={`inline-flex h-10 w-10 items-center justify-center rounded-lg border border-outline-variant/20 bg-surface-container-low text-on-surface-variant hover:text-primary hover:border-primary/30 transition-colors ${className}`}
-      aria-label={isDark ? 'Passer au thème clair' : 'Passer au thème sombre'}
-      title={isDark ? 'Thème clair' : 'Thème sombre'}
+      aria-label={isDark ? dict.theme.toLight : dict.theme.toDark}
+      title={isDark ? dict.theme.light : dict.theme.dark}
       suppressHydrationWarning
     >
       {!mounted ? (

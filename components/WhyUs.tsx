@@ -2,52 +2,37 @@
 
 import { Puzzle, Rocket, UserCheck, Target } from 'lucide-react'
 import { FadeInUp, StaggerContainer, StaggerItem } from './AnimationWrappers'
+import { useI18n } from './LocaleProvider'
 
-const reasons = [
-  {
-    icon: Puzzle,
-    title: 'Sur mesure',
-    description:
-      'Pas de solution générique imposée lorsque votre activité nécessite quelque chose de spécifique.',
-  },
-  {
-    icon: Rocket,
-    title: 'Pensé pour évoluer',
-    description: 'Une solution conçue pour accompagner votre croissance.',
-  },
-  {
-    icon: UserCheck,
-    title: 'Un interlocuteur technique',
-    description:
-      'Un échange direct avec la personne qui comprend et construit votre solution.',
-  },
-  {
-    icon: Target,
-    title: 'Orienté business',
-    description: 'La technologie reste au service de vos objectifs.',
-  },
-]
+const icons = {
+  custom: Puzzle,
+  scale: Rocket,
+  contact: UserCheck,
+  business: Target,
+} as const
 
 export const WhyUs = () => {
+  const { dict } = useI18n()
+
   return (
     <section className="mt-32 md:mt-40 scroll-mt-20" id="pourquoi">
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         <FadeInUp>
           <div className="max-w-3xl mb-14">
             <p className="font-label text-sm uppercase tracking-[0.2em] text-primary mb-4">
-              Ce qui change
+              {dict.why.kicker}
             </p>
             <h2 className="font-headline font-bold text-3xl md:text-4xl tracking-tight text-on-surface">
-              Pourquoi travailler avec nous
+              {dict.why.title}
             </h2>
           </div>
         </FadeInUp>
 
         <StaggerContainer className="grid sm:grid-cols-2 gap-5">
-          {reasons.map((item) => {
-            const Icon = item.icon
+          {dict.why.items.map((item) => {
+            const Icon = icons[item.key as keyof typeof icons]
             return (
-              <StaggerItem key={item.title}>
+              <StaggerItem key={item.key}>
                 <div className="h-full rounded-2xl border border-outline-variant/10 bg-surface-container-low p-7">
                   <div className="mb-4 text-primary-container">
                     <Icon size={22} />

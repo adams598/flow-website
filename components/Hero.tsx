@@ -5,8 +5,7 @@ import { ArrowRight } from 'lucide-react'
 import { useRef } from 'react'
 import { FadeInUp } from './AnimationWrappers'
 import { SITE } from '@/lib/site'
-
-const underCta = ['Site web', 'Application métier', 'Plateforme', 'Automatisation']
+import { useI18n } from './LocaleProvider'
 
 const MAX_TILT = 20
 
@@ -66,6 +65,8 @@ function FloatingLogo() {
 }
 
 export const Hero = () => {
+  const { dict, href } = useI18n()
+
   return (
     <section className="min-h-[92vh] w-full flex flex-col justify-center relative overflow-hidden pt-28 pb-16">
       <div className="absolute top-1/4 right-0 w-72 h-72 md:w-[28rem] md:h-[28rem] bg-primary-container/10 rounded-full blur-[120px] pointer-events-none" />
@@ -88,34 +89,33 @@ export const Hero = () => {
 
           <FadeInUp delay={0.15} className="mt-8">
             <p className="font-body text-lg md:text-xl text-on-surface-variant leading-relaxed max-w-2xl mx-auto lg:mx-0">
-              Nous concevons des solutions digitales sur mesure pour simplifier vos processus,
-              améliorer vos parcours clients et développer votre activité.
+              {dict.hero.lead}
             </p>
           </FadeInUp>
 
           <FadeInUp delay={0.3} className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
             <motion.a
-              href={SITE.ctaHref}
+              href={href(dict.nav.ctaHref)}
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
               className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-primary to-primary-fixed text-on-primary px-8 py-4 rounded-lg font-label text-sm font-semibold uppercase tracking-wider shadow-lg"
             >
-              {SITE.cta}
+              {dict.nav.cta}
               <ArrowRight size={16} />
             </motion.a>
             <motion.a
-              href="/#realisations"
+              href={href('/#realisations')}
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
               className="inline-flex items-center justify-center border border-primary/30 text-primary px-8 py-4 rounded-lg font-label text-sm font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors"
             >
-              Voir les réalisations
+              {dict.hero.secondaryCta}
             </motion.a>
           </FadeInUp>
 
           <FadeInUp delay={0.4} className="mt-10">
             <p className="font-label text-xs uppercase tracking-[0.18em] text-on-surface-variant">
-              {underCta.join(' · ')}
+              {dict.hero.underCta.join(' · ')}
             </p>
           </FadeInUp>
         </div>

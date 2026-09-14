@@ -7,7 +7,6 @@ import { Difference } from '@/components/Difference'
 import { Method } from '@/components/Method'
 import { WhyUs } from '@/components/WhyUs'
 import { About } from '@/components/About'
-// import { Stack } from '@/components/Stack'
 import { ProjectForm } from '@/components/ProjectForm'
 import { Footer } from '@/components/Footer'
 
@@ -23,7 +22,6 @@ export default function Home() {
       <Method />
       <WhyUs />
       <About />
-      {/* <Stack /> */}
       <ProjectForm />
       <Footer />
     </main>

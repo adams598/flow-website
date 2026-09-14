@@ -9,8 +9,7 @@ import {
   useState,
   type ReactNode,
 } from 'react'
-
-export type Theme = 'dark' | 'light'
+import { THEME_COOKIE, THEME_STORAGE_KEY, type Theme } from '@/lib/theme'
 
 type ThemeContextValue = {
   theme: Theme
@@ -20,8 +19,6 @@ type ThemeContextValue = {
 
 const ThemeContext = createContext<ThemeContextValue | null>(null)
 
-const STORAGE_KEY = 'flow-theme'
-
 function applyTheme(theme: Theme) {
   const root = document.documentElement
   root.classList.remove('dark', 'light')
@@ -29,24 +26,32 @@ function applyTheme(theme: Theme) {
   root.style.colorScheme = theme
 }
 
-export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>('dark')
+function persistTheme(theme: Theme) {
+  window.localStorage.setItem(THEME_STORAGE_KEY, theme)
+  document.cookie = `${THEME_COOKIE}=${theme};path=/;max-age=31536000;SameSite=Lax`
+}
+
+export function ThemeProvider({
+  children,
+  initialTheme,
+}: {
+  children: ReactNode
+  initialTheme: Theme
+}) {
+  const [theme, setThemeState] = useState<Theme>(initialTheme)
 
   useEffect(() => {
-    const stored = window.localStorage.getItem(STORAGE_KEY) as Theme | null
-    const fromDom = document.documentElement.classList.contains('light')
-      ? 'light'
-      : 'dark'
-    const initial =
-      stored === 'light' || stored === 'dark' ? stored : fromDom
-    setThemeState(initial)
-    applyTheme(initial)
-  }, [])
+    const stored = window.localStorage.getItem(THEME_STORAGE_KEY)
+    const next = stored === 'light' || stored === 'dark' ? stored : initialTheme
+    setThemeState(next)
+    applyTheme(next)
+    persistTheme(next)
+  }, [initialTheme])
 
   const setTheme = useCallback((next: Theme) => {
     setThemeState(next)
     applyTheme(next)
-    window.localStorage.setItem(STORAGE_KEY, next)
+    persistTheme(next)
   }, [])
 
   const toggleTheme = useCallback(() => {

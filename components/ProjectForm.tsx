@@ -5,36 +5,7 @@ import { ArrowLeft, ArrowRight, Check } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FadeInUp } from './AnimationWrappers'
 import { SITE } from '@/lib/site'
-
-const productOptions = [
-  'Site web',
-  'Application métier',
-  'Plateforme',
-  'E-commerce',
-  'Je ne sais pas encore',
-]
-
-const stageOptions = [
-  'Simple idée',
-  'Projet défini',
-  'Cahier des charges existant',
-  'Solution existante à améliorer',
-]
-
-const budgetOptions = [
-  '< 2 000 €',
-  '2 000 – 5 000 €',
-  '5 000 – 10 000 €',
-  '10 000 – 20 000 €',
-  '20 000 €+',
-]
-
-const timelineOptions = [
-  'Dès que possible',
-  'Dans 1–3 mois',
-  'Dans 3–6 mois',
-  'Plus tard',
-]
+import { useI18n } from './LocaleProvider'
 
 type FormState = {
   product: string
@@ -91,35 +62,18 @@ function OptionGrid({
 }
 
 export const ProjectForm = () => {
+  const { dict } = useI18n()
   const [step, setStep] = useState(0)
   const [form, setForm] = useState<FormState>(initialState)
   const [sent, setSent] = useState(false)
 
   const steps = [
-    {
-      title: 'Que souhaitez-vous construire ?',
-      valid: Boolean(form.product),
-    },
-    {
-      title: 'Quel est votre besoin ?',
-      valid: form.need.trim().length > 10,
-    },
-    {
-      title: 'Où en êtes-vous ?',
-      valid: Boolean(form.stage),
-    },
-    {
-      title: 'Quel budget avez-vous prévu ?',
-      valid: Boolean(form.budget),
-    },
-    {
-      title: 'Quand souhaitez-vous démarrer ?',
-      valid: Boolean(form.timeline),
-    },
-    {
-      title: 'Vos coordonnées',
-      valid: Boolean(form.name.trim() && form.email.trim()),
-    },
+    { title: dict.form.questions[0], valid: Boolean(form.product) },
+    { title: dict.form.questions[1], valid: form.need.trim().length > 10 },
+    { title: dict.form.questions[2], valid: Boolean(form.stage) },
+    { title: dict.form.questions[3], valid: Boolean(form.budget) },
+    { title: dict.form.questions[4], valid: Boolean(form.timeline) },
+    { title: dict.form.questions[5], valid: Boolean(form.name.trim() && form.email.trim()) },
   ]
 
   const update = <K extends keyof FormState>(key: K, value: FormState[K]) => {
@@ -130,19 +84,20 @@ export const ProjectForm = () => {
     event.preventDefault()
     if (!steps[step].valid) return
 
+    const fields = dict.form.mailFields
     const body = [
-      `Produit : ${form.product}`,
-      `Besoin : ${form.need}`,
-      `Avancement : ${form.stage}`,
-      `Budget : ${form.budget}`,
-      `Démarrage : ${form.timeline}`,
-      `Nom : ${form.name}`,
-      `Email : ${form.email}`,
-      `Téléphone : ${form.phone || 'Non renseigné'}`,
+      `${fields.product} : ${form.product}`,
+      `${fields.need} : ${form.need}`,
+      `${fields.stage} : ${form.stage}`,
+      `${fields.budget} : ${form.budget}`,
+      `${fields.timeline} : ${form.timeline}`,
+      `${fields.name} : ${form.name}`,
+      `${fields.email} : ${form.email}`,
+      `${fields.phone} : ${form.phone || dict.form.phoneEmpty}`,
     ].join('\n')
 
     const mailto = `mailto:${SITE.email}?subject=${encodeURIComponent(
-      `[Flow] Nouveau projet — ${form.product}`
+      `${dict.form.mailSubject} — ${form.product}`
     )}&body=${encodeURIComponent(body)}`
 
     window.location.href = mailto
@@ -155,16 +110,14 @@ export const ProjectForm = () => {
         <FadeInUp>
           <div className="text-center mb-10">
             <p className="font-label text-sm uppercase tracking-[0.2em] text-primary mb-4">
-              Démarrer
+              {dict.form.kicker}
             </p>
             <h2 className="font-headline font-bold text-3xl md:text-4xl tracking-tight text-on-surface mb-4">
-              Vous avez un projet en tête ?
+              {dict.form.title}
             </h2>
-            <p className="font-body text-on-surface-variant leading-relaxed">
-              Une idée, un besoin métier ou un processus que vous souhaitez digitaliser ? Parlons-en.
-            </p>
+            <p className="font-body text-on-surface-variant leading-relaxed">{dict.form.intro}</p>
             <p className="font-body text-on-surface-variant mt-3">
-              Ou appelez directement au{' '}
+              {dict.form.orCall}{' '}
               <a
                 href={SITE.phoneHref}
                 className="text-primary hover:opacity-80 transition-opacity font-medium"
@@ -187,11 +140,10 @@ export const ProjectForm = () => {
                   <Check size={22} />
                 </div>
                 <h3 className="font-headline font-semibold text-xl text-on-surface mb-2">
-                  Votre client mail est prêt
+                  {dict.form.sentTitle}
                 </h3>
                 <p className="text-on-surface-variant text-sm leading-relaxed max-w-md mx-auto">
-                  Un message prérempli s’ouvre avec les détails de votre projet. Envoyez-le pour que
-                  nous puissions vous répondre rapidement.
+                  {dict.form.sentBody}
                 </p>
               </div>
             ) : (
@@ -199,7 +151,7 @@ export const ProjectForm = () => {
                 <div className="mb-8">
                   <div className="flex items-center justify-between mb-3">
                     <span className="font-label text-xs uppercase tracking-[0.16em] text-on-surface-variant">
-                      Étape {step + 1} / {steps.length}
+                      {dict.form.stepLabel} {step + 1} / {steps.length}
                     </span>
                     <span className="font-label text-xs text-primary-container">
                       {Math.round(((step + 1) / steps.length) * 100)}%
@@ -227,7 +179,7 @@ export const ProjectForm = () => {
 
                     {step === 0 && (
                       <OptionGrid
-                        options={productOptions}
+                        options={[...dict.form.products]}
                         value={form.product}
                         onChange={(value) => update('product', value)}
                       />
@@ -238,14 +190,14 @@ export const ProjectForm = () => {
                         value={form.need}
                         onChange={(e) => update('need', e.target.value)}
                         rows={5}
-                        placeholder="Décrivez votre idée, votre problème ou le processus à digitaliser…"
+                        placeholder={dict.form.needPlaceholder}
                         className="w-full rounded-xl border border-outline-variant/15 bg-surface-container px-4 py-3 text-sm text-on-surface placeholder:text-on-surface-variant/60 focus:outline-none focus:border-primary-container"
                       />
                     )}
 
                     {step === 2 && (
                       <OptionGrid
-                        options={stageOptions}
+                        options={[...dict.form.stages]}
                         value={form.stage}
                         onChange={(value) => update('stage', value)}
                       />
@@ -253,7 +205,7 @@ export const ProjectForm = () => {
 
                     {step === 3 && (
                       <OptionGrid
-                        options={budgetOptions}
+                        options={[...dict.form.budgets]}
                         value={form.budget}
                         onChange={(value) => update('budget', value)}
                       />
@@ -261,7 +213,7 @@ export const ProjectForm = () => {
 
                     {step === 4 && (
                       <OptionGrid
-                        options={timelineOptions}
+                        options={[...dict.form.timelines]}
                         value={form.timeline}
                         onChange={(value) => update('timeline', value)}
                       />
@@ -273,7 +225,7 @@ export const ProjectForm = () => {
                           type="text"
                           value={form.name}
                           onChange={(e) => update('name', e.target.value)}
-                          placeholder="Nom *"
+                          placeholder={dict.form.name}
                           required
                           className="w-full rounded-xl border border-outline-variant/15 bg-surface-container px-4 py-3 text-sm text-on-surface placeholder:text-on-surface-variant/60 focus:outline-none focus:border-primary-container"
                         />
@@ -281,7 +233,7 @@ export const ProjectForm = () => {
                           type="email"
                           value={form.email}
                           onChange={(e) => update('email', e.target.value)}
-                          placeholder="Email *"
+                          placeholder={dict.form.email}
                           required
                           className="w-full rounded-xl border border-outline-variant/15 bg-surface-container px-4 py-3 text-sm text-on-surface placeholder:text-on-surface-variant/60 focus:outline-none focus:border-primary-container"
                         />
@@ -289,7 +241,7 @@ export const ProjectForm = () => {
                           type="tel"
                           value={form.phone}
                           onChange={(e) => update('phone', e.target.value)}
-                          placeholder="Téléphone (optionnel)"
+                          placeholder={dict.form.phone}
                           className="w-full rounded-xl border border-outline-variant/15 bg-surface-container px-4 py-3 text-sm text-on-surface placeholder:text-on-surface-variant/60 focus:outline-none focus:border-primary-container"
                         />
                       </div>
@@ -305,7 +257,7 @@ export const ProjectForm = () => {
                     className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg font-label text-sm text-on-surface-variant disabled:opacity-30 hover:text-primary transition-colors"
                   >
                     <ArrowLeft size={14} />
-                    Retour
+                    {dict.form.back}
                   </button>
 
                   {step < steps.length - 1 ? (
@@ -315,7 +267,7 @@ export const ProjectForm = () => {
                       disabled={!steps[step].valid}
                       className="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-primary-fixed text-on-primary px-5 py-2.5 rounded-lg font-label text-sm font-semibold disabled:opacity-40"
                     >
-                      Continuer
+                      {dict.form.continue}
                       <ArrowRight size={14} />
                     </button>
                   ) : (
@@ -324,7 +276,7 @@ export const ProjectForm = () => {
                       disabled={!steps[step].valid}
                       className="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-primary-fixed text-on-primary px-5 py-2.5 rounded-lg font-label text-sm font-semibold disabled:opacity-40"
                     >
-                      Envoyer mon projet
+                      {dict.form.submit}
                       <ArrowRight size={14} />
                     </button>
                   )}

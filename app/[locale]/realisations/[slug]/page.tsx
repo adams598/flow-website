@@ -4,28 +4,35 @@ import { notFound } from 'next/navigation'
 import { ArrowLeft, ArrowRight, ExternalLink } from 'lucide-react'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
-import { getRealisation, realisations, SITE } from '@/lib/site'
+import { getDictionary, getRealisation, realisationSlugs } from '@/lib/i18n'
+import { href, isLocale, localeAlternates, locales } from '@/lib/i18n/config'
 
-type Props = { params: Promise<{ slug: string }> }
+type Props = { params: Promise<{ locale: string; slug: string }> }
 
 export async function generateStaticParams() {
-  return realisations.map((item) => ({ slug: item.slug }))
+  return locales.flatMap((locale) =>
+    realisationSlugs().map((slug) => ({ locale, slug }))
+  )
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params
-  const item = getRealisation(slug)
-  if (!item) return { title: 'Réalisation' }
+  const { locale, slug } = await params
+  if (!isLocale(locale)) return { title: 'Work' }
+  const item = getRealisation(locale, slug)
+  if (!item) return { title: getDictionary(locale).realisations.fallbackTitle }
   return {
     title: item.title,
     description: item.description,
+    alternates: localeAlternates(locale, `/realisations/${slug}`),
   }
 }
 
 export default async function RealisationPage({ params }: Props) {
-  const { slug } = await params
-  const item = getRealisation(slug)
+  const { locale: raw, slug } = await params
+  if (!isLocale(raw)) notFound()
+  const item = getRealisation(raw, slug)
   if (!item) notFound()
+  const dict = getDictionary(raw)
 
   return (
     <main className="min-h-screen">
@@ -33,15 +40,15 @@ export default async function RealisationPage({ params }: Props) {
       <article className="pt-28 pb-20">
         <div className="max-w-5xl mx-auto px-6 md:px-8">
           <Link
-            href="/#realisations"
+            href={href(raw, '/#realisations')}
             className="inline-flex items-center gap-2 text-sm text-on-surface-variant hover:text-primary mb-10"
           >
             <ArrowLeft size={14} />
-            Retour aux réalisations
+            {dict.realisations.back}
           </Link>
 
           <p className="font-label text-sm uppercase tracking-[0.2em] text-primary-container mb-4">
-            Réalisation
+            {dict.realisations.label}
           </p>
           <h1 className="font-headline font-extrabold text-4xl md:text-5xl text-on-surface tracking-tight mb-3">
             {item.title}
@@ -60,14 +67,14 @@ export default async function RealisationPage({ params }: Props) {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-primary-fixed text-on-primary px-5 py-2.5 rounded-lg font-label text-sm font-semibold"
             >
-              Voir le site
+              {dict.realisations.viewSite}
               <ExternalLink size={14} />
             </a>
             <a
-              href={SITE.ctaHref}
+              href={href(raw, dict.nav.ctaHref)}
               className="inline-flex items-center gap-2 border border-primary/30 text-primary px-5 py-2.5 rounded-lg font-label text-sm font-semibold"
             >
-              {SITE.cta}
+              {dict.nav.cta}
               <ArrowRight size={14} />
             </a>
           </div>
@@ -78,11 +85,15 @@ export default async function RealisationPage({ params }: Props) {
 
           <div className="grid gap-10">
             <section>
-              <h2 className="font-headline font-bold text-2xl text-on-surface mb-3">Le problème</h2>
+              <h2 className="font-headline font-bold text-2xl text-on-surface mb-3">
+                {dict.realisations.problem}
+              </h2>
               <p className="text-on-surface-variant leading-relaxed">{item.problem}</p>
             </section>
             <section>
-              <h2 className="font-headline font-bold text-2xl text-on-surface mb-3">Les objectifs</h2>
+              <h2 className="font-headline font-bold text-2xl text-on-surface mb-3">
+                {dict.realisations.objectives}
+              </h2>
               <ul className="space-y-2">
                 {item.objectives.map((objective) => (
                   <li key={objective} className="flex gap-2 text-on-surface-variant">
@@ -93,11 +104,15 @@ export default async function RealisationPage({ params }: Props) {
               </ul>
             </section>
             <section>
-              <h2 className="font-headline font-bold text-2xl text-on-surface mb-3">La solution</h2>
+              <h2 className="font-headline font-bold text-2xl text-on-surface mb-3">
+                {dict.realisations.solution}
+              </h2>
               <p className="text-on-surface-variant leading-relaxed">{item.solution}</p>
             </section>
             <section>
-              <h2 className="font-headline font-bold text-2xl text-on-surface mb-3">Fonctionnalités</h2>
+              <h2 className="font-headline font-bold text-2xl text-on-surface mb-3">
+                {dict.realisations.features}
+              </h2>
               <div className="flex flex-wrap gap-2">
                 {item.features.map((feature) => (
                   <span
@@ -110,23 +125,23 @@ export default async function RealisationPage({ params }: Props) {
               </div>
             </section>
             <section>
-              <h2 className="font-headline font-bold text-2xl text-on-surface mb-3">Résultat</h2>
+              <h2 className="font-headline font-bold text-2xl text-on-surface mb-3">
+                {dict.realisations.result}
+              </h2>
               <p className="text-on-surface-variant leading-relaxed">{item.result}</p>
             </section>
           </div>
 
           <div className="mt-14 rounded-2xl border border-outline-variant/10 bg-surface-container-low p-8 text-center">
             <h3 className="font-headline font-semibold text-xl text-on-surface mb-3">
-              Un besoin similaire ?
+              {dict.realisations.similarTitle}
             </h3>
-            <p className="text-on-surface-variant mb-6">
-              Parlons de votre projet et construisons la solution adaptée.
-            </p>
+            <p className="text-on-surface-variant mb-6">{dict.realisations.similarBody}</p>
             <a
-              href="/#projet"
+              href={href(raw, '/#projet')}
               className="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-primary-fixed text-on-primary px-6 py-3 rounded-lg font-label text-sm font-semibold"
             >
-              {SITE.cta}
+              {dict.nav.cta}
               <ArrowRight size={14} />
             </a>
           </div>

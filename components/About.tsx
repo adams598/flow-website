@@ -3,8 +3,11 @@
 import { motion } from 'framer-motion'
 import { FadeInUp } from './AnimationWrappers'
 import { SITE } from '@/lib/site'
+import { useI18n } from './LocaleProvider'
 
 export const About = () => {
+  const { dict } = useI18n()
+
   return (
     <section className="mt-32 md:mt-40 scroll-mt-20" id="apropos">
       <div className="max-w-7xl mx-auto px-6 md:px-8">
@@ -18,7 +21,7 @@ export const About = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
                 src="/photo.jpg"
-                alt="Adams, fondateur de Flow"
+                alt={dict.about.photoAlt}
                 className="relative z-10 w-full h-auto object-cover rounded-2xl shadow-2xl"
               />
             </div>
@@ -26,24 +29,16 @@ export const About = () => {
 
           <FadeInUp delay={0.15} className="lg:w-3/5">
             <p className="font-label text-sm uppercase tracking-[0.2em] text-primary mb-4">
-              À propos
+              {dict.about.kicker}
             </p>
             <h2 className="font-headline font-bold text-3xl md:text-4xl tracking-tight text-on-surface mb-6">
-              Une expertise d’ingénieur, avec la flexibilité d’une structure indépendante.
+              {dict.about.title}
             </h2>
             <div className="space-y-4 font-body text-on-surface-variant leading-relaxed text-lg">
+              <p>{dict.about.p1}</p>
+              <p>{dict.about.p2}</p>
               <p>
-                {SITE.name} est porté par Adams, ingénieur informatique indépendant, et s’appuie
-                sur une approche rigoureuse du développement logiciel pour concevoir des solutions
-                adaptées à chaque projet.
-              </p>
-              <p>
-                Une expertise directement impliquée dans chaque projet : de la compréhension du
-                besoin jusqu’à la mise en production, vous échangez avec la personne qui construit
-                votre solution.
-              </p>
-              <p>
-                Un appel suffit :{' '}
+                {dict.about.p3Before}{' '}
                 <a
                   href={SITE.phoneHref}
                   className="text-primary hover:opacity-80 transition-opacity font-medium"

@@ -4,29 +4,30 @@ import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import { FadeInUp, StaggerContainer, StaggerItem } from './AnimationWrappers'
-import { realisations } from '@/lib/site'
+import { useI18n } from './LocaleProvider'
 
 export const Realisations = () => {
+  const { dict, href } = useI18n()
+
   return (
     <section className="mt-32 md:mt-40 scroll-mt-20" id="realisations">
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         <FadeInUp>
           <div className="max-w-3xl mb-14">
             <p className="font-label text-sm uppercase tracking-[0.2em] text-primary mb-4">
-              Réalisations
+              {dict.realisations.kicker}
             </p>
             <h2 className="font-headline font-bold text-3xl md:text-4xl tracking-tight text-on-surface">
-              Des preuves concrètes, pas une simple galerie.
+              {dict.realisations.title}
             </h2>
             <p className="mt-4 font-body text-on-surface-variant leading-relaxed">
-              Chaque projet démontre une compétence précise : produit, parcours, monétisation ou
-              outil métier.
+              {dict.realisations.intro}
             </p>
           </div>
         </FadeInUp>
 
         <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {realisations.map((item) => (
+          {dict.realisations.items.map((item) => (
             <StaggerItem key={item.slug}>
               <motion.article
                 whileHover={{ y: -6 }}
@@ -61,10 +62,10 @@ export const Realisations = () => {
                     ))}
                   </div>
                   <Link
-                    href={`/realisations/${item.slug}`}
+                    href={href(`/realisations/${item.slug}`)}
                     className="inline-flex items-center gap-2 font-label text-sm font-semibold text-primary hover:text-primary-container transition-colors"
                   >
-                    Voir le projet
+                    {dict.realisations.viewProject}
                     <ArrowRight size={14} />
                   </Link>
                 </div>

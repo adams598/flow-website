@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500;1,600&display=swap" rel="stylesheet" />
+  <style>
+    @page { size: A4; margin: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 210mm;
+      height: 297mm;
+      overflow: hidden;
+      font-family: Montserrat, Arial, sans-serif;
+      color: #222;
+      background: #fff;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .page {
+      display: grid;
+      grid-template-columns: 62mm 1fr;
+      width: 210mm;
+      height: 297mm;
+    }
+    .left {
+      padding: 0 0 8mm;
+      background: #fff;
+    }
+    .brand {
+      background: #c274d0;
+      color: #fff;
+      padding: 9mm 6mm 7mm;
+    }
+    .brand .first {
+      font-size: 13.5pt;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      line-height: 1.15;
+    }
+    .brand .last {
+      font-size: 13.5pt;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-top: 1mm;
+    }
+    .role {
+      background: #3a3437;
+      color: #fff;
+      font-size: 7pt;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: center;
+      line-height: 1.35;
+      padding: 3.4mm 5mm;
+    }
+    .photo-wrap {
+      display: flex;
+      justify-content: center;
+      padding: 6.5mm 0 4mm;
+    }
+    .photo {
+      width: 34mm;
+      height: 34mm;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2.4mm solid #e6c7ec;
+    }
+    .contact {
+      padding: 0 6.5mm 5mm;
+      font-size: 7.2pt;
+      color: #333;
+      display: grid;
+      gap: 2.1mm;
+    }
+    .contact div {
+      display: flex;
+      align-items: center;
+      gap: 2.2mm;
+    }
+    .contact svg {
+      width: 3.3mm;
+      height: 3.3mm;
+      flex-shrink: 0;
+      color: #c274d0;
+    }
+    .left-block {
+      padding: 0 6.5mm 4.2mm;
+    }
+    .left h2 {
+      font-size: 11.5pt;
+      font-weight: 800;
+      color: #111;
+      margin-bottom: 2.4mm;
+    }
+    .left h3 {
+      font-size: 8pt;
+      font-weight: 700;
+      margin: 2.4mm 0 0.7mm;
+    }
+    .left p, .left .skills {
+      font-size: 7.1pt;
+      line-height: 1.38;
+      color: #333;
+    }
+    .lang-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 7.4pt;
+      font-weight: 700;
+      margin-top: 1mm;
+    }
+    .bar {
+      height: 1.7mm;
+      background: #eee;
+      border-radius: 8px;
+      margin-top: 1.4mm;
+      overflow: hidden;
+    }
+    .bar > span {
+      display: block;
+      height: 100%;
+      width: 82%;
+      background: #c274d0;
+    }
+    .level {
+      font-size: 6.6pt;
+      color: #666;
+      margin-top: 1.2mm;
+    }
+    .right {
+      padding: 8mm 8mm 7mm 7mm;
+    }
+    .right h2 {
+      font-size: 14pt;
+      font-weight: 800;
+      color: #111;
+      margin: 0 0 3.5mm;
+    }
+    .right h2 + .timeline { margin-top: 0; }
+    .section { margin-top: 5.2mm; }
+    .timeline {
+      position: relative;
+      padding-left: 5.2mm;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 1.15mm;
+      top: 2.4mm;
+      bottom: 2mm;
+      width: 0.45mm;
+      background: #e0e0e0;
+    }
+    .item { position: relative; margin-bottom: 3.3mm; }
+    .item::before {
+      content: "";
+      position: absolute;
+      left: -5.2mm;
+      top: 1.1mm;
+      width: 2.5mm;
+      height: 2.5mm;
+      border: 0.55mm solid #c274d0;
+      border-radius: 50%;
+      background: #fff;
+    }
+    .item-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 3mm;
+    }
+    .item-title {
+      font-size: 8.1pt;
+      font-weight: 700;
+      color: #111;
+    }
+    .item-date {
+      font-size: 7pt;
+      font-style: italic;
+      color: #888;
+      white-space: nowrap;
+    }
+    .item-place {
+      font-size: 7.6pt;
+      font-weight: 700;
+      font-style: italic;
+      color: #c274d0;
+      margin: 0.3mm 0 0.8mm;
+    }
+    .item-role {
+      font-size: 7.6pt;
+      font-weight: 700;
+      margin-bottom: 0.8mm;
+    }
+    ul {
+      list-style: disc;
+      padding-left: 4.2mm;
+    }
+    li {
+      font-size: 7.15pt;
+      line-height: 1.34;
+      margin-bottom: 0.55mm;
+    }
+    li strong { font-weight: 700; }
+    .project { margin-bottom: 2.6mm; }
+    .project .item-title { display: block; margin-bottom: 0.8mm; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <aside class="left">
+      <div class="brand">
+        <div class="first">Adams Dexter</div>
+        <div class="last">Tchatchoua</div>
+      </div>
+      <div class="role">Ingénieur DevOps &amp;<br />Développeur web</div>
+      <div class="photo-wrap">
+        <img class="photo" src="../assets/orig-img-0.png" alt="Adams Dexter Tchatchoua" />
+      </div>
+      <div class="contact">
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          adamsdexter3@gmail.com
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h3l2 5-2.5 1.5a11 11 0 0 0 5 5L15 12l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 4 7a2 2 0 0 1 2-2z"/></svg>
+          Tel : 07 49 17 83 91
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-5.3 7-11a7 7 0 1 0-14 0c0 5.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.2"/></svg>
+          2 ans d’expérience
+        </div>
+      </div>
+
+      <div class="left-block">
+        <h2>Atouts</h2>
+        <h3>Softs skills</h3>
+        <p>Autodidacte, Coordination des projets, sens du service, autonome, polyvalent, travail en équipe, Organiser son travail selon les priorités et les objectifs, force de proposition, démarchage clientèle</p>
+      </div>
+
+      <div class="left-block">
+        <h2>Compétences</h2>
+        <h3>Gestion de projet/taches/versions</h3>
+        <p>Jira, Méthode SCRUM, Agile, Github, Git</p>
+        <h3>Frontend</h3>
+        <p>Typescript, Vuejs, AngularJS, React</p>
+        <h3>Backend</h3>
+        <p>Python, C++, C#, PHP, NodeJS, JavaScript, Shell, Java, .NET, Spring boot</p>
+        <h3>Bases de données, Déploiement</h3>
+        <p>SQL, MySQL, PL/SQL, PostgreSQL, Mongo DB, Cloud (AWS), Docker, Ansible, Kubernetes, Terraform</p>
+      </div>
+
+      <div class="left-block">
+        <h2>Langues</h2>
+        <div class="lang-row"><span>Anglais</span></div>
+        <div class="bar"><span></span></div>
+        <p class="level">Linguaskill B2</p>
+      </div>
+
+      <div class="left-block">
+        <h2>Centres d'intérêt</h2>
+        <h3>Musique : Piano, Guitare, Batterie</h3>
+        <h3>Sport : Football</h3>
+        <h3>Intelligence Artificielle</h3>
+      </div>
+    </aside>
+
+    <main class="right">
+      <h2>Expériences</h2>
+      <div class="timeline">
+        <article class="item">
+          <div class="item-head">
+            <p class="item-title">Ingénieur DevOps et développeur web Freelance</p>
+            <p class="item-date">Depuis septembre 2024 (2ans)</p>
+          </div>
+          <p class="item-place">BAI Formation Consulting, Limoges, France</p>
+          <ul>
+            <li><strong>Concevoir, Développer et déployer</strong> une application de formation en ligne dans le domaine bancaire</li>
+            <li><strong>Sécuriser, automatiser</strong> le déploiement en ligne, <strong>CI/CD</strong></li>
+            <li>Créer des sites web vitrine</li>
+            <li><strong>Optimisation SEO et référencement</strong></li>
+          </ul>
+        </article>
+
+        <article class="item">
+          <div class="item-head">
+            <p class="item-title">Orange</p>
+            <p class="item-date">De janvier 2024 à juillet 2024 (6 mois)</p>
+          </div>
+          <p class="item-role">Ingénieur développeur Javascript/Python &amp; Assistant à la maitrise d'ouvrage (MOA),</p>
+          <ul>
+            <li><strong>Optimiser et fiabiliser</strong> la cartographie des communautés Plazza</li>
+            <li><strong>Tester et déployer</strong> en environnements dédiés (intégration, UAT, production)</li>
+            <li><strong>Développer</strong> une application pour accompagner les utilisateurs dans le processus de migration vers Microsoft 365</li>
+            <li><strong>Développer</strong> un moteur de recommandation pour identifier l'outil Microsoft le plus adapté pour communauté plazza donnée</li>
+          </ul>
+        </article>
+
+        <article class="item">
+          <div class="item-head">
+            <p class="item-title">DataDriven</p>
+            <p class="item-date">De mai 2023 à septembre 2023 (4 mois)</p>
+          </div>
+          <p class="item-role">Développeur fullstack Javascript et Python,</p>
+          <ul>
+            <li>Le développement de scripts d'intégration de données bigdatas</li>
+            <li>Mise en place d'un module simplifiant la gestion des clients et de leurs accès à la plateforme de gestion de données</li>
+            <li><strong>Tests de compliance et d'intégrité</strong> des données</li>
+            <li>Détection et <strong>résolution des bugs</strong> liés aux données et aux dashboards client et développeur.</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="section">
+        <h2>Projets personnels et académiques</h2>
+        <div class="project">
+          <span class="item-title">Développement d’une API REST sécurisée avec Spring Boot et PostgreSQL en architecture microservice</span>
+          <ul>
+            <li>Conception et développement d’une <strong>API REST</strong> en <strong>Java Spring Boot</strong></li>
+            <li>Gestion de la <strong>persistance des données</strong> avec Spring Data JPA <strong>(Hibernate)</strong> et <strong>PostgreSQL</strong></li>
+            <li>Sécurisation de l’API avec <strong>JWT</strong> et <strong>Spring Security</strong></li>
+          </ul>
+        </div>
+        <div class="project">
+          <span class="item-title">Application Web avec Infrastructure DevOps</span>
+          <ul>
+            <li>Automatisation des builds et des déploiements, <strong>Gestion de conteneurs</strong> avec Docker. <strong>Intégration continue et déploiement continu (CI/CD)</strong> avec Jenkins</li>
+          </ul>
+        </div>
+        <div class="project">
+          <span class="item-title">Mise en place d'un système de reconnaissance d'émotions sur les réseaux sociaux avec l'IA</span>
+          <ul>
+            <li><strong>Objectif :</strong> Soutenir la prévention des risques psychosociaux (dépression, suicide, violence) et à offrir un outil d’aide à la médecine et à la modération en ligne.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Diplômes et Formations</h2>
+        <div class="timeline">
+          <article class="item">
+            <div class="item-head">
+              <p class="item-title">Cycle ingénieur informatique - Bac+5</p>
+              <p class="item-date">De septembre 2019 à avril 2025</p>
+            </div>
+            <p class="item-place">3IL, Limoges</p>
+            <p style="font-size:7.15pt;line-height:1.38">Objets connectés et IoT, Technologies web et mobiles, Sécurité informatique, Analyse numérique, Modélisation et Analyse des systèmes, Gestion de projet, Robotique, IA, Mise en œuvre et supervision d'un réseau, Bases de données, Cybersécurité</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Certifications</h2>
+        <div class="timeline">
+          <article class="item">
+            <div class="item-head">
+              <p class="item-title">Certification Reactjs et Redux</p>
+              <p class="item-date">D'octobre 2023 à décembre 2023</p>
+            </div>
+            <p class="item-place">Udemy, France</p>
+            <p style="font-size:7.15pt;line-height:1.38">Développer des sites modernes avec React + Redux, Hooks, React Router, Contexts, NPM, ES6</p>
+          </article>
+          <article class="item">
+            <div class="item-head">
+              <p class="item-title">DevOps CI/CD</p>
+              <p class="item-date">Novembre 2024</p>
+            </div>
+            <p class="item-place">Udemy,</p>
+            <p style="font-size:7.15pt;line-height:1.38">Mise en place et gestion de pipelines DevOps, gestion d'infrastructure en tant que code.</p>
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

@@ -4,14 +4,10 @@ import { motion } from 'framer-motion'
 import { Github, Linkedin, Mail, Phone } from 'lucide-react'
 import Link from 'next/link'
 import { SITE } from '@/lib/site'
+import { useI18n } from './LocaleProvider'
 
 export const Footer = () => {
-  const footerLinks = [
-    { label: 'Solutions', href: '/#solutions' },
-    { label: 'Réalisations', href: '/#realisations' },
-    { label: 'Méthode', href: '/#methode' },
-    { label: 'À propos', href: '/#apropos' },
-  ]
+  const { dict, href } = useI18n()
 
   const socialLinks = [
     { icon: Github, href: SITE.github, label: 'GitHub' },
@@ -29,14 +25,14 @@ export const Footer = () => {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-12 mb-12">
           <div>
-            <Link href="/" className="flex items-center gap-3">
+            <Link href={href('/')} className="flex items-center gap-3">
               <img src="/export.png" alt="" className="h-8 w-8 object-contain" />
               <span className="text-2xl font-black text-primary font-headline">{SITE.name}</span>
             </Link>
             <p className="text-on-surface-variant text-sm mt-3 max-w-sm">
               {SITE.tagline}
               <br />
-              Sites, applications métier et plateformes digitales sur mesure.
+              {dict.footer.blurb}
             </p>
             <a
               href={SITE.phoneHref}
@@ -48,20 +44,20 @@ export const Footer = () => {
           </div>
 
           <div className="flex flex-wrap gap-6">
-            {footerLinks.map((link) => (
+            {dict.nav.links.map((link) => (
               <a
                 key={link.label}
-                href={link.href}
+                href={href(link.href)}
                 className="font-label text-sm text-on-surface-variant hover:text-primary transition-colors"
               >
                 {link.label}
               </a>
             ))}
             <a
-              href={SITE.ctaHref}
+              href={href(dict.nav.ctaHref)}
               className="font-label text-sm text-primary hover:opacity-80 transition-opacity"
             >
-              {SITE.cta}
+              {dict.nav.cta}
             </a>
           </div>
 
@@ -86,7 +82,7 @@ export const Footer = () => {
 
         <div className="border-t border-outline-variant/10 pt-8 text-center">
           <p className="font-label text-sm text-on-surface-variant">
-            © {new Date().getFullYear()} {SITE.name}. Tous droits réservés.
+            © {new Date().getFullYear()} {SITE.name}. {dict.footer.rights}
           </p>
         </div>
       </div>

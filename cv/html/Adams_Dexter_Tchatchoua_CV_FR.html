@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+@page { size: A4; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  width: 210mm;
+  height: 297mm;
+  font-family: Poppins, "Segoe UI", Helvetica, Arial, sans-serif;
+  color: #1a1a1a;
+  background: #fff;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+a { color: inherit; text-decoration: none; }
+.page {
+  width: 210mm;
+  height: 297mm;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-left: 2.4mm solid #c4a35a;
+}
+.header {
+  background: #101010;
+  color: #f4efe6;
+  padding: 5.5mm 10mm 5.5mm 11mm;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8mm;
+  flex-shrink: 0;
+}
+.kicker {
+  font-size: 6.8pt;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: #c4a35a;
+  margin-bottom: 1.8mm;
+}
+.name {
+  font-family: Poppins, sans-serif;
+  font-weight: 600;
+  font-size: 20pt;
+  letter-spacing: -0.03em;
+  line-height: 1.06;
+  color: #f4efe6;
+}
+.rule {
+  width: 20mm;
+  height: 1px;
+  background: #c4a35a;
+  margin: 2mm 0 1.8mm;
+  border: 0;
+}
+.role { font-size: 10pt; font-weight: 500; color: #f4efe6; }
+.tagline { margin-top: 0.8mm; font-size: 8.4pt; color: #c4bdb2; }
+.meta { margin-top: 2.4mm; font-size: 7.6pt; color: #cfc8be; line-height: 1.5; }
+.meta a { color: #efe8dc; }
+.meta a.github { color: #c4a35a; font-weight: 600; }
+.photo-wrap {
+  flex-shrink: 0;
+  width: 27mm;
+  height: 27mm;
+  border-radius: 50%;
+  padding: 1.4px;
+  background: #c4a35a;
+}
+.photo {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 12%;
+  display: block;
+  border: 2px solid #101010;
+}
+.body {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 58mm;
+  gap: 6mm;
+  padding: 5mm 10mm 5.5mm 11mm;
+  min-height: 0;
+}
+h2 {
+  font-size: 7.2pt;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #c4a35a;
+  border-bottom: 0.7px solid #1a1a1a;
+  padding-bottom: 1.3mm;
+  margin: 0 0 2.2mm;
+}
+.profil { font-size: 8.2pt; line-height: 1.36; color: #2a2a2a; margin-bottom: 3.6mm; }
+.job { margin-bottom: 3mm; }
+.job-head { display: flex; justify-content: space-between; gap: 3mm; align-items: baseline; }
+.job-title {
+  font-family: Poppins, sans-serif;
+  font-size: 9.4pt;
+  font-weight: 600;
+  color: #111;
+  line-height: 1.2;
+}
+.job-dates { font-size: 7.4pt; color: #7a746c; white-space: nowrap; font-weight: 600; }
+.job-place { font-size: 7.4pt; color: #8a847c; margin: 0.4mm 0 1mm; }
+.job-intro { font-size: 8pt; line-height: 1.32; color: #333; margin-bottom: 1.3mm; }
+ul { padding-left: 3.4mm; }
+li { font-size: 8pt; line-height: 1.32; color: #2a2a2a; margin-bottom: 0.8mm; }
+ul.projects { list-style: none; padding: 0; }
+.proj {
+  margin-bottom: 1.2mm;
+  padding: 1.3mm 2mm 1.4mm;
+  background: #f4ede3;
+  border-left: 1.8px solid #c4a35a;
+}
+.proj-name {
+  display: inline-block;
+  font-family: Poppins, sans-serif;
+  font-weight: 700;
+  font-size: 8pt;
+  color: #8a6a32;
+  margin-right: 1.5mm;
+}
+.proj-desc { color: #3a3a3a; }
+.url { color: #9a7540; font-weight: 600; overflow-wrap: anywhere; }
+.aside-block { margin-bottom: 3.2mm; }
+.skill-card { background: #f4ede3; padding: 1.7mm 2mm 1.6mm; margin-bottom: 1.5mm; }
+.skill-label {
+  font-size: 6.4pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #b0894f;
+  margin-bottom: 0.6mm;
+}
+.skill-value { font-size: 7.5pt; line-height: 1.34; color: #1a1a1a; }
+.aside-list { list-style: none; padding: 0; }
+.aside-list li { font-size: 7.5pt; line-height: 1.34; margin-bottom: 1.1mm; padding-left: 0; }
+.interest { font-size: 7.5pt; line-height: 1.34; color: #2a2a2a; }
+.edu-title { font-size: 8.4pt; font-weight: 600; color: #111; line-height: 1.25; }
+.edu-dates { font-size: 7.4pt; color: #7a746c; font-weight: 600; margin: 0.5mm 0; }
+.edu-detail { font-size: 7.8pt; line-height: 1.32; color: #2a2a2a; }
+</style>
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <div class="brand">
+        <p class="kicker">Curriculum vitae</p>
+        <p class="name">Adams Dexter Tchatchoua</p>
+        <div class="rule"></div>
+        <p class="role">Ingénieur informatique — Full-stack</p>
+        <p class="tagline">Fondateur de Flow · 2 ans d’expérience</p>
+        <p class="meta">
+          Mantes-la-Ville (78711) · Mobilité France · Remote / hybride<br />
+          <a href="mailto:adamsdexter3@gmail.com">adamsdexter3@gmail.com</a>
+          · 07 49 17 83 91<br />
+          <a href="https://www.linkedin.com/in/adams-dexter-tchatchoua-3609931a9/">linkedin.com/in/adams-dexter-tchatchoua-3609931a9</a>
+          · <a class="github" href="https://github.com/adams598">github.com/adams598</a>
+        </p>
+      </div>
+      <div class="photo-wrap"><img class="photo" src="file:///A:/PROJETS/flow-website/cv/assets/photo.png" alt="Adams Dexter Tchatchoua" /></div>
+    </header>
+    <main class="body">
+      <section>
+        <h2>Profil</h2>
+        <p class="profil">Ingénieur informatique diplômé CTI (3iL), fondateur de Flow. Je conçois et livre des produits web de bout en bout : sites, applications métier et plateformes (paiement, abonnement, e-learning, back-office). 4 produits en production. Stack : Next.js, React, TypeScript, Node.js.</p>
+        <h2>Expérience</h2>
+        
+            <article class="job">
+              <div class="job-head">
+                <p class="job-title">Ingénieur logiciel — Flow</p>
+                <p class="job-dates">Septembre 2024 – Aujourd’hui</p>
+              </div>
+              <p class="job-place">Mantes-la-Ville · France</p>
+              <p class="job-intro">Conception et mise en production de sites, applications métier et plateformes. Interlocuteur unique : cadrage, build, déploiement, maintenance.</p><ul class="projects"><li class="proj"><span class="proj-name">Objectif TCF</span> <span class="proj-desc">Plateforme e-learning : abonnements, Stripe, simulations, back-office. En production.</span> <span class="url">objectif-tcf.org</span></li><li class="proj"><span class="proj-name">BAI Consulting & Formation</span> <span class="proj-desc">Plateforme B2B multi-rôles, chatbot. En production, maintenance.</span> <span class="url">bai-consultingetformation.com</span></li><li class="proj"><span class="proj-name">Drivin & Chill</span> <span class="proj-desc">Réservation, Stripe, QR codes. En production, maintenance.</span> <span class="url">drivinnchill.fr</span></li><li class="proj"><span class="proj-name">Application de suivi financier</span> <span class="proj-desc">Suivi des finances et dépenses, livré en production.</span></li><li class="proj"><span class="proj-name">H&S Services</span> <span class="proj-desc">Site vitrine, SEO, conversion.</span> <span class="url">hsservices-ci.com</span></li><li class="proj"><span class="proj-name">Parcours paiement</span> <span class="proj-desc">Webhooks Stripe idempotents et réconciliation paiement / droits d’accès.</span></li></ul>
+            </article>
+            
+            <article class="job">
+              <div class="job-head">
+                <p class="job-title">Ingénieur développeur & MOA — Orange</p>
+                <p class="job-dates">Janvier 2024 – Juillet 2024</p>
+              </div>
+              <p class="job-place">Toulouse · Stage de fin d’études</p>
+              <p class="job-intro">Migration de Plazza vers Microsoft 365 (Teams, SharePoint, Viva Engage).</p><ul><li>Cartographie des communautés, moteur de recommandation M365, application Zip & Go.</li><li>Déploiements intégration / UAT / production. Tests Selenium.</li></ul>
+            </article>
+            
+            <article class="job">
+              <div class="job-head">
+                <p class="job-title">Développeur full-stack — Data Driven France</p>
+                <p class="job-dates">Mai 2023 – Septembre 2023</p>
+              </div>
+              <p class="job-place">Clichy · Stage</p>
+              <ul><li>Modules web internes, intégration de données recrutement, qualité des dashboards.</li></ul>
+            </article>
+            
+        <h2>Formation</h2>
+        <p class="edu-title">Diplôme d’ingénieur informatique (CTI) — 3iL Ingénieurs, Limoges</p>
+        <p class="edu-dates">Septembre 2019 – Avril 2025</p>
+        <p class="edu-detail">Développement web et mobile, bases de données, sécurité, IA, réseaux, gestion de projet.</p>
+      </section>
+      <aside>
+        <div class="aside-block">
+          <h2>Compétences</h2>
+          <div class="skill-card"><p class="skill-label">Produit</p><p class="skill-value">Next.js · React · TypeScript · Node.js · Stripe · e-learning · back-office</p></div><div class="skill-card"><p class="skill-label">Données</p><p class="skill-value">PostgreSQL · SQL · Python</p></div><div class="skill-card"><p class="skill-label">Déploiement</p><p class="skill-value">Docker · Kubernetes · Ansible · GitHub Actions · Vercel · AWS</p></div><div class="skill-card"><p class="skill-label">Méthodes</p><p class="skill-value">Git · Scrum · Jira · cadrage client · recette</p></div><div class="skill-card"><p class="skill-label">IA</p><p class="skill-value">Prompt engineering · chatbot · outillage quotidien</p></div>
+        </div>
+        <div class="aside-block">
+          <h2>Certifications</h2>
+          <ul class="aside-list"><li>Prompt Engineering — 2025</li><li>DevOps CI/CD — Udemy, novembre 2024 (pipelines, infrastructure as code)</li><li>React.js & Redux — Udemy, octobre – décembre 2023 (Hooks, Router, Context)</li></ul>
+        </div>
+        <div class="aside-block">
+          <h2>Langues</h2>
+          <ul class="aside-list"><li>Français — courant (DELF B2)</li><li>Anglais — professionnel (Linguaskill B2)</li></ul>
+        </div>
+        <div class="aside-block">
+          <h2>Centres d’intérêt</h2>
+          <p class="interest">Musique (piano, guitare, batterie) · Football · Accompagnement / coaching</p>
+        </div>
+      </aside>
+    </main>
+  </div>
+</body>
+</html>

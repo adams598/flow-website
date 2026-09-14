@@ -2,58 +2,40 @@
 
 import { Lightbulb, Workflow, Globe, Users } from 'lucide-react'
 import { FadeInUp, StaggerContainer, StaggerItem } from './AnimationWrappers'
-import { SITE } from '@/lib/site'
+import { useI18n } from './LocaleProvider'
 
-const situations = [
-  {
-    icon: Lightbulb,
-    title: 'Vous avez une idée',
-    description:
-      'Vous souhaitez lancer une plateforme, un service ou un nouveau produit digital.',
-  },
-  {
-    icon: Workflow,
-    title: 'Vos processus sont trop manuels',
-    description:
-      'Excel, emails, formulaires et tâches répétitives ralentissent votre activité.',
-  },
-  {
-    icon: Globe,
-    title: 'Votre site ne suffit plus',
-    description:
-      'Vous avez besoin d’un espace client, d’un paiement, d’une réservation ou d’un véritable outil métier.',
-  },
-  {
-    icon: Users,
-    title: 'Vous avez besoin d’un partenaire technique',
-    description:
-      'Vous cherchez quelqu’un capable de concevoir et développer la solution de bout en bout.',
-  },
-]
+const icons = {
+  idea: Lightbulb,
+  manual: Workflow,
+  site: Globe,
+  partner: Users,
+} as const
 
 export const Problems = () => {
+  const { dict } = useI18n()
+
   return (
     <section className="mt-16 md:mt-24 scroll-mt-20" id="besoins">
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         <FadeInUp>
           <div className="max-w-3xl mb-14">
             <p className="font-label text-sm uppercase tracking-[0.2em] text-primary mb-4">
-              Votre contexte
+              {dict.problems.kicker}
             </p>
             <h2 className="font-headline font-bold text-3xl md:text-4xl tracking-tight text-on-surface">
-              Votre activité évolue. Vos outils doivent suivre.
+              {dict.problems.title}
             </h2>
             <p className="mt-4 font-body text-on-surface-variant leading-relaxed text-lg">
-              Votre entreprise grandit, mais vos outils deviennent trop limités ?
+              {dict.problems.intro}
             </p>
           </div>
         </FadeInUp>
 
         <StaggerContainer className="grid sm:grid-cols-2 gap-5">
-          {situations.map((item) => {
-            const Icon = item.icon
+          {dict.problems.items.map((item) => {
+            const Icon = icons[item.key as keyof typeof icons]
             return (
-              <StaggerItem key={item.title}>
+              <StaggerItem key={item.key}>
                 <div className="context-card group relative h-full rounded-2xl">
                   <div
                     className="context-card-beam-wrap pointer-events-none absolute -inset-px rounded-2xl overflow-hidden"
@@ -84,7 +66,7 @@ export const Problems = () => {
 
         <FadeInUp delay={0.2} className="mt-12">
           <p className="font-headline font-semibold text-xl md:text-2xl text-on-surface">
-            {SITE.name} transforme ces besoins en solutions digitales concrètes.
+            {dict.problems.closing}
           </p>
         </FadeInUp>
       </div>

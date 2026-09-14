@@ -4,25 +4,27 @@ import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import { FadeInUp, StaggerContainer, StaggerItem } from './AnimationWrappers'
-import { SITE, services } from '@/lib/site'
+import { useI18n } from './LocaleProvider'
 
 export const Offers = () => {
+  const { dict, href } = useI18n()
+
   return (
     <section className="mt-32 md:mt-40 scroll-mt-20" id="solutions">
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         <FadeInUp>
           <div className="max-w-3xl mb-14">
             <p className="font-label text-sm uppercase tracking-[0.2em] text-primary mb-4">
-              Solutions
+              {dict.offers.kicker}
             </p>
             <h2 className="font-headline font-bold text-3xl md:text-4xl tracking-tight text-on-surface">
-              Trois portes d’entrée. Une même exigence : une solution adaptée.
+              {dict.offers.title}
             </h2>
           </div>
         </FadeInUp>
 
         <StaggerContainer className="grid lg:grid-cols-3 gap-6">
-          {services.map((service) => (
+          {dict.services.items.map((service) => (
             <StaggerItem key={service.slug}>
               <motion.article
                 whileHover={{ y: -4 }}
@@ -46,7 +48,7 @@ export const Offers = () => {
                   ))}
                 </ul>
                 <Link
-                  href={`/services/${service.slug}`}
+                  href={href(`/services/${service.slug}`)}
                   className="inline-flex items-center gap-2 font-label text-sm font-semibold text-primary hover:text-primary-container transition-colors"
                 >
                   {service.cta}
@@ -61,18 +63,17 @@ export const Offers = () => {
           <div className="rounded-2xl border border-outline-variant/15 bg-surface-container-low p-8 md:p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div className="max-w-2xl">
               <h3 className="font-headline font-semibold text-xl text-on-surface mb-2">
-                Vous ne savez pas exactement ce dont vous avez besoin ?
+                {dict.offers.unsureTitle}
               </h3>
               <p className="font-body text-on-surface-variant leading-relaxed">
-                Décrivez-nous votre idée, votre problème ou votre processus. Nous vous aiderons à
-                déterminer la solution la plus adaptée.
+                {dict.offers.unsureBody}
               </p>
             </div>
             <a
-              href={SITE.ctaHref}
+              href={href(dict.nav.ctaHref)}
               className="inline-flex items-center justify-center gap-2 shrink-0 bg-gradient-to-r from-primary to-primary-fixed text-on-primary px-6 py-3.5 rounded-lg font-label text-sm font-semibold"
             >
-              {SITE.cta}
+              {dict.nav.cta}
               <ArrowRight size={14} />
             </a>
           </div>
