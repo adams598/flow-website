@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { Github, Linkedin, Mail, Phone } from 'lucide-react'
 import Link from 'next/link'
+import { FlowMark } from '@/components/FlowMark'
 import { SITE } from '@/lib/site'
 import { useI18n } from './LocaleProvider'
 
@@ -26,7 +27,7 @@ export const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-12 mb-12">
           <div>
             <Link href={href('/')} className="flex items-center gap-3">
-              <img src="/export.png" alt="" className="h-8 w-8 object-contain" />
+              <FlowMark tone="cyan" className="h-8 w-8" />
               <span className="text-2xl font-black text-primary font-headline">{SITE.name}</span>
             </Link>
             <p className="text-on-surface-variant text-sm mt-3 max-w-sm">

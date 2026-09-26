@@ -23,6 +23,7 @@ export function proxy(request: NextRequest) {
   if (
     pathname.startsWith('/_next') ||
     pathname.startsWith('/api') ||
+    pathname.startsWith('/hq') ||
     PUBLIC_FILE.test(pathname)
   ) {
     return NextResponse.next()
@@ -49,5 +50,7 @@ export function proxy(request: NextRequest) {
 }
 
 export const proxyConfig = {
-  matcher: ['/((?!_next/static|_next/image|favicon.ico|icon.png|apple-icon.png).*)'],
+  matcher: [
+    '/((?!_next/static|_next/image|_next/data|favicon.ico|icon.png|apple-icon.png|api/).*)',
+  ],
 }

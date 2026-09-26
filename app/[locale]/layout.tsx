@@ -19,7 +19,7 @@ import { THEME_COOKIE, isTheme } from '@/lib/theme'
 const manrope = Manrope({
   variable: '--font-manrope',
   subsets: ['latin'],
-  weight: ['400', '600', '800'],
+  weight: ['400', '600', '700', '800'],
 })
 
 const inter = Inter({

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Flow — Charte graphique</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    @page { size: A4; margin: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { background: #E8E0D4; }
+    body { font-family: Inter, sans-serif; color: #131313; font-size: 11pt; line-height: 1.45; }
+    h1, h2, h3 { font-family: Manrope, sans-serif; font-weight: 800; letter-spacing: -0.03em; }
+    .page {
+      width: 210mm;
+      height: 297mm;
+      page-break-after: always;
+      overflow: hidden;
+      position: relative;
+    }
+    .kicker {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+    .swatch { width: 100%; height: 42px; }
+    .label { font-size: 9px; color: #5C534C; margin-top: 6px; }
+    .hex { font-family: Inter, sans-serif; font-size: 10px; font-weight: 600; }
+    table { width: 100%; border-collapse: collapse; font-size: 10pt; }
+    th { text-align: left; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: #C45E32; padding: 0 0 8px; }
+    td { padding: 7px 0; border-bottom: 1px solid #D9C4A8; vertical-align: top; }
+    .muted { color: #5C534C; }
+  </style>
+</head>
+<body>
+  <!-- COVER : NUIT -->
+  <section class="page" style="background:#131313; color:#E5E2E1; padding:22mm 18mm;">
+    <p class="kicker" style="color:#00F0FF;">Flow · Charte graphique</p>
+    <img src="../public/brand/flow-mark.png" alt="Flow" style="display:block; width:78mm; margin:38mm auto 18mm;" />
+    <h1 style="font-size:42pt; line-height:1.05; text-align:center;">Build digital.</h1>
+    <h1 style="font-size:42pt; line-height:1.05; text-align:center; color:#00F0FF;">Make it flow.</h1>
+    <p style="text-align:center; margin-top:14mm; letter-spacing:0.28em; font-size:11px; text-transform:uppercase; color:#B9CACB;">
+      Sites web · Applications métier · Plateformes
+    </p>
+    <p style="position:absolute; bottom:18mm; left:18mm; right:18mm; font-size:10px; color:#849495; display:flex; justify-content:space-between;">
+      <span>Version validée</span>
+      <span>Nuit + jour · un logo</span>
+    </p>
+  </section>
+
+  <!-- IDENTITÉ -->
+  <section class="page" style="background:#FFFCFA; padding:18mm;">
+    <p class="kicker" style="color:#C45E32; margin-bottom:8px;">01 · Identité</p>
+    <h2 style="font-size:26pt; margin-bottom:6mm;">Froid la nuit, chaud le jour.</h2>
+    <p class="muted" style="max-width:150mm; margin-bottom:10mm;">
+      Ingénieur qui livre des produits digitaux — fondateur de Flow. Pas « freelance sites vitrine ».
+      Le switch dark / light change le mix, pas la marque. CTA toujours cyan. Terre jamais un bouton.
+    </p>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:8mm; margin-bottom:12mm;">
+      <div style="background:#F3EBE1; padding:8mm;">
+        <p class="kicker" style="color:#C45E32; margin-bottom:4mm;">On est</p>
+        <p>Précis, concret, preuve</p>
+        <p>Nuit cyan et jour chaud</p>
+        <p>Un picto, un mot</p>
+        <p>Manrope + Inter</p>
+      </div>
+      <div style="border:1px solid #D9C4A8; padding:8mm;">
+        <p class="kicker" style="color:#C45E32; margin-bottom:4mm;">On n’est pas</p>
+        <p class="muted">Catalogue, superlatifs</p>
+        <p class="muted">Agence pastel / rainbow</p>
+        <p class="muted">Deux logos (F à barres)</p>
+        <p class="muted">Deux CTA cyan + orange</p>
+      </div>
+    </div>
+    <table>
+      <tr><th style="width:32mm;">Voix</th><th>Dit</th><th>Évite</th></tr>
+      <tr><td><strong>Adams</strong></td><td>Je / métier / preuves</td><td>Catalogue froid</td></tr>
+      <tr><td><strong>Page Flow</strong></td><td>Nous / offre / livraisons</td><td>Copier le post perso</td></tr>
+    </table>
+  </section>
+
+  <!-- LOGO -->
+  <section class="page" style="background:#FFFCFA; padding:18mm;">
+    <p class="kicker" style="color:#C45E32; margin-bottom:8px;">02 · Logo</p>
+    <h2 style="font-size:26pt; margin-bottom:4mm;">Le chevron source</h2>
+    <p class="muted" style="margin-bottom:9mm; max-width:155mm;">
+      Copie PNG, pas un SVG redessiné. Les variantes ne changent que la couleur des pixels.
+      Ce n’est pas un A, ni un F.
+    </p>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:5mm; margin-bottom:10mm;">
+      <div style="background:#131313; height:58mm; display:flex; align-items:center; justify-content:center;">
+        <img src="../public/brand/flow-mark.png" alt="" style="height:36mm;" />
+      </div>
+      <div style="background:#F3EBE1; height:58mm; display:flex; align-items:center; justify-content:center;">
+        <img src="../public/brand/flow-mark-ombre.png" alt="" style="height:36mm;" />
+      </div>
+      <div style="background:#00F0FF; height:58mm; display:flex; align-items:center; justify-content:center;">
+        <img src="../public/brand/flow-mark-ink.png" alt="" style="height:36mm;" />
+      </div>
+    </div>
+    <p style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:5mm; font-size:9px; letter-spacing:0.12em; text-transform:uppercase; color:#5C534C; margin-bottom:10mm;">
+      <span>Cyan · nuit</span><span>Ombre · papier</span><span>Ink · fond cyan</span>
+    </p>
+    <table>
+      <tr><th>Fond</th><th>Picto</th></tr>
+      <tr><td>Ink #131313</td><td>Cyan</td></tr>
+      <tr><td>Calcaire #F3EBE1</td><td>Ombre — même forme</td></tr>
+      <tr><td>Blanc #FFFCFA</td><td>Cyan ou ombre</td></tr>
+      <tr><td>Cyan #00F0FF</td><td>Ink</td></tr>
+    </table>
+  </section>
+
+  <!-- COULEURS -->
+  <section class="page" style="background:#FFFCFA; padding:18mm;">
+    <p class="kicker" style="color:#C45E32; margin-bottom:8px;">03 · Couleurs</p>
+    <h2 style="font-size:26pt; margin-bottom:8mm;">Deux mix, une palette</h2>
+
+    <p class="kicker" style="color:#00A8B2; margin-bottom:4mm;">Nuit</p>
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:4mm; margin-bottom:10mm;">
+      <div><div class="swatch" style="background:#131313;"></div><p class="hex">Ink #131313</p><p class="label">Fond</p></div>
+      <div><div class="swatch" style="background:#00F0FF;"></div><p class="hex">Cyan #00F0FF</p><p class="label">Logo, CTA</p></div>
+      <div><div class="swatch" style="background:#7DF4FF;"></div><p class="hex">Ice #7DF4FF</p><p class="label">Lueur</p></div>
+      <div><div class="swatch" style="background:#C45E32;"></div><p class="hex">Terre #C45E32</p><p class="label">1 badge max</p></div>
+    </div>
+
+    <p class="kicker" style="color:#C45E32; margin-bottom:4mm;">Jour</p>
+    <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:4mm; margin-bottom:10mm;">
+      <div><div class="swatch" style="background:#FFFCFA; border:1px solid #D9C4A8;"></div><p class="hex">Blanc #FFFCFA</p><p class="label">Page</p></div>
+      <div><div class="swatch" style="background:#F3EBE1;"></div><p class="hex">Calcaire #F3EBE1</p><p class="label">Bandes</p></div>
+      <div><div class="swatch" style="background:#00A8B2;"></div><p class="hex">Cyan #00A8B2</p><p class="label">CTA, liens</p></div>
+      <div><div class="swatch" style="background:#00F0FF;"></div><p class="hex">Cyan #00F0FF</p><p class="label">Logo seul</p></div>
+      <div><div class="swatch" style="background:#C45E32;"></div><p class="hex">Terre #C45E32</p><p class="label">Kickers</p></div>
+    </div>
+
+    <p style="background:#F3EBE1; padding:6mm 7mm; font-size:10.5pt;">
+      Jamais de texte <strong>#00F0FF</strong> sur beige. Jamais de fond beige la nuit.
+      Terre n’est jamais un bouton.
+    </p>
+  </section>
+
+  <!-- TYPO + UI -->
+  <section class="page" style="background:#FFFCFA; padding:18mm;">
+    <p class="kicker" style="color:#C45E32; margin-bottom:8px;">04 · Typo & composants</p>
+    <h2 style="font-size:26pt; margin-bottom:8mm;">Manrope + Inter</h2>
+    <p style="font-family:Manrope,sans-serif; font-weight:800; font-size:28pt; letter-spacing:-0.04em; line-height:1.05; margin-bottom:3mm;">Build digital.</p>
+    <p style="font-size:12pt; color:#5C534C; margin-bottom:10mm;">Corps Inter. Kickers uppercase, tracking 0.2em. Nuit → cyan. Jour → terre.</p>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:8mm;">
+      <div>
+        <p class="kicker" style="color:#C45E32; margin-bottom:4mm;">Nuit</p>
+        <div style="background:#131313; color:#E5E2E1; padding:8mm;">
+          <p class="kicker" style="color:#00F0FF; margin-bottom:3mm;">Flow</p>
+          <p style="font-family:Manrope,sans-serif; font-weight:800; font-size:16pt; margin-bottom:5mm;">Make it flow.</p>
+          <span style="display:inline-block; background:#00F0FF; color:#00363A; padding:8px 14px; font-size:9px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase;">Parler de mon projet</span>
+        </div>
+      </div>
+      <div>
+        <p class="kicker" style="color:#C45E32; margin-bottom:4mm;">Jour</p>
+        <div style="background:#F3EBE1; padding:8mm;">
+          <p class="kicker" style="color:#C45E32; margin-bottom:3mm;">À propos</p>
+          <p style="font-family:Manrope,sans-serif; font-weight:800; font-size:16pt; margin-bottom:5mm;">Du cadrage au run.</p>
+          <span style="display:inline-block; background:#00A8B2; color:#fff; padding:8px 14px; font-size:9px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase;">Parler de mon projet</span>
+        </div>
+      </div>
+    </div>
+    <p class="muted" style="margin-top:10mm; font-size:10pt;">
+      Boutons 8 px · cartes 16 px · pills 9999 px. Conteneur max 80 rem. Lueurs cyan : nuit seulement.
+    </p>
+  </section>
+
+  <!-- USAGES -->
+  <section class="page" style="background:#FFFCFA; padding:18mm;">
+    <p class="kicker" style="color:#C45E32; margin-bottom:8px;">05 · Usages</p>
+    <h2 style="font-size:26pt; margin-bottom:8mm;">Où ça s’applique</h2>
+    <table>
+      <tr><th style="width:36mm;">Canal</th><th>Règle</th></tr>
+      <tr><td><strong>Site</strong></td><td>Switch dark / light. Jour = blanc + bandes calcaire, pas 100 % beige.</td></tr>
+      <tr><td><strong>HQ</strong></td><td>Toujours nuit.</td></tr>
+      <tr><td><strong>LinkedIn</strong></td><td>Offre = nuit. Humain = calcaire + photo + picto ombre.</td></tr>
+      <tr><td><strong>WhatsApp</strong></td><td>3–5 lignes, 1 CTA, chevron officiel. Pas de F à barres.</td></tr>
+      <tr><td><strong>Print / PDF</strong></td><td>Ce document : jour. Couverture nuit autorisée.</td></tr>
+    </table>
+    <div style="margin-top:12mm; background:#131313; color:#E5E2E1; padding:10mm; display:flex; align-items:center; gap:8mm;">
+      <img src="../public/brand/flow-mark.png" alt="" style="height:22mm;" />
+      <div>
+        <p style="font-family:Manrope,sans-serif; font-weight:800; font-size:18pt;">Flow</p>
+        <p style="color:#00F0FF; font-size:11px; letter-spacing:0.08em;">Build digital. Make it flow.</p>
+        <p class="muted" style="margin-top:3mm; font-size:10px; color:#B9CACB;">marketing/CHARTE_FLOW.pdf · /hq/design-system</p>
+      </div>
+    </div>
+    <p style="position:absolute; bottom:16mm; left:18mm; font-size:9px; color:#5C534C;">
+      Archivé : or #FED639 · paper froid #F8FBFC
+    </p>
+  </section>
+</body>
+</html>

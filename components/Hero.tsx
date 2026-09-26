@@ -4,6 +4,7 @@ import { motion, useMotionValue, useSpring } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import { useRef } from 'react'
 import { FadeInUp } from './AnimationWrappers'
+import { FlowMark } from '@/components/FlowMark'
 import { SITE } from '@/lib/site'
 import { useI18n } from './LocaleProvider'
 
@@ -52,11 +53,10 @@ function FloatingLogo() {
           }}
           className="relative will-change-transform"
         >
-          <img
-            src="/export.png"
+          <FlowMark
+            tone="cyan"
             alt={`Logo ${SITE.name}`}
             className="w-full h-auto drop-shadow-2xl select-none pointer-events-none"
-            draggable={false}
           />
         </motion.div>
       </motion.div>
@@ -69,15 +69,13 @@ export const Hero = () => {
 
   return (
     <section className="min-h-[92vh] w-full flex flex-col justify-center relative overflow-hidden pt-28 pb-16">
-      <div className="absolute top-1/4 right-0 w-72 h-72 md:w-[28rem] md:h-[28rem] bg-primary-container/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary-container/20 rounded-full blur-[100px] pointer-events-none" />
+      <div className="night-glow absolute top-1/4 right-0 w-72 h-72 md:w-[28rem] md:h-[28rem] bg-primary-container/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="night-glow absolute bottom-0 left-0 w-64 h-64 bg-secondary-container/20 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="max-w-7xl w-full mx-auto px-6 md:px-8 relative z-10 flex flex-col lg:flex-row items-center lg:justify-between gap-12 lg:gap-16">
         <div className="w-full lg:w-[55%] text-center lg:text-left">
           <FadeInUp>
-            <p className="font-label text-sm uppercase tracking-[0.22em] text-primary-container mb-6">
-              {SITE.name}
-            </p>
+            <p className="kicker mb-6">{SITE.name}</p>
             <h1 className="font-headline font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight text-on-surface">
               Build digital.
               <br />

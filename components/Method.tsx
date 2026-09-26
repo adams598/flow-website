@@ -11,7 +11,7 @@ export const Method = () => {
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         <FadeInUp>
           <div className="max-w-3xl mb-14">
-            <p className="font-label text-sm uppercase tracking-[0.2em] text-primary mb-4">
+            <p className="kicker mb-4">
               {dict.method.kicker}
             </p>
             <h2 className="font-headline font-bold text-3xl md:text-4xl tracking-tight text-on-surface">
@@ -24,7 +24,7 @@ export const Method = () => {
           {dict.method.steps.map((step) => (
             <StaggerItem key={step.number}>
               <div className="h-full rounded-2xl border border-outline-variant/10 bg-surface-container-low p-6">
-                <div className="font-label text-xs uppercase tracking-[0.2em] text-primary-container mb-4">
+                <div className="font-label text-xs uppercase tracking-[0.2em] text-kicker mb-4">
                   {step.number}
                 </div>
                 <h3 className="font-headline font-semibold text-lg text-on-surface mb-3">

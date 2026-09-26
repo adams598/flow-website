@@ -16,6 +16,7 @@ type FormState = {
   name: string
   email: string
   phone: string
+  website: string
 }
 
 const initialState: FormState = {
@@ -27,6 +28,7 @@ const initialState: FormState = {
   name: '',
   email: '',
   phone: '',
+  website: '',
 }
 
 function OptionGrid({
@@ -62,10 +64,12 @@ function OptionGrid({
 }
 
 export const ProjectForm = () => {
-  const { dict } = useI18n()
+  const { dict, locale } = useI18n()
   const [step, setStep] = useState(0)
   const [form, setForm] = useState<FormState>(initialState)
   const [sent, setSent] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState(false)
 
   const steps = [
     { title: dict.form.questions[0], valid: Boolean(form.product) },
@@ -80,28 +84,42 @@ export const ProjectForm = () => {
     setForm((prev) => ({ ...prev, [key]: value }))
   }
 
-  const handleSubmit = (event: FormEvent) => {
+  const handleSubmit = async (event: FormEvent) => {
     event.preventDefault()
-    if (!steps[step].valid) return
+    if (!steps[step].valid || submitting) return
 
-    const fields = dict.form.mailFields
-    const body = [
-      `${fields.product} : ${form.product}`,
-      `${fields.need} : ${form.need}`,
-      `${fields.stage} : ${form.stage}`,
-      `${fields.budget} : ${form.budget}`,
-      `${fields.timeline} : ${form.timeline}`,
-      `${fields.name} : ${form.name}`,
-      `${fields.email} : ${form.email}`,
-      `${fields.phone} : ${form.phone || dict.form.phoneEmpty}`,
-    ].join('\n')
+    setSubmitting(true)
+    setError(false)
 
-    const mailto = `mailto:${SITE.email}?subject=${encodeURIComponent(
-      `${dict.form.mailSubject} — ${form.product}`
-    )}&body=${encodeURIComponent(body)}`
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          product: form.product,
+          need: form.need,
+          stage: form.stage,
+          budget: form.budget,
+          timeline: form.timeline,
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          website: form.website,
+          locale,
+        }),
+      })
 
-    window.location.href = mailto
-    setSent(true)
+      if (!res.ok) {
+        setError(true)
+        return
+      }
+
+      setSent(true)
+    } catch {
+      setError(true)
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   return (
@@ -109,7 +127,7 @@ export const ProjectForm = () => {
       <div className="max-w-3xl mx-auto px-6 md:px-8">
         <FadeInUp>
           <div className="text-center mb-10">
-            <p className="font-label text-sm uppercase tracking-[0.2em] text-primary mb-4">
+            <p className="kicker mb-4">
               {dict.form.kicker}
             </p>
             <h2 className="font-headline font-bold text-3xl md:text-4xl tracking-tight text-on-surface mb-4">
@@ -145,6 +163,25 @@ export const ProjectForm = () => {
                 <p className="text-on-surface-variant text-sm leading-relaxed max-w-md mx-auto">
                   {dict.form.sentBody}
                 </p>
+              </div>
+            ) : error ? (
+              <div className="text-center py-10">
+                <h3 className="font-headline font-semibold text-xl text-on-surface mb-2">
+                  {dict.form.errorTitle}
+                </h3>
+                <p className="text-on-surface-variant text-sm leading-relaxed max-w-md mx-auto mb-6">
+                  {dict.form.errorBody}{' '}
+                  <a href={`mailto:${SITE.email}`} className="text-primary font-medium">
+                    {SITE.email}
+                  </a>
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setError(false)}
+                  className="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-primary-fixed text-on-primary px-5 py-2.5 rounded-lg font-label text-sm font-semibold"
+                >
+                  {dict.form.errorRetry}
+                </button>
               </div>
             ) : (
               <>
@@ -244,6 +281,16 @@ export const ProjectForm = () => {
                           placeholder={dict.form.phone}
                           className="w-full rounded-xl border border-outline-variant/15 bg-surface-container px-4 py-3 text-sm text-on-surface placeholder:text-on-surface-variant/60 focus:outline-none focus:border-primary-container"
                         />
+                        <input
+                          type="text"
+                          name="website"
+                          value={form.website}
+                          onChange={(e) => update('website', e.target.value)}
+                          tabIndex={-1}
+                          autoComplete="off"
+                          aria-hidden="true"
+                          className="absolute -left-[9999px] h-0 w-0 opacity-0"
+                        />
                       </div>
                     )}
                   </motion.div>
@@ -253,7 +300,7 @@ export const ProjectForm = () => {
                   <button
                     type="button"
                     onClick={() => setStep((s) => Math.max(0, s - 1))}
-                    disabled={step === 0}
+                    disabled={step === 0 || submitting}
                     className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg font-label text-sm text-on-surface-variant disabled:opacity-30 hover:text-primary transition-colors"
                   >
                     <ArrowLeft size={14} />
@@ -273,11 +320,11 @@ export const ProjectForm = () => {
                   ) : (
                     <button
                       type="submit"
-                      disabled={!steps[step].valid}
+                      disabled={!steps[step].valid || submitting}
                       className="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-primary-fixed text-on-primary px-5 py-2.5 rounded-lg font-label text-sm font-semibold disabled:opacity-40"
                     >
-                      {dict.form.submit}
-                      <ArrowRight size={14} />
+                      {submitting ? dict.form.submitting : dict.form.submit}
+                      {!submitting && <ArrowRight size={14} />}
                     </button>
                   )}
                 </div>

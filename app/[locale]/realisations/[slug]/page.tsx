@@ -47,7 +47,7 @@ export default async function RealisationPage({ params }: Props) {
             {dict.realisations.back}
           </Link>
 
-          <p className="font-label text-sm uppercase tracking-[0.2em] text-primary-container mb-4">
+          <p className="kicker mb-4">
             {dict.realisations.label}
           </p>
           <h1 className="font-headline font-extrabold text-4xl md:text-5xl text-on-surface tracking-tight mb-3">

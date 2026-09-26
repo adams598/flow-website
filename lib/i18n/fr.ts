@@ -359,9 +359,14 @@ export const fr = {
     back: 'Retour',
     continue: 'Continuer',
     submit: 'Envoyer mon projet',
-    sentTitle: 'Votre client mail est prêt',
+    submitting: 'Envoi en cours…',
+    sentTitle: 'Message bien reçu',
     sentBody:
-      'Un message prérempli s’ouvre avec les détails de votre projet. Envoyez-le pour que nous puissions vous répondre rapidement.',
+      'Merci. Nous revenons vers vous sous 24–48 h ouvrées. Un accusé de réception vous a aussi été envoyé par email.',
+    errorTitle: 'Envoi impossible',
+    errorBody:
+      'Une erreur est survenue. Réessayez dans un instant, ou écrivez-nous directement.',
+    errorRetry: 'Réessayer',
     needPlaceholder: 'Décrivez votre idée, votre problème ou le processus à digitaliser…',
     name: 'Nom *',
     email: 'Email *',

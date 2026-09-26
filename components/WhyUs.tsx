@@ -19,7 +19,7 @@ export const WhyUs = () => {
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         <FadeInUp>
           <div className="max-w-3xl mb-14">
-            <p className="font-label text-sm uppercase tracking-[0.2em] text-primary mb-4">
+            <p className="kicker mb-4">
               {dict.why.kicker}
             </p>
             <h2 className="font-headline font-bold text-3xl md:text-4xl tracking-tight text-on-surface">

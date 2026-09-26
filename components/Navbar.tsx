@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
 import Link from 'next/link'
+import { FlowMark } from '@/components/FlowMark'
 import { SITE } from '@/lib/site'
 import { ThemeToggle } from './ThemeToggle'
 import { LanguageSwitch } from './LanguageSwitch'
@@ -22,7 +23,7 @@ export const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto flex justify-between items-center px-6 md:px-8 py-5">
         <Link href={href('/')} className="flex items-center gap-3 group">
-          <img src="/export.png" alt="" className="h-9 w-9 object-contain" />
+          <FlowMark tone="cyan" className="h-9 w-9" />
           <span className="font-headline font-extrabold text-xl tracking-tight text-on-surface group-hover:text-primary transition-colors">
             {SITE.name}
           </span>

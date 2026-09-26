@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="none" role="img" aria-label="Flow">
+  <defs>
+    <linearGradient id="flow-left" x1="48" y1="18" x2="112" y2="240" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#C9FDFF"/>
+      <stop offset="0.42" stop-color="#2EEAF8"/>
+      <stop offset="1" stop-color="#00A8B2"/>
+    </linearGradient>
+    <linearGradient id="flow-right" x1="150" y1="12" x2="224" y2="248" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7DF4FF"/>
+      <stop offset="0.48" stop-color="#00C4D4"/>
+      <stop offset="1" stop-color="#006970"/>
+    </linearGradient>
+  </defs>
+  <path d="M128 16 24 236h54L128 92Z" fill="url(#flow-left)"/>
+  <path d="M128 16 232 236h-54L128 92Z" fill="url(#flow-right)"/>
+</svg>
