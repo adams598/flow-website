@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Écran iPad</title>
+  <style>
+    @font-face {
+      font-family: "Manrope";
+      src: url("../../public/brand/fonts/Manrope-variable.ttf") format("truetype");
+      font-weight: 200 800;
+      font-display: block;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 1560px;
+      height: 1100px;
+      overflow: hidden;
+      background: #fffcfa;
+      color: #131313;
+      font-family: "Manrope", "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .screen {
+      width: 1560px;
+      height: 1100px;
+      padding: 28px 40px 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .bar {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      height: 64px;
+      font-size: 26px;
+      font-weight: 650;
+      color: #5c534c;
+    }
+    .bar svg { width: 36px; height: 36px; display: block; flex: none; }
+    .bar b { color: #131313; font-weight: 750; }
+    .bar i {
+      margin-left: auto;
+      font-style: normal;
+      background: #00a8b2;
+      color: #fff;
+      border-radius: 12px;
+      padding: 12px 18px;
+      font-size: 22px;
+      font-weight: 700;
+    }
+    .hero small {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #c45e32;
+    }
+    .hero strong {
+      display: block;
+      margin-top: 12px;
+      font-size: 64px;
+      line-height: 1.02;
+      letter-spacing: -0.045em;
+      font-weight: 800;
+      max-width: 16ch;
+    }
+    .offers {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: auto;
+    }
+    .offers div {
+      background: #fff;
+      border: 1px solid #eadfd2;
+      border-radius: 22px;
+      padding: 22px 24px 26px;
+      font-weight: 750;
+      font-size: 32px;
+      letter-spacing: -0.03em;
+    }
+    .offers em {
+      display: block;
+      font-style: normal;
+      font-size: 18px;
+      letter-spacing: 0.14em;
+      color: #c45e32;
+      margin-bottom: 10px;
+    }
+    .offers small {
+      display: block;
+      margin-top: 8px;
+      font-size: 22px;
+      font-weight: 550;
+      color: #5c534c;
+    }
+  </style>
+</head>
+<body>
+  <div class="screen">
+    <div class="bar">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="il" x1="48" y1="18" x2="112" y2="240" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#C9FDFF"/><stop offset="0.42" stop-color="#2EEAF8"/><stop offset="1" stop-color="#00A8B2"/>
+          </linearGradient>
+          <linearGradient id="ir" x1="150" y1="12" x2="224" y2="248" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#7DF4FF"/><stop offset="0.48" stop-color="#00C4D4"/><stop offset="1" stop-color="#006970"/>
+          </linearGradient>
+        </defs>
+        <path d="M128 16 24 236h54L128 92Z" fill="url(#il)"/>
+        <path d="M128 16 232 236h-54L128 92Z" fill="url(#ir)"/>
+      </svg>
+      <b>Produit</b>
+      <span>Offres</span>
+      <span>Espace</span>
+      <i>S’inscrire</i>
+    </div>
+    <div class="hero">
+      <small>Plateforme</small>
+      <strong>Plusieurs usages. Une seule entrée.</strong>
+    </div>
+    <div class="offers">
+      <div><em>01</em>Abonnement<small>Ce qui est inclus</small></div>
+      <div><em>02</em>Accès<small>Qui voit quoi</small></div>
+      <div><em>03</em>Espace<small>Client, équipe, admin</small></div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Écran iPhone</title>
+  <style>
+    @font-face {
+      font-family: "Manrope";
+      src: url("../../public/brand/fonts/Manrope-variable.ttf") format("truetype");
+      font-weight: 200 800;
+      font-display: block;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 800px;
+      height: 1520px;
+      overflow: hidden;
+      background: #fffcfa;
+      color: #131313;
+      font-family: "Manrope", "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .screen {
+      width: 800px;
+      height: 1520px;
+      padding: 128px 36px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    b {
+      font-size: 22px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #c45e32;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    span {
+      background: #fff;
+      border: 1px solid #eadfd2;
+      border-radius: 22px;
+      padding: 28px 28px;
+      font-weight: 750;
+      font-size: 36px;
+      letter-spacing: -0.03em;
+    }
+    .home {
+      margin-top: auto;
+      width: 150px;
+      height: 8px;
+      border-radius: 99px;
+      background: rgba(19, 19, 19, 0.22);
+      align-self: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="screen">
+    <b>Rôles</b>
+    <span>Administrateur</span>
+    <span>Client</span>
+    <span>Équipe</span>
+    <span>Partenaire</span>
+    <div class="home"></div>
+  </div>
+</body>
+</html>

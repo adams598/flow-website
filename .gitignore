@@ -39,3 +39,6 @@ Thumbs.db
 
 # Flow HQ — état runtime local
 data/hq/
+
+# Prospection (données prospects, hors git)
+data/prospection/
