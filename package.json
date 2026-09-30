@@ -13,11 +13,7 @@
   "dependencies": {
     "framer-motion": "^10.16.0",
     "lucide-react": "^0.294.0",
-<<<<<<< HEAD
     "next": "^16.3.7",
-=======
-    "next": "^16.3.6",
->>>>>>> fe196eb72186878b9b542c17d73c4e78d076ea2a
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-markdown": "^10.1.0",
@@ -31,11 +27,7 @@
     "autoprefixer": "^10.5.0",
     "eslint": "^8.55.0",
     "eslint-config-next": "^14.0.0",
-<<<<<<< HEAD
     "postcss": "^8.5.28",
-=======
-    "postcss": "^8.5.23",
->>>>>>> fe196eb72186878b9b542c17d73c4e78d076ea2a
     "tailwindcss": "^3.4.19",
     "typescript": "^5.3.0"
   },
