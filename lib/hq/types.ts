@@ -1,25 +1,30 @@
-export type AgentStatus = 'idle' | 'working'
+export type HqAgentId = 'agent-acquisition' | 'chasseur-contrats'
 
-export type TeamId =
-  | 'direction'
-  | 'croissance'
-  | 'marketing'
-  | 'delivery'
-  | 'client'
-  | 'finance'
-  | 'intelligence'
+/** Apparence du mini-avatar (couleurs et accessoire). */
+export type AvatarLook = {
+  skin: string
+  hair: string
+  hairStyle: 'short' | 'bun'
+  jacket: string
+  pants: string
+  accessory: 'headset' | 'cap-magnifier'
+}
 
-export type HqAgent = {
-  id: string
+/** Profil affiché dans HQ. Le cerveau de l'agent vit dans `.claude/agents/<id>.md`. */
+export type HqAgentProfile = {
+  id: HqAgentId
   name: string
-  title: string
-  teamId: TeamId
-  teamLabel: string
-  emoji: string
-  expertise: string
-  canDelegate: boolean
-  systemPrompt: string
-  guardrails: string[]
+  role: string
+  tagline: string
+  look: AvatarLook
+  quickPrompts: { label: string; prompt: string }[]
+}
+
+/** Profil + ce qui est lu dans le fichier `.claude/agents/<id>.md`. */
+export type HqAgent = HqAgentProfile & {
+  description: string
+  tools: string[]
+  sourceFile: string
 }
 
 export type ChatTurn = {
@@ -27,133 +32,35 @@ export type ChatTurn = {
   at: string
   role: 'adams' | 'agent'
   content: string
-  kind?: 'plan' | 'reply'
+  /** Actions faites pendant la réponse (recherche web, lecture de fichier…). */
+  steps?: string[]
+  costUsd?: number
+  error?: boolean
 }
 
-export type Deliverable = {
-  id: string
-  agentId: string
-  agentName: string
-  at: string
-  title: string
-  body: string
+export type AgentThread = {
+  sessionId?: string
+  turns: ChatTurn[]
 }
 
-export type MissionSource = 'ceo' | 'coo' | 'autonomous'
+/** Événements envoyés au navigateur pendant qu'un agent répond (NDJSON). */
+export type StreamEvent =
+  | { type: 'start' }
+  | { type: 'step'; label: string }
+  | { type: 'text'; text: string }
+  | { type: 'done'; turn: ChatTurn }
+  | { type: 'error'; message: string }
 
-export type MissionTask = {
-  id: string
-  agentId: string
-  agentName: string
-  status: 'pending' | 'running' | 'done' | 'error'
-  detail?: string
+export type AgentLiveState = {
+  running: boolean
   startedAt?: string
-  finishedAt?: string
-  output?: string
-  error?: string
+  steps: string[]
 }
 
-export type Mission = {
-  id: string
-  brief: string
-  status: 'running' | 'done' | 'error'
-  createdAt: string
-  source?: MissionSource
-  tasks: MissionTask[]
-  summary?: string
-}
-
-export type ActivityItem = {
-  id: string
-  at: string
-  agentId: string
-  agentName: string
-  message: string
-}
-
-export type RevenueGoals = {
-  year: number
-  annual: number
-  semester: number
-  quarter: number
-  month: number
-  closedYtd: number
-  closedMonth: number
-  pipeline: number
-  /** Solde compte pro (Indy), pas le CA. */
-  treasury: number
-  bankName: string
-}
-
-export type DecisionKind = 'publish' | 'send' | 'price' | 'strategy'
-
-export type Decision = {
-  id: string
-  createdAt: string
-  kind: DecisionKind
-  title: string
-  body: string
-  status: 'pending' | 'approved' | 'dismissed'
-}
-
-export type Handoff = {
-  id: string
-  at: string
-  fromAgentId: string
-  fromName: string
-  toTeamId: TeamId
-  subject: string
-  body: string
-}
-
-export type WeekPriority = {
-  teamId: TeamId
-  ownerId: string
-  objective: string
-}
-
-export type WeekPlan = {
-  weekOf: string
-  createdAt: string
-  summary: string
-  priorities: WeekPriority[]
-  needsAdams: string[]
-}
-
-export type CompanyState = {
-  goals: RevenueGoals
-  lastTickAt?: string
-  lastWeeklyAt?: string
-  lastBriefingAt?: string
-  lastShift?: string
-  autonomyEnabled: boolean
-}
-
-export type CooMessage = {
-  id: string
-  at: string
-  role: 'adams' | 'coo'
-  content: string
-  kind?: 'chat' | 'briefing'
-}
-
-/** Statut live d’un agent, dérivé des missions en cours + activité. */
-export type AgentPresence = {
-  agentId: string
-  status: 'idle' | 'working' | 'done' | 'error'
-  detail: string
-  missionId?: string
-  missionBrief?: string
-  updatedAt: string
-}
-
-export type HqSnapshot = {
-  company: CompanyState
-  weekPlan: WeekPlan | null
-  decisions: Decision[]
-  handoffs: Handoff[]
-  cooThread: CooMessage[]
-  activity: ActivityItem[]
-  missions: Mission[]
-  presence: AgentPresence[]
+export type PipelineStats = {
+  total: number
+  byStatus: Record<string, number>
+  byPalier: { express: number; projet: number }
+  contactedToday: number
+  hot: { id: string; entreprise: string; statut: string }[]
 }

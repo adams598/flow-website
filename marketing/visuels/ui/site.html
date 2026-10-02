@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>UI — Site</title>
+  <style>
+    @font-face { font-family: "Manrope"; src: url("../../../public/brand/fonts/Manrope-variable.ttf") format("truetype"); font-weight: 200 800; }
+    @font-face { font-family: "Inter"; src: url("../../../public/brand/fonts/Inter-variable.ttf") format("truetype"); font-weight: 100 900; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 1280px; height: 800px; overflow: hidden; background: #fffcfa; color: #131313; font-family: Inter, sans-serif; }
+    body { display: flex; flex-direction: column; }
+    nav {
+      display: flex; align-items: center; gap: 28px;
+      padding: 18px 40px; border-bottom: 1px solid #eadfd2;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; font-family: Manrope, sans-serif; font-weight: 800; font-size: 22px; }
+    .logo img { width: 26px; height: 26px; }
+    nav a { color: #5c534c; text-decoration: none; font-weight: 500; font-size: 15px; }
+    nav a.active { color: #131313; font-weight: 600; }
+    .cta {
+      margin-left: auto; background: #00a8b2; color: #fff; border: 0; border-radius: 8px;
+      padding: 10px 16px; font: 600 14px Inter, sans-serif;
+    }
+    .hero { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 36px; padding: 36px 40px 0; flex: 1; }
+    .k { font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #c45e32; }
+    h1 { font-family: Manrope, sans-serif; font-weight: 800; font-size: 52px; line-height: 0.95; letter-spacing: -0.045em; margin: 12px 0 14px; max-width: 14ch; }
+    p.lead { color: #5c534c; font-size: 18px; line-height: 1.4; max-width: 36ch; }
+    .book {
+      margin-top: 28px; display: grid; grid-template-columns: 1fr 1fr 1fr auto;
+      gap: 10px; background: #fff; border: 1px solid #eadfd2; border-radius: 16px; padding: 14px;
+      box-shadow: 0 16px 40px rgba(19,19,19,0.06);
+    }
+    .book label { display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #c45e32; margin-bottom: 6px; }
+    .book b { display: block; font-family: Manrope, sans-serif; font-size: 16px; }
+    .visual {
+      border-radius: 22px; overflow: hidden; min-height: 420px;
+      background:
+        radial-gradient(420px 280px at 70% 20%, rgba(125,244,255,0.45), transparent 60%),
+        linear-gradient(165deg, #1a6a72, #124248 48%, #141816);
+      color: #fffcfa; padding: 28px; display: flex; flex-direction: column; justify-content: flex-end;
+      position: relative;
+    }
+    .visual::before {
+      content: ""; position: absolute; inset: 24px auto auto 24px; width: 72px; height: 72px;
+      border: 2px solid rgba(255,252,250,0.35); border-radius: 18px; transform: rotate(12deg);
+    }
+    .visual strong { font-family: Manrope, sans-serif; font-size: 28px; position: relative; }
+    .visual span { display: block; margin-top: 6px; color: rgba(255,252,250,0.8); position: relative; }
+    .row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; padding: 22px 40px 28px; }
+    .card { background: #fff; border: 1px solid #eadfd2; border-radius: 16px; padding: 16px 18px; }
+    .card em { display: block; font-style: normal; font-size: 11px; font-weight: 600; letter-spacing: 0.2em; color: #c45e32; margin-bottom: 6px; }
+    .card b { font-family: Manrope, sans-serif; font-size: 20px; }
+    .card p { margin-top: 4px; color: #5c534c; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo"><img src="../../../public/brand/flow-mark.png" alt="" /> Drivin &amp; Chill</div>
+    <a class="active" href="#">Accueil</a>
+    <a href="#">Offres</a>
+    <a href="#">Réserver</a>
+    <a href="#">Contact</a>
+    <button class="cta">Réserver</button>
+  </nav>
+  <section class="hero">
+    <div>
+      <div class="k">Location avec chauffeur</div>
+      <h1>Votre créneau, en ligne.</h1>
+      <p class="lead">Choisissez la date, confirmez, payez. Le QR code arrive tout de suite.</p>
+      <div class="book">
+        <div><label>Date</label><b>12 oct. 2026</b></div>
+        <div><label>Heure</label><b>18:30</b></div>
+        <div><label>Passagers</label><b>4 pers.</b></div>
+        <button class="cta">Confirmer</button>
+      </div>
+    </div>
+    <div class="visual">
+      <strong>Trajet confirmé</strong>
+      <span>Paiement Stripe · QR code généré</span>
+    </div>
+  </section>
+  <div class="row">
+    <div class="card"><em>01</em><b>Offre claire</b><p>Le client comprend en 10 secondes.</p></div>
+    <div class="card"><em>02</em><b>Réservation</b><p>Le créneau est tenu, sans relance.</p></div>
+    <div class="card"><em>03</em><b>Paiement</b><p>Encaissé avant le départ.</p></div>
+  </div>
+</body>
+</html>

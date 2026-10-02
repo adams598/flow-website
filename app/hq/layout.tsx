@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Manrope, Inter } from 'next/font/google'
 import '../globals.css'
+import './hq.css'
 
 const manrope = Manrope({
   variable: '--font-manrope',
@@ -22,9 +23,7 @@ export const metadata: Metadata = {
 export default function HqLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr" className="dark scroll-smooth" style={{ colorScheme: 'dark' }}>
-      <body
-        className={`${manrope.variable} ${inter.variable} bg-background text-on-surface font-body min-h-screen`}
-      >
+      <body className={`${manrope.variable} ${inter.variable} hq-root bg-background text-on-surface font-body min-h-screen`}>
         {children}
       </body>
     </html>

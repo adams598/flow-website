@@ -1,0 +1,17 @@
+---
+description: Direction artistique des visuels Flow (affiches, LinkedIn, WhatsApp). Lire avant tout visuel.
+globs: marketing/**
+alwaysApply: true
+---
+
+# Visuels Flow
+
+Avant tout visuel (affiche, post, story, WhatsApp) : lire `marketing/visuels/DIRECTION.md` et `marketing/CHARTE_GRAPHIQUE.md`.
+
+- Gabarit unique : `marketing/visuels/direction.css` + un HTML `proposition-*.html` (référence : sites).
+- Format 1080×1350. Fond nuit teal/ink, deux blobs (papier + cyan), dalle produit inclinée, 3 pastilles, pastille noire sur le mot-clé.
+- **Écran tablette = vraie UI** en charte Flow (`ui/*.html` → `screens/ui-*.png`), pas un wireframe 3 cartes.
+- Typo charte : Manrope 800 = titres / Flow / téléphone. Inter 400–600 = corps, kicker, labels. Kicker blanc, tracking 0.2em.
+- Pied : icône téléphone + `07 49 17 83 91` à gauche, `flowsurmesure.com` à droite.
+- Texte client : bénéfice + « vous », pas de catalogue. CTA : « Un appel pour cadrer votre … ».
+- Interdit : autre direction, fond beige, photo, F à barres, cyan `#00F0FF` en texte, terre en bouton.

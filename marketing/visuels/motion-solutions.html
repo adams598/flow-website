@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr" class="motion">
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="direction.css" />
+  <link rel="stylesheet" href="motion.css" />
+  <title>Solutions — Flow motion</title>
+</head>
+<body>
+  <article class="poster">
+    <svg class="shapes" viewBox="0 0 1080 1350" aria-hidden="true">
+      <defs>
+        <linearGradient id="cyan" x1="480" y1="880" x2="980" y2="1260" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#00C4D0"/>
+          <stop offset="0.18" stop-color="#007C88"/>
+          <stop offset="1" stop-color="#003E46"/>
+        </linearGradient>
+        <linearGradient id="paper" x1="80" y1="220" x2="900" y2="1020" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#FFFFFF"/>
+          <stop offset="0.72" stop-color="#FFFCFA"/>
+          <stop offset="1" stop-color="#F3EBE1"/>
+        </linearGradient>
+        <filter id="lift" x="-30%" y="-30%" width="160%" height="160%">
+          <feDropShadow dx="0" dy="22" stdDeviation="16" flood-color="#041416" flood-opacity="0.28"/>
+        </filter>
+      </defs>
+      <path filter="url(#lift)" fill="url(#cyan)" d="M360 740 C 600 640, 900 690, 1120 860 C 1280 1000, 1100 1264, 790 1272 C 470 1280, 210 1160, 240 990 C 262 870, 250 800, 360 740 Z"/>
+      <path filter="url(#lift)" fill="url(#paper)" d="M86 400 C 78 268, 236 208, 430 242 C 680 284, 900 228, 1008 386 C 1104 526, 986 650, 934 760 C 876 882, 680 908, 420 868 C 150 826, 16 710, 56 552 C 74 478, 92 444, 86 400 Z"/>
+    </svg>
+    <span class="tick" aria-hidden="true"></span>
+    <span class="dot a" aria-hidden="true"></span>
+    <span class="dot b" aria-hidden="true"></span>
+
+    <header class="brand">
+      <div class="mark">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="l" x1="48" y1="18" x2="112" y2="240" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#C9FDFF"/><stop offset="0.42" stop-color="#2EEAF8"/><stop offset="1" stop-color="#00A8B2"/>
+            </linearGradient>
+            <linearGradient id="r" x1="150" y1="12" x2="224" y2="248" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#7DF4FF"/><stop offset="0.48" stop-color="#00C4D4"/><stop offset="1" stop-color="#006970"/>
+            </linearGradient>
+          </defs>
+          <path d="M128 16 24 236h54L128 92Z" fill="url(#l)"/>
+          <path d="M128 16 232 236h-54L128 92Z" fill="url(#r)"/>
+        </svg>
+        <span class="word">Flow</span>
+      </div>
+      <span class="kicker">Solutions</span>
+    </header>
+
+    <div class="slab">
+      <div class="screen shot">
+        <img src="screens/ui-solutions.png" alt="" />
+      </div>
+    </div>
+
+    <h1>Conçu pour<br>votre<br><span class="pill">activité.</span></h1>
+
+    <div class="orbs">
+      <div class="orb a">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3.5" y="4.5" width="17" height="13" rx="2"/><path d="M3.5 8.5h17"/>
+        </svg>
+        <span>Site</span>
+      </div>
+      <div class="orb b">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="4" y="4" width="7" height="16" rx="1.5"/><rect x="13" y="8" width="7" height="12" rx="1.5"/>
+        </svg>
+        <span>App</span>
+      </div>
+      <div class="orb c">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="8" cy="8" r="2.4"/><circle cx="16" cy="8" r="2.4"/><circle cx="12" cy="16" r="2.4"/><path d="M10 9.5 11.2 14M14 9.5 12.8 14"/>
+        </svg>
+        <span>Plateforme</span>
+      </div>
+    </div>
+
+    <p class="deck">Site, application métier, plateforme.<br>De l’idée à la mise en production.</p>
+    <p class="meta">Un appel pour cadrer votre projet.</p>
+
+    <footer class="contact">
+      <p class="phone">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M7.1 3.8c.3-.3.8-.4 1.2-.2l2.2 1c.4.2.6.6.6 1.1l-.2 2.1c0 .3-.2.6-.4.8l-1.2 1.2c1.5 2.4 3.4 4.3 5.8 5.8l1.2-1.2c.2-.2.5-.4.8-.4l2.1-.2c.5 0 .9.2 1.1.6l1 2.2c.2.4.1.9-.2 1.2l-1.3 1.3c-.4.4-1 .6-1.6.5C10.8 19.8 4.2 13.2 3.4 5.7c-.1-.6.1-1.2.5-1.6L7.1 3.8Z"/>
+        </svg>
+        07 49 17 83 91
+      </p>
+      <p class="url">flowsurmesure.com</p>
+    </footer>
+    <div class="sweep" aria-hidden="true"></div>
+    <div class="vignette" aria-hidden="true"></div>
+  </article>
+</body>
+</html>

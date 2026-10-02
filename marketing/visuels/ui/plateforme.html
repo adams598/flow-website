@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>UI — Plateforme</title>
+  <style>
+    @font-face { font-family: "Manrope"; src: url("../../../public/brand/fonts/Manrope-variable.ttf") format("truetype"); font-weight: 200 800; }
+    @font-face { font-family: "Inter"; src: url("../../../public/brand/fonts/Inter-variable.ttf") format("truetype"); font-weight: 100 900; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 1280px; height: 800px; overflow: hidden; background: #f7f4ef; color: #131313; font-family: Inter, sans-serif; }
+    body { display: grid; grid-template-columns: 232px 1fr; }
+    aside { background: #fffcfa; border-right: 1px solid #eadfd2; padding: 22px 18px; display: flex; flex-direction: column; }
+    .logo { display: flex; align-items: center; gap: 10px; font-family: Manrope, sans-serif; font-weight: 800; font-size: 18px; margin-bottom: 28px; }
+    .logo img { width: 24px; height: 24px; }
+    aside a { display: block; padding: 11px 12px; border-radius: 10px; color: #5c534c; text-decoration: none; font-size: 14px; font-weight: 500; }
+    aside .on { background: #e7f8f8; color: #005f66; font-weight: 600; }
+    .who { margin-top: auto; font-size: 12px; color: #5c534c; padding: 12px; background: #f3ebe1; border-radius: 12px; }
+    .who b { display: block; color: #131313; font-size: 13px; margin-bottom: 2px; }
+    main { padding: 22px 28px; display: flex; flex-direction: column; gap: 16px; }
+    .top { display: flex; align-items: center; justify-content: space-between; }
+    h1 { font-family: Manrope, sans-serif; font-weight: 800; font-size: 28px; letter-spacing: -0.04em; }
+    .cta { background: #00a8b2; color: #fff; border: 0; border-radius: 8px; padding: 10px 16px; font: 600 14px Inter, sans-serif; }
+    .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .kpi { background: #fffcfa; border: 1px solid #eadfd2; border-radius: 14px; padding: 14px 16px; }
+    .kpi span { display: block; font-size: 12px; font-weight: 600; color: #5c534c; }
+    .kpi b { display: block; margin-top: 6px; font-family: Manrope, sans-serif; font-size: 26px; }
+    .split { display: grid; grid-template-columns: 280px 1fr; gap: 14px; flex: 1; min-height: 0; }
+    .panel { background: #fffcfa; border: 1px solid #eadfd2; border-radius: 16px; padding: 16px; }
+    .panel h2 { font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #c45e32; margin-bottom: 14px; }
+    .donut {
+      width: 160px; height: 160px; margin: 8px auto 12px; border-radius: 50%;
+      background: conic-gradient(#00a8b2 0 58%, #7df4ff 58% 79%, #d9c4a8 79% 92%, #c45e32 92% 100%);
+      mask: radial-gradient(circle 52px at center, transparent 51px, #000 52px);
+      -webkit-mask: radial-gradient(circle 52px at center, transparent 51px, #000 52px);
+    }
+    .leg { font-size: 13px; color: #5c534c; display: grid; gap: 6px; }
+    .leg i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 8px; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th { text-align: left; color: #5c534c; font-weight: 500; padding: 8px 6px; border-bottom: 1px solid #eadfd2; }
+    td { padding: 11px 6px; border-bottom: 1px solid #f3ebe1; }
+    .pill { border-radius: 999px; padding: 3px 9px; font-size: 11px; font-weight: 600; }
+    .pro { background: #e7f8f8; color: #005f66; }
+    .org { background: #f3ebe1; color: #3f2c24; }
+    .adm { background: #131313; color: #fffcfa; }
+  </style>
+</head>
+<body>
+  <aside>
+    <div class="logo"><img src="../../../public/brand/flow-mark.png" alt="" /> Objectif TCF</div>
+    <a class="on" href="#">Vue d’ensemble</a>
+    <a href="#">Abonnements</a>
+    <a href="#">Utilisateurs</a>
+    <a href="#">Rôles</a>
+    <a href="#">Examens</a>
+    <a href="#">Paiements</a>
+    <div class="who"><b>Administration</b>Vous décidez qui entre.</div>
+  </aside>
+  <main>
+    <div class="top">
+      <h1>Accès et abonnements</h1>
+      <button class="cta">Inviter</button>
+    </div>
+    <div class="kpis">
+      <div class="kpi"><span>Abonnés actifs</span><b>1 284</b></div>
+      <div class="kpi"><span>Organisations</span><b>36</b></div>
+      <div class="kpi"><span>Rôles</span><b>4</b></div>
+      <div class="kpi"><span>MRR</span><b>8,4 k€</b></div>
+    </div>
+    <div class="split">
+      <div class="panel">
+        <h2>Répartition</h2>
+        <div class="donut"></div>
+        <div class="leg">
+          <div><i style="background:#00a8b2"></i>Apprenant — 58%</div>
+          <div><i style="background:#7df4ff"></i>Essentiel — 21%</div>
+          <div><i style="background:#d9c4a8"></i>Org. B2B — 13%</div>
+          <div><i style="background:#c45e32"></i>Admin — 8%</div>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>Utilisateurs</h2>
+        <table>
+          <thead><tr><th>Nom</th><th>Organisation</th><th>Plan</th><th>Rôle</th></tr></thead>
+          <tbody>
+            <tr><td>Camille R.</td><td>Indépendant</td><td><span class="pill pro">Pro</span></td><td>Apprenant</td></tr>
+            <tr><td>BAI Consulting</td><td>BAI</td><td><span class="pill org">Org.</span></td><td>Admin org.</td></tr>
+            <tr><td>Noah K.</td><td>BAI</td><td><span class="pill pro">Pro</span></td><td>Apprenant</td></tr>
+            <tr><td>Inès M.</td><td>Indépendant</td><td><span class="pill org">Essentiel</span></td><td>Apprenant</td></tr>
+            <tr><td>Adams D.</td><td>Flow</td><td><span class="pill adm">Admin</span></td><td>Plateforme</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

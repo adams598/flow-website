@@ -167,11 +167,13 @@ Esprit document : beaucoup d’air, un filet sable, peu de cartes identiques, pa
 
 Le switch dark / light porte les deux mix. Jour = blanc + bandes calcaire, pas 100 % beige.
 
-### LinkedIn
+### LinkedIn / affiches
+
+Direction unique : `marketing/visuels/DIRECTION.md` (gabarit `direction.css`). Offre = nuit, blobs papier + cyan, kicker blanc.
 
 - Logo page : chevron cyan crop serré.
 - Bannière nuit actuelle OK.
-- Visuel « humain » : calcaire + photo + picto ombre.
+- Visuel « humain » : calcaire + photo + picto ombre — hors série offre.
 
 ### WhatsApp
 
@@ -194,7 +196,9 @@ Le switch dark / light porte les deux mix. Jour = blanc + bandes calcaire, pas 1
 
 ## Fichiers
 
+- **À donner à une autre IA :** `marketing/DESIGN_SYSTEM.md` (prompt système + tokens + visuels)
 - Constantes : `lib/brand.ts`
 - Page vivante : `/hq/design-system`
 - CSS : `app/globals.css`
 - PDF : `marketing/CHARTE_FLOW.pdf`
+- Visuels : `marketing/visuels/DIRECTION.md`

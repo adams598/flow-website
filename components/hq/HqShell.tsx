@@ -1,103 +1,128 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
+import { LayoutGrid, LogOut, Palette } from 'lucide-react'
 import { FlowMark } from '@/components/FlowMark'
-import { HQ_AGENTS } from '@/lib/hq/org'
-import { avatarUrl } from '@/lib/hq/avatars'
+import { HQ_PROFILES } from '@/lib/hq/profiles'
+import { AgentAvatar } from './AgentAvatar'
 
-const NAV = [
-  { href: '/hq', label: 'Équipe' },
-  { href: '/hq/studio', label: 'Studio' },
-  { href: '/hq/calendrier', label: 'Calendrier' },
-  { href: '/hq/coulisses', label: 'Coulisses' },
-  { href: '/hq/design-system', label: 'Charte' },
-]
+/** Petite tête d'avatar dans un cercle (barre latérale, messages). */
+export function AvatarBadge({ agentId, size = 36 }: { agentId: string; size?: number }) {
+  const profile = HQ_PROFILES.find((p) => p.id === agentId)
+  if (!profile) return null
+  return (
+    <span
+      className="inline-flex shrink-0 items-end justify-center overflow-hidden rounded-full bg-surface-container-high border border-outline-variant/40"
+      style={{ width: size, height: size }}
+    >
+      <AgentAvatar look={profile.look} size={size * 0.82} />
+    </span>
+  )
+}
 
 export function HqShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
-  const router = useRouter()
+  const [running, setRunning] = useState<Record<string, boolean>>({})
+
+  useEffect(() => {
+    let alive = true
+    const load = async () => {
+      const res = await fetch('/api/hq/status').catch(() => null)
+      if (alive && res?.ok) setRunning(((await res.json()) as { running: Record<string, boolean> }).running)
+    }
+    void load()
+    const t = setInterval(load, 5000)
+    return () => {
+      alive = false
+      clearInterval(t)
+    }
+  }, [])
 
   async function logout() {
     await fetch('/api/hq/auth', { method: 'DELETE' })
     window.location.href = '/hq/login'
   }
 
+  const navItem = (href: string, label: string, Icon: typeof LayoutGrid) => (
+    <Link
+      href={href}
+      className={`flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-label transition-colors ${
+        pathname === href
+          ? 'bg-primary-container/10 text-primary-fixed'
+          : 'text-on-surface-variant hover:bg-surface-container hover:text-on-surface'
+      }`}
+    >
+      <Icon className="h-4 w-4" />
+      {label}
+    </Link>
+  )
+
   return (
-    <div className="min-h-screen">
-      <header className="sticky top-0 z-40 border-b border-outline-variant/15 bg-background/85 backdrop-blur-xl">
-        <div className="max-w-6xl mx-auto px-4 md:px-8 py-3 flex items-center gap-4">
-          <Link href="/hq" className="flex items-center gap-2 shrink-0">
-            <FlowMark tone="cyan" className="h-8 w-8" />
-            <span className="font-headline font-extrabold gradient-text">Flow HQ</span>
-          </Link>
-          <nav className="flex gap-1 overflow-x-auto text-sm font-label">
-            {NAV.map((item) => {
-              const active = pathname === item.href
+    <div className="min-h-screen lg:grid lg:grid-cols-[260px_1fr]">
+      <aside className="border-b lg:border-b-0 lg:border-r border-outline-variant/25 bg-surface-container-lowest lg:sticky lg:top-0 lg:h-screen flex flex-col">
+        <Link href="/hq" className="flex items-center gap-3 px-5 h-16 border-b border-outline-variant/20">
+          <FlowMark tone="cyan" className="h-8 w-8" />
+          <div className="leading-tight">
+            <p className="font-headline font-extrabold tracking-tight">Flow HQ</p>
+            <p className="text-[11px] text-on-surface-variant font-label">Centre de pilotage</p>
+          </div>
+        </Link>
+
+        <nav className="p-3 space-y-1">{navItem('/hq', 'Vue d’ensemble', LayoutGrid)}</nav>
+
+        <div className="px-3 pt-2">
+          <p className="hq-kicker px-3 mb-2">Agents</p>
+          <ul className="space-y-1">
+            {HQ_PROFILES.map((p) => {
+              const active = pathname === `/hq/agents/${p.id}`
+              const busy = running[p.id]
               return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`px-3 py-1.5 rounded-full whitespace-nowrap ${
-                    active
-                      ? 'bg-primary-container/20 text-primary-fixed'
-                      : 'text-on-surface-variant hover:text-primary'
-                  }`}
-                >
-                  {item.label}
-                </Link>
+                <li key={p.id}>
+                  <Link
+                    href={`/hq/agents/${p.id}`}
+                    className={`hq-wave flex items-center gap-3 rounded-lg px-3 py-2 transition-colors ${
+                      active ? 'bg-primary-container/10' : 'hover:bg-surface-container'
+                    }`}
+                  >
+                    <span className="relative">
+                      <AvatarBadge agentId={p.id} size={36} />
+                      <span
+                        className={`absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-surface-container-lowest ${
+                          busy ? 'bg-primary-container hq-dot-live' : 'bg-outline'
+                        }`}
+                      />
+                    </span>
+                    <span className="min-w-0">
+                      <span className={`block text-sm font-headline font-bold ${active ? 'text-primary-fixed' : ''}`}>
+                        {p.name}
+                      </span>
+                      <span className="block text-[11px] text-on-surface-variant truncate">
+                        {busy ? 'Au travail…' : p.role}
+                      </span>
+                    </span>
+                  </Link>
+                </li>
               )
             })}
-          </nav>
-          <div className="ml-auto flex items-center gap-2">
-            <select
-              className="bg-surface-container-high border border-outline-variant/30 rounded-full text-xs px-3 py-2 max-w-[11rem]"
-              defaultValue=""
-              onChange={(e) => {
-                if (e.target.value) router.push(`/hq/agents/${e.target.value}`)
-              }}
-            >
-              <option value="">Switch agent</option>
-              {HQ_AGENTS.map((a) => (
-                <option key={a.id} value={a.id}>
-                  {a.name} · {a.title.split('—')[0]}
-                </option>
-              ))}
-            </select>
-            <button type="button" onClick={logout} className="text-xs text-on-surface-variant hover:text-primary">
-              Sortir
-            </button>
-          </div>
+          </ul>
         </div>
-      </header>
-      {children}
-    </div>
-  )
-}
 
-export function CuteAvatar({
-  agentId,
-  name,
-  size = 72,
-  working = false,
-}: {
-  agentId: string
-  name: string
-  size?: number
-  working?: boolean
-}) {
-  return (
-    <span className="relative inline-flex shrink-0" style={{ width: size, height: size }}>
-      {working && (
-        <span className="absolute -inset-1 rounded-full bg-primary-container/30 animate-pulse" />
-      )}
-      <img
-        src={avatarUrl(agentId, size * 2)}
-        alt={name}
-        width={size}
-        height={size}
-        className="relative rounded-full border-2 border-primary-container/40 bg-surface-container-lowest object-cover"
-      />
-    </span>
+        <div className="mt-auto p-3 border-t border-outline-variant/20 space-y-1">
+          {navItem('/hq/design-system', 'Charte', Palette)}
+          <button
+            type="button"
+            onClick={logout}
+            className="w-full flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-label text-on-surface-variant hover:bg-surface-container hover:text-on-surface"
+          >
+            <LogOut className="h-4 w-4" />
+            Se déconnecter
+          </button>
+        </div>
+      </aside>
+
+      <div className="min-w-0">{children}</div>
+    </div>
   )
 }

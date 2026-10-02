@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>UI — App métier</title>
+  <style>
+    @font-face { font-family: "Manrope"; src: url("../../../public/brand/fonts/Manrope-variable.ttf") format("truetype"); font-weight: 200 800; }
+    @font-face { font-family: "Inter"; src: url("../../../public/brand/fonts/Inter-variable.ttf") format("truetype"); font-weight: 100 900; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 1280px; height: 800px; overflow: hidden; background: #f7f4ef; color: #131313; font-family: Inter, sans-serif; }
+    body { display: grid; grid-template-columns: 232px 1fr; }
+    aside { background: #fffcfa; border-right: 1px solid #eadfd2; padding: 22px 18px; display: flex; flex-direction: column; }
+    .logo { display: flex; align-items: center; gap: 10px; font-family: Manrope, sans-serif; font-weight: 800; font-size: 20px; margin-bottom: 28px; }
+    .logo img { width: 24px; height: 24px; }
+    aside button, aside a {
+      display: block; width: 100%; text-align: left; border: 0; background: transparent;
+      padding: 11px 12px; border-radius: 10px; color: #5c534c; font: 500 14px Inter, sans-serif; text-decoration: none;
+    }
+    aside .on { background: #e7f8f8; color: #005f66; font-weight: 600; }
+    .who { margin-top: auto; display: flex; gap: 10px; align-items: center; padding: 12px; border-radius: 12px; background: #f3ebe1; }
+    .av { width: 34px; height: 34px; border-radius: 50%; background: #00a8b2; color: #fff; display: grid; place-items: center; font-weight: 700; }
+    .who b { display: block; font-size: 13px; } .who span { font-size: 12px; color: #5c534c; }
+    main { padding: 22px 28px; display: flex; flex-direction: column; gap: 18px; }
+    .top { display: flex; align-items: center; justify-content: space-between; }
+    h1 { font-family: Manrope, sans-serif; font-weight: 800; font-size: 28px; letter-spacing: -0.04em; }
+    .search { background: #fffcfa; border: 1px solid #eadfd2; border-radius: 10px; padding: 10px 14px; color: #5c534c; font-size: 14px; min-width: 240px; }
+    .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .kpi { background: #fffcfa; border: 1px solid #eadfd2; border-radius: 14px; padding: 14px 16px; }
+    .kpi span { display: block; font-size: 12px; font-weight: 600; color: #5c534c; }
+    .kpi b { display: block; margin-top: 6px; font-family: Manrope, sans-serif; font-size: 28px; }
+    .kpi em { font-style: normal; color: #00a8b2; font-size: 12px; font-weight: 600; }
+    .grid { display: grid; grid-template-columns: 1.35fr 0.85fr; gap: 14px; flex: 1; min-height: 0; }
+    .panel { background: #fffcfa; border: 1px solid #eadfd2; border-radius: 16px; padding: 16px; overflow: hidden; }
+    .panel h2 { font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #c45e32; margin-bottom: 12px; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th { text-align: left; color: #5c534c; font-weight: 500; padding: 8px 6px; border-bottom: 1px solid #eadfd2; }
+    td { padding: 11px 6px; border-bottom: 1px solid #f3ebe1; }
+    .pill { border-radius: 999px; padding: 3px 9px; font-size: 11px; font-weight: 600; }
+    .ok { background: #e7f8f8; color: #005f66; }
+    .wait { background: #f3ebe1; color: #3f2c24; }
+    .kan { display: flex; flex-direction: column; gap: 8px; }
+    .kan div { background: #f7f4ef; border-radius: 12px; padding: 12px; }
+    .kan b { display: block; font-size: 14px; margin-bottom: 4px; }
+    .kan span { color: #5c534c; font-size: 12px; }
+    .bar { height: 8px; background: #eadfd2; border-radius: 99px; margin-top: 8px; overflow: hidden; }
+    .bar .fill { display: block; height: 8px; background: #00a8b2; }
+  </style>
+</head>
+<body>
+  <aside>
+    <div class="logo"><img src="../../../public/brand/flow-mark.png" alt="" /> Dossiers</div>
+    <a class="on" href="#">Vue d’ensemble</a>
+    <a href="#">Clients</a>
+    <a href="#">Étapes</a>
+    <a href="#">Équipe</a>
+    <a href="#">Documents</a>
+    <a href="#">Planning</a>
+    <div class="who"><div class="av">AM</div><div><b>A. Morel</b><span>Responsable</span></div></div>
+  </aside>
+  <main>
+    <div class="top">
+      <h1>Suivi des dossiers</h1>
+      <div class="search">Rechercher un client…</div>
+    </div>
+    <div class="kpis">
+      <div class="kpi"><span>Ouverts</span><b>24</b><em>+3 cette semaine</em></div>
+      <div class="kpi"><span>En validation</span><b>7</b><em>2 à relire</em></div>
+      <div class="kpi"><span>Assignés</span><b>18</b><em>Équipe complète</em></div>
+      <div class="kpi"><span>Clos ce mois</span><b>11</b><em>Sans Excel</em></div>
+    </div>
+    <div class="grid">
+      <div class="panel">
+        <h2>Dossiers</h2>
+        <table>
+          <thead><tr><th>Client</th><th>Étape</th><th>Resp.</th><th>Statut</th></tr></thead>
+          <tbody>
+            <tr><td>Lambert SAS</td><td>Validation</td><td>Léa</td><td><span class="pill wait">À relire</span></td></tr>
+            <tr><td>Atelier Nord</td><td>Dossier client</td><td>Marc</td><td><span class="pill ok">En cours</span></td></tr>
+            <tr><td>Clinique Iris</td><td>Compte rendu</td><td>Léa</td><td><span class="pill ok">Partagé</span></td></tr>
+            <tr><td>Maison Brel</td><td>Étape suivante</td><td>Nina</td><td><span class="pill wait">Assignée</span></td></tr>
+            <tr><td>BAI Formation</td><td>Documents</td><td>Marc</td><td><span class="pill ok">En cours</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="panel">
+        <h2>Charge équipe</h2>
+        <div class="kan">
+          <div><b>Léa — 6 dossiers</b><span>2 à relire aujourd’hui</span><div class="bar"><span class="fill" style="width:72%"></span></div></div>
+          <div><b>Marc — 8 dossiers</b><span>1 en attente client</span><div class="bar"><span class="fill" style="width:88%"></span></div></div>
+          <div><b>Nina — 4 dossiers</b><span>Planning libre jeudi</span><div class="bar"><span class="fill" style="width:46%"></span></div></div>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

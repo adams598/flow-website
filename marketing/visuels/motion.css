@@ -1,0 +1,191 @@
+/* Motion 12s — affiches Flow. Easing studio, pas de bounce. */
+html.motion,
+html.motion body {
+  background: #10282c;
+}
+
+html.motion .poster {
+  transform-origin: 50% 46%;
+  animation: cam 12s linear both;
+}
+
+html.motion .sweep,
+html.motion .vignette {
+  position: absolute;
+  pointer-events: none;
+}
+
+html.motion .sweep {
+  inset: -25%;
+  z-index: 9;
+  background: linear-gradient(
+    118deg,
+    transparent 34%,
+    rgba(125, 244, 255, 0.16) 48%,
+    transparent 62%
+  );
+  mix-blend-mode: screen;
+  animation: sweep 12s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+html.motion .vignette {
+  inset: 0;
+  z-index: 10;
+  background: radial-gradient(120% 90% at 50% 42%, transparent 52%, rgba(8, 16, 18, 0.38) 100%);
+  animation: vignette 12s linear both;
+}
+
+html.motion .shapes {
+  transform-origin: 50% 55%;
+  animation: shapes 12s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+html.motion .brand {
+  animation: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
+}
+
+html.motion .mark svg {
+  transform-origin: 50% 50%;
+  animation: mark 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both;
+}
+
+html.motion .tick {
+  animation: tick 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both;
+}
+
+html.motion .dot.a {
+  animation: pop 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.72s both;
+}
+
+html.motion .dot.b {
+  animation: pop 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.84s both;
+}
+
+html.motion .slab {
+  transform-origin: 50% 50%;
+  animation: tablet 12s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+html.motion .screen.shot img {
+  animation: ui 12s linear both;
+}
+
+html.motion h1 {
+  animation: rise 1.05s cubic-bezier(0.16, 1, 0.3, 1) 1.85s both;
+}
+
+html.motion .pill {
+  animation: pill 0.7s cubic-bezier(0.16, 1, 0.3, 1) 2.55s both;
+}
+
+html.motion .orb.a {
+  animation: orb 0.85s cubic-bezier(0.16, 1, 0.3, 1) 3.05s both;
+}
+
+html.motion .orb.b {
+  animation: orb 0.85s cubic-bezier(0.16, 1, 0.3, 1) 3.28s both;
+}
+
+html.motion .orb.c {
+  animation: orb 0.85s cubic-bezier(0.16, 1, 0.3, 1) 3.52s both;
+}
+
+html.motion .deck {
+  animation: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 4.4s both;
+}
+
+html.motion .meta {
+  animation: rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) 5.15s both;
+}
+
+html.motion .contact {
+  animation: rise 0.85s cubic-bezier(0.16, 1, 0.3, 1) 6.05s both;
+}
+
+html.motion .phone svg {
+  animation: glow 12s ease-in-out both;
+}
+
+@keyframes cam {
+  0% { transform: scale(1.055); }
+  100% { transform: scale(1); }
+}
+
+@keyframes shapes {
+  0% { opacity: 0; transform: scale(0.94) translate3d(0, 36px, 0); }
+  14% { opacity: 1; transform: scale(1) translate3d(0, 0, 0); }
+  100% { opacity: 1; transform: scale(1.02) translate3d(-8px, -10px, 0); }
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translate3d(0, 22px, 0); filter: blur(6px); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); filter: blur(0); }
+}
+
+@keyframes mark {
+  from { opacity: 0; transform: scale(0.72) rotate(-8deg); }
+  to { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+@keyframes tick {
+  from { opacity: 0; transform: rotate(28deg) scaleY(0.2); }
+  to { opacity: 1; transform: rotate(28deg) scaleY(1); }
+}
+
+@keyframes pop {
+  from { opacity: 0; transform: scale(0); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes tablet {
+  0% {
+    opacity: 0;
+    transform: rotate(-18deg) translate3d(40px, -120px, 0) scale(0.92);
+  }
+  16% {
+    opacity: 1;
+    transform: rotate(-9deg) translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: rotate(-8.4deg) translate3d(0, -12px, 0) scale(1);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(-9deg) translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes ui {
+  0% { transform: scale(1.08); object-position: 0% 0%; }
+  100% { transform: scale(1); object-position: 12% 18%; }
+}
+
+@keyframes pill {
+  from { opacity: 0; transform: rotate(-2deg) scale(0.86); }
+  to { opacity: 1; transform: rotate(-2deg) scale(1); }
+}
+
+@keyframes orb {
+  from { opacity: 0; transform: scale(0.4); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes sweep {
+  0% { transform: translate3d(-70%, 0, 0) rotate(12deg); opacity: 0; }
+  58% { opacity: 0; }
+  72% { opacity: 1; transform: translate3d(8%, 0, 0) rotate(12deg); }
+  100% { opacity: 0; transform: translate3d(58%, 0, 0) rotate(12deg); }
+}
+
+@keyframes vignette {
+  0% { opacity: 0.85; }
+  30% { opacity: 0.35; }
+  100% { opacity: 0.2; }
+}
+
+@keyframes glow {
+  0%, 55% { filter: drop-shadow(0 0 0 rgba(125, 244, 255, 0)); }
+  70% { filter: drop-shadow(0 0 10px rgba(125, 244, 255, 0.85)); }
+  100% { filter: drop-shadow(0 0 4px rgba(125, 244, 255, 0.35)); }
+}
