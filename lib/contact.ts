@@ -1,3 +1,4 @@
+import { renderAckEmail, renderOwnerEmail } from '@/lib/contact-mail'
 import { SITE } from '@/lib/site'
 
 export type ContactPayload = {
@@ -79,7 +80,7 @@ function productAngle(product: string, locale: string): string {
     : 'For a website, we aim for a clear presence that actually supports sales (message, journey, conversion).'
 }
 
-export function buildReplyDraft(payload: ContactPayload, temperature: LeadTemperature): string {
+export function buildReplyDraft(payload: ContactPayload): string {
   const locale = payload.locale === 'en' ? 'en' : 'fr'
   const fr = locale === 'fr'
   const firstName = payload.name.trim().split(/\s+/)[0] || payload.name
@@ -98,7 +99,6 @@ export function buildReplyDraft(payload: ContactPayload, temperature: LeadTemper
       '',
       'Bien à vous,',
       'Adams — Flow',
-      `Qualif. interne : ${temperature}`,
     ].join('\n')
   }
 
@@ -115,58 +115,66 @@ export function buildReplyDraft(payload: ContactPayload, temperature: LeadTemper
     '',
     'Best,',
     'Adams — Flow',
-    `Internal qual.: ${temperature}`,
   ].join('\n')
 }
 
-export function buildAckEmail(payload: ContactPayload): { subject: string; text: string } {
+export function buildAckEmail(payload: ContactPayload): { subject: string; text: string; html: string } {
   const fr = payload.locale !== 'en'
   const firstName = payload.name.trim().split(/\s+/)[0] || payload.name
+  const { html } = renderAckEmail(payload, firstName)
 
   if (fr) {
     return {
-      subject: `Flow — nous avons bien reçu votre projet`,
+      subject: `Flow — votre projet est bien reçu`,
       text: [
         `Bonjour ${firstName},`,
         '',
-        'Merci pour votre demande. Nous avons bien reçu les détails de votre projet.',
+        'Merci. Nous avons bien reçu ce que vous voulez construire.',
         '',
-        'Adams vous recontacte sous 24–48 h ouvrées pour la suite.',
+        payload.need.trim(),
         '',
-        `En attendant, vous pouvez aussi l’appeler au ${SITE.phoneDisplay}.`,
+        'Adams vous recontacte sous 24–48 h ouvrées.',
+        `En attendant, vous pouvez l’appeler au ${SITE.phoneDisplay}.`,
         '',
         '— Flow',
         SITE.tagline,
+        'flowsurmesure.com',
       ].join('\n'),
+      html,
     }
   }
 
   return {
-    subject: `Flow — we received your project`,
+    subject: `Flow — we have your project`,
     text: [
       `Hi ${firstName},`,
       '',
-      'Thanks for your request. We have received the details of your project.',
+      'Thank you. We have what you want to build.',
+      '',
+      payload.need.trim(),
       '',
       'Adams will get back to you within 1–2 business days.',
-      '',
-      `In the meantime, you can also call ${SITE.phoneDisplay}.`,
+      `In the meantime, you can call ${SITE.phoneDisplay}.`,
       '',
       '— Flow',
       SITE.tagline,
+      'flowsurmesure.com',
     ].join('\n'),
+    html,
   }
 }
 
 export function buildOwnerNotification(
   payload: ContactPayload,
   temperature: LeadTemperature
-): { subject: string; text: string } {
-  const draft = buildReplyDraft(payload, temperature)
+): { subject: string; text: string; html: string } {
+  const firstName = payload.name.trim().split(/\s+/)[0] || payload.name
+  const draft = buildReplyDraft(payload)
+  const { html } = renderOwnerEmail(payload, temperature, draft, firstName)
   return {
-    subject: `[Flow] Lead ${temperature.toUpperCase()} — ${payload.product} — ${payload.name}`,
+    subject: `Flow — ${payload.name} · ${payload.product} · ${temperature}`,
     text: [
-      `Nouveau lead depuis le site Flow`,
+      `Nouveau projet depuis le site Flow`,
       `Température : ${temperature}`,
       '',
       `Produit   : ${payload.product}`,
@@ -182,6 +190,7 @@ export function buildOwnerNotification(
       '──────── Brouillon de réponse (à valider) ────────',
       draft,
     ].join('\n'),
+    html,
   }
 }
 

@@ -56,6 +56,7 @@ export async function POST(request: Request) {
     replyTo: body.email.trim(),
     subject: owner.subject,
     text: owner.text,
+    html: owner.html,
   })
 
   if (ownerResult.error) {
@@ -69,6 +70,7 @@ export async function POST(request: Request) {
     replyTo: to,
     subject: ack.subject,
     text: ack.text,
+    html: ack.html,
   })
 
   if (ackResult.error) {
