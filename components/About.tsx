@@ -23,6 +23,8 @@ export const About = () => {
                 transition={{ duration: 0.6 }}
                 src="/photo.jpg"
                 alt={dict.about.photoAlt}
+                loading="lazy"
+                decoding="async"
                 className="relative z-10 w-full h-auto object-cover rounded-2xl shadow-2xl"
               />
             </div>

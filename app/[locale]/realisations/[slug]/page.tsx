@@ -1,11 +1,15 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { ArrowLeft, ArrowRight, ExternalLink } from 'lucide-react'
+import { ArrowRight, ExternalLink } from 'lucide-react'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
-import { getDictionary, getRealisation, realisationSlugs } from '@/lib/i18n'
-import { href, isLocale, localeAlternates, locales } from '@/lib/i18n/config'
+import { getDictionary, getRealisation, getService, realisationSlugs } from '@/lib/i18n'
+import { href, isLocale, locales } from '@/lib/i18n/config'
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { JsonLd } from '@/components/JsonLd'
+import { SITE } from '@/lib/site'
+import { breadcrumbJsonLd, pageMetadata, realisationJsonLd } from '@/lib/seo'
 
 type Props = { params: Promise<{ locale: string; slug: string }> }
 
@@ -20,11 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!isLocale(locale)) return { title: 'Work' }
   const item = getRealisation(locale, slug)
   if (!item) return { title: getDictionary(locale).realisations.fallbackTitle }
-  return {
-    title: item.title,
-    description: item.description,
-    alternates: localeAlternates(locale, `/realisations/${slug}`),
-  }
+  return pageMetadata(locale, `/realisations/${slug}`, item.title, item.seoDescription, 'article')
 }
 
 export default async function RealisationPage({ params }: Props) {
@@ -33,19 +33,31 @@ export default async function RealisationPage({ params }: Props) {
   const item = getRealisation(raw, slug)
   if (!item) notFound()
   const dict = getDictionary(raw)
+  const related = getService(raw, item.relatedService)
 
   return (
     <main className="min-h-screen">
+      <JsonLd
+        data={[
+          realisationJsonLd(raw, item),
+          breadcrumbJsonLd([
+            { name: SITE.name, path: `/${raw}` },
+            { name: dict.realisations.kicker, path: `/${raw}#realisations` },
+            { name: item.title, path: `/${raw}/realisations/${item.slug}` },
+          ]),
+        ]}
+      />
       <Navbar />
       <article className="pt-28 pb-20">
         <div className="max-w-5xl mx-auto px-6 md:px-8">
-          <Link
-            href={href(raw, '/#realisations')}
-            className="inline-flex items-center gap-2 text-sm text-on-surface-variant hover:text-primary mb-10"
-          >
-            <ArrowLeft size={14} />
-            {dict.realisations.back}
-          </Link>
+          <Breadcrumb
+            label={dict.nav.breadcrumb}
+            items={[
+              { name: SITE.name, href: href(raw, '/') },
+              { name: dict.realisations.kicker, href: href(raw, '/#realisations') },
+              { name: item.title },
+            ]}
+          />
 
           <p className="kicker mb-4">
             {dict.realisations.label}
@@ -80,7 +92,13 @@ export default async function RealisationPage({ params }: Props) {
           </div>
 
           <div className="rounded-2xl overflow-hidden border border-outline-variant/10 bg-surface-container mb-12">
-            <img src={item.image} alt={item.alt} className="w-full h-auto object-cover object-top" />
+            <img
+              src={item.image}
+              alt={item.alt}
+              loading="lazy"
+              decoding="async"
+              className="w-full h-auto object-cover object-top"
+            />
           </div>
 
           <div className="grid gap-10">
@@ -131,6 +149,19 @@ export default async function RealisationPage({ params }: Props) {
               <p className="text-on-surface-variant leading-relaxed">{item.result}</p>
             </section>
           </div>
+
+          {related && (
+            <p className="mt-12 font-body text-on-surface-variant">
+              {dict.realisations.related}
+              {' · '}
+              <Link
+                href={href(raw, `/services/${related.slug}`)}
+                className="font-semibold text-primary hover:text-primary-container transition-colors"
+              >
+                {related.h1}
+              </Link>
+            </p>
+          )}
 
           <div className="mt-14 rounded-2xl border border-outline-variant/10 bg-surface-container-low p-8 text-center">
             <h3 className="font-headline font-semibold text-xl text-on-surface mb-3">

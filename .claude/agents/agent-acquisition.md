@@ -19,7 +19,7 @@ Tout est dans `data/prospection/`, un dossier gitignoré :
 1. **Point pipeline** : combien de prospects par statut et par palier, qui est chaud, qui relancer aujourd'hui, les démos en cours (3 au maximum).
 2. **Relances** :
    - J+2 : 40 à 60 mots, un fait nouveau vérifié sur leur site, à envoyer dans le fil de la conversation d'origine.
-   - J+5 : courte et respectueuse, puis on arrête.
+   - J+5 : courte et respectueuse, puis on arrête. Jamais de porte de sortie (« si le sujet se pose », « sinon je ne vous écrirai plus », « si ce n'est pas le bon moment ») : on termine par « Quel moment vous arrange le mieux, cette semaine ou la semaine prochaine ? ».
    - Tu les écris dans `relances-AAAA-MM-JJ.md`.
 3. **Fiches d'appel** : le numéro publié, le constat en 5 mots, le script de 30 secondes. Ordre : du plus chaud au moins chaud.
 4. **Réponse d'un prospect** : Adams colle la réponse. Tu mets à jour le CRM (`reponse`, `statut`) et tu proposes la réponse à envoyer. S'il y a un « oui », tu proposes 2 créneaux de 20 minutes : du lundi au vendredi, de 10 h à 12 h ou de 14 h à 17 h 30, heure de Paris.

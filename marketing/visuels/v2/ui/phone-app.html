@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>UI — Application mobile</title>
+  <style>
+    @font-face { font-family: "Manrope"; src: url("/public/brand/fonts/Manrope-variable.ttf") format("truetype"); font-weight: 200 800; }
+    @font-face { font-family: "Inter"; src: url("/public/brand/fonts/Inter-variable.ttf") format("truetype"); font-weight: 100 900; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    /* Écran 6,9" : 440 × 956 pt (rendu ×6). Lu à ~45 % sur l'affiche : textes utiles ≥ 18 px. */
+    html, body { width: 440px; height: 956px; overflow: hidden; background: #f7f4ef; color: #131313; font-family: Inter, sans-serif; -webkit-font-smoothing: antialiased; }
+    body { position: relative; display: flex; flex-direction: column; padding: 0 22px; }
+
+    .status { height: 62px; display: flex; align-items: center; justify-content: space-between; padding: 6px 14px 0 18px; font: 600 17px Inter, sans-serif; letter-spacing: -0.01em; }
+    .status .icons { display: flex; gap: 6px; align-items: center; }
+    .status svg { height: 13px; }
+    .island { position: absolute; top: 11px; left: 50%; width: 126px; height: 37px; margin-left: -63px; border-radius: 20px; background: #000; }
+
+    header { display: flex; align-items: center; justify-content: space-between; margin-top: 18px; }
+    header small { display: block; font: 600 15px Inter, sans-serif; letter-spacing: 0.18em; text-transform: uppercase; color: #c45e32; }
+    header h1 { margin-top: 4px; font: 800 40px/1 Manrope, sans-serif; letter-spacing: -0.05em; }
+    .av { width: 50px; height: 50px; border-radius: 50%; background: #c45e32; color: #fff; display: grid; place-items: center; font: 800 21px Manrope, sans-serif; }
+
+    .kpis { margin-top: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .kpi { border-radius: 22px; padding: 18px 18px; background: #fff; border: 1.5px solid #eadfd2; }
+    .kpi.dark {
+      border: 0; color: #fffcfa;
+      background:
+        radial-gradient(200px 140px at 90% 0%, rgba(125,244,255,0.38), transparent 60%),
+        linear-gradient(165deg, #1a6a72, #124248 55%, #141816);
+    }
+    .kpi span { display: block; font: 600 16px Inter, sans-serif; opacity: 0.75; }
+    .kpi b { display: block; margin-top: 4px; font: 800 48px/1 Manrope, sans-serif; letter-spacing: -0.05em; }
+
+    h2 { margin-top: 26px; font: 800 22px Manrope, sans-serif; letter-spacing: -0.03em; }
+    .list { margin-top: 12px; display: grid; gap: 10px; }
+    .item {
+      display: flex; align-items: center; gap: 14px; padding: 16px 16px; border-radius: 18px;
+      background: #fff; border: 1.5px solid #eadfd2;
+    }
+    .item i { flex: none; width: 44px; height: 44px; border-radius: 14px; display: grid; place-items: center; background: #e7f8f8; color: #00a8b2; }
+    .item i.w { background: #f8ebe3; color: #c45e32; }
+    .item i svg { width: 22px; height: 22px; }
+    .item b { display: block; font: 700 19px Manrope, sans-serif; letter-spacing: -0.03em; }
+    .item small { display: block; margin-top: 2px; font-size: 15px; color: #5c534c; }
+    .item em { margin-left: auto; font-style: normal; font: 700 14px Inter, sans-serif; padding: 6px 12px; border-radius: 999px; background: #e7f8f8; color: #005f66; }
+    .item em.w { background: #f8ebe3; color: #9a4520; }
+
+    .tabs {
+      margin: auto -22px 0; padding: 12px 30px 34px; background: #fffcfa; border-top: 1px solid #e6dacb;
+      display: flex; justify-content: space-between;
+    }
+    .tabs span { display: flex; flex-direction: column; align-items: center; gap: 5px; font: 600 13px Inter, sans-serif; color: #8a8079; }
+    .tabs span.on { color: #00a8b2; }
+    .tabs svg { width: 26px; height: 26px; }
+    .home { position: absolute; bottom: 10px; left: 50%; width: 140px; height: 5px; margin-left: -70px; border-radius: 3px; background: #131313; }
+  </style>
+</head>
+<body>
+  <div class="island"></div>
+  <div class="status">
+    <span>9:41</span>
+    <span class="icons">
+      <svg viewBox="0 0 18 12" fill="#131313"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>
+      <svg viewBox="0 0 16 12" fill="#131313"><path d="M8 2.3c2.3 0 4.4.9 6 2.4l1.3-1.3A10.3 10.3 0 0 0 8 .4C5.2.4 2.6 1.5.7 3.4L2 4.7a8.5 8.5 0 0 1 6-2.4Zm0 3.7c1.3 0 2.5.5 3.4 1.3l1.3-1.3A6.6 6.6 0 0 0 8 4.1c-1.8 0-3.5.7-4.7 1.9l1.3 1.3C5.5 6.5 6.7 6 8 6Zm0 3.6c.4 0 .8.2 1.1.4L8 11.2 6.9 10c.3-.2.7-.4 1.1-.4Z"/></svg>
+      <svg viewBox="0 0 27 13" fill="none"><rect x="0.5" y="0.5" width="22" height="12" rx="3.5" stroke="#131313" opacity="0.4"/><rect x="2" y="2" width="19" height="9" rx="2" fill="#131313"/><path d="M24.5 4.5v4c.8-.3 1.3-1.1 1.3-2s-.5-1.7-1.3-2Z" fill="#131313" opacity="0.5"/></svg>
+    </span>
+  </div>
+
+  <header>
+    <div><small>Mon entreprise</small><h1>Bonjour Léa</h1></div>
+    <div class="av">L</div>
+  </header>
+
+  <div class="kpis">
+    <div class="kpi dark"><span>Dossiers en cours</span><b>24</b></div>
+    <div class="kpi"><span>RDV aujourd’hui</span><b>6</b></div>
+  </div>
+
+  <h2>À faire aujourd’hui</h2>
+  <div class="list">
+    <div class="item">
+      <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7a2 2 0 0 1 2-2h4l2 2h6a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/></svg></i>
+      <div><b>Dossier Martin</b><small>Documents reçus</small></div><em>Validé</em>
+    </div>
+    <div class="item">
+      <i class="w"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5M9 14h6M9 17h4"/></svg></i>
+      <div><b>Devis Atelier Nord</b><small>Envoyé hier</small></div><em class="w">À signer</em>
+    </div>
+    <div class="item">
+      <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/></svg></i>
+      <div><b>Facture n° 128</b><small>Réglée en ligne</small></div><em>Payée</em>
+    </div>
+  </div>
+
+  <nav class="tabs">
+    <span class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg>Accueil</span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7a2 2 0 0 1 2-2h4l2 2h6a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/></svg>Dossiers</span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3.5v3M16 3.5v3M4 10h16"/></svg>Planning</span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c.6-3 2.8-4.8 5.5-4.8s4.9 1.8 5.5 4.8"/><circle cx="17" cy="9" r="2.4"/><path d="M16.5 14.3c2 .3 3.6 1.9 4 4.2"/></svg>Équipe</span>
+  </nav>
+  <div class="home"></div>
+</body>
+</html>

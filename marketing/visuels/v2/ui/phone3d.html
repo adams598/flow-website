@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Téléphone 3D</title>
+  <style>
+    html, body { margin: 0; background: transparent; overflow: hidden; }
+    canvas { display: block; }
+  </style>
+  <script type="importmap">
+    { "imports": {
+      "three": "/node_modules/three/build/three.module.js",
+      "three/addons/": "/node_modules/three/examples/jsm/"
+    } }
+  </script>
+</head>
+<body>
+<script type="module">
+/*
+ * Téléphone 6,9" façon « Pro Max » en vraie 3D : cadre métal, épaisseur,
+ * boutons latéraux, verre, écran texturé. Fond transparent pour l'affiche.
+ * Paramètres URL : screen, w, h (px CSS), dpr, rx, ry, rz (radians).
+ * Unités de scène : millimètres.
+ */
+import * as THREE from "three";
+import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
+import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.js";
+
+const q = new URLSearchParams(location.search);
+const num = (k, d) => (q.has(k) ? parseFloat(q.get(k)) : d);
+const W = num("w", 900), H = num("h", 1500), DPR = num("dpr", 2);
+
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(DPR);
+renderer.setSize(W, H);
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.05;
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+document.body.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+const pmrem = new THREE.PMREMGenerator(renderer);
+scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.03).texture;
+
+// Dimensions (mm) proches d'un 6,9" actuel.
+const BW = 77.6, BH = 163.4, BD = 8.75, BR = 12.6;
+const SW = 73.0, SH = SW * (956 / 440), SR = 10.6;
+const FRONT = BD / 2;
+
+function roundedShape(w, h, r) {
+  const s = new THREE.Shape(), x = -w / 2, y = -h / 2;
+  s.moveTo(x + r, y);
+  s.lineTo(x + w - r, y); s.absarc(x + w - r, y + r, r, -Math.PI / 2, 0);
+  s.lineTo(x + w, y + h - r); s.absarc(x + w - r, y + h - r, r, 0, Math.PI / 2);
+  s.lineTo(x + r, y + h); s.absarc(x + r, y + h - r, r, Math.PI / 2, Math.PI);
+  s.lineTo(x, y + r); s.absarc(x + r, y + r, r, Math.PI, Math.PI * 1.5);
+  return s;
+}
+function planarUV(geo) {
+  geo.computeBoundingBox();
+  const b = geo.boundingBox, p = geo.attributes.position, uv = geo.attributes.uv;
+  for (let i = 0; i < p.count; i++)
+    uv.setXY(i, (p.getX(i) - b.min.x) / (b.max.x - b.min.x), (p.getY(i) - b.min.y) / (b.max.y - b.min.y));
+  uv.needsUpdate = true;
+  return geo;
+}
+
+const phone = new THREE.Group();
+scene.add(phone);
+
+// Cadre métal : flancs plats, arêtes adoucies.
+const metal = new THREE.MeshPhysicalMaterial({
+  color: num("tint", 0) ? 0x8a8f93 : 0x41545f, metalness: 1, roughness: 0.24,
+  clearcoat: 0.6, clearcoatRoughness: 0.18, envMapIntensity: 1.35,
+});
+const bevel = 1.1;
+const frameGeo = new THREE.ExtrudeGeometry(roundedShape(BW - bevel * 2, BH - bevel * 2, BR - bevel), {
+  depth: BD - bevel * 2, bevelEnabled: true, bevelThickness: bevel, bevelSize: bevel,
+  bevelSegments: 12, curveSegments: 96,
+});
+frameGeo.translate(0, 0, -(BD - bevel * 2) / 2);
+phone.add(new THREE.Mesh(frameGeo, metal));
+
+// Verre avant noir (bordure fine autour de l'écran).
+const glass = new THREE.MeshPhysicalMaterial({
+  color: 0x020304, metalness: 0, roughness: 0.06, clearcoat: 1, clearcoatRoughness: 0.03, envMapIntensity: 1.1,
+});
+const glassMesh = new THREE.Mesh(new THREE.ShapeGeometry(roundedShape(BW - 1.3, BH - 1.3, BR - 0.65), 96), glass);
+glassMesh.position.z = FRONT + 0.05;
+phone.add(glassMesh);
+
+// Écran.
+const tex = await new THREE.TextureLoader().loadAsync(q.get("screen"));
+tex.colorSpace = THREE.SRGBColorSpace;
+tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+tex.generateMipmaps = true;
+tex.minFilter = THREE.LinearMipmapLinearFilter;
+const screen = new THREE.Mesh(
+  planarUV(new THREE.ShapeGeometry(roundedShape(SW, SH, SR), 96)),
+  new THREE.MeshBasicMaterial({ map: tex, toneMapped: false }),
+);
+screen.position.z = FRONT + 0.25;
+phone.add(screen);
+
+// Reflet du verre : diagonale douce, additive.
+const g = document.createElement("canvas"); g.width = 512; g.height = 1024;
+const c = g.getContext("2d");
+const grad = c.createLinearGradient(0, 0, 512, 1024);
+grad.addColorStop(0, "rgba(255,255,255,0.20)");
+grad.addColorStop(0.33, "rgba(255,255,255,0.05)");
+grad.addColorStop(0.34, "rgba(255,255,255,0)");
+grad.addColorStop(1, "rgba(255,255,255,0.03)");
+c.fillStyle = grad; c.fillRect(0, 0, 512, 1024);
+const glareTex = new THREE.CanvasTexture(g);
+const glare = new THREE.Mesh(
+  planarUV(new THREE.ShapeGeometry(roundedShape(BW - 1.3, BH - 1.3, BR - 0.65), 96)),
+  new THREE.MeshBasicMaterial({ map: glareTex, transparent: true, blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false }),
+);
+glare.position.z = FRONT + 0.45;
+phone.add(glare);
+
+// Boutons : action + volume à gauche, marche + commande caméra à droite.
+const btn = (x, y, len, mat = metal, depth = 3.0, out = 0.55) => {
+  const m = new THREE.Mesh(new RoundedBoxGeometry(out * 2, len, depth, 6, out * 0.9), mat);
+  m.position.set(x, y, 0);
+  phone.add(m);
+};
+const L = -BW / 2, R = BW / 2;
+btn(L, 44, 7.5);
+btn(L, 29, 13);
+btn(L, 13, 13);
+btn(R, 26, 20);
+const sapphire = new THREE.MeshPhysicalMaterial({ color: 0x0b0f12, metalness: 0.2, roughness: 0.08, clearcoat: 1, envMapIntensity: 1.2 });
+btn(R, -18, 16, sapphire, 2.6, 0.32);
+
+// Lumières : clé haute gauche, liseré cyan à droite pour accrocher l'arête.
+// Le côté visible (signe de ry) reçoit la lumière clé ; le liseré cyan passe de l'autre côté.
+const side = Math.sign(num("ry", 0.62)) || 1;
+const key = new THREE.DirectionalLight(0xffffff, 2.4); key.position.set(-160 * side, 110, 90); scene.add(key);
+const rim = new THREE.DirectionalLight(0x7df4ff, 1.4); rim.position.set(140 * side, 40, -40); scene.add(rim);
+const fill = new THREE.DirectionalLight(0xfff3e6, 0.6); fill.position.set(-140 * side, -60, 60); scene.add(fill);
+
+phone.rotation.set(num("rx", -0.12), num("ry", 0.62), num("rz", 0.1), "YXZ");
+
+// Cadrage automatique sur la boîte englobante.
+const camera = new THREE.PerspectiveCamera(18, W / H, 1, 5000); // near/far resserrés plus bas
+const box = new THREE.Box3().setFromObject(phone);
+const size = box.getSize(new THREE.Vector3()), center = box.getCenter(new THREE.Vector3());
+const fitH = size.y / 2 / Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
+const fitW = size.x / 2 / Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) / camera.aspect;
+camera.position.set(center.x, center.y, center.z + Math.max(fitH, fitW) * 1.06 + size.z);
+camera.lookAt(center);
+const dist = camera.position.distanceTo(center);
+camera.near = dist - 150; camera.far = dist + 150; camera.updateProjectionMatrix();
+
+renderer.render(scene, camera);
+window.__done = true;
+</script>
+</body>
+</html>

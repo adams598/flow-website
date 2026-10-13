@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>UI — Site mobile</title>
+  <style>
+    @font-face { font-family: "Manrope"; src: url("/public/brand/fonts/Manrope-variable.ttf") format("truetype"); font-weight: 200 800; }
+    @font-face { font-family: "Inter"; src: url("/public/brand/fonts/Inter-variable.ttf") format("truetype"); font-weight: 100 900; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    /* Écran 6,9" : 440 × 956 pt (rendu ×4). Lu à ~45 % sur l'affiche : textes utiles ≥ 20 px. */
+    html, body { width: 440px; height: 956px; overflow: hidden; background: #fffcfa; color: #131313; font-family: Inter, sans-serif; -webkit-font-smoothing: antialiased; }
+    body { position: relative; display: flex; flex-direction: column; padding: 0 22px; }
+
+    .status { height: 62px; display: flex; align-items: center; justify-content: space-between; padding: 6px 14px 0 18px; font: 600 17px Inter, sans-serif; letter-spacing: -0.01em; }
+    .status .icons { display: flex; gap: 6px; align-items: center; }
+    .status svg { height: 13px; }
+    .island { position: absolute; top: 11px; left: 50%; width: 126px; height: 37px; margin-left: -63px; border-radius: 20px; background: #000; }
+
+    header { display: flex; align-items: center; gap: 10px; margin-top: 14px; font: 800 21px Manrope, sans-serif; letter-spacing: -0.04em; }
+    header i { width: 26px; height: 26px; border-radius: 8px; border: 2.5px dashed #c45e32; }
+    header .menu { margin-left: auto; display: grid; gap: 5px; }
+    header .menu b { display: block; width: 24px; height: 2.5px; border-radius: 2px; background: #131313; }
+
+    .k { margin-top: 52px; font: 600 15px Inter, sans-serif; letter-spacing: 0.2em; text-transform: uppercase; color: #c45e32; }
+    h1 { margin-top: 10px; font: 800 52px/0.98 Manrope, sans-serif; letter-spacing: -0.055em; }
+    h1 em { font-style: normal; color: #00a8b2; }
+
+
+    .cta {
+      margin-top: 40px; display: flex; align-items: center; justify-content: center; gap: 10px;
+      height: 64px; border-radius: 18px; background: #00a8b2; color: #fff;
+      font: 700 22px Inter, sans-serif; letter-spacing: -0.02em;
+      box-shadow: 0 12px 24px rgba(0, 168, 178, 0.28);
+    }
+    .cta svg { width: 24px; height: 24px; }
+
+    .done {
+      margin-top: 16px; border-radius: 22px; padding: 20px 20px;
+      display: flex; align-items: center; gap: 16px;
+      background:
+        radial-gradient(260px 160px at 80% 0%, rgba(125,244,255,0.38), transparent 60%),
+        linear-gradient(165deg, #1a6a72, #124248 55%, #141816);
+      color: #fffcfa;
+    }
+    .done .ok { flex: none; width: 52px; height: 52px; border-radius: 50%; background: #7df4ff; color: #131313; display: grid; place-items: center; }
+    .done .ok svg { width: 28px; height: 28px; }
+    .done strong { display: block; font: 800 25px Manrope, sans-serif; letter-spacing: -0.04em; }
+    .done small { display: block; margin-top: 2px; font-size: 17px; font-weight: 500; color: rgba(255,252,250,0.82); }
+
+    .tiles { margin-top: 16px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .tiles div {
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      padding: 18px 6px; border-radius: 18px; background: #fff; border: 1.5px solid #eadfd2;
+      font: 700 16px Manrope, sans-serif; letter-spacing: -0.02em;
+    }
+    .tiles svg { width: 28px; height: 28px; color: #00a8b2; }
+
+    .bar {
+      margin: auto -22px 0; padding: 12px 22px 34px;
+      background: rgba(243, 235, 225, 0.9); border-top: 1px solid #e6dacb;
+    }
+    .url {
+      height: 50px; border-radius: 16px; background: #fffcfa;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      font: 600 18px Inter, sans-serif; color: #3c3530; letter-spacing: -0.01em;
+      box-shadow: 0 2px 8px rgba(19,19,19,0.06);
+    }
+    .url svg { width: 15px; height: 15px; color: #5c534c; }
+    .home { width: 140px; height: 5px; border-radius: 3px; background: #131313; margin: 16px auto 0; }
+  </style>
+</head>
+<body>
+  <div class="island"></div>
+  <div class="status">
+    <span>9:41</span>
+    <span class="icons">
+      <svg viewBox="0 0 18 12" fill="#131313"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>
+      <svg viewBox="0 0 16 12" fill="#131313"><path d="M8 2.3c2.3 0 4.4.9 6 2.4l1.3-1.3A10.3 10.3 0 0 0 8 .4C5.2.4 2.6 1.5.7 3.4L2 4.7a8.5 8.5 0 0 1 6-2.4Zm0 3.7c1.3 0 2.5.5 3.4 1.3l1.3-1.3A6.6 6.6 0 0 0 8 4.1c-1.8 0-3.5.7-4.7 1.9l1.3 1.3C5.5 6.5 6.7 6 8 6Zm0 3.6c.4 0 .8.2 1.1.4L8 11.2 6.9 10c.3-.2.7-.4 1.1-.4Z"/></svg>
+      <svg viewBox="0 0 27 13" fill="none"><rect x="0.5" y="0.5" width="22" height="12" rx="3.5" stroke="#131313" opacity="0.4"/><rect x="2" y="2" width="19" height="9" rx="2" fill="#131313"/><path d="M24.5 4.5v4c.8-.3 1.3-1.1 1.3-2s-.5-1.7-1.3-2Z" fill="#131313" opacity="0.5"/></svg>
+    </span>
+  </div>
+
+  <header><i></i>Votre entreprise<span class="menu"><b></b><b></b><b></b></span></header>
+
+  <p class="k">Bienvenue</p>
+  <h1>Contactez-nous<br><em>dès maintenant.</em></h1>
+
+
+  <div class="cta">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3.5v3M16 3.5v3M4 10h16"/></svg>
+    Prendre rendez-vous
+  </div>
+
+  <div class="done">
+    <div class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17.5 19 7"/></svg></div>
+    <div><strong>RDV confirmé</strong><small>Mardi · 16:30 · payé</small></div>
+  </div>
+
+  <div class="tiles">
+    <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg>Services</div>
+    <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="m20.5 15-4.5-4.5L7 19"/></svg>Photos</div>
+    <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11Z"/><circle cx="12" cy="10" r="2.3"/></svg>Accès</div>
+  </div>
+
+  <div class="bar">
+    <div class="url">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/></svg>
+      votre-entreprise.fr
+    </div>
+    <div class="home"></div>
+  </div>
+</body>
+</html>

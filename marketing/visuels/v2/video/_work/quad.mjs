@@ -1,0 +1,10 @@
+import http from "node:http"; import fs from "node:fs"; import path from "node:path"; import puppeteer from "puppeteer-core";
+const ROOT = path.resolve("../../../.."); const BASE = "/marketing/visuels/v2/video/";
+const server = http.createServer((q, r) => { const f = path.join(ROOT, decodeURIComponent(q.url.split("?")[0])); if (!fs.existsSync(f) || fs.statSync(f).isDirectory()) { r.writeHead(404); return r.end(); } r.writeHead(200, { "Content-Type": f.endsWith(".html") ? "text/html" : f.endsWith(".js") ? "text/javascript" : "application/octet-stream" }); fs.createReadStream(f).pipe(r); });
+await new Promise((r) => server.listen(0, "127.0.0.1", r));
+const b = await puppeteer.launch({ executablePath: "C:/Program Files/Google/Chrome/Application/chrome.exe" });
+const p = await b.newPage(); await p.setViewport({ width: 1080, height: 1920 });
+await p.goto(`http://127.0.0.1:${server.address().port}${BASE}device-anim.html?device=tablet&shot=tuto2&seq=_work/screen&seqoff=0.8&seqn=258`, { waitUntil: "networkidle0" });
+await p.evaluate(() => window.__ready); await p.evaluate(() => window.seek(0)); await p.evaluate(() => window.__frameReady());
+console.log(JSON.stringify(await p.evaluate(() => window.__screenQuad())));
+await b.close(); server.close();

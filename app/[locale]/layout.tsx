@@ -15,6 +15,8 @@ import {
 } from '@/lib/i18n/config'
 import { getDictionary } from '@/lib/i18n'
 import { THEME_COOKIE, isTheme } from '@/lib/theme'
+import { JsonLd } from '@/components/JsonLd'
+import { organizationJsonLd, websiteJsonLd } from '@/lib/seo'
 
 const manrope = Manrope({
   variable: '--font-manrope',
@@ -46,6 +48,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const dict = getDictionary(locale)
 
   return {
+    // Adresse publique du site : base des liens canoniques, des versions de langue et des images de partage.
+    metadataBase: new URL(SITE.url),
+    applicationName: SITE.name,
+    category: 'technology',
     title: {
       default: dict.meta.title,
       template: `%s · ${SITE.name}`,
@@ -62,8 +68,27 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: dict.meta.ogTitle,
       description: dict.meta.ogDescription,
       type: 'website',
+      url: `/${locale}`,
       locale: localeOg[locale],
+      alternateLocale: locales.filter((l) => l !== locale).map((l) => localeOg[l]),
       siteName: SITE.name,
+      images: [{ url: '/og-image.png', width: 1200, height: 630, alt: dict.meta.ogTitle }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: dict.meta.ogTitle,
+      description: dict.meta.ogDescription,
+      images: ['/og-image.png'],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1, 'max-video-preview': -1 },
+    },
+    // Validation Google Search Console / Bing Webmaster : renseigner les variables d'environnement.
+    verification: {
+      google: process.env.GOOGLE_SITE_VERIFICATION,
+      other: process.env.BING_SITE_VERIFICATION ? { 'msvalidate.01': process.env.BING_SITE_VERIFICATION } : undefined,
     },
   }
 }
@@ -86,6 +111,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       <body
         className={`${manrope.variable} ${inter.variable} bg-background text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container`}
       >
+        <JsonLd data={[organizationJsonLd(locale, dict), websiteJsonLd(locale, dict)]} />
         <ThemeProvider initialTheme={theme}>
           <LocaleProvider locale={locale} dict={dict}>
             {children}

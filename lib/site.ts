@@ -1,5 +1,6 @@
 export const SITE = {
   name: 'Flow',
+  url: 'https://flowsurmesure.com',
   tagline: 'Build digital. Make it flow.',
   email: 'adams@flowsurmesure.com',
   phone: '0749178391',

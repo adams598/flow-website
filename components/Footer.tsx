@@ -81,10 +81,21 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-outline-variant/10 pt-8 text-center">
+        <div className="border-t border-outline-variant/10 pt-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <p className="font-label text-sm text-on-surface-variant">
             © {new Date().getFullYear()} {SITE.name}. {dict.footer.rights}
           </p>
+          <nav aria-label={dict.footer.explore} className="flex flex-wrap gap-x-5 gap-y-2">
+            {dict.footer.links.map((link) => (
+              <Link
+                key={link.href}
+                href={href(link.href)}
+                className="font-label text-sm text-on-surface-variant hover:text-primary transition-colors"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
         </div>
       </div>
     </motion.footer>

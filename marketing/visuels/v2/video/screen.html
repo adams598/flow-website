@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Écran tablette — tutoriel</title>
+  <style>
+    @font-face { font-family: "Inter"; src: url("/public/brand/fonts/Inter-variable.ttf") format("truetype"); font-weight: 100 900; }
+    @font-face { font-family: "Manrope"; src: url("/public/brand/fonts/Manrope-variable.ttf") format("truetype"); font-weight: 200 800; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    /* Écran de tablette 820 × 1180 pt. Navigateur neutre (aucune marque tierce). */
+    html, body { width: 820px; height: 1180px; overflow: hidden; background: #f2f2f4; font-family: Inter, sans-serif; -webkit-font-smoothing: antialiased; color: #1c1c1e; }
+    #root { position: relative; width: 820px; height: 1180px; overflow: hidden; }
+
+    .status { position: absolute; inset: 0 0 auto 0; height: 26px; display: flex; justify-content: space-between; align-items: center; padding: 0 22px; font: 600 14px Inter; z-index: 30; }
+    .chrome { position: absolute; top: 26px; left: 0; right: 0; height: 64px; display: flex; align-items: center; gap: 14px; padding: 0 18px; background: #f7f7f8; border-bottom: 1px solid #dcdce0; z-index: 25; }
+    .chrome .nav { display: flex; gap: 16px; color: #8e8e93; }
+    .chrome .nav svg { width: 22px; height: 22px; }
+    .bar { flex: 1; height: 42px; border-radius: 12px; background: #e6e6ea; display: flex; align-items: center; justify-content: center; gap: 8px; font: 500 17px Inter; color: #1c1c1e; position: relative; overflow: hidden; }
+    .bar.focus { background: #fff; box-shadow: 0 0 0 2.5px #00a8b2; justify-content: flex-start; padding: 0 14px; }
+    .bar .ph { color: #8e8e93; }
+    .bar svg { width: 14px; height: 14px; color: #5c5c62; }
+    .caret { display: inline-block; width: 2px; height: 22px; background: #00a8b2; margin-left: 1px; vertical-align: middle; }
+    .progress { position: absolute; left: 0; bottom: 0; height: 3px; background: #00a8b2; }
+
+    .page { position: absolute; top: 90px; left: 0; width: 820px; height: 1090px; overflow: hidden; }
+    .page img { position: absolute; inset: 0; width: 820px; height: 1090px; display: block; }
+
+    /* Page d'accueil du navigateur : neutre. */
+    .home { position: absolute; inset: 0; background: #f2f2f4; display: flex; flex-direction: column; align-items: center; padding-top: 170px; }
+    .home h2 { font: 700 30px Inter; letter-spacing: -0.02em; color: #1c1c1e; margin-bottom: 26px; }
+    .home .search { width: 560px; height: 58px; border-radius: 16px; background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.06); display: flex; align-items: center; gap: 12px; padding: 0 20px; font: 400 19px Inter; color: #8e8e93; }
+    .home .search svg { width: 20px; height: 20px; }
+    .home .favs { margin-top: 48px; display: grid; grid-template-columns: repeat(4, 96px); gap: 30px; }
+    .home .favs div { display: flex; flex-direction: column; align-items: center; gap: 8px; font: 500 13px Inter; color: #636366; }
+    .home .favs i { width: 72px; height: 72px; border-radius: 18px; background: #e3e3e8; display: grid; place-items: center; font: 700 26px Inter; font-style: normal; color: #aeaeb2; }
+
+    .suggest { position: absolute; top: 90px; left: 0; right: 0; background: #fff; border-bottom: 1px solid #e5e5ea; z-index: 20; }
+    .suggest div { display: flex; align-items: center; gap: 14px; padding: 18px 24px; font: 500 19px Inter; }
+    .suggest div b { font-weight: 700; }
+    .suggest svg { width: 20px; height: 20px; color: #8e8e93; }
+
+    .kb { position: absolute; left: 0; right: 0; bottom: 0; height: 340px; background: #d1d3d9; padding: 14px 10px 20px; display: flex; flex-direction: column; gap: 10px; z-index: 22; }
+    .kb .row { display: flex; gap: 6px; justify-content: center; }
+    .kb span { height: 66px; min-width: 62px; flex: 0 0 auto; border-radius: 9px; background: #fff; box-shadow: 0 1.5px 0 rgba(0,0,0,0.25); display: grid; place-items: center; font: 400 26px Inter; color: #1c1c1e; }
+    .kb span.k { width: 62px; }
+    .kb span.dark { background: #abb0ba; font-size: 18px; }
+    .kb span.go { background: #00a8b2; color: #fff; font: 600 19px Inter; width: 120px; }
+    .kb span.hit { background: #b8bcc6; }
+
+    .tap { position: absolute; width: 64px; height: 64px; margin: -32px 0 0 -32px; border-radius: 50%; background: rgba(0, 168, 178, 0.28); border: 2.5px solid rgba(0, 168, 178, 0.75); z-index: 40; pointer-events: none; }
+  </style>
+</head>
+<body>
+<div id="root">
+  <div class="status"><span>9:41</span><span>100 %</span></div>
+  <div class="chrome">
+    <div class="nav">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+    </div>
+    <div class="bar" id="bar"></div>
+  </div>
+  <div class="page" id="page"></div>
+  <div class="suggest" id="suggest"></div>
+  <div class="kb" id="kb"></div>
+  <div class="tap" id="tap"></div>
+</div>
+<script>
+/*
+ * seek(st) dessine l'écran à l'instant st (secondes). Fonction pure du temps :
+ * le rendu image par image est déterministe.
+ */
+const URL_TXT = "flowsurmesure.com";
+const NEED_TXT = "Réserver et payer en ligne.";
+const NOM_TXT = "Camille Martin", MAIL_TXT = "camille@exemple.fr";
+// Chronologie de l'écran (secondes). Chaque saisie : tapotement, clavier, frappe, clavier rangé.
+const T = {
+  tapBar: 0.8, kbIn: [0.8, 1.05], type: [1.05, 2.0], go: 2.15,
+  load: [2.15, 2.6], hero: 2.45, scroll: [2.7, 4.5],
+  tapQ1: 4.65, q1sel: 4.8, tapNext1: 5.1, q2: 5.25,
+  tapQ2: 5.45, kb2: [5.45, 5.7], type2: [5.7, 6.8], kb2out: [6.9, 7.15], tapNext2: 7.25,
+  q3: 7.4, tapQ3: 7.6, q3sel: 7.7, q6: 8.0,
+  tapNom: 8.15, kb3: [8.15, 8.4], typeNom: [8.4, 9.0], tapMail: 9.1, typeMail: [9.18, 9.95], kb3out: [10.05, 10.3],
+  tapSend: 10.45,
+};
+const FRAPPES = { q2: 14, nom: 7, mail: 9 };
+const SCROLL_FRAMES = 90;
+const taps = { q1: [252, 400], next1: [648, 598], next2: [648, 557], q3: [252, 420], send: [625, 597], q2: [410, 438], nom: [410, 398], mail: [410, 460] };
+const PAGE_Y = 90; // la page commence sous la barre du navigateur
+
+const $ = (id) => document.getElementById(id);
+const clamp = (x, a, b) => Math.min(b, Math.max(a, x));
+const lin = (t, a, b) => clamp((t - a) / (b - a), 0, 1);
+const easeOut = (x) => 1 - Math.pow(1 - x, 3);
+
+const lock = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/></svg>';
+const glass = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>';
+
+const ROWS = ["azertyuiop", "qsdfghjklm", "wxcvbn"];
+function keyboard(hitChar, goHit, goLabel = "Aller") {
+  const r = (s) => [...s].map((c) => `<span class="k${c === hitChar ? " hit" : ""}">${c}</span>`).join("");
+  return `<div class="row">${r(ROWS[0])}<span class="dark" style="width:92px">⌫</span></div>
+    <div class="row">${r(ROWS[1])}<span class="go${goHit ? " hit" : ""}">${goLabel}</span></div>
+    <div class="row"><span class="dark" style="width:92px">⇧</span>${r(ROWS[2])}<span class="k${hitChar === "." ? " hit" : ""}">.</span><span class="dark" style="width:92px">.com</span></div>
+    <div class="row"><span class="dark" style="width:110px">123</span><span style="width:420px"></span><span class="dark" style="width:110px">123</span></div>`;
+}
+
+function homePage() {
+  const favs = ["A", "B", "C", "D", "E", "F", "G", "H"].map((l) => `<div><i>${l}</i>Favori</div>`).join("");
+  return `<div class="home"><h2>Bonjour</h2><div class="search">${glass}Rechercher ou saisir un site web</div><div class="favs">${favs}</div></div>`;
+}
+
+function setTap(t) {
+  const list = [[T.tapBar, [410, 58], 0], [T.go, [750, 963], 0], [T.tapQ1, taps.q1, 1], [T.tapNext1, taps.next1, 1], [T.tapQ2, taps.q2, 1],
+    [T.tapNext2, taps.next2, 1], [T.tapQ3, taps.q3, 1], [T.tapNom, taps.nom, 1], [T.tapMail, taps.mail, 1], [T.tapSend, taps.send, 1]];
+  const tap = $("tap");
+  tap.style.opacity = 0;
+  for (const [at, [x, y], onPage] of list) {
+    const k = (t - at) / 0.32;
+    if (k >= -0.15 && k <= 1) {
+      const kk = clamp(k, 0, 1);
+      tap.style.left = x + "px";
+      tap.style.top = (onPage ? y + PAGE_Y : y) + "px";
+      tap.style.opacity = k < 0 ? 0.9 : (1 - kk) * 0.95;
+      tap.style.transform = `scale(${0.6 + kk * 0.7})`;
+    }
+  }
+}
+
+/* Saisie en cours : [texte, début, fin] -> lettre frappée à l'instant t (pour le clavier). */
+function typingChar(t) {
+  for (const [txt, [a, b]] of [[URL_TXT, T.type], [NEED_TXT, T.type2], [NOM_TXT, T.typeNom], [MAIL_TXT, T.typeMail]]) {
+    if (t > a && t < b) return txt[Math.floor(lin(t, a, b) * txt.length - 0.001)].toLowerCase();
+  }
+  return null;
+}
+const frame = (dir, n, t, [a, b]) => `site/${dir}/${String(Math.min(n - 1, Math.floor(lin(t, a, b) * n))).padStart(2, "0")}.png`;
+
+function seek(t) {
+  const bar = $("bar"), page = $("page"), sug = $("suggest"), kb = $("kb");
+  const typed = Math.round(lin(t, T.type[0], T.type[1]) * URL_TXT.length);
+  const editing = t >= T.tapBar && t < T.go + 0.1;
+
+  // Barre d'adresse.
+  if (editing) {
+    bar.className = "bar focus";
+    const caretOn = Math.floor(t * 2.2) % 2 === 0 || (t > T.type[0] && t < T.type[1]);
+    bar.innerHTML = typed ? `<span>${URL_TXT.slice(0, typed)}</span>${caretOn ? '<i class="caret"></i>' : ""}` : `${caretOn ? '<i class="caret"></i>' : ""}<span class="ph">Rechercher ou saisir un site web</span>`;
+  } else if (t >= T.go) {
+    bar.className = "bar";
+    bar.innerHTML = `${lock}<span>flowsurmesure.com</span>`;
+  } else {
+    bar.className = "bar";
+    bar.innerHTML = `<span class="ph">Rechercher ou saisir un site web</span>`;
+  }
+  const p = lin(t, T.load[0], T.load[1]);
+  if (p > 0 && p < 1) bar.innerHTML += `<div class="progress" style="width:${Math.round(easeOut(p) * 100)}%"></div>`;
+
+  // Suggestion sous la barre.
+  sug.innerHTML = editing && typed >= 4 ? `<div>${glass}<span><b>${URL_TXT.slice(0, typed)}</b>${URL_TXT.slice(typed)}</span></div>` : "";
+
+  // Clavier : barre d'adresse, puis champs du questionnaire.
+  const win = (inn, out) => easeOut(lin(t, inn[0], inn[1])) - easeOut(lin(t, out[0], out[1]));
+  const kbShow = Math.max(win(T.kbIn, [T.go + 0.05, T.go + 0.3]), win(T.kb2, T.kb2out), win(T.kb3, T.kb3out));
+  const ky = (1 - kbShow) * 360;
+  kb.innerHTML = keyboard(typingChar(t), Math.abs(t - T.go) < 0.12, t < T.go + 0.4 ? "Aller" : "retour");
+  kb.style.transform = `translateY(${ky}px)`;
+  kb.style.display = ky >= 359 ? "none" : "flex";
+
+  // Contenu de la page.
+  let src = null, fade = null;
+  if (t < T.hero) {
+    page.innerHTML = homePage();
+  } else {
+    if (t < T.scroll[0]) src = "site/scroll/0000.jpg";
+    else if (t < T.scroll[1] + 0.05) src = `site/scroll/${String(Math.round(lin(t, T.scroll[0], T.scroll[1]) * (SCROLL_FRAMES - 1))).padStart(4, "0")}.jpg`;
+    else if (t < T.q1sel) src = "site/q1.png";
+    else if (t < T.q2) src = "site/q1-choix.png";
+    else if (t < T.type2[0]) src = "site/q2.png";
+    else if (t < T.type2[1]) src = frame("q2-frappe", FRAPPES.q2, t, T.type2);
+    else if (t < T.q3) src = "site/q2-texte.png";
+    else if (t < T.q3sel) src = "site/q3.png";
+    else if (t < T.q6) src = "site/q3-choix.png";
+    else if (t < T.typeNom[0]) src = "site/q6.png";
+    else if (t < T.typeMail[0]) src = frame("q6-nom", FRAPPES.nom, t, T.typeNom);
+    else if (t < T.typeMail[1]) src = frame("q6-mail", FRAPPES.mail, t, T.typeMail);
+    else src = "site/q6-rempli.png";
+    const heroIn = lin(t, T.hero, T.hero + 0.25);
+    page.innerHTML = (heroIn < 1 ? homePage() : "") + `<img src="${src}" style="opacity:${heroIn}">`;
+  }
+  setTap(t);
+}
+window.seek = seek;
+const PRE = [...[...Array(SCROLL_FRAMES).keys()].map((i) => `site/scroll/${String(i).padStart(4, "0")}.jpg`),
+  ...[["q2-frappe", FRAPPES.q2], ["q6-nom", FRAPPES.nom], ["q6-mail", FRAPPES.mail]].flatMap(([d, n]) => [...Array(n).keys()].map((i) => `site/${d}/${String(i).padStart(2, "0")}.png`))];
+window.__keep = [];
+window.__ready = Promise.all(PRE.map((u) => new Promise((r) => { const im = new Image(); im.onload = im.onerror = r; im.src = u; window.__keep.push(im); }))).then(() => document.fonts.ready);
+seek(0);
+</script>
+</body>
+</html>

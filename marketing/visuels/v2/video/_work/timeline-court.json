@@ -1,0 +1,1902 @@
+{
+ "version": "court",
+ "total": 40.59,
+ "clip": 1.5,
+ "scenes": [
+  {
+   "id": "hook",
+   "start": 0.0,
+   "dur": 2.8,
+   "line": "01-accroche"
+  },
+  {
+   "id": "flow",
+   "start": 2.8,
+   "dur": 3.915,
+   "line": "03-flow"
+  },
+  {
+   "id": "site",
+   "start": 6.715,
+   "dur": 7.605,
+   "line": "04-site"
+  },
+  {
+   "id": "app",
+   "start": 14.32,
+   "dur": 7.301,
+   "line": "05-app"
+  },
+  {
+   "id": "proof",
+   "start": 21.621,
+   "dur": 4.8,
+   "line": "05b-preuves"
+  },
+  {
+   "id": "tuto",
+   "start": 26.421,
+   "dur": 4.3,
+   "line": "06c-tuto-court"
+  },
+  {
+   "id": "side",
+   "start": 30.721,
+   "dur": 6.469,
+   "line": "07-cotes"
+  },
+  {
+   "id": "end",
+   "start": 37.19,
+   "dur": 3.4,
+   "line": "08-fin"
+  }
+ ],
+ "vo": [
+  {
+   "line": "01-accroche",
+   "at": 0.15
+  },
+  {
+   "line": "03-flow",
+   "at": 2.95
+  },
+  {
+   "line": "04-site",
+   "at": 6.865
+  },
+  {
+   "line": "05-app",
+   "at": 14.47
+  },
+  {
+   "line": "05b-preuves",
+   "at": 21.871
+  },
+  {
+   "line": "06c-tuto-court",
+   "at": 26.821
+  },
+  {
+   "line": "07-cotes",
+   "at": 30.871
+  },
+  {
+   "line": "08-fin",
+   "at": 37.49
+  }
+ ],
+ "words": [
+  {
+   "line": "01-accroche",
+   "w": "Vous",
+   "s": 0.195,
+   "e": 0.318,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "01-accroche",
+   "w": "avez",
+   "s": 0.318,
+   "e": 0.6,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "01-accroche",
+   "w": "une",
+   "s": 0.6,
+   "e": 0.722,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "01-accroche",
+   "w": "activité",
+   "s": 0.722,
+   "e": 1.335,
+   "key": true,
+   "brk": false
+  },
+  {
+   "line": "01-accroche",
+   "w": "qui",
+   "s": 1.335,
+   "e": 1.482,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "01-accroche",
+   "w": "vous",
+   "s": 1.482,
+   "e": 1.58,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "01-accroche",
+   "w": "tient",
+   "s": 1.58,
+   "e": 1.764,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "01-accroche",
+   "w": "à",
+   "s": 1.764,
+   "e": 1.838,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "01-accroche",
+   "w": "cœur",
+   "s": 1.838,
+   "e": 2.34,
+   "key": false,
+   "brk": true
+  },
+  {
+   "line": "03-flow",
+   "w": "Chez",
+   "s": 2.984,
+   "e": 3.204,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "03-flow",
+   "w": "Flow",
+   "s": 3.204,
+   "e": 3.645,
+   "key": true,
+   "brk": false
+  },
+  {
+   "line": "03-flow",
+   "w": "on",
+   "s": 4.001,
+   "e": 4.038,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "03-flow",
+   "w": "vous",
+   "s": 4.038,
+   "e": 4.123,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "03-flow",
+   "w": "accompagne",
+   "s": 4.123,
+   "e": 4.675,
+   "key": true,
+   "brk": false
+  },
+  {
+   "line": "03-flow",
+   "w": "dans",
+   "s": 4.675,
+   "e": 4.773,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "03-flow",
+   "w": "votre",
+   "s": 4.773,
+   "e": 4.981,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "03-flow",
+   "w": "activité",
+   "s": 4.981,
+   "e": 5.643,
+   "key": true,
+   "brk": false
+  },
+  {
+   "line": "03-flow",
+   "w": "pas",
+   "s": 5.925,
+   "e": 6.035,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "03-flow",
+   "w": "à",
+   "s": 6.035,
+   "e": 6.145,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "03-flow",
+   "w": "pas",
+   "s": 6.145,
+   "e": 6.415,
+   "key": false,
+   "brk": true
+  },
+  {
+   "line": "04-site",
+   "w": "On",
+   "s": 6.875,
+   "e": 7.01,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "04-site",
+   "w": "crée",
+   "s": 7.01,
+   "e": 7.194,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "04-site",
+   "w": "votre",
+   "s": 7.194,
+   "e": 7.476,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "04-site",
+   "w": "site",
+   "s": 7.476,
+   "e": 7.66,
+   "key": true,
+   "brk": false
+  },
+  {
+   "line": "04-site",
+   "w": "internet",
+   "s": 7.66,
+   "e": 8.285,
+   "key": true,
+   "brk": false
+  },
+  {
+   "line": "04-site",
+   "w": "vos",
+   "s": 8.714,
+   "e": 8.824,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "04-site",
+   "w": "clients",
+   "s": 8.824,
+   "e": 9.106,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "04-site",
+   "w": "vous",
+   "s": 9.106,
+   "e": 9.216,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "04-site",
+   "w": "trouvent",
+   "s": 9.216,
+   "e": 9.682,
+   "key": true,
+   "brk": false
+  },
+  {
+   "line": "04-site",
+   "w": "réservent",
+   "s": 9.927,
+   "e": 10.429,
+   "key": true,
+   "brk": false
+  },
+  {
+   "line": "04-site",
+   "w": "et",
+   "s": 10.54,
+   "e": 10.589,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "04-site",
+   "w": "paient",
+   "s": 10.589,
+   "e": 10.748,
+   "key": true,
+   "brk": false
+  },
+  {
+   "line": "04-site",
+   "w": "en",
+   "s": 10.748,
+   "e": 10.846,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "04-site",
+   "w": "ligne",
+   "s": 10.846,
+   "e": 11.312,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "04-site",
+   "w": "Et",
+   "s": 11.679,
+   "e": 11.765,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "04-site",
+   "w": "si",
+   "s": 11.765,
+   "e": 11.912,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "04-site",
+   "w": "vous",
+   "s": 11.912,
+   "e": 11.998,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "04-site",
+   "w": "avez",
+   "s": 11.998,
+   "e": 12.219,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "04-site",
+   "w": "déjà",
+   "s": 12.219,
+   "e": 12.513,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "04-site",
+   "w": "un",
+   "s": 12.513,
+   "e": 12.611,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "04-site",
+   "w": "site",
+   "s": 12.611,
+   "e": 12.991,
+   "key": true,
+   "brk": false
+  },
+  {
+   "line": "04-site",
+   "w": "on",
+   "s": 13.248,
+   "e": 13.285,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "04-site",
+   "w": "l'améliore",
+   "s": 13.285,
+   "e": 14.02,
+   "key": false,
+   "brk": true
+  },
+  {
+   "line": "05-app",
+   "w": "On",
+   "s": 14.47,
+   "e": 14.605,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "05-app",
+   "w": "conçoit",
+   "s": 14.605,
+   "e": 14.948,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "05-app",
+   "w": "aussi",
+   "s": 14.948,
+   "e": 15.181,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "05-app",
+   "w": "votre",
+   "s": 15.181,
+   "e": 15.377,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "05-app",
+   "w": "application",
+   "s": 15.377,
+   "e": 16.039,
+   "key": true,
+   "brk": false
+  },
+  {
+   "line": "05-app",
+   "w": "autour",
+   "s": 16.382,
+   "e": 16.615,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "05-app",
+   "w": "de",
+   "s": 16.615,
+   "e": 16.689,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "05-app",
+   "w": "votre",
+   "s": 16.689,
+   "e": 16.958,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "05-app",
+   "w": "façon",
+   "s": 16.958,
+   "e": 17.24,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "05-app",
+   "w": "de",
+   "s": 17.24,
+   "e": 17.338,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "05-app",
+   "w": "travailler",
+   "s": 17.338,
+   "e": 17.877,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "05-app",
+   "w": "dossiers",
+   "s": 18.196,
+   "e": 18.711,
+   "key": true,
+   "brk": false
+  },
+  {
+   "line": "05-app",
+   "w": "planning",
+   "s": 18.992,
+   "e": 19.495,
+   "key": true,
+   "brk": false
+  },
+  {
+   "line": "05-app",
+   "w": "équipe",
+   "s": 19.752,
+   "e": 20.169,
+   "key": true,
+   "brk": false
+  },
+  {
+   "line": "05-app",
+   "w": "tout",
+   "s": 20.488,
+   "e": 20.598,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "05-app",
+   "w": "au",
+   "s": 20.598,
+   "e": 20.708,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "05-app",
+   "w": "même",
+   "s": 20.708,
+   "e": 20.892,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "05-app",
+   "w": "endroit",
+   "s": 20.892,
+   "e": 21.321,
+   "key": false,
+   "brk": true
+  },
+  {
+   "line": "05b-preuves",
+   "w": "Des",
+   "s": 21.915,
+   "e": 22.062,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "05b-preuves",
+   "w": "projets",
+   "s": 22.062,
+   "e": 22.393,
+   "key": true,
+   "brk": false
+  },
+  {
+   "line": "05b-preuves",
+   "w": "déjà",
+   "s": 22.393,
+   "e": 22.675,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "05b-preuves",
+   "w": "en",
+   "s": 22.675,
+   "e": 22.773,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "05b-preuves",
+   "w": "ligne",
+   "s": 22.773,
+   "e": 23.202,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "05b-preuves",
+   "w": "pour",
+   "s": 23.484,
+   "e": 23.631,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "05b-preuves",
+   "w": "de",
+   "s": 23.631,
+   "e": 23.729,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "05b-preuves",
+   "w": "vraies",
+   "s": 23.729,
+   "e": 23.9,
+   "key": true,
+   "brk": false
+  },
+  {
+   "line": "05b-preuves",
+   "w": "entreprises",
+   "s": 23.9,
+   "e": 24.709,
+   "key": false,
+   "brk": true
+  },
+  {
+   "line": "06c-tuto-court",
+   "w": "Pour",
+   "s": 26.869,
+   "e": 26.992,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "06c-tuto-court",
+   "w": "commencer",
+   "s": 26.992,
+   "e": 27.555,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "06c-tuto-court",
+   "w": "rendez-vous",
+   "s": 27.948,
+   "e": 28.34,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "06c-tuto-court",
+   "w": "sur",
+   "s": 28.34,
+   "e": 28.524,
+   "key": true,
+   "brk": false
+  },
+  {
+   "line": "06c-tuto-court",
+   "w": "flow",
+   "s": 28.524,
+   "e": 28.842,
+   "key": true,
+   "brk": false
+  },
+  {
+   "line": "06c-tuto-court",
+   "w": "sur",
+   "s": 28.842,
+   "e": 29.026,
+   "key": true,
+   "brk": false
+  },
+  {
+   "line": "06c-tuto-court",
+   "w": "mesure",
+   "s": 29.026,
+   "e": 29.394,
+   "key": true,
+   "brk": false
+  },
+  {
+   "line": "06c-tuto-court",
+   "w": "point",
+   "s": 29.394,
+   "e": 29.565,
+   "key": true,
+   "brk": false
+  },
+  {
+   "line": "06c-tuto-court",
+   "w": "com",
+   "s": 29.565,
+   "e": 30.019,
+   "key": true,
+   "brk": true
+  },
+  {
+   "line": "07-cotes",
+   "w": "Et",
+   "s": 30.924,
+   "e": 31.022,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "07-cotes",
+   "w": "après",
+   "s": 31.022,
+   "e": 31.255,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "07-cotes",
+   "w": "la",
+   "s": 31.255,
+   "e": 31.341,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "07-cotes",
+   "w": "mise",
+   "s": 31.341,
+   "e": 31.525,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "07-cotes",
+   "w": "en",
+   "s": 31.525,
+   "e": 31.611,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "07-cotes",
+   "w": "ligne",
+   "s": 31.611,
+   "e": 31.978,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "07-cotes",
+   "w": "on",
+   "s": 32.334,
+   "e": 32.37,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "07-cotes",
+   "w": "reste",
+   "s": 32.37,
+   "e": 32.665,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "07-cotes",
+   "w": "à",
+   "s": 32.665,
+   "e": 32.689,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "07-cotes",
+   "w": "vos",
+   "s": 32.689,
+   "e": 32.812,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "07-cotes",
+   "w": "côtés",
+   "s": 32.812,
+   "e": 33.314,
+   "key": true,
+   "brk": true
+  },
+  {
+   "line": "07-cotes",
+   "w": "Et",
+   "s": 33.592,
+   "e": 33.676,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "07-cotes",
+   "w": "bonne",
+   "s": 33.676,
+   "e": 33.902,
+   "key": true,
+   "brk": false
+  },
+  {
+   "line": "07-cotes",
+   "w": "nouvelle",
+   "s": 33.902,
+   "e": 34.497,
+   "key": true,
+   "brk": false
+  },
+  {
+   "line": "07-cotes",
+   "w": "Le",
+   "s": 34.866,
+   "e": 35.021,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "07-cotes",
+   "w": "premier",
+   "s": 35.021,
+   "e": 35.33,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "07-cotes",
+   "w": "mois",
+   "s": 35.33,
+   "e": 35.497,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "07-cotes",
+   "w": "de",
+   "s": 35.497,
+   "e": 35.604,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "07-cotes",
+   "w": "maintenance",
+   "s": 35.604,
+   "e": 36.152,
+   "key": true,
+   "brk": false
+  },
+  {
+   "line": "07-cotes",
+   "w": "est",
+   "s": 36.164,
+   "e": 36.211,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "07-cotes",
+   "w": "offert",
+   "s": 36.211,
+   "e": 36.89,
+   "key": true,
+   "brk": true
+  },
+  {
+   "line": "08-fin",
+   "w": "Flow",
+   "s": 37.49,
+   "e": 38.086,
+   "key": true,
+   "brk": false
+  },
+  {
+   "line": "08-fin",
+   "w": "Parlons",
+   "s": 38.416,
+   "e": 38.87,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "08-fin",
+   "w": "de",
+   "s": 38.87,
+   "e": 38.98,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "08-fin",
+   "w": "votre",
+   "s": 38.98,
+   "e": 39.238,
+   "key": false,
+   "brk": false
+  },
+  {
+   "line": "08-fin",
+   "w": "projet",
+   "s": 39.238,
+   "e": 39.801,
+   "key": true,
+   "brk": true
+  }
+ ],
+ "captions": [
+  {
+   "s": 0.195,
+   "e": 0.722,
+   "words": [
+    {
+     "w": "Vous",
+     "s": 0.195,
+     "key": false
+    },
+    {
+     "w": "avez",
+     "s": 0.318,
+     "key": false
+    },
+    {
+     "w": "une",
+     "s": 0.6,
+     "key": false
+    }
+   ]
+  },
+  {
+   "s": 0.722,
+   "e": 1.58,
+   "words": [
+    {
+     "w": "activité",
+     "s": 0.722,
+     "key": true
+    },
+    {
+     "w": "qui",
+     "s": 1.335,
+     "key": false
+    },
+    {
+     "w": "vous",
+     "s": 1.482,
+     "key": false
+    }
+   ]
+  },
+  {
+   "s": 1.58,
+   "e": 2.75,
+   "words": [
+    {
+     "w": "tient",
+     "s": 1.58,
+     "key": false
+    },
+    {
+     "w": "à",
+     "s": 1.764,
+     "key": false
+    },
+    {
+     "w": "cœur",
+     "s": 1.838,
+     "key": false
+    }
+   ]
+  },
+  {
+   "s": 2.984,
+   "e": 4.038,
+   "words": [
+    {
+     "w": "Chez",
+     "s": 2.984,
+     "key": false
+    },
+    {
+     "w": "Flow",
+     "s": 3.204,
+     "key": true
+    },
+    {
+     "w": "on",
+     "s": 4.001,
+     "key": false
+    }
+   ]
+  },
+  {
+   "s": 4.038,
+   "e": 4.773,
+   "words": [
+    {
+     "w": "vous",
+     "s": 4.038,
+     "key": false
+    },
+    {
+     "w": "accompagne",
+     "s": 4.123,
+     "key": true
+    },
+    {
+     "w": "dans",
+     "s": 4.675,
+     "key": false
+    }
+   ]
+  },
+  {
+   "s": 4.773,
+   "e": 6.035,
+   "words": [
+    {
+     "w": "votre",
+     "s": 4.773,
+     "key": false
+    },
+    {
+     "w": "activité",
+     "s": 4.981,
+     "key": true
+    },
+    {
+     "w": "pas",
+     "s": 5.925,
+     "key": false
+    }
+   ]
+  },
+  {
+   "s": 6.035,
+   "e": 6.665,
+   "words": [
+    {
+     "w": "à",
+     "s": 6.035,
+     "key": false
+    },
+    {
+     "w": "pas",
+     "s": 6.145,
+     "key": false
+    }
+   ]
+  },
+  {
+   "s": 6.875,
+   "e": 7.476,
+   "words": [
+    {
+     "w": "On",
+     "s": 6.875,
+     "key": false
+    },
+    {
+     "w": "crée",
+     "s": 7.01,
+     "key": false
+    },
+    {
+     "w": "votre",
+     "s": 7.194,
+     "key": false
+    }
+   ]
+  },
+  {
+   "s": 7.476,
+   "e": 8.824,
+   "words": [
+    {
+     "w": "site",
+     "s": 7.476,
+     "key": true
+    },
+    {
+     "w": "internet",
+     "s": 7.66,
+     "key": true
+    },
+    {
+     "w": "vos",
+     "s": 8.714,
+     "key": false
+    }
+   ]
+  },
+  {
+   "s": 8.824,
+   "e": 9.927,
+   "words": [
+    {
+     "w": "clients",
+     "s": 8.824,
+     "key": false
+    },
+    {
+     "w": "vous",
+     "s": 9.106,
+     "key": false
+    },
+    {
+     "w": "trouvent",
+     "s": 9.216,
+     "key": true
+    }
+   ]
+  },
+  {
+   "s": 9.927,
+   "e": 10.748,
+   "words": [
+    {
+     "w": "réservent",
+     "s": 9.927,
+     "key": true
+    },
+    {
+     "w": "et",
+     "s": 10.54,
+     "key": false
+    },
+    {
+     "w": "paient",
+     "s": 10.589,
+     "key": true
+    }
+   ]
+  },
+  {
+   "s": 10.748,
+   "e": 11.765,
+   "words": [
+    {
+     "w": "en",
+     "s": 10.748,
+     "key": false
+    },
+    {
+     "w": "ligne",
+     "s": 10.846,
+     "key": false
+    },
+    {
+     "w": "Et",
+     "s": 11.679,
+     "key": false
+    }
+   ]
+  },
+  {
+   "s": 11.765,
+   "e": 12.219,
+   "words": [
+    {
+     "w": "si",
+     "s": 11.765,
+     "key": false
+    },
+    {
+     "w": "vous",
+     "s": 11.912,
+     "key": false
+    },
+    {
+     "w": "avez",
+     "s": 11.998,
+     "key": false
+    }
+   ]
+  },
+  {
+   "s": 12.219,
+   "e": 13.248,
+   "words": [
+    {
+     "w": "déjà",
+     "s": 12.219,
+     "key": false
+    },
+    {
+     "w": "un",
+     "s": 12.513,
+     "key": false
+    },
+    {
+     "w": "site",
+     "s": 12.611,
+     "key": true
+    }
+   ]
+  },
+  {
+   "s": 13.248,
+   "e": 14.27,
+   "words": [
+    {
+     "w": "on",
+     "s": 13.248,
+     "key": false
+    },
+    {
+     "w": "l'améliore",
+     "s": 13.285,
+     "key": false
+    }
+   ]
+  },
+  {
+   "s": 14.47,
+   "e": 15.181,
+   "words": [
+    {
+     "w": "On",
+     "s": 14.47,
+     "key": false
+    },
+    {
+     "w": "conçoit",
+     "s": 14.605,
+     "key": false
+    },
+    {
+     "w": "aussi",
+     "s": 14.948,
+     "key": false
+    }
+   ]
+  },
+  {
+   "s": 15.181,
+   "e": 16.615,
+   "words": [
+    {
+     "w": "votre",
+     "s": 15.181,
+     "key": false
+    },
+    {
+     "w": "application",
+     "s": 15.377,
+     "key": true
+    },
+    {
+     "w": "autour",
+     "s": 16.382,
+     "key": false
+    }
+   ]
+  },
+  {
+   "s": 16.615,
+   "e": 17.24,
+   "words": [
+    {
+     "w": "de",
+     "s": 16.615,
+     "key": false
+    },
+    {
+     "w": "votre",
+     "s": 16.689,
+     "key": false
+    },
+    {
+     "w": "façon",
+     "s": 16.958,
+     "key": false
+    }
+   ]
+  },
+  {
+   "s": 17.24,
+   "e": 18.992,
+   "words": [
+    {
+     "w": "de",
+     "s": 17.24,
+     "key": false
+    },
+    {
+     "w": "travailler",
+     "s": 17.338,
+     "key": false
+    },
+    {
+     "w": "dossiers",
+     "s": 18.196,
+     "key": true
+    }
+   ]
+  },
+  {
+   "s": 18.992,
+   "e": 20.598,
+   "words": [
+    {
+     "w": "planning",
+     "s": 18.992,
+     "key": true
+    },
+    {
+     "w": "équipe",
+     "s": 19.752,
+     "key": true
+    },
+    {
+     "w": "tout",
+     "s": 20.488,
+     "key": false
+    }
+   ]
+  },
+  {
+   "s": 20.598,
+   "e": 21.571,
+   "words": [
+    {
+     "w": "au",
+     "s": 20.598,
+     "key": false
+    },
+    {
+     "w": "même",
+     "s": 20.708,
+     "key": false
+    },
+    {
+     "w": "endroit",
+     "s": 20.892,
+     "key": false
+    }
+   ]
+  },
+  {
+   "s": 21.915,
+   "e": 22.675,
+   "words": [
+    {
+     "w": "Des",
+     "s": 21.915,
+     "key": false
+    },
+    {
+     "w": "projets",
+     "s": 22.062,
+     "key": true
+    },
+    {
+     "w": "déjà",
+     "s": 22.393,
+     "key": false
+    }
+   ]
+  },
+  {
+   "s": 22.675,
+   "e": 23.631,
+   "words": [
+    {
+     "w": "en",
+     "s": 22.675,
+     "key": false
+    },
+    {
+     "w": "ligne",
+     "s": 22.773,
+     "key": false
+    },
+    {
+     "w": "pour",
+     "s": 23.484,
+     "key": false
+    }
+   ]
+  },
+  {
+   "s": 23.631,
+   "e": 25.309,
+   "words": [
+    {
+     "w": "de",
+     "s": 23.631,
+     "key": false
+    },
+    {
+     "w": "vraies",
+     "s": 23.729,
+     "key": true
+    },
+    {
+     "w": "entreprises",
+     "s": 23.9,
+     "key": false
+    }
+   ]
+  },
+  {
+   "s": 26.869,
+   "e": 28.34,
+   "words": [
+    {
+     "w": "Pour",
+     "s": 26.869,
+     "key": false
+    },
+    {
+     "w": "commencer",
+     "s": 26.992,
+     "key": false
+    },
+    {
+     "w": "rendez-vous",
+     "s": 27.948,
+     "key": false
+    }
+   ]
+  },
+  {
+   "s": 28.34,
+   "e": 29.026,
+   "words": [
+    {
+     "w": "sur",
+     "s": 28.34,
+     "key": true
+    },
+    {
+     "w": "flow",
+     "s": 28.524,
+     "key": true
+    },
+    {
+     "w": "sur",
+     "s": 28.842,
+     "key": true
+    }
+   ]
+  },
+  {
+   "s": 29.026,
+   "e": 30.619,
+   "words": [
+    {
+     "w": "mesure",
+     "s": 29.026,
+     "key": true
+    },
+    {
+     "w": "point",
+     "s": 29.394,
+     "key": true
+    },
+    {
+     "w": "com",
+     "s": 29.565,
+     "key": true
+    }
+   ]
+  },
+  {
+   "s": 30.924,
+   "e": 31.341,
+   "words": [
+    {
+     "w": "Et",
+     "s": 30.924,
+     "key": false
+    },
+    {
+     "w": "après",
+     "s": 31.022,
+     "key": false
+    },
+    {
+     "w": "la",
+     "s": 31.255,
+     "key": false
+    }
+   ]
+  },
+  {
+   "s": 31.341,
+   "e": 32.334,
+   "words": [
+    {
+     "w": "mise",
+     "s": 31.341,
+     "key": false
+    },
+    {
+     "w": "en",
+     "s": 31.525,
+     "key": false
+    },
+    {
+     "w": "ligne",
+     "s": 31.611,
+     "key": false
+    }
+   ]
+  },
+  {
+   "s": 32.334,
+   "e": 32.689,
+   "words": [
+    {
+     "w": "on",
+     "s": 32.334,
+     "key": false
+    },
+    {
+     "w": "reste",
+     "s": 32.37,
+     "key": false
+    },
+    {
+     "w": "à",
+     "s": 32.665,
+     "key": false
+    }
+   ]
+  },
+  {
+   "s": 32.689,
+   "e": 33.592,
+   "words": [
+    {
+     "w": "vos",
+     "s": 32.689,
+     "key": false
+    },
+    {
+     "w": "côtés",
+     "s": 32.812,
+     "key": true
+    }
+   ]
+  },
+  {
+   "s": 33.592,
+   "e": 34.866,
+   "words": [
+    {
+     "w": "Et",
+     "s": 33.592,
+     "key": false
+    },
+    {
+     "w": "bonne",
+     "s": 33.676,
+     "key": true
+    },
+    {
+     "w": "nouvelle",
+     "s": 33.902,
+     "key": true
+    }
+   ]
+  },
+  {
+   "s": 34.866,
+   "e": 35.497,
+   "words": [
+    {
+     "w": "Le",
+     "s": 34.866,
+     "key": false
+    },
+    {
+     "w": "premier",
+     "s": 35.021,
+     "key": false
+    },
+    {
+     "w": "mois",
+     "s": 35.33,
+     "key": false
+    }
+   ]
+  },
+  {
+   "s": 35.497,
+   "e": 36.164,
+   "words": [
+    {
+     "w": "de",
+     "s": 35.497,
+     "key": false
+    },
+    {
+     "w": "maintenance",
+     "s": 35.604,
+     "key": true
+    }
+   ]
+  },
+  {
+   "s": 36.164,
+   "e": 37.14,
+   "words": [
+    {
+     "w": "est",
+     "s": 36.164,
+     "key": false
+    },
+    {
+     "w": "offert",
+     "s": 36.211,
+     "key": true
+    }
+   ]
+  },
+  {
+   "s": 37.49,
+   "e": 38.98,
+   "words": [
+    {
+     "w": "Flow",
+     "s": 37.49,
+     "key": true
+    },
+    {
+     "w": "Parlons",
+     "s": 38.416,
+     "key": false
+    },
+    {
+     "w": "de",
+     "s": 38.87,
+     "key": false
+    }
+   ]
+  },
+  {
+   "s": 38.98,
+   "e": 39.801,
+   "words": [
+    {
+     "w": "votre",
+     "s": 38.98,
+     "key": false
+    },
+    {
+     "w": "projet",
+     "s": 39.238,
+     "key": true
+    }
+   ]
+  }
+ ],
+ "sfx": [
+  {
+   "f": "notif",
+   "at": 0.15,
+   "vol": 0.45
+  },
+  {
+   "f": "notif",
+   "at": 0.45,
+   "vol": 0.45
+  },
+  {
+   "f": "notif2",
+   "at": 0.75,
+   "vol": 0.22
+  },
+  {
+   "f": "notif2",
+   "at": 1.0,
+   "vol": 0.22
+  },
+  {
+   "f": "notif2",
+   "at": 1.22,
+   "vol": 0.22
+  },
+  {
+   "f": "notif2",
+   "at": 1.42,
+   "vol": 0.22
+  },
+  {
+   "f": "notif2",
+   "at": 1.6,
+   "vol": 0.22
+  },
+  {
+   "f": "whoosh",
+   "at": 2.192,
+   "vol": 0.55
+  },
+  {
+   "f": "notif2",
+   "at": 4.123,
+   "vol": 0.3
+  },
+  {
+   "f": "notif2",
+   "at": 9.216,
+   "vol": 0.25
+  },
+  {
+   "f": "notif2",
+   "at": 9.927,
+   "vol": 0.25
+  },
+  {
+   "f": "notif2",
+   "at": 10.589,
+   "vol": 0.25
+  },
+  {
+   "f": "notif",
+   "at": 10.639,
+   "vol": 0.4
+  },
+  {
+   "f": "sweep",
+   "at": 12.702,
+   "vol": 0.4
+  },
+  {
+   "f": "notif2",
+   "at": 18.196,
+   "vol": 0.25
+  },
+  {
+   "f": "notif2",
+   "at": 18.992,
+   "vol": 0.25
+  },
+  {
+   "f": "notif2",
+   "at": 19.752,
+   "vol": 0.25
+  },
+  {
+   "f": "sweep",
+   "at": 21.354,
+   "vol": 0.45
+  },
+  {
+   "f": "clic",
+   "at": 23.271,
+   "vol": 0.35
+  },
+  {
+   "f": "clic",
+   "at": 24.771,
+   "vol": 0.35
+  },
+  {
+   "f": "plongee",
+   "at": 26.541,
+   "vol": 0.6
+  },
+  {
+   "f": "entree",
+   "at": 27.871,
+   "vol": 0.45
+  },
+  {
+   "f": "tap",
+   "at": 28.221,
+   "vol": 0.5
+  },
+  {
+   "f": "key3",
+   "at": 28.495,
+   "vol": 0.5000729384549119
+  },
+  {
+   "f": "key9",
+   "at": 28.544,
+   "vol": 0.47526572846002385
+  },
+  {
+   "f": "key9",
+   "at": 28.613,
+   "vol": 0.4852125999189421
+  },
+  {
+   "f": "key7",
+   "at": 28.657,
+   "vol": 0.4732630724449061
+  },
+  {
+   "f": "key7",
+   "at": 28.713,
+   "vol": 0.4723766167515166
+  },
+  {
+   "f": "key4",
+   "at": 28.78,
+   "vol": 0.5195266380478684
+  },
+  {
+   "f": "key1",
+   "at": 28.836,
+   "vol": 0.5151109932609437
+  },
+  {
+   "f": "key4",
+   "at": 28.888,
+   "vol": 0.4713430711509649
+  },
+  {
+   "f": "key5",
+   "at": 28.955,
+   "vol": 0.5020789710946459
+  },
+  {
+   "f": "key10",
+   "at": 29.003,
+   "vol": 0.4929497504884096
+  },
+  {
+   "f": "key3",
+   "at": 29.065,
+   "vol": 0.47600209627659634
+  },
+  {
+   "f": "key4",
+   "at": 29.115,
+   "vol": 0.49822279727487284
+  },
+  {
+   "f": "key2",
+   "at": 29.171,
+   "vol": 0.5140603841835044
+  },
+  {
+   "f": "key8",
+   "at": 29.228,
+   "vol": 0.5236329977874974
+  },
+  {
+   "f": "key6",
+   "at": 29.28,
+   "vol": 0.5059121539317731
+  },
+  {
+   "f": "key6",
+   "at": 29.347,
+   "vol": 0.49223077724125386
+  },
+  {
+   "f": "key4",
+   "at": 29.4,
+   "vol": 0.474253038390651
+  },
+  {
+   "f": "tap",
+   "at": 29.571,
+   "vol": 0.5
+  },
+  {
+   "f": "bonne-nouvelle",
+   "at": 33.626,
+   "vol": 0.55
+  },
+  {
+   "f": "tampon",
+   "at": 35.645,
+   "vol": 0.7
+  },
+  {
+   "f": "whoosh2",
+   "at": 36.185,
+   "vol": 0.5
+  }
+ ]
+}

@@ -42,3 +42,15 @@ data/hq/
 
 # Prospection (données prospects, hors git)
 data/prospection/
+
+# Visuels et vidéos marketing : trop lourds pour le dépôt et le déploiement
+marketing/visuels/**/*.mp4
+marketing/visuels/**/*.webm
+marketing/visuels/**/*.mov
+marketing/visuels/**/*.wav
+marketing/visuels/**/*.mp3
+marketing/visuels/**/*.png
+marketing/visuels/**/*.jpg
+marketing/visuels/**/*.jpeg
+marketing/visuels/**/*.gif
+marketing/visuels/**/*.webp

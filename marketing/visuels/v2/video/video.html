@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Flow — vidéo de présentation (1080 × 1920)</title>
+  <style>
+    @font-face { font-family: "Manrope"; src: url("/public/brand/fonts/Manrope-variable.ttf") format("truetype"); font-weight: 200 800; }
+    @font-face { font-family: "Inter"; src: url("/public/brand/fonts/Inter-variable.ttf") format("truetype"); font-weight: 100 900; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 1080px; height: 1920px; overflow: hidden; background: #0f1312; }
+    #stage { position: relative; width: 1080px; height: 1920px; overflow: hidden; font-family: Inter, sans-serif; color: #fffcfa; -webkit-font-smoothing: antialiased; }
+    .layer { position: absolute; inset: 0; }
+
+    /* Fond de marque : nuit teal + deux formes organiques (DA des affiches). */
+    #bg { background: radial-gradient(900px 700px at 80% 10%, rgba(125,244,255,0.20), transparent 60%), radial-gradient(800px 700px at 10% 95%, rgba(0,40,46,0.6), transparent 60%), linear-gradient(165deg, #1a6a72 0%, #124248 42%, #141816 100%); }
+    #bg svg { position: absolute; inset: 0; width: 1080px; height: 1920px; }
+    #grain { pointer-events: none; z-index: 50; opacity: 0.07; mix-blend-mode: overlay; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.6'/></svg>"); }
+
+    #clip { overflow: hidden; }
+    #clip img { position: absolute; inset: 0; width: 1080px; height: 1920px; object-fit: cover; transform-origin: 50% 50%; }
+    #clipShade { background: linear-gradient(180deg, rgba(10,20,22,0.55) 0%, rgba(10,20,22,0) 32%, rgba(10,20,22,0) 62%, rgba(10,20,22,0.6) 100%); }
+    #dev img { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 50% 50%; filter: drop-shadow(0 40px 50px rgba(0,0,0,0.45)); }
+
+    .t { position: absolute; left: 80px; right: 80px; text-align: center; }
+    .big { font: 800 98px/0.98 Manrope, sans-serif; letter-spacing: -0.05em; text-shadow: 0 6px 30px rgba(0,0,0,0.35); }
+    .mid { font: 800 74px/1 Manrope, sans-serif; letter-spacing: -0.045em; text-shadow: 0 6px 30px rgba(0,0,0,0.3); }
+    .sub { font: 500 40px/1.25 Inter, sans-serif; letter-spacing: -0.02em; color: rgba(255,252,250,0.92); text-shadow: 0 4px 20px rgba(0,0,0,0.35); }
+    .pill { display: inline-block; padding: 4px 28px 14px; border-radius: 999px; background: #fffcfa; color: #131313; text-shadow: none; transform: rotate(-2deg); }
+    .pill.ink { background: #131313; color: #fffcfa; }
+    .pill.cyan { background: #00a8b2; color: #fff; }
+    .w { display: inline-block; will-change: transform, opacity, filter; }
+    .kick { font: 600 26px Inter, sans-serif; letter-spacing: 0.22em; text-transform: uppercase; color: #7df4ff; }
+
+    /* Repère de marque discret sur les plans réels. */
+    #bug { position: absolute; left: 64px; top: 80px; display: flex; align-items: center; gap: 12px; z-index: 40; font: 800 34px Manrope, sans-serif; letter-spacing: -0.04em; color: #fffcfa; text-shadow: 0 4px 16px rgba(0,0,0,0.35); }
+    #bug svg { width: 40px; height: 40px; }
+
+    .orbs { position: absolute; left: 0; right: 0; display: flex; justify-content: center; gap: 34px; }
+    .orb { width: 220px; height: 220px; border-radius: 50%; background: #131313; color: #fffcfa; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 22px 40px rgba(0,0,0,0.35); position: relative; }
+    .orb svg { width: 48px; height: 48px; }
+    .orb span { font: 600 28px/1.1 Inter, sans-serif; text-align: center; }
+    .orb b { position: absolute; top: -6px; left: -6px; width: 58px; height: 58px; border-radius: 50%; background: #7df4ff; color: #131313; display: grid; place-items: center; font: 800 28px Manrope, sans-serif; }
+    .chips { position: absolute; left: 60px; right: 60px; display: flex; justify-content: center; flex-wrap: wrap; gap: 18px; }
+    .chip { display: flex; align-items: center; gap: 14px; padding: 20px 32px; border-radius: 999px; background: #131313; color: #fffcfa; font: 600 36px Inter, sans-serif; box-shadow: 0 14px 28px rgba(0,0,0,0.3); }
+    .chip svg { width: 36px; height: 36px; color: #7df4ff; }
+    .step { position: absolute; left: 70px; right: 70px; top: 190px; display: flex; align-items: center; gap: 24px; padding: 26px 34px; border-radius: 36px; background: rgba(19,19,19,0.82); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+    .step b { flex: none; width: 78px; height: 78px; border-radius: 50%; background: #7df4ff; color: #131313; display: grid; place-items: center; font: 800 40px Manrope, sans-serif; }
+    .step span { font: 700 44px/1.1 Manrope, sans-serif; letter-spacing: -0.03em; }
+    .step span em { font-style: normal; color: #7df4ff; }
+    .badge { position: absolute; width: 360px; height: 360px; border-radius: 50%; background: #7df4ff; color: #131313; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; box-shadow: 0 30px 60px rgba(0,0,0,0.4); }
+    .badge::before { content: ""; position: absolute; inset: 16px; border-radius: 50%; border: 3px dashed rgba(19,19,19,0.45); }
+    .badge strong { font: 800 84px/1 Manrope, sans-serif; letter-spacing: -0.05em; }
+    .badge span { margin-top: 8px; font: 600 32px/1.2 Inter, sans-serif; }
+    .end-logo { display: flex; align-items: center; justify-content: center; gap: 26px; font: 800 150px Manrope, sans-serif; letter-spacing: -0.05em; }
+    .end-logo svg { width: 150px; height: 150px; }
+    .phone { font: 800 76px Manrope, sans-serif; letter-spacing: -0.03em; display: flex; justify-content: center; align-items: center; gap: 20px; }
+    .phone svg { width: 60px; height: 60px; color: #7df4ff; }
+  </style>
+</head>
+<body>
+<div id="stage">
+  <div class="layer" id="bg">
+    <svg viewBox="0 0 1080 1920" aria-hidden="true">
+      <defs>
+        <linearGradient id="gc" x1="300" y1="1200" x2="1000" y2="1900" gradientUnits="userSpaceOnUse"><stop stop-color="#00C4D0"/><stop offset="0.2" stop-color="#007C88"/><stop offset="1" stop-color="#003E46"/></linearGradient>
+        <linearGradient id="gp" x1="80" y1="300" x2="900" y2="1300" gradientUnits="userSpaceOnUse"><stop stop-color="#FFFFFF"/><stop offset="0.72" stop-color="#FFFCFA"/><stop offset="1" stop-color="#F3EBE1"/></linearGradient>
+        <linearGradient id="gi" x1="300" y1="1200" x2="1000" y2="1900" gradientUnits="userSpaceOnUse"><stop stop-color="#2E393E"/><stop offset="0.35" stop-color="#171C1F"/><stop offset="1" stop-color="#0A0C0D"/></linearGradient>
+        <linearGradient id="gk" x1="80" y1="300" x2="900" y2="1300" gradientUnits="userSpaceOnUse"><stop stop-color="#FBF7F1"/><stop offset="0.6" stop-color="#F3EBE1"/><stop offset="1" stop-color="#E6D8C5"/></linearGradient>
+        <filter id="lift" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="26" stdDeviation="20" flood-color="#041416" flood-opacity="0.3"/></filter>
+      </defs>
+      <g id="shapes">
+        <path id="s2" filter="url(#lift)" fill="url(#gc)" d="M300 1180 C 560 1040, 900 1080, 1150 1260 C 1330 1400, 1160 1800, 820 1830 C 470 1860, 160 1720, 190 1480 C 210 1330, 180 1250, 300 1180 Z"/>
+        <path id="s1" filter="url(#lift)" fill="url(#gp)" d="M80 560 C 70 380, 250 300, 470 340 C 740 390, 980 320, 1040 520 C 1100 700, 1000 860, 960 1000 C 900 1150, 680 1190, 420 1140 C 150 1090, 20 960, 50 760 C 66 660, 86 620, 80 560 Z"/>
+      </g>
+    </svg>
+  </div>
+  <div class="layer" id="clip"><img id="clipImg" alt="" /><div class="layer" id="clipShade"></div></div>
+  <div class="layer" id="dev"><img id="devImg" alt="" /></div>
+  <div class="layer" id="txt"></div>
+  <div id="bug">
+    <svg viewBox="0 0 256 256" fill="none"><defs><linearGradient id="bl" x1="48" y1="18" x2="112" y2="240" gradientUnits="userSpaceOnUse"><stop stop-color="#C9FDFF"/><stop offset="0.42" stop-color="#2EEAF8"/><stop offset="1" stop-color="#00A8B2"/></linearGradient><linearGradient id="br" x1="150" y1="12" x2="224" y2="248" gradientUnits="userSpaceOnUse"><stop stop-color="#7DF4FF"/><stop offset="0.48" stop-color="#00C4D4"/><stop offset="1" stop-color="#006970"/></linearGradient></defs><path d="M128 16 24 236h54L128 92Z" fill="url(#bl)"/><path d="M128 16 232 236h-54L128 92Z" fill="url(#br)"/></svg>
+    Flow
+  </div>
+  <div class="layer" id="grain"></div>
+</div>
+<script>
+/* ------------------------------------------------------------------------ *
+ * Composition entière pilotée par seek(t). Les scènes sont calées sur la
+ * voix off (audio/voix/durees.json) : départs des répliques dans VO.
+ * ------------------------------------------------------------------------ */
+const FPS = 30;
+const VO = { "01": 0.3, "02": 3.3, "03": 8.1, "04": 12.1, "05": 19.8, "06": 27.4, "07": 37.6, "08": 42.8 };
+const S = { hook: [0, 3.2], daily: [3.2, 8.0], flow: [8.0, 11.6], site: [11.6, 19.4], app: [19.4, 27.0], tuto: [27.0, 37.5], side: [37.5, 42.4], end: [42.4, 46.0] };
+const DURATION = 46.0;
+
+const LOGO = document.querySelector("#bug svg").outerHTML;
+const ICON = {
+  search: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>',
+  cal: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3.5v3M16 3.5v3M4 10h16"/></svg>',
+  card: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/></svg>',
+  folder: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7a2 2 0 0 1 2-2h4l2 2h6a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/></svg>',
+  team: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c.6-3 2.8-4.8 5.5-4.8s4.9 1.8 5.5 4.8"/><circle cx="17" cy="9" r="2.4"/><path d="M16.5 14.3c2 .3 3.6 1.9 4 4.2"/></svg>',
+  phone: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.1 3.8c.3-.3.8-.4 1.2-.2l2.2 1c.4.2.6.6.6 1.1l-.2 2.1c0 .3-.2.6-.4.8l-1.2 1.2c1.5 2.4 3.4 4.3 5.8 5.8l1.2-1.2c.2-.2.5-.4.8-.4l2.1-.2c.5 0 .9.2 1.1.6l1 2.2c.2.4.1.9-.2 1.2l-1.3 1.3c-.4.4-1 .6-1.6.5C10.8 19.8 4.2 13.2 3.4 5.7c-.1-.6.1-1.2.5-1.6L7.1 3.8Z"/></svg>',
+};
+
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const lin = (t, a, b) => clamp((t - a) / (b - a));
+const eo = (x) => 1 - Math.pow(1 - x, 3);
+const eio = (x) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
+const back = (x) => { const c = 1.7; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); };
+const inS = (t, k) => t >= S[k][0] && t < S[k][1];
+const pad = (n) => String(n).padStart(5, "0");
+
+/* Mot qui monte avec un léger flou, apparition au temps `at`. */
+function word(t, at, html, cls = "") {
+  const k = eo(lin(t, at, at + 0.38));
+  return `<span class="w ${cls}" style="opacity:${k};transform:translateY(${(1 - k) * 46}px);filter:blur(${(1 - k) * 8}px)">${html}</span>`;
+}
+function words(t, at, text, step = 0.09) {
+  return text.split(" ").map((w, i) => word(t, at + i * step, w)).join(" ");
+}
+function fadeOut(t, end, d = 0.25) { return 1 - lin(t, end - d, end); }
+
+let pending = [];
+function setImg(el, src) {
+  if (!src) { el.style.display = "none"; return; }
+  el.style.display = "block";
+  if (el.getAttribute("src") !== src) { el.setAttribute("src", src); pending.push(el.decode().catch(() => {})); }
+}
+
+function seek(t) {
+  pending = [];
+  const clipImg = document.getElementById("clipImg"), devImg = document.getElementById("devImg");
+  const clip = document.getElementById("clip"), dev = document.getElementById("dev"), bg = document.getElementById("bg"), txt = document.getElementById("txt"), bug = document.getElementById("bug");
+  let html = "", clipSrc = null, devSrc = null, clipT = "", devT = "", bugOn = 0, bgOn = 0, clipOp = 1, devOp = 1;
+
+  // Formes de fond : légère dérive continue + thème « applications » sur la scène app.
+  const drift = Math.sin(t * 0.35) * 14;
+  document.getElementById("s1").setAttribute("transform", `translate(${drift} ${-150 - drift * 0.6})`);
+  document.getElementById("s2").setAttribute("transform", `translate(${-drift * 0.8} ${drift})`);
+  const appTheme = inS(t, "app");
+  document.getElementById("s1").setAttribute("fill", appTheme ? "url(#gk)" : "url(#gp)");
+  document.getElementById("s2").setAttribute("fill", appTheme ? "url(#gi)" : "url(#gc)");
+
+  /* 1. Accroche — commerçante, « Vous avez une activité ? » */
+  if (inS(t, "hook")) {
+    const lt = t - S.hook[0];
+    clipSrc = `_work/c-hook/${pad(Math.min(102, Math.floor(lt * FPS)) + 1)}.jpg`;
+    clipT = `scale(${1.02 + lt * 0.025})`;
+    bugOn = 1;
+    html += `<div class="t big" style="top:300px">${words(t, 0.35, "Vous avez")}<br>${word(t, 0.6, "une")} ${word(t, 0.7, '<span class="pill">activité ?</span>')}</div>`;
+  }
+
+  /* 2. Le quotidien — trois plans, trois mots. */
+  if (inS(t, "daily")) {
+    const cuts = [[3.2, "c-phone", "Les appels."], [4.8, "c-paper", "Les papiers."], [6.4, "c-night", "Les relances."]];
+    let idx = 0; cuts.forEach((c, i) => { if (t >= c[0]) idx = i; });
+    const [c0, dir, label] = cuts[idx];
+    const lt = t - c0;
+    clipSrc = `_work/${dir}/${pad(Math.min(53, Math.floor(lt * FPS)) + 1)}.jpg`;
+    clipT = `scale(${1.06 - lt * 0.03})`;
+    bugOn = 1;
+    const k = back(clamp(lt / 0.32));
+    html += `<div class="t mid" style="top:${1240}px"><span class="w pill ink" style="transform:scale(${0.6 + 0.4 * k}) rotate(-2deg);opacity:${clamp(lt / 0.15)}">${label}</span></div>`;
+    if (t > 6.9) html += `<div class="t sub" style="top:1400px;opacity:${eo(lin(t, 6.9, 7.3)) * fadeOut(t, 8.0)}">… et les journées filent vite.</div>`;
+  }
+
+  /* 3. Flow — « On vous accompagne » */
+  if (inS(t, "flow")) {
+    bgOn = 1;
+    const lt = t - S.flow[0];
+    const lk = back(clamp(lt / 0.5));
+    html += `<div class="t" style="top:470px;opacity:${clamp(lt / 0.2)}"><div class="end-logo" style="font-size:110px;transform:scale(${0.7 + 0.3 * lk})">${LOGO.replace("<svg", '<svg style="width:110px;height:110px"')}<span style="color:#131313">Flow</span></div></div>`;
+    html += `<div class="t big" style="top:780px;color:#131313;text-shadow:none">${words(t, 8.5, "On vous")}<br>${word(t, 8.75, '<span class="pill ink">accompagne.</span>')}</div>`;
+    html += `<div class="t sub" style="top:1060px;color:#3c3530;text-shadow:none">${words(t, 9.4, "dans votre activité, pas à pas.", 0.07)}</div>`;
+  }
+
+  /* 4. Site internet — tablette paysage, parcours client. */
+  if (inS(t, "site")) {
+    bgOn = 1;
+    const lt = t - S.site[0];
+    devSrc = `_work/dev-site/${pad(Math.min(233, Math.floor(lt * FPS)))}.png`;
+    devT = `translateY(40px) scale(0.8)`;
+    html += `<div class="t kick" style="top:250px;opacity:${eo(lin(t, 11.8, 12.2))}">Sites internet</div>`;
+    html += `<div class="t mid" style="top:310px;color:#131313;text-shadow:none">${words(t, 12.0, "Un site qui vous amène")}<br>${word(t, 12.35, "des")} ${word(t, 12.45, '<span class="pill ink">clients.</span>')}</div>`;
+    const orbs = [[13.7, "1", ICON.search, "Ils vous<br>trouvent"], [14.35, "2", ICON.cal, "Ils<br>réservent"], [14.95, "3", ICON.card, "Ils<br>paient"]];
+    html += `<div class="orbs" style="top:1330px">` + orbs.map(([at, n, ic, lb]) => { const k = back(clamp((t - at) / 0.4)); return `<div class="orb" style="transform:scale(${k});opacity:${clamp((t - at) / 0.15)}"><b>${n}</b>${ic}<span>${lb}</span></div>`; }).join("") + `</div>`;
+    if (t > 16.7) { const k = back(clamp((t - 16.7) / 0.4)); html += `<div class="t" style="top:1610px"><span class="chip" style="display:inline-flex;transform:scale(${k})">Déjà un site ? On l’améliore.</span></div>`; }
+  }
+
+  /* 5. Application — téléphone, thème calcaire/encre. */
+  if (inS(t, "app")) {
+    bgOn = 1;
+    const lt = t - S.app[0];
+    devSrc = `_work/dev-app/${pad(Math.min(227, Math.floor(lt * FPS)))}.png`;
+    devT = `translateY(150px) scale(0.6)`;
+    html += `<div class="t kick" style="top:250px;color:#00a8b2;opacity:${eo(lin(t, 19.6, 20.0))}">Applications sur mesure</div>`;
+    html += `<div class="t mid" style="top:310px;color:#131313;text-shadow:none">${words(t, 19.8, "Une application")}<br>${word(t, 20.15, '<span class="pill ink">pensée pour vous.</span>')}</div>`;
+    const chips = [[24.0, ICON.folder, "Dossiers"], [24.55, ICON.cal, "Planning"], [25.05, ICON.team, "Équipe"]];
+    html += `<div class="chips" style="top:1560px">` + chips.map(([at, ic, lb]) => { const k = back(clamp((t - at) / 0.4)); return `<div class="chip" style="transform:scale(${k});opacity:${clamp((t - at) / 0.15)}">${ic}${lb}</div>`; }).join("") + `</div>`;
+  }
+
+  /* 6. Tutoriel — clip réel (écran Flow incrusté), zoom caméra, puis tablette 3D. */
+  if (inS(t, "tuto")) {
+    const lt = t - S.tuto[0];
+    if (lt < 2.75) {
+      const fi = Math.min(79, Math.floor(lt * 25));
+      clipSrc = `_work/c-tab/${pad(Math.min(95, Math.floor(lt * FPS)) + 1)}.jpg`;
+      // Centre de l'écran suivi dans le clip (corners.json) : cible du zoom.
+      const q = CORNERS[fi] || CORNERS[CORNERS.length - 1];
+      const cx = (q[0][0] + q[1][0] + q[2][0] + q[3][0]) / 4, cy = (q[0][1] + q[1][1] + q[2][1] + q[3][1]) / 4;
+      const z = eio(lin(lt, 1.0, 2.75));
+      const sc = 1 + z * 2.1;
+      const tx = (540 - cx) * z, ty = (960 - cy) * z;
+      const rot = z * 12; // l'écran du clip penche d'environ -12° : on le redresse en entrant
+      clipT = `translate(${tx}px, ${ty}px) rotate(${rot}deg) scale(${sc})`;
+      document.getElementById("clipImg").style.transformOrigin = `${cx}px ${cy}px`;
+      document.getElementById("clipImg").style.filter = `blur(${z * z * 3}px)`;
+      bugOn = 1 - z;
+      clipOp = 1 - lin(lt, 2.35, 2.75);
+      html += `<div class="t big" style="top:300px;opacity:${eo(lin(t, 27.4, 27.8)) * (1 - z)}">${words(t, 27.4, "Pour commencer,")}<br>${word(t, 27.75, '<span class="pill">c’est simple.</span>')}</div>`;
+    }
+    if (lt >= 2.35) {
+      bgOn = 1;
+      const dt = lt - 2.6;
+      devSrc = `_work/dev-tuto/${pad(clamp(Math.floor(dt * FPS), 0, 236))}.png`;
+      devT = `translateY(120px) scale(0.86)`;
+      devOp = lin(lt, 2.35, 2.75);
+      const steps = [[29.9, 32.4, "1", 'Allez sur <em>flowsurmesure.com</em>'], [32.4, 34.1, "2", "Descendez en bas de la page"], [34.1, 37.5, "3", "Répondez à quelques questions"]];
+      for (const [a, b, n, lb] of steps) {
+        if (t >= a - 0.05 && t < b) {
+          const k = eo(lin(t, a, a + 0.35)), o = fadeOut(t, b, 0.2);
+          html += `<div class="step" style="opacity:${k * o};transform:translateY(${(1 - k) * -30}px)"><b>${n}</b><span>${lb}</span></div>`;
+        }
+      }
+    }
+  }
+
+  /* 7. À vos côtés — poignée de main + badge maintenance. */
+  if (inS(t, "side")) {
+    const lt = t - S.side[0];
+    clipSrc = `_work/c-hand/${pad(Math.min(155, Math.floor(lt * FPS)) + 1)}.jpg`;
+    clipT = `scale(${1.04 + lt * 0.015})`;
+    bugOn = 1;
+    html += `<div class="t big" style="top:300px">${word(t, 37.7, '<span class="pill">À vos côtés,</span>')}</div>`;
+    html += `<div class="t sub" style="top:470px">${words(t, 38.2, "même après la mise en ligne.", 0.07)}</div>`;
+    if (t > 40.0) { const k = back(clamp((t - 40.0) / 0.45)); html += `<div class="badge" style="left:360px;top:1180px;transform:rotate(${8 - (1 - k) * 30}deg) scale(${k})"><strong>1 mois</strong><span>de maintenance<br>offert</span></div>`; }
+  }
+
+  /* 8. Fin — logo, appel, coordonnées. */
+  if (inS(t, "end")) {
+    bgOn = 1;
+    const lt = t - S.end[0];
+    const lk = back(clamp(lt / 0.5));
+    html += `<div class="t" style="top:500px;opacity:${clamp(lt / 0.2)}"><div class="end-logo" style="transform:scale(${0.7 + 0.3 * lk})">${LOGO}<span style="color:#131313">Flow</span></div></div>`;
+    html += `<div class="t mid" style="top:800px;color:#131313;text-shadow:none">${word(t, 42.9, '<span class="pill ink">Parlons de votre projet.</span>')}</div>`;
+    html += `<div class="t" style="top:1330px;opacity:${eo(lin(t, 43.4, 43.8))}"><div class="phone">${ICON.phone}07 49 17 83 91</div></div>`;
+    html += `<div class="t sub" style="top:1450px;opacity:${eo(lin(t, 43.6, 44.0))}">flowsurmesure.com</div>`;
+    html += `<div class="t kick" style="top:1560px;opacity:${eo(lin(t, 43.8, 44.2))}">Accompagnement · Sites · Applications</div>`;
+  }
+
+  // Coupe douce (fondu au noir très bref) aux changements de scène.
+  const bounds = Object.values(S).map((s) => s[0]).filter((x) => x > 0);
+  let dip = 0; for (const b of bounds) dip = Math.max(dip, 1 - Math.abs(t - b) / 0.12);
+
+  setImg(clipImg, clipSrc); clipImg.style.transform = clipT;
+  if (!inS(t, "tuto")) { clipImg.style.filter = "none"; clipImg.style.transformOrigin = "50% 50%"; }
+  clip.style.display = clipSrc ? "block" : "none"; clip.style.opacity = clipOp;
+  setImg(devImg, devSrc); devImg.style.transform = devT; dev.style.opacity = devOp;
+  bg.style.display = bgOn ? "block" : "none";
+  bug.style.opacity = bugOn * 0.9;
+  txt.innerHTML = html;
+  document.getElementById("stage").style.filter = dip > 0 ? `brightness(${1 - dip * 0.6})` : "none";
+}
+
+let CORNERS = [];
+window.seek = seek;
+window.__frameReady = () => Promise.all(pending);
+window.__ready = fetch("_work/tab-comp/corners.json").then((r) => r.json()).then((c) => { CORNERS = c; }).then(() => document.fonts.ready);
+</script>
+</body>
+</html>

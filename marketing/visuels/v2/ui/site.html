@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>UI — Site</title>
+  <style>
+    @font-face { font-family: "Manrope"; src: url("../../../../public/brand/fonts/Manrope-variable.ttf") format("truetype"); font-weight: 200 800; }
+    @font-face { font-family: "Inter"; src: url("../../../../public/brand/fonts/Inter-variable.ttf") format("truetype"); font-weight: 100 900; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    /* Lu à ~42 % sur l'affiche : aucun texte utile sous 28 px ici.
+       Site générique « votre entreprise » : chaque métier doit s'y projeter. */
+    html, body { width: 1280px; height: 800px; overflow: hidden; background: #fffcfa; color: #131313; font-family: Inter, sans-serif; }
+    body { display: flex; flex-direction: column; }
+    .chrome {
+      display: flex; align-items: center; gap: 22px;
+      padding: 18px 28px; background: #efe7dc; border-bottom: 2px solid #e2d6c7;
+    }
+    .dots { display: flex; gap: 10px; }
+    .dots i { width: 18px; height: 18px; border-radius: 50%; background: #d3c5b4; }
+    .url {
+      flex: 1; display: flex; align-items: center; gap: 14px;
+      background: #fffcfa; border-radius: 999px; padding: 12px 26px;
+      font: 600 28px Inter, sans-serif; color: #3c3530; letter-spacing: -0.01em;
+    }
+    .url svg { width: 26px; height: 26px; color: #00a8b2; }
+    nav { display: flex; align-items: center; padding: 26px 56px; }
+    .logo { display: flex; align-items: center; gap: 14px; font-family: Manrope, sans-serif; font-weight: 800; font-size: 36px; letter-spacing: -0.04em; }
+    .logo i { width: 44px; height: 44px; border-radius: 12px; border: 3px dashed #c45e32; }
+    .btn {
+      margin-left: auto; background: #00a8b2; color: #fff; border: 0; border-radius: 14px;
+      padding: 18px 30px; font: 700 28px Inter, sans-serif; letter-spacing: -0.02em;
+    }
+    main { flex: 1; padding: 10px 56px 48px; display: flex; flex-direction: column; }
+    h1 { font-family: Manrope, sans-serif; font-weight: 800; font-size: 92px; line-height: 0.95; letter-spacing: -0.05em; }
+    h1 em { font-style: normal; color: #00a8b2; }
+    .feat { margin-top: auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .feat div {
+      display: flex; align-items: center; gap: 16px;
+      background: #fff; border: 2px solid #eadfd2; border-radius: 20px; padding: 22px 22px;
+      font: 700 30px Manrope, sans-serif; letter-spacing: -0.03em;
+    }
+    .feat svg { width: 40px; height: 40px; flex: none; color: #00a8b2; }
+  </style>
+</head>
+<body>
+  <div class="chrome">
+    <div class="dots"><i></i><i></i><i></i></div>
+    <div class="url">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/></svg>
+      www.votre-entreprise.fr
+    </div>
+  </div>
+  <nav>
+    <div class="logo"><i></i>Votre entreprise</div>
+    <button class="btn">Prendre RDV</button>
+  </nav>
+  <main>
+    <h1>Votre activité,<br><em>en ligne.</em></h1>
+    <div class="feat">
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>Sur Google</div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3.5v3M16 3.5v3M4 10h16"/></svg>Rendez-vous</div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/></svg>Paiement</div>
+    </div>
+  </main>
+</body>
+</html>

@@ -32,6 +32,7 @@ const JOBS = [
   { file: "motion-plateformes.html", out: "motion-plateformes.mp4", w: 1080, h: 1350, duration: 12, fps: 30 },
   { file: "motion-solutions.html", out: "motion-solutions.mp4", w: 1080, h: 1350, duration: 12, fps: 30 },
   { file: "motion-flow.html", out: "motion-flow.mp4", w: 1920, h: 1080, duration: 15, fps: 30 },
+  { file: "motion-lancement.html", out: "motion-lancement.mp4", w: 1920, h: 1080, duration: 30, fps: 30, scale: 2 },
 ];
 
 function serve() {
@@ -73,7 +74,7 @@ async function capture(page, job, port) {
   fs.mkdirSync(framesDir, { recursive: true });
   const total = job.duration * job.fps;
 
-  await page.setViewport({ width: job.w, height: job.h, deviceScaleFactor: 2 });
+  await page.setViewport({ width: job.w, height: job.h, deviceScaleFactor: job.scale ?? 2 });
   await page.goto(`http://127.0.0.1:${port}/marketing/visuels/${job.file}`, {
     waitUntil: "networkidle0",
     timeout: 60000,

@@ -8,8 +8,10 @@ import { SITE } from '@/lib/site'
  */
 
 const MARK = 'https://flowsurmesure.com/brand/flow-mark.png'
-const DISPLAY = "Manrope,'Segoe UI',Helvetica,Arial,sans-serif"
-const TEXT = "Inter,'Segoe UI',Helvetica,Arial,sans-serif"
+const MANROPE = 'https://flowsurmesure.com/brand/fonts/Manrope-variable.ttf'
+const INTER = 'https://flowsurmesure.com/brand/fonts/Inter-variable.ttf'
+const DISPLAY = 'Manrope,sans-serif'
+const TEXT = 'Inter,sans-serif'
 
 function esc(value: string): string {
   return value
@@ -85,10 +87,14 @@ function shell(preheader: string, inner: string): string {
 <meta name="color-scheme" content="light">
 <meta name="supported-color-schemes" content="light">
 <title>Flow</title>
+<style>
+@font-face{font-family:Manrope;font-style:normal;font-weight:600 800;src:url('${MANROPE}') format('truetype');}
+@font-face{font-family:Inter;font-style:normal;font-weight:400 600;src:url('${INTER}') format('truetype');}
+</style>
 </head>
-<body style="margin:0;padding:0;background:#10282c;">
+<body style="margin:0;padding:0;background:#124248;font-family:${TEXT};">
 <div style="display:none;max-height:0;overflow:hidden;opacity:0;mso-hide:all;">${esc(preheader)}</div>
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" bgcolor="#10282c" style="background:#10282c;margin:0;padding:0;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" bgcolor="#124248" style="background:#124248;background-image:linear-gradient(165deg,#1a6a72 0%,#124248 42%,#141816 100%);margin:0;padding:0;">
   <tr>
     <td align="center" style="padding:28px 16px 36px;">
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;">
@@ -116,8 +122,8 @@ function header(kicker: string, aside?: string): string {
             </tr>
           </table>
         </td>
-        <td valign="middle" align="right" style="font-family:${TEXT};font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#FFFCFA;">
-          ${esc(kicker)}${aside ? `<br><span style="letter-spacing:0.14em;color:#7DF4FF;">${aside}</span>` : ''}
+        <td valign="middle" align="right" style="font-family:${TEXT};font-size:14px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#FFFCFA;">
+          ${esc(kicker)}${aside ? `<br><span style="letter-spacing:0.2em;color:#00F0FF;">${aside}</span>` : ''}
         </td>
       </tr>
     </table>
@@ -129,7 +135,7 @@ function pills(words: string[]): string {
   const cells = words
     .map(
       (word, index) =>
-        `${index ? '<td width="12" style="width:12px;font-size:0;line-height:0;">&nbsp;</td>' : ''}<td width="92" height="92" align="center" valign="middle" bgcolor="#131313" style="width:92px;height:92px;background:#131313;border-radius:46px;font-family:${TEXT};font-size:10px;font-weight:600;letter-spacing:0.04em;line-height:1.2;text-transform:uppercase;color:#FFFCFA;">${esc(word)}</td>`
+        `${index ? '<td width="12" style="width:12px;font-size:0;line-height:0;">&nbsp;</td>' : ''}<td width="92" height="92" align="center" valign="middle" bgcolor="#131313" style="width:92px;height:92px;background:#131313;border-radius:46px;font-family:${TEXT};font-size:11px;font-weight:600;letter-spacing:0;line-height:1.15;color:#FFFCFA;">${esc(word)}</td>`
     )
     .join('')
   return `<table role="presentation" cellpadding="0" cellspacing="0" style="margin-top:28px;"><tr>${cells}</tr></table>`
@@ -140,10 +146,10 @@ function footer(): string {
   <td style="padding:22px 8px 0;">
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
       <tr>
-        <td valign="middle" style="font-family:${DISPLAY};font-size:15px;font-weight:800;letter-spacing:-0.03em;color:#7DF4FF;">
-          <a href="${SITE.phoneHref}" style="color:#7DF4FF;text-decoration:none;">${SITE.phoneDisplay}</a>
+        <td valign="middle" style="font-family:${DISPLAY};font-size:18px;font-weight:800;letter-spacing:-0.03em;color:#FFFCFA;">
+          <a href="${SITE.phoneHref}" style="color:#FFFCFA;text-decoration:none;font-family:${DISPLAY};font-weight:800;">${SITE.phoneDisplay}</a>
         </td>
-        <td valign="middle" align="right" style="font-family:${TEXT};font-size:13px;font-weight:600;color:#FFFCFA;">
+        <td valign="middle" align="right" style="font-family:${TEXT};font-size:14px;font-weight:500;color:#FFFCFA;">
           <a href="https://flowsurmesure.com" style="color:#FFFCFA;text-decoration:none;">flowsurmesure.com</a>
         </td>
       </tr>
@@ -165,11 +171,11 @@ function cyanBand(lines: string[]): string {
   const body = lines
     .map(
       (line, index) =>
-        `<p style="margin:${index ? '10px' : '0'} 0 0;font-family:${index === lines.length - 1 ? DISPLAY : TEXT};font-size:${index === lines.length - 1 ? '18px' : '15px'};font-weight:${index === lines.length - 1 ? '800' : '400'};letter-spacing:${index === lines.length - 1 ? '-0.03em' : '0'};line-height:1.45;color:#10282c;">${line}</p>`
+        `<p style="margin:${index ? '10px' : '0'} 0 0;font-family:${TEXT};font-size:${index === lines.length - 1 ? '18px' : '16px'};font-weight:${index === lines.length - 1 ? '600' : '500'};letter-spacing:-0.02em;line-height:1.35;color:#131313;">${line}</p>`
     )
     .join('')
   return `<tr>
-  <td bgcolor="#1ecad2" style="background:#1ecad2;border-radius:0 0 40px 40px;padding:28px 32px 32px;">
+  <td bgcolor="#00C4D0" style="background:#00C4D0;border-radius:0 0 40px 40px;padding:28px 32px 32px;">
     ${body}
   </td>
 </tr>`
@@ -203,9 +209,9 @@ export function renderAckEmail(
 ${header(kicker)}
 ${paperOpen()}
   <h1 style="margin:0;font-family:${DISPLAY};font-size:36px;font-weight:800;letter-spacing:-0.045em;line-height:1.05;color:#131313;">${title}</h1>
-  <p style="margin:22px 0 0;font-family:${TEXT};font-size:16px;line-height:1.55;color:#131313;">${hello}</p>
-  <p style="margin:26px 0 8px;font-family:${TEXT};font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#C45E32;">${needLabel}</p>
-  <p style="margin:0;font-family:${TEXT};font-size:16px;line-height:1.55;color:#131313;">${esc(payload.need.trim())}</p>
+  <p style="margin:22px 0 0;font-family:${TEXT};font-size:16px;font-weight:400;line-height:1.55;color:#131313;">${hello}</p>
+  <p style="margin:26px 0 8px;font-family:${TEXT};font-size:14px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#C45E32;">${needLabel}</p>
+  <p style="margin:0;font-family:${TEXT};font-size:16px;font-weight:400;line-height:1.55;color:#131313;">${esc(payload.need.trim())}</p>
   ${pills(steps)}
 ${paperClose()}
 ${cyanBand([proof, followUp, cta])}
@@ -216,17 +222,17 @@ ${footer()}
 
 function temperatureBadge(temperature: LeadTemperature): string {
   if (temperature === 'chaud') {
-    return `<span style="display:inline-block;background:#C45E32;color:#FFFCFA;border-radius:999px;padding:4px 10px;font-family:${TEXT};font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;">Chaud</span>`
+    return `<span style="display:inline-block;background:#C45E32;color:#FFFCFA;border-radius:999px;padding:4px 12px;font-family:${TEXT};font-size:14px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;">Chaud</span>`
   }
   const label = temperature === 'tiède' ? 'Tiède' : 'Info'
-  return `<span style="display:inline-block;background:#131313;color:#FFFCFA;border-radius:999px;padding:4px 10px;font-family:${TEXT};font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;">${label}</span>`
+  return `<span style="display:inline-block;background:#131313;color:#FFFCFA;border-radius:999px;padding:4px 12px;font-family:${TEXT};font-size:14px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;">${label}</span>`
 }
 
 function field(label: string, value: string): string {
   return `<tr>
-  <td style="padding:10px 0;border-top:1px solid #E7E1D8;">
-    <p style="margin:0 0 3px;font-family:${TEXT};font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#C45E32;">${esc(label)}</p>
-    <p style="margin:0;font-family:${TEXT};font-size:15px;line-height:1.5;color:#131313;">${esc(value)}</p>
+  <td style="padding:10px 0;border-top:1px solid #D9C4A8;">
+    <p style="margin:0 0 3px;font-family:${TEXT};font-size:14px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#C45E32;">${esc(label)}</p>
+    <p style="margin:0;font-family:${TEXT};font-size:16px;font-weight:400;line-height:1.5;color:#131313;">${esc(value)}</p>
   </td>
 </tr>`
 }
@@ -254,8 +260,8 @@ ${paperOpen()}
     ${field('Email', payload.email.trim())}
     ${field('Téléphone', phone)}
   </table>
-  <p style="margin:26px 0 8px;font-family:${TEXT};font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#C45E32;">Brouillon à valider</p>
-  <div style="background:#F3EBE1;border-radius:16px;padding:16px 18px;font-family:${TEXT};font-size:14px;line-height:1.55;color:#131313;white-space:pre-wrap;">${esc(draft)}</div>
+  <p style="margin:26px 0 8px;font-family:${TEXT};font-size:14px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#C45E32;">Brouillon à valider</p>
+  <div style="background:#F3EBE1;border-radius:16px;padding:16px 18px;font-family:${TEXT};font-size:16px;font-weight:400;line-height:1.55;color:#131313;white-space:pre-wrap;">${esc(draft)}</div>
 ${paperClose()}
 ${cyanBand([
   'Répondre à ce mail part vers le prospect.',

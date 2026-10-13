@@ -40,7 +40,7 @@ function FloatingLogo() {
       <motion.div
         animate={{ y: [0, -20, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-        className="w-full max-w-md lg:max-w-xl"
+        className="w-full max-w-sm lg:max-w-[24rem]"
         style={{ perspective: 1100 }}
       >
         <motion.div
@@ -75,14 +75,15 @@ export const Hero = () => {
       <div className="max-w-7xl w-full mx-auto px-6 md:px-8 relative z-10 flex flex-col lg:flex-row items-center lg:justify-between gap-12 lg:gap-16">
         <div className="w-full lg:w-[55%] text-center lg:text-left">
           <FadeInUp>
-            <p className="kicker mb-6">{SITE.name}</p>
-            <h1 className="font-headline font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight text-on-surface">
+            {/* Titre de la page pour Google : ce que fait Flow, en clair. Le slogan garde son style. */}
+            <h1 className="kicker mb-6">{dict.hero.h1}</h1>
+            <p className="font-headline font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight text-on-surface">
               Build digital.
               <br />
               <span className="bg-gradient-to-r from-primary via-primary-container to-primary-fixed bg-clip-text text-transparent">
                 Make it flow.
               </span>
-            </h1>
+            </p>
           </FadeInUp>
 
           <FadeInUp delay={0.15} className="mt-8">
