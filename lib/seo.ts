@@ -79,11 +79,24 @@ export function serviceJsonLd(locale: Locale, item: Service) {
     '@type': 'Service',
     name: item.h1,
     serviceType: item.h1,
-    description: [item.headline, ...item.body].join(' '),
+    description: [item.headline, ...item.body, ...item.sections.flatMap((section) => section.paragraphs)].join(' '),
     url: abs(`/${locale}/services/${item.slug}`),
     inLanguage: locale,
     provider: { '@id': ORG_ID },
     areaServed: { '@type': 'Country', name: 'France' },
+  }
+}
+
+export function guideJsonLd(locale: Locale, item: Dictionary['guides']['items'][number]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: item.h1,
+    description: item.seoDescription,
+    url: abs(`/${locale}/guides/${item.slug}`),
+    inLanguage: locale,
+    author: { '@id': ORG_ID },
+    publisher: { '@id': ORG_ID },
   }
 }
 

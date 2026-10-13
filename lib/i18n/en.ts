@@ -108,6 +108,31 @@ export const en: Dictionary = {
           'Your website should do more than present your activity: it should bring visitors to write to you, book or pay, without friction.',
           'We frame the journey, then build it for you — admin, several languages, search — and put it online. The first month of maintenance is included.',
         ],
+        sections: [
+          {
+            title: 'Who it is for',
+            paragraphs: [
+              'For an activity that needs to be found and contacted: a trade, a practice, a shop, training, an organisation. You have no website yet, or the one you have does not turn visits into enquiries.',
+            ],
+          },
+          {
+            title: 'What your website does',
+            paragraphs: [
+              'It presents your activity in your words, then moves the visitor forward: write, book or pay. Titles and pages are written for your customers, and so Google can understand them.',
+              'Depending on the need: an admin, several languages, booking, payment. Nothing is imposed when your activity needs more than an off-the-shelf template.',
+            ],
+          },
+          {
+            title: 'How it happens',
+            paragraphs: [
+              'We frame the journey together, build it, and put it online. You talk to the person who develops it. The first month of maintenance is included.',
+            ],
+          },
+        ],
+        example: {
+          slug: 'drivin-chill',
+          text: 'Online booking and payment for Drivin & Chill',
+        },
         cta: 'Build my website',
         items: [
           'Corporate websites',
@@ -133,6 +158,25 @@ export const en: Dictionary = {
           'When spreadsheets, email and forms slow the team down, a business app takes over the process the way you actually work.',
           'Client portal, dashboards, workflows and connections to your tools: you talk to the person who designs and builds the solution, through to production.',
         ],
+        sections: [
+          {
+            title: 'Who it is for',
+            paragraphs: [
+              'For a team whose work still runs through spreadsheets, email and forms. You want a tool that follows the way you work, not the other way around.',
+            ],
+          },
+          {
+            title: 'What the application replaces',
+            paragraphs: [
+              'Files passed around, forgotten follow-ups, scattered information. The application holds the journey: client portal, back-office, access rights, dashboards.',
+              'It connects to what you already use when that helps. You keep one technical contact, from understanding the need through to production.',
+            ],
+          },
+        ],
+        example: {
+          slug: 'bai-consulting',
+          text: 'Learner space and administration for BAI Consulting & Formation',
+        },
         cta: 'Transform my process',
         items: [
           'Client portals',
@@ -158,6 +202,25 @@ export const en: Dictionary = {
           'A platform is your product: accounts, a journey, often a subscription. It has to hold up as usage grows.',
           'We design it for your users and for you: roles, payment, content and administration, on a base ready to evolve.',
         ],
+        sections: [
+          {
+            title: 'Who it is for',
+            paragraphs: [
+              'You want to launch a product: online training, a subscription, a marketplace, a tool used by several kinds of accounts. It is no longer a showcase site. It is the service itself.',
+            ],
+          },
+          {
+            title: 'What the platform carries',
+            paragraphs: [
+              'Accounts, roles, a journey, often a payment or a subscription. Administration lets you run offers, users and content without a spreadsheet on the side.',
+              'It is designed to evolve as usage grows, not to be rebuilt at the first new idea.',
+            ],
+          },
+        ],
+        example: {
+          slug: 'objectif-tcf',
+          text: 'Subscription and exam-simulation platform for Objectif TCF',
+        },
         cta: 'Build my platform',
         items: [
           'SaaS',
@@ -438,6 +501,103 @@ export const en: Dictionary = {
     budgets: ['< €2,000', '€2,000 – €5,000', '€5,000 – €10,000', '€10,000 – €20,000', '€20,000+'],
     timelines: ['As soon as possible', 'In 1–3 months', 'In 3–6 months', 'Later'],
   },
+  guides: {
+    label: 'Guides',
+    items: [
+      {
+        slug: 'reservation-paiement',
+        title: 'Online booking and payment',
+        h1: 'A website with online booking and payment',
+        seoDescription:
+          'A website that takes bookings and payments, without an email back-and-forth. A mobile journey, secure payment, and the first month of maintenance included.',
+        intro:
+          'Your customers want to book and pay when they think of it, not after an email thread. The website becomes the journey, from the choice through to payment.',
+        related: ['site-web'],
+        sections: [
+          {
+            title: 'What the visitor does',
+            paragraphs: [
+              'They pick a slot or an offer, pay, and receive a confirmation. On your side the booking is recorded: no double entry, no slot sold twice.',
+            ],
+          },
+          {
+            title: 'What we put in place',
+            paragraphs: [
+              'The journey, the payment, and if you need it a QR code or a dashboard to follow bookings. It is designed for the phone first, where the decision is made.',
+              'This is the kind of website built for Drivin & Chill: booking, payment and access control in one journey.',
+            ],
+          },
+        ],
+        example: {
+          slug: 'drivin-chill',
+          text: 'See the Drivin & Chill project',
+        },
+      },
+      {
+        slug: 'refonte-site',
+        title: 'Website redesign',
+        h1: 'Website redesign',
+        seoDescription:
+          'Your website no longer brings enquiries. We redesign it so it presents your activity and moves the visitor forward: contact, booking or payment.',
+        intro:
+          'A website that already exists but no longer works for you: vague pages, a broken journey, nothing happens after the visit. A redesign keeps what is right and replaces what blocks people.',
+        related: ['site-web'],
+        sections: [
+          {
+            title: 'When a redesign is the right move',
+            paragraphs: [
+              'People do not understand what you do, the phone does not ring, or you cannot add booking, payment or a client area. Repainting the same template does not fix that.',
+            ],
+          },
+          {
+            title: 'What we keep, what we change',
+            paragraphs: [
+              'We start from your activity today: what the visitor must understand, and the action they must be able to take. Search is carried into the titles and the structure, so you do not disappear from Google at the switch.',
+              'You talk to the person who builds the new website. The first month of maintenance is included after launch.',
+            ],
+          },
+        ],
+        example: {
+          slug: 'bai-consulting',
+          text: 'See the BAI Consulting & Formation project',
+        },
+      },
+      {
+        slug: 'site-ou-application',
+        title: 'Website or application',
+        h1: 'Showcase website or business application',
+        seoDescription:
+          'A website presents you and moves the visitor. A business application takes over the team’s work. We help you choose before building.',
+        intro:
+          'The two look similar from the outside. The difference is simple: the website serves customers who arrive. The application serves your team, or your customers once they have an account.',
+        related: ['site-web', 'application-web'],
+        sections: [
+          {
+            title: 'Choose a website if',
+            paragraphs: [
+              'You need to be found, explain your activity, and receive an enquiry, a booking or a payment. It is the front door. It can be enough for a long time.',
+            ],
+          },
+          {
+            title: 'Choose an application if',
+            paragraphs: [
+              'The daily work is the subject: files, approvals, client portals, dashboards. A showcase website will not organise that. The application takes over the process the way you do it.',
+            ],
+          },
+          {
+            title: 'If you are unsure',
+            paragraphs: [
+              'Describe the problem, not the tool. One call is enough to say whether you need a showcase, an internal tool, or both. Nothing forces you to build everything at once.',
+            ],
+          },
+        ],
+        example: {
+          slug: 'bai-consulting',
+          text: 'See a case that combines a public site and a learner space',
+        },
+      },
+    ],
+  },
   faq: {
     label: 'FAQ',
     title: 'FAQ — custom websites and business apps',
@@ -488,6 +648,9 @@ export const en: Dictionary = {
       { label: 'Websites', href: '/services/site-web' },
       { label: 'Business apps', href: '/services/application-web' },
       { label: 'Digital platforms', href: '/services/plateforme-web' },
+      { label: 'Booking and payment', href: '/guides/reservation-paiement' },
+      { label: 'Website redesign', href: '/guides/refonte-site' },
+      { label: 'Website or app', href: '/guides/site-ou-application' },
       { label: 'FAQ', href: '/faq' },
     ],
   },

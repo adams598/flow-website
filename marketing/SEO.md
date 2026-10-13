@@ -19,6 +19,7 @@ Ce document liste ce qui est fait sur le site et ce qui reste à faire en dehors
 | Pages service : titre de recherche, texte propre, description et partage (Open Graph) distincts de l’accueil | `app/[locale]/services/[slug]/page.tsx` |
 | Réalisations : description de recherche, partage social, lien vers la solution correspondante | `app/[locale]/realisations/[slug]/page.tsx` |
 | Fil d’Ariane visible, aligné sur les données structurées | `components/Breadcrumb.tsx` |
+| Pages pour les recherches sans le nom Flow : réservation et paiement, refonte, site ou application | `app/[locale]/guides/[slug]/page.tsx` |
 
 ## À faire par Adams (dans l'ordre)
 

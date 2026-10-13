@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { SITE } from '@/lib/site'
 import { locales } from '@/lib/i18n/config'
-import { realisationSlugs, serviceSlugs } from '@/lib/i18n'
+import { guideSlugs, realisationSlugs, serviceSlugs } from '@/lib/i18n'
 
 /**
  * Plan du site pour les moteurs de recherche : chaque page publique, dans chaque langue,
@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const paths: { path: string; priority: number; freq: 'weekly' | 'monthly' }[] = [
     { path: '', priority: 1, freq: 'weekly' },
     { path: '/faq', priority: 0.8, freq: 'monthly' },
+    ...guideSlugs().map((s) => ({ path: `/guides/${s}`, priority: 0.8, freq: 'monthly' as const })),
     ...serviceSlugs().map((s) => ({ path: `/services/${s}`, priority: 0.9, freq: 'monthly' as const })),
     ...realisationSlugs().map((s) => ({ path: `/realisations/${s}`, priority: 0.7, freq: 'monthly' as const })),
   ]

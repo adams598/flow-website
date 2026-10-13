@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation'
 import { ArrowRight } from 'lucide-react'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
-import { getDictionary, getService, serviceSlugs } from '@/lib/i18n'
+import { getDictionary, getRealisation, getService, serviceSlugs } from '@/lib/i18n'
 import { href, isLocale, locales } from '@/lib/i18n/config'
 import { Breadcrumb } from '@/components/Breadcrumb'
 import { JsonLd } from '@/components/JsonLd'
@@ -33,6 +33,10 @@ export default async function ServicePage({ params }: Props) {
   const item = getService(raw, slug)
   if (!item) notFound()
   const dict = getDictionary(raw)
+  const example = getRealisation(raw, item.example.slug)
+  const relatedGuides = dict.guides.items.filter((guide) =>
+    (guide.related as readonly string[]).includes(item.slug)
+  )
 
   return (
     <main className="min-h-screen">
@@ -72,6 +76,32 @@ export default async function ServicePage({ params }: Props) {
               </p>
             ))}
           </div>
+
+          <div className="space-y-10 mb-12">
+            {item.sections.map((section) => (
+              <section key={section.title}>
+                <h2 className="font-headline font-semibold text-xl text-on-surface mb-3">{section.title}</h2>
+                <div className="space-y-3 max-w-2xl">
+                  {section.paragraphs.map((paragraph) => (
+                    <p key={paragraph} className="font-body text-on-surface-variant leading-relaxed">
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+              </section>
+            ))}
+          </div>
+
+          {example && (
+            <p className="mb-12 font-body text-on-surface-variant">
+              <Link
+                href={href(raw, `/realisations/${example.slug}`)}
+                className="font-semibold text-primary hover:text-primary-container transition-colors"
+              >
+                {item.example.text}
+              </Link>
+            </p>
+          )}
 
           <h2 className="font-headline font-semibold text-xl text-on-surface mb-4">
             {dict.services.for}
@@ -113,6 +143,15 @@ export default async function ServicePage({ params }: Props) {
                   {service.title}
                 </Link>
               ))}
+            {relatedGuides.map((guide) => (
+              <Link
+                key={guide.slug}
+                href={href(raw, `/guides/${guide.slug}`)}
+                className="font-label text-sm font-semibold text-primary hover:text-primary-container transition-colors"
+              >
+                {guide.title}
+              </Link>
+            ))}
             <Link
               href={href(raw, '/faq')}
               className="font-label text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors"

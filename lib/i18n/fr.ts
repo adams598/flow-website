@@ -115,6 +115,31 @@ export const fr = {
           'Votre site doit faire plus que présenter votre activité : il doit amener le visiteur à vous écrire, réserver ou payer, sans friction.',
           'Nous cadrons le parcours, puis nous le construisons sur mesure — administration, plusieurs langues, référencement — et nous le mettons en ligne. Le premier mois de maintenance est offert.',
         ],
+        sections: [
+          {
+            title: 'Pour qui',
+            paragraphs: [
+              'Pour une activité qui doit être trouvée et contactée : artisan, cabinet, commerce, formation, organisme. Vous n’avez pas encore de site, ou celui que vous avez ne transforme pas les visites en demandes.',
+            ],
+          },
+          {
+            title: 'Ce que votre site fait',
+            paragraphs: [
+              'Il présente votre activité avec vos mots, puis il fait avancer le visiteur : écrire, réserver ou payer. Les titres et les pages sont écrits pour vos clients, et pour être compris par Google.',
+              'Selon le besoin : administration, plusieurs langues, réservation, paiement. Rien n’est imposé quand votre activité demande autre chose qu’un modèle prêt à l’emploi.',
+            ],
+          },
+          {
+            title: 'Comment ça se passe',
+            paragraphs: [
+              'On cadre le parcours ensemble, on le construit, on le met en ligne. Vous échangez avec la personne qui développe. Le premier mois de maintenance est offert.',
+            ],
+          },
+        ],
+        example: {
+          slug: 'drivin-chill',
+          text: 'Réservation et paiement en ligne pour Drivin & Chill',
+        },
         cta: 'Créer mon site',
         items: [
           'Sites corporate',
@@ -140,6 +165,25 @@ export const fr = {
           'Quand les tableurs, les emails et les formulaires ralentissent l’équipe, une application métier reprend le processus tel que vous travaillez vraiment.',
           'Espace client, tableaux de bord, workflows et connexions à vos outils : vous échangez avec la personne qui conçoit et développe la solution, jusqu’à la mise en production.',
         ],
+        sections: [
+          {
+            title: 'Pour qui',
+            paragraphs: [
+              'Pour une équipe dont le travail passe encore par Excel, les emails et les formulaires. Vous voulez un outil qui suit votre façon de faire, pas l’inverse.',
+            ],
+          },
+          {
+            title: 'Ce que l’application remplace',
+            paragraphs: [
+              'Les fichiers qui circulent, les relances oubliées, les informations éparpillées. L’application centralise le parcours : espace client, back-office, droits d’accès, tableaux de bord.',
+              'Elle se connecte à ce que vous utilisez déjà quand c’est utile. Vous gardez un interlocuteur technique, de la compréhension du besoin jusqu’à la mise en production.',
+            ],
+          },
+        ],
+        example: {
+          slug: 'bai-consulting',
+          text: 'Espace apprenant et administration pour BAI Consulting & Formation',
+        },
         cta: 'Transformer mon processus',
         items: [
           'Espaces clients',
@@ -165,6 +209,25 @@ export const fr = {
           'Une plateforme, c’est votre produit : des comptes, un parcours, souvent un abonnement. Elle doit tenir quand l’usage grandit.',
           'Nous la concevons pour vos utilisateurs et pour vous : rôles, paiement, contenu et administration, sur une base prête à évoluer.',
         ],
+        sections: [
+          {
+            title: 'Pour qui',
+            paragraphs: [
+              'Vous voulez lancer un produit : formation en ligne, abonnement, mise en relation, outil utilisé par plusieurs types de comptes. Ce n’est plus un site vitrine, c’est le service lui-même.',
+            ],
+          },
+          {
+            title: 'Ce que la plateforme porte',
+            paragraphs: [
+              'Des comptes, des rôles, un parcours, souvent un paiement ou un abonnement. L’administration vous permet de piloter offres, utilisateurs et contenu sans dépendre d’un tableur à côté.',
+              'Elle est conçue pour évoluer quand les usages grandissent, pas pour être refaite à la première nouvelle idée.',
+            ],
+          },
+        ],
+        example: {
+          slug: 'objectif-tcf',
+          text: 'Plateforme d’abonnement et de simulations pour Objectif TCF',
+        },
         cta: 'Construire ma plateforme',
         items: [
           'SaaS',
@@ -448,6 +511,103 @@ export const fr = {
     budgets: ['< 2 000 €', '2 000 – 5 000 €', '5 000 – 10 000 €', '10 000 – 20 000 €', '20 000 €+'],
     timelines: ['Dès que possible', 'Dans 1–3 mois', 'Dans 3–6 mois', 'Plus tard'],
   },
+  guides: {
+    label: 'Guides',
+    items: [
+      {
+        slug: 'reservation-paiement',
+        title: 'Réservation et paiement en ligne',
+        h1: 'Site internet avec réservation et paiement en ligne',
+        seoDescription:
+          'Un site qui prend les réservations et les paiements, sans aller-retour par email. Parcours mobile, paiement sécurisé, et le premier mois de maintenance offert.',
+        intro:
+          'Vos clients veulent réserver et payer quand ils y pensent, pas après un échange d’emails. Le site devient le parcours, du choix jusqu’au paiement.',
+        related: ['site-web'],
+        sections: [
+          {
+            title: 'Ce que le visiteur fait',
+            paragraphs: [
+              'Il choisit un créneau ou une offre, paie, et reçoit une confirmation. De votre côté, la réservation est enregistrée : plus de double saisie, plus de créneau vendu deux fois.',
+            ],
+          },
+          {
+            title: 'Ce qu’on met en place',
+            paragraphs: [
+              'Le parcours, le paiement, et si besoin un QR code ou un tableau de bord pour suivre les réservations. Le tout est pensé d’abord pour le téléphone, là où la décision se prend.',
+              'C’est le type de site réalisé pour Drivin & Chill : réservation, paiement et contrôle d’accès dans un même parcours.',
+            ],
+          },
+        ],
+        example: {
+          slug: 'drivin-chill',
+          text: 'Voir la réalisation Drivin & Chill',
+        },
+      },
+      {
+        slug: 'refonte-site',
+        title: 'Refonte de site internet',
+        h1: 'Refonte de site internet',
+        seoDescription:
+          'Votre site ne vous amène plus de demandes. On le refond pour qu’il présente votre activité et fasse avancer le visiteur : contact, réservation ou paiement.',
+        intro:
+          'Un site qui existe déjà mais qui ne travaille plus pour vous : pages floues, parcours cassé, rien qui ne se passe après la visite. La refonte reprend ce qui est juste, et remplace ce qui bloque.',
+        related: ['site-web'],
+        sections: [
+          {
+            title: 'Quand une refonte est le bon geste',
+            paragraphs: [
+              'Les gens ne comprennent pas ce que vous faites, le téléphone ne sonne pas, ou vous ne pouvez pas ajouter une réservation, un paiement, un espace client. Reprendre le même modèle en changeant les couleurs ne règle pas ça.',
+            ],
+          },
+          {
+            title: 'Ce qu’on garde, ce qu’on change',
+            paragraphs: [
+              'On part de votre activité d’aujourd’hui : ce que le visiteur doit comprendre, et l’action qu’il doit pouvoir faire. Le référencement est repris dans les titres et la structure, pour ne pas disparaître de Google au moment de la bascule.',
+              'Vous échangez avec la personne qui construit le nouveau site. Le premier mois de maintenance est offert après la mise en ligne.',
+            ],
+          },
+        ],
+        example: {
+          slug: 'bai-consulting',
+          text: 'Voir la réalisation BAI Consulting & Formation',
+        },
+      },
+      {
+        slug: 'site-ou-application',
+        title: 'Site ou application',
+        h1: 'Site vitrine ou application métier',
+        seoDescription:
+          'Un site présente et fait agir le visiteur. Une application métier reprend le travail de l’équipe. On vous aide à choisir avant de construire.',
+        intro:
+          'Les deux se ressemblent de l’extérieur. La différence est simple : le site sert vos clients qui arrivent. L’application sert votre équipe, ou vos clients une fois qu’ils ont un compte.',
+        related: ['site-web', 'application-web'],
+        sections: [
+          {
+            title: 'Choisissez le site si',
+            paragraphs: [
+              'Vous devez être trouvé, expliquer votre activité, et recevoir une demande, une réservation ou un paiement. C’est la porte d’entrée. Elle peut suffire longtemps.',
+            ],
+          },
+          {
+            title: 'Choisissez l’application si',
+            paragraphs: [
+              'Le travail quotidien est le sujet : dossiers, validations, espaces clients, tableaux de bord. Un site vitrine ne rangera pas ça. L’application reprend le processus tel que vous le faites.',
+            ],
+          },
+          {
+            title: 'Si vous hésitez',
+            paragraphs: [
+              'Décrivez le problème, pas l’outil. Un appel suffit pour dire si vous avez besoin d’une vitrine, d’un outil interne, ou des deux. Rien n’oblige à tout construire d’un coup.',
+            ],
+          },
+        ],
+        example: {
+          slug: 'bai-consulting',
+          text: 'Voir un cas qui mêle site public et espace apprenant',
+        },
+      },
+    ],
+  },
   faq: {
     label: 'Questions fréquentes',
     title: 'FAQ — création de site et application sur mesure',
@@ -499,6 +659,9 @@ export const fr = {
       { label: 'Sites web', href: '/services/site-web' },
       { label: 'Applications métier', href: '/services/application-web' },
       { label: 'Plateformes digitales', href: '/services/plateforme-web' },
+      { label: 'Réservation et paiement', href: '/guides/reservation-paiement' },
+      { label: 'Refonte de site', href: '/guides/refonte-site' },
+      { label: 'Site ou application', href: '/guides/site-ou-application' },
       { label: 'Questions fréquentes', href: '/faq' },
     ],
   },

@@ -13,12 +13,20 @@ export function getService(locale: Locale, slug: string) {
   return getDictionary(locale).services.items.find((item) => item.slug === slug)
 }
 
+export function getGuide(locale: Locale, slug: string) {
+  return getDictionary(locale).guides.items.find((item) => item.slug === slug)
+}
+
 export function getRealisation(locale: Locale, slug: string) {
   return getDictionary(locale).realisations.items.find((item) => item.slug === slug)
 }
 
 export function serviceSlugs() {
   return fr.services.items.map((item) => item.slug)
+}
+
+export function guideSlugs() {
+  return fr.guides.items.map((item) => item.slug)
 }
 
 export function realisationSlugs() {
