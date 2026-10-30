@@ -35,7 +35,7 @@ Ce document liste ce qui est fait sur le site et ce qui reste à faire en dehors
    entreprise, Codeur.com, Sortlist, La Fabrique du Net.
 5. **Liens vers le site** — demander aux clients un « Site réalisé par Flow » en pied de page avec lien vers
    flowsurmesure.com (Drivin & Chill, BAI, Objectif TCF). Un lien depuis un vrai site client vaut beaucoup.
-6. **Remettre drivinnchill.fr en ligne** (déploiement Vercel en pause) : un lien de réalisation cassé nuit à la confiance.
+6. **Drivin & Chill** : le site public est bloqué chez Vercel. Ne pas y lier. La réalisation pointe vers le dépôt GitHub. Objectif TCF : https://objectif-tcf.org/
 
 ## Prochaines étapes sur le site (si besoin)
 

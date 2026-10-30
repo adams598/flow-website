@@ -23,7 +23,7 @@ export const Offers = () => {
           </div>
         </FadeInUp>
 
-        <StaggerContainer className="grid lg:grid-cols-3 gap-6">
+        <StaggerContainer className="grid md:grid-cols-2 gap-6">
           {dict.services.items.map((service) => (
             <StaggerItem key={service.slug}>
               <motion.article

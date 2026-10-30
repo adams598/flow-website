@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="direction.css" />
+  <title>Post 2 · Comment ça marche</title>
+  <style>
+    /* Série de 3 posts — 2/3 : comment on vous accompagne. Seulement les étapes. */
+    .tick { left: 960px; top: 190px; }
+    .dot.a { left: 994px; top: 226px; }
+    .dot.b { left: 72px; top: 1000px; }
+    h1 { top: 196px; left: 104px; width: 760px; font-size: 64px; }
+    .steps { position: absolute; z-index: 6; left: 104px; top: 410px; width: 860px; list-style: none; display: flex; flex-direction: column; gap: 30px; }
+    .steps li { position: relative; display: flex; align-items: center; gap: 24px; }
+    .steps li + li::before { content: ""; position: absolute; left: 34px; top: -28px; width: 2px; height: 26px; background: repeating-linear-gradient(#131313 0 4px, transparent 4px 9px); }
+    .steps em { flex: none; display: grid; place-items: center; width: 70px; height: 70px; border-radius: 50%; background: #131313; color: #7df4ff;
+      font: 800 26px "Manrope", sans-serif; font-style: normal; box-shadow: 0 10px 18px rgba(0,0,0,0.22); }
+    .steps b { display: block; font: 800 38px "Manrope", sans-serif; letter-spacing: -0.035em; color: #131313; }
+    .steps span { display: block; margin-top: 4px; font: 500 22px "Inter", sans-serif; color: #5c534c; }
+    .after { position: absolute; z-index: 6; left: 330px; top: 990px; width: 660px; color: #fffcfa; }
+    .after .label { font: 600 14px "Inter", sans-serif; letter-spacing: 0.2em; text-transform: uppercase; color: #7df4ff; }
+    .after p { margin-top: 10px; font: 800 34px/1.12 "Manrope", sans-serif; letter-spacing: -0.035em; }
+    .cta { position: absolute; z-index: 6; left: 330px; top: 1140px; padding: 13px 24px; border-radius: 999px; background: #131313; color: #fffcfa;
+      font: 600 18px "Inter", sans-serif; box-shadow: 0 12px 24px rgba(0,0,0,0.25); }
+    .serie { position: absolute; z-index: 7; right: 56px; top: 92px; font: 600 13px "Inter", sans-serif; letter-spacing: 0.18em; color: rgba(255,252,250,0.75); }
+  </style>
+</head>
+<body>
+  <article class="poster">
+    <svg class="shapes" viewBox="0 0 1080 1350" aria-hidden="true">
+      <defs>
+        <linearGradient id="cyan" x1="300" y1="900" x2="980" y2="1290" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#00C4D0"/><stop offset="0.2" stop-color="#007C88"/><stop offset="1" stop-color="#003E46"/>
+        </linearGradient>
+        <linearGradient id="paper" x1="80" y1="160" x2="900" y2="960" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#FFFFFF"/><stop offset="0.72" stop-color="#FFFCFA"/><stop offset="1" stop-color="#F3EBE1"/>
+        </linearGradient>
+        <filter id="lift" x="-30%" y="-30%" width="160%" height="160%">
+          <feDropShadow dx="0" dy="22" stdDeviation="16" flood-color="#041416" flood-opacity="0.28"/>
+        </filter>
+      </defs>
+      <path filter="url(#lift)" fill="url(#cyan)" d="M270 940 C 480 860, 860 870, 1080 950 C 1200 1000, 1150 1260, 880 1290 C 600 1320, 300 1290, 250 1170 C 210 1080, 210 980, 270 940 Z"/>
+      <path filter="url(#lift)" fill="url(#paper)" d="M60 260 C 60 170, 240 150, 460 160 C 720 170, 960 140, 1020 260 C 1080 380, 1030 600, 1010 740 C 990 870, 800 910, 540 905 C 280 900, 60 880, 50 740 C 42 600, 60 380, 60 260 Z"/>
+    </svg>
+    <span class="tick" aria-hidden="true"></span>
+    <span class="dot a" aria-hidden="true"></span>
+    <span class="dot b" aria-hidden="true"></span>
+
+    <header class="brand">
+      <div class="mark">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="l" x1="48" y1="18" x2="112" y2="240" gradientUnits="userSpaceOnUse"><stop stop-color="#C9FDFF"/><stop offset="0.42" stop-color="#2EEAF8"/><stop offset="1" stop-color="#00A8B2"/></linearGradient>
+            <linearGradient id="r" x1="150" y1="12" x2="224" y2="248" gradientUnits="userSpaceOnUse"><stop stop-color="#7DF4FF"/><stop offset="0.48" stop-color="#00C4D4"/><stop offset="1" stop-color="#006970"/></linearGradient>
+          </defs>
+          <path d="M128 16 24 236h54L128 92Z" fill="url(#l)"/><path d="M128 16 232 236h-54L128 92Z" fill="url(#r)"/>
+        </svg>
+        <span class="word">Flow</span>
+      </div>
+      <span class="kicker">Notre méthode</span>
+    </header>
+    <span class="serie">2 / 3</span>
+
+    <h1>On vous accompagne,<br><span class="pill">pas à pas.</span></h1>
+
+    <ol class="steps">
+      <li><em>1</em><div><b>On vous écoute</b><span>Un appel pour comprendre votre activité et votre besoin.</span></div></li>
+      <li><em>2</em><div><b>On conçoit avec vous</b><span>Vous validez chaque étape avant qu’on construise.</span></div></li>
+      <li><em>3</em><div><b>On construit</b><span>Vous suivez l’avancée en direct.</span></div></li>
+      <li><em>4</em><div><b>C’est en ligne</b><span>Votre site ou votre appli est prêt à servir vos clients.</span></div></li>
+    </ol>
+
+    <section class="after">
+      <p class="label">Et après ?</p>
+      <p>On reste à vos côtés,<br>même après la mise en ligne.</p>
+    </section>
+
+    <p class="cta" data-cta>Un projet ? Écrivez-nous en message privé.</p>
+
+    <footer class="contact">
+      <p class="phone">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.1 3.8c.3-.3.8-.4 1.2-.2l2.2 1c.4.2.6.6.6 1.1l-.2 2.1c0 .3-.2.6-.4.8l-1.2 1.2c1.5 2.4 3.4 4.3 5.8 5.8l1.2-1.2c.2-.2.5-.4.8-.4l2.1-.2c.5 0 .9.2 1.1.6l1 2.2c.2.4.1.9-.2 1.2l-1.3 1.3c-.4.4-1 .6-1.6.5C10.8 19.8 4.2 13.2 3.4 5.7c-.1-.6.1-1.2.5-1.6L7.1 3.8Z"/></svg>
+        07 49 17 83 91
+      </p>
+      <p class="url">flowsurmesure.com</p>
+    </footer>
+  </article>
+  <script>
+    const tel = location.search.includes("cta=tel");
+    document.querySelectorAll("[data-cta]").forEach((el) => {
+      el.textContent = tel ? "Un projet ? Appelez-nous au 07 49 17 83 91." : "Un projet ? Écrivez-nous en message privé.";
+    });
+  </script>
+</body>
+</html>

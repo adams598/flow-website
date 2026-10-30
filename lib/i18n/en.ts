@@ -3,20 +3,22 @@ import type { Dictionary } from './types'
 
 export const en: Dictionary = {
   meta: {
-    title: `${SITE.name} — Custom websites and business applications`,
+    title: `${SITE.name} — Custom websites in Limoges`,
     description:
-      'Custom websites and business applications: found on Google, with online booking and payment. End-to-end support and the first month of maintenance included.',
+      'Custom websites, business apps and AI agents in Limoges, Haute-Vienne. Found on Google, with online booking and payment. First month of maintenance included.',
     keywords: [
       'Flow',
       'custom website',
       'business application',
       'digital platform',
+      'custom AI agent',
+      'website design Limoges',
       'web development',
       'Next.js',
     ],
-    ogTitle: `${SITE.name} — Custom websites and business applications`,
+    ogTitle: `${SITE.name} — Custom websites in Limoges`,
     ogDescription:
-      'We support you from idea to launch: a website that brings you customers, an app built around the way you work. First month of maintenance included.',
+      'Custom websites, apps and AI agents in Limoges. From the idea through to launch. First month of maintenance included.',
   },
   nav: {
     cta: 'Talk about my project',
@@ -45,10 +47,10 @@ export const en: Dictionary = {
     dark: 'Dark theme',
   },
   hero: {
-    h1: `${SITE.name} — Custom websites and business applications`,
-    lead: 'We design custom digital solutions to simplify your processes, improve customer journeys and grow your business.',
+    h1: `${SITE.name} — Custom websites, apps and AI agents`,
+    lead: 'We design custom digital solutions to simplify your processes, improve customer journeys and grow your business. In Limoges, or remotely.',
     secondaryCta: 'See our work',
-    underCta: ['Website', 'Business app', 'Platform', 'Automation'],
+    underCta: ['Website', 'Business app', 'Platform', 'AI agents'],
   },
   problems: {
     kicker: 'Your context',
@@ -82,7 +84,7 @@ export const en: Dictionary = {
   },
   offers: {
     kicker: 'Solutions',
-    title: 'Three entry points. One standard: a solution that fits.',
+    title: 'Four entry points. One standard: a solution that fits.',
     unsureTitle: 'Not sure exactly what you need?',
     unsureBody:
       'Describe your idea, your problem or your process. We will help you choose the right solution.',
@@ -95,6 +97,9 @@ export const en: Dictionary = {
     readyBody: 'Describe your need: we will help you frame the most suitable solution.',
     fallbackTitle: 'Service',
     also: 'See also',
+    tiersTitle: 'Three ways to start',
+    tiersNote:
+      'These amounts frame a first pass, not a firm quote. After launch, model usage and follow-up are quoted separately, usually a few hundred euros a month.',
     items: [
       {
         slug: 'site-web',
@@ -232,6 +237,91 @@ export const en: Dictionary = {
           'Multi-user platforms',
         ],
       },
+      {
+        slug: 'agents-ia',
+        number: '04',
+        title: 'AI agents',
+        h1: 'Custom AI agents',
+        headline: 'An agent that moves the work forward, within your rules.',
+        seoDescription:
+          'Custom AI agents: an assistant on your content, an agent connected to your tools, or several agents on one process. Indicative ranges, a quote after a call.',
+        body: [
+          'Your team answers the same questions, chases follow-ups by hand, or looks for information across several tools. An agent takes on that part of the work.',
+          'It is framed around what it is allowed to do. When a request is sensitive or it does not know, it hands over. The amounts below frame a first pass: the quote comes after a call.',
+        ],
+        sections: [
+          {
+            title: 'Who it is for',
+            paragraphs: [
+              'For an activity where the same gesture keeps coming back: answering, qualifying, following up, sorting, preparing a file, updating a tool. You want that work to move, without letting go of the relationship or the decisions that commit you.',
+            ],
+          },
+          {
+            title: 'What the agent does',
+            paragraphs: [
+              'It answers from your content, prepares an action, or carries it out in the tools you already use. It does not pretend to be you.',
+              'Two agents with the same name do not cost the same. An assistant on your FAQ is not an agent that updates a file and sends a follow-up. We start by framing what it does on its own.',
+            ],
+          },
+          {
+            title: 'How it happens',
+            paragraphs: [
+              'One call to describe the process. We choose the level, build it, and put it in the team’s hands. You talk to the person who develops it.',
+            ],
+          },
+        ],
+        example: {
+          slug: '',
+          text: '',
+        },
+        cta: 'Frame my agent',
+        items: [
+          'Answers from your content',
+          'Qualification and follow-ups',
+          'Sorting incoming requests',
+          'Search across your documents',
+          'Updates in your tools',
+          'Handover to a person',
+        ],
+        tiers: [
+          {
+            name: 'Assistant',
+            range: '€1,500 – €4,000',
+            summary:
+              'It answers from your content, in your tone. It points people the right way, and hands over as soon as it does not know.',
+            points: [
+              'Your pages, a FAQ or your documents',
+              'One channel: the website or an internal tool',
+              'Limits on what it is allowed to say',
+              'Handover to a person',
+            ],
+          },
+          {
+            name: 'Business agent',
+            range: '€4,000 – €9,000',
+            summary:
+              'It follows one process that repeats: follow-ups, qualification, sorting, preparing a file. Anything that commits you stays checked by a person.',
+            points: [
+              'One process, not the whole company',
+              'Connected to your tools: email, files, calendar, CRM',
+              'What it does alone, and what it submits to you',
+              'A trace of what it did',
+            ],
+          },
+          {
+            name: 'A team of agents',
+            range: '€9,000 – €20,000',
+            summary:
+              'Several agents share one journey: understand, look up, prepare, act. A person stays on the sensitive cases. Beyond €20,000 when the process requires it.',
+            points: [
+              'Several roles on the same process',
+              'Your sources and your tools',
+              'Human review at the steps that commit you',
+              'A frame so it can keep evolving',
+            ],
+          },
+        ],
+      },
     ],
   },
   realisations: {
@@ -241,6 +331,7 @@ export const en: Dictionary = {
       'Each project demonstrates a precise skill: product, journey, monetization or operational tooling.',
     viewProject: 'View project',
     viewSite: 'View website',
+    viewCode: 'View the code',
     label: 'Case study',
     back: 'Back to work',
     fallbackTitle: 'Work',
@@ -270,7 +361,7 @@ export const en: Dictionary = {
         ],
         alt: 'Objectif TCF platform',
         tags: ['Subscription', 'Payments', 'AI', 'E-learning', 'Access control'],
-        siteLink: 'https://objectif-tcf-blue.vercel.app/',
+        siteLink: 'https://objectif-tcf.org/',
         githubLink: 'https://github.com/adams598/objectif_tcf',
         problem:
           'Deliver complete preparation for TCF, TEF and IELTS exams, with subscription tracking and admin tools.',
@@ -334,7 +425,7 @@ export const en: Dictionary = {
         image: '/drivinchill.png',
         alt: 'DrivinChill booking app',
         tags: ['Booking', 'Stripe', 'QR Code', 'Payments'],
-        siteLink: 'https://drivinnchill.fr/',
+        siteLink: '',
         githubLink: 'https://github.com/adams598/drivin-chill',
         problem: 'Simplify booking and deliver a smooth mobile experience.',
         objectives: [
@@ -441,7 +532,7 @@ export const en: Dictionary = {
     photoAlt: `Adams, founder of ${SITE.name}`,
     founderName: 'Adams',
     jobTitle: 'Independent software engineer',
-    p1: `${SITE.name} is led by Adams, an independent software engineer, and relies on a rigorous approach to software development to design solutions that fit each project.`,
+    p1: `${SITE.name} is led by Adams, an independent software engineer based in Limoges, Haute-Vienne. The same standard on every project: a solution that fits.`,
     p2: 'Expertise involved in every project: from understanding the need to production, you talk with the person building your solution.',
     p3Before: 'A call is enough:',
   },
@@ -489,6 +580,7 @@ export const en: Dictionary = {
       'Website',
       'Business app',
       'Platform',
+      'AI agent',
       'E-commerce',
       'I don’t know yet',
     ],
@@ -598,6 +690,46 @@ export const en: Dictionary = {
       },
     ],
   },
+  places: {
+    label: 'Cities',
+    items: [
+      {
+        slug: 'limoges',
+        city: 'Limoges',
+        region: 'Haute-Vienne',
+        title: 'Limoges',
+        h1: 'Custom website design in Limoges',
+        seoDescription:
+          'Custom websites, business apps and AI agents in Limoges. Adams, an engineer based in Haute-Vienne, designs the solution and puts it online. First month of maintenance included.',
+        intro:
+          'Flow is in Limoges. For a business in Haute-Vienne that needs to be found, wants to take bookings, or still runs its work through email and spreadsheets.',
+        related: ['site-web', 'application-web', 'agents-ia'],
+        sections: [
+          {
+            title: 'For a business in Limoges',
+            paragraphs: [
+              'A trade, a practice, a shop, a training organisation, a small company: the need is often the same. People search for you on Google, the website does not make them call, or booking still happens by message.',
+              'The website is written for your customers in Limoges and the surrounding area, and so Google can understand it. The title, the pages and the journey say what you do, then move the visitor forward: write, book or pay.',
+            ],
+          },
+          {
+            title: 'What we build locally',
+            paragraphs: [
+              'A website, a business app, a platform, or an AI agent connected to your tools. Nothing is imposed when the way you work does not fit a template.',
+              'Adams is based in Limoges. We can meet to frame the need, then the project moves forward with the person who builds it, through to launch. The first month of maintenance is included.',
+            ],
+          },
+          {
+            title: 'How to start in Limoges',
+            paragraphs: [
+              'Describe the business and what is stuck today: not enough enquiries, a booking journey that takes too long, a team retyping the same information. A specification document is not required.',
+              `A call on ${SITE.phoneDisplay} is enough. Together we decide whether you need a website, an internal tool, an agent, or more than one.`,
+            ],
+          },
+        ],
+      },
+    ],
+  },
   faq: {
     label: 'FAQ',
     title: 'FAQ — custom websites and business apps',
@@ -608,11 +740,19 @@ export const en: Dictionary = {
     items: [
       {
         q: 'What does Flow build?',
-        a: 'Flow designs custom websites, business applications and digital platforms, from understanding the need through to production.',
+        a: 'Flow designs custom websites, business applications, digital platforms and AI agents, from understanding the need through to production.',
+      },
+      {
+        q: 'How much does an AI agent cost?',
+        a: 'Three levels, as a guide: an assistant on your content, from €1,500 to €4,000; a business agent connected to your tools, from €4,000 to €9,000; a team of agents on one process, from €9,000 to €20,000, and beyond if the scope requires it. This is not a quote. Model usage and follow-up are priced separately. One call is enough to frame yours.',
       },
       {
         q: 'Who is Flow for?',
         a: 'Companies whose activity is changing: you have a product idea, processes that are too manual, a website that is no longer enough, or you need a technical partner.',
+      },
+      {
+        q: 'Where does Flow work?',
+        a: 'Flow is in Limoges, Haute-Vienne. A project can happen on site or remotely, elsewhere in France. One call is enough to frame it.',
       },
       {
         q: 'How is this different from an off-the-shelf template?',
@@ -641,16 +781,18 @@ export const en: Dictionary = {
     ],
   },
   footer: {
-    blurb: 'Custom websites, business apps and digital platforms.',
+    blurb: 'Custom websites, apps and AI agents, in Limoges.',
     rights: 'All rights reserved.',
     explore: 'Explore',
     links: [
       { label: 'Websites', href: '/services/site-web' },
       { label: 'Business apps', href: '/services/application-web' },
       { label: 'Digital platforms', href: '/services/plateforme-web' },
+      { label: 'AI agents', href: '/services/agents-ia' },
       { label: 'Booking and payment', href: '/guides/reservation-paiement' },
       { label: 'Website redesign', href: '/guides/refonte-site' },
       { label: 'Website or app', href: '/guides/site-ou-application' },
+      { label: 'Limoges', href: '/villes/limoges' },
       { label: 'FAQ', href: '/faq' },
     ],
   },

@@ -12,6 +12,11 @@ import { localeAlternates, localeOg, locales, type Locale } from '@/lib/i18n/con
 const abs = (path: string) => new URL(path, SITE.url).toString()
 const ORG_ID = `${SITE.url}/#organisation`
 
+const AREAS = [
+  { '@type': 'City', name: 'Limoges', containedInPlace: { '@type': 'AdministrativeArea', name: 'Haute-Vienne' } },
+  { '@type': 'Country', name: 'France' },
+]
+
 export function organizationJsonLd(locale: Locale, dict: Dictionary) {
   return {
     '@context': 'https://schema.org',
@@ -26,7 +31,7 @@ export function organizationJsonLd(locale: Locale, dict: Dictionary) {
     description: dict.meta.description,
     email: SITE.email,
     telephone: '+33749178391',
-    areaServed: { '@type': 'Country', name: 'France' },
+    areaServed: AREAS,
     availableLanguage: ['fr', 'en'],
     sameAs: [SITE.linkedin, SITE.github],
     knowsAbout: dict.meta.keywords.filter((k) => k !== SITE.name),
@@ -83,7 +88,7 @@ export function serviceJsonLd(locale: Locale, item: Service) {
     url: abs(`/${locale}/services/${item.slug}`),
     inLanguage: locale,
     provider: { '@id': ORG_ID },
-    areaServed: { '@type': 'Country', name: 'France' },
+    areaServed: AREAS,
   }
 }
 
@@ -110,7 +115,7 @@ export function realisationJsonLd(locale: Locale, item: Realisation) {
     url: abs(`/${locale}/realisations/${item.slug}`),
     image: abs(item.image),
     creator: { '@id': ORG_ID },
-    ...(item.siteLink ? { sameAs: item.siteLink } : {}),
+    ...(item.siteLink || item.githubLink ? { sameAs: item.siteLink || item.githubLink } : {}),
   }
 }
 
@@ -159,6 +164,24 @@ export function pageMetadata(
       title: socialTitle,
       description,
       images: ['/og-image.png'],
+    },
+  }
+}
+
+export function placeJsonLd(locale: Locale, item: Dictionary['places']['items'][number]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: item.h1,
+    serviceType: item.h1,
+    description: [item.intro, ...item.sections.flatMap((section) => section.paragraphs)].join(' '),
+    url: abs(`/${locale}/villes/${item.slug}`),
+    inLanguage: locale,
+    provider: { '@id': ORG_ID },
+    areaServed: {
+      '@type': 'City',
+      name: item.city,
+      containedInPlace: { '@type': 'AdministrativeArea', name: item.region },
     },
   }
 }

@@ -73,15 +73,28 @@ export default async function RealisationPage({ params }: Props) {
           </p>
 
           <div className="flex flex-wrap gap-3 mb-10">
-            <a
-              href={item.siteLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-primary-fixed text-on-primary px-5 py-2.5 rounded-lg font-label text-sm font-semibold"
-            >
-              {dict.realisations.viewSite}
-              <ExternalLink size={14} />
-            </a>
+            {item.siteLink ? (
+              <a
+                href={item.siteLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-primary-fixed text-on-primary px-5 py-2.5 rounded-lg font-label text-sm font-semibold"
+              >
+                {dict.realisations.viewSite}
+                <ExternalLink size={14} />
+              </a>
+            ) : null}
+            {!item.siteLink && item.githubLink ? (
+              <a
+                href={item.githubLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-primary-fixed text-on-primary px-5 py-2.5 rounded-lg font-label text-sm font-semibold"
+              >
+                {dict.realisations.viewCode}
+                <ExternalLink size={14} />
+              </a>
+            ) : null}
             <a
               href={href(raw, dict.nav.ctaHref)}
               className="inline-flex items-center gap-2 border border-primary/30 text-primary px-5 py-2.5 rounded-lg font-label text-sm font-semibold"

@@ -63,7 +63,7 @@
 
     <div class="badge"><b>1 mois</b><span>de maintenance<br>offert</span></div>
 
-    <h1>Vous, votre métier.<br>Nous, la technique.<br><span class="pill">Ensemble.</span></h1>
+    <h1>On vous<br><span class="pill">accompagne,</span><br>de l’idée à l’outil.</h1>
 
     <div class="orbs">
       <svg class="path" viewBox="0 0 300 310" fill="none" aria-hidden="true">
@@ -95,7 +95,7 @@
         <li>Vous gardez la main sur chaque décision</li>
         <li>Déjà un logiciel ? On le fait évoluer avec vous</li>
       </ul>
-      <p class="cta">Parlons de votre projet : un simple appel.</p>
+      <p class="cta" data-cta>Un projet ? Écrivez-nous en message privé.</p>
     </section>
 
     <footer class="contact">
@@ -108,5 +108,13 @@
       <p class="url">flowsurmesure.com</p>
     </footer>
   </article>
+
+  <script>
+    // Appel à l'action selon le canal : réseaux sociaux (par défaut) ou WhatsApp / print (?cta=tel).
+    const tel = location.search.includes("cta=tel");
+    document.querySelectorAll("[data-cta]").forEach((el) => {
+      el.textContent = tel ? "Un projet ? Appelez-nous au 07 49 17 83 91." : "Un projet ? Écrivez-nous en message privé.";
+    });
+  </script>
 </body>
 </html>

@@ -100,7 +100,7 @@
         <li>Vos clients réservent et paient sans vous</li>
         <li>Déjà un site ? On l’améliore pour qu’il rapporte plus</li>
       </ul>
-      <p class="cta">Parlons de votre site : un simple appel.</p>
+      <p class="cta" data-cta>Un projet ? Écrivez-nous en message privé.</p>
     </section>
 
     <footer class="contact">
@@ -113,5 +113,13 @@
       <p class="url">flowsurmesure.com</p>
     </footer>
   </article>
+
+  <script>
+    // Appel à l'action selon le canal : réseaux sociaux (par défaut) ou WhatsApp / print (?cta=tel).
+    const tel = location.search.includes("cta=tel");
+    document.querySelectorAll("[data-cta]").forEach((el) => {
+      el.textContent = tel ? "Un projet ? Appelez-nous au 07 49 17 83 91." : "Un projet ? Écrivez-nous en message privé.";
+    });
+  </script>
 </body>
 </html>

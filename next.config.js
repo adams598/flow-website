@@ -11,6 +11,15 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ['framer-motion'],
   },
+  async redirects() {
+    return [
+      {
+        source: '/:locale/villes/mantes-la-ville',
+        destination: '/:locale/villes/limoges',
+        permanent: true,
+      },
+    ]
+  },
 }
 
 module.exports = nextConfig

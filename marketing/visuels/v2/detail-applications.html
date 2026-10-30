@@ -174,7 +174,7 @@
 
     <div class="badge"><b>1 mois</b><span>de maintenance<br>offert</span></div>
 
-    <p class="ask">Parlons de votre projet : un simple appel.</p>
+    <p class="ask" data-cta>Un projet ? Écrivez-nous en message privé.</p>
 
     <footer class="contact">
       <p class="phone">
@@ -186,5 +186,13 @@
       <p class="url">flowsurmesure.com</p>
     </footer>
   </article>
+
+  <script>
+    // Appel à l'action selon le canal : réseaux sociaux (par défaut) ou WhatsApp / print (?cta=tel).
+    const tel = location.search.includes("cta=tel");
+    document.querySelectorAll("[data-cta]").forEach((el) => {
+      el.textContent = tel ? "Un projet ? Appelez-nous au 07 49 17 83 91." : "Un projet ? Écrivez-nous en message privé.";
+    });
+  </script>
 </body>
 </html>

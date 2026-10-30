@@ -33,6 +33,14 @@ export function realisationSlugs() {
   return fr.realisations.items.map((item) => item.slug)
 }
 
+export function getPlace(locale: Locale, slug: string) {
+  return getDictionary(locale).places.items.find((item) => item.slug === slug)
+}
+
+export function placeSlugs() {
+  return fr.places.items.map((item) => item.slug)
+}
+
 export type { Dictionary, Realisation, Service } from './types'
 export type { Locale } from './config'
 export { href, locales, defaultLocale, isLocale, localeLabels } from './config'

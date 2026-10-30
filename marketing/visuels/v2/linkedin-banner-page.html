@@ -7,45 +7,51 @@
     @font-face { font-family: "Manrope"; src: url("../../../public/brand/fonts/Manrope-variable.ttf") format("truetype"); font-weight: 200 800; }
     @font-face { font-family: "Inter"; src: url("../../../public/brand/fonts/Inter-variable.ttf") format("truetype"); font-weight: 100 900; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    /* Bannière de page entreprise LinkedIn : 1128 × 191. Le logo de la page couvre le bas
-       gauche (~0-240 px) : rien d'important n'y est placé. Texte en « nous » (charte). */
-    html, body { width: 1128px; height: 191px; overflow: hidden; background: #10282c; }
-    .b { position: relative; width: 1128px; height: 191px; overflow: hidden; font-family: Inter, sans-serif; color: #fffcfa; -webkit-font-smoothing: antialiased;
-      background: radial-gradient(520px 220px at 90% 0%, rgba(125,244,255,0.22), transparent 60%), radial-gradient(400px 260px at 0% 100%, rgba(0,40,46,0.6), transparent 60%), linear-gradient(160deg, #1a6a72 0%, #124248 45%, #141816 100%); }
+    /* Bannière de page entreprise LinkedIn : format conseillé 4200 × 700 (6:1).
+       Composée à 1500 × 250 puis rendue ×2,8.
+       Zone sûre : LinkedIn recadre en bandeau plus allongé (haut et bas coupés) et le logo
+       de la page couvre le bas gauche. Tout le contenu utile tient dans la bande centrale
+       (y 60 à 190) et commence après x = 330. Le reste n'est que du décor. */
+    html, body { width: 1500px; height: 250px; overflow: hidden; background: #10282c; }
+    .b { position: relative; width: 1500px; height: 250px; overflow: hidden; font-family: Inter, sans-serif; color: #fffcfa; -webkit-font-smoothing: antialiased;
+      background: radial-gradient(620px 260px at 88% 10%, rgba(125,244,255,0.22), transparent 60%), radial-gradient(500px 300px at 0% 100%, rgba(0,40,46,0.6), transparent 60%), linear-gradient(160deg, #1a6a72 0%, #124248 45%, #141816 100%); }
     .b::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0.07; mix-blend-mode: overlay;
       background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.55'/></svg>"); }
     svg.shapes { position: absolute; inset: 0; }
-    .tick { position: absolute; z-index: 3; width: 7px; height: 24px; border-radius: 4px; background: #7df4ff; transform: rotate(28deg); left: 196px; top: 28px; }
-    .dot { position: absolute; z-index: 3; width: 6px; height: 6px; border-radius: 50%; background: rgba(125,244,255,0.85); left: 213px; top: 50px; }
-    .txt { position: absolute; left: 290px; top: 0; bottom: 0; width: 470px; display: flex; flex-direction: column; justify-content: center; gap: 8px; z-index: 3; }
-    .kick { font: 600 11px Inter; letter-spacing: 0.22em; text-transform: uppercase; color: #005f66; }
-    h1 { font: 800 32px/1.02 Manrope; letter-spacing: -0.045em; color: #131313; }
+    .tick { position: absolute; z-index: 3; width: 8px; height: 26px; border-radius: 4px; background: #7df4ff; transform: rotate(28deg); left: 300px; top: 70px; }
+    .dot { position: absolute; z-index: 3; width: 6px; height: 6px; border-radius: 50%; background: rgba(125,244,255,0.85); left: 318px; top: 94px; }
+    .txt { position: absolute; left: 380px; top: 60px; height: 130px; width: 560px; display: flex; flex-direction: column; justify-content: center; gap: 7px; z-index: 3; }
+    .kick { font: 600 10px Inter; letter-spacing: 0.22em; text-transform: uppercase; color: #005f66; }
+    h1 { font: 800 27px/1.05 Manrope; letter-spacing: -0.045em; color: #131313; white-space: nowrap; }
     .pill { display: inline-block; padding: 1px 12px 5px; border-radius: 999px; background: #131313; color: #fffcfa; transform: rotate(-2deg); }
-    .contact { display: flex; gap: 10px; margin-top: 2px; }
-    .contact span { display: inline-flex; align-items: center; gap: 6px; padding: 5px 11px; border-radius: 999px; background: #131313; color: #fffcfa; font: 600 12px Inter; }
+    .contact { display: flex; gap: 10px; }
+    .contact span { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px; background: #131313; color: #fffcfa; font: 600 11px Inter; }
     .contact svg { width: 12px; height: 12px; color: #7df4ff; }
-    .slab { position: absolute; z-index: 4; left: 800px; top: 34px; width: 200px; height: 125px; border-radius: 13px; padding: 5px;
-      background: linear-gradient(155deg, #4a4a4a, #141414 42%, #2a2a2a); box-shadow: 0 18px 28px rgba(0,0,0,0.42), inset 0 1px 0 rgba(255,255,255,0.35); transform: rotate(-8deg); }
-    .slab .scr { height: 100%; border-radius: 9px; overflow: hidden; background: #fffcfa; }
+    .slab { position: absolute; z-index: 4; left: 1010px; top: 70px; width: 180px; height: 112px; border-radius: 12px; padding: 5px;
+      background: linear-gradient(155deg, #4a4a4a, #141414 42%, #2a2a2a); box-shadow: 0 16px 24px rgba(0,0,0,0.42), inset 0 1px 0 rgba(255,255,255,0.35); transform: rotate(-8deg); }
+    .slab .scr { height: 100%; border-radius: 8px; overflow: hidden; background: #fffcfa; }
     .slab img { width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block; }
-    .phone { position: absolute; z-index: 5; left: 980px; top: -8px; width: 130px; filter: drop-shadow(0 14px 18px rgba(0,0,0,0.45)); }
-    .badge { position: absolute; z-index: 6; left: 752px; top: 104px; width: 78px; height: 78px; border-radius: 50%; background: #7df4ff; color: #131313;
+    .phone { position: absolute; z-index: 5; left: 1190px; top: 34px; width: 110px; filter: drop-shadow(0 12px 16px rgba(0,0,0,0.45)); }
+    .badge { position: absolute; z-index: 6; left: 1300px; top: 92px; width: 84px; height: 84px; border-radius: 50%; background: #7df4ff; color: #131313;
       display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; transform: rotate(8deg); box-shadow: 0 10px 18px rgba(0,0,0,0.35); }
     .badge::before { content: ""; position: absolute; inset: 4px; border-radius: 50%; border: 1px dashed rgba(19,19,19,0.45); }
-    .badge b { font: 800 18px/1 Manrope; letter-spacing: -0.05em; }
-    .badge i { font-style: normal; margin-top: 2px; font: 600 7.5px/1.2 Inter; }
+    .badge b { font: 800 19px/1 Manrope; letter-spacing: -0.05em; }
+    .badge i { font-style: normal; margin-top: 2px; font: 600 8px/1.2 Inter; }
+    /* Contrôle de la zone sûre (désactivé au rendu) : ?zone=1 */
+    .zone { display: none; position: absolute; left: 330px; right: 40px; top: 60px; height: 130px; outline: 2px dashed red; z-index: 20; }
+    .zone.on { display: block; }
   </style>
 </head>
 <body>
 <div class="b">
-  <svg class="shapes" viewBox="0 0 1128 191" aria-hidden="true">
+  <svg class="shapes" viewBox="0 0 1500 250" aria-hidden="true">
     <defs>
-      <linearGradient id="gp" x1="260" y1="0" x2="790" y2="191" gradientUnits="userSpaceOnUse"><stop stop-color="#FFFFFF"/><stop offset="0.72" stop-color="#FFFCFA"/><stop offset="1" stop-color="#F3EBE1"/></linearGradient>
-      <linearGradient id="gc" x1="700" y1="100" x2="1128" y2="191" gradientUnits="userSpaceOnUse"><stop stop-color="#00C4D0"/><stop offset="0.25" stop-color="#007C88"/><stop offset="1" stop-color="#003E46"/></linearGradient>
+      <linearGradient id="gp" x1="340" y1="0" x2="1040" y2="250" gradientUnits="userSpaceOnUse"><stop stop-color="#FFFFFF"/><stop offset="0.72" stop-color="#FFFCFA"/><stop offset="1" stop-color="#F3EBE1"/></linearGradient>
+      <linearGradient id="gc" x1="960" y1="120" x2="1500" y2="250" gradientUnits="userSpaceOnUse"><stop stop-color="#00C4D0"/><stop offset="0.25" stop-color="#007C88"/><stop offset="1" stop-color="#003E46"/></linearGradient>
       <filter id="lift" x="-20%" y="-30%" width="140%" height="160%"><feDropShadow dx="0" dy="8" stdDeviation="7" flood-color="#041416" flood-opacity="0.3"/></filter>
     </defs>
-    <path filter="url(#lift)" fill="url(#gc)" d="M720 150 C 820 100, 1000 95, 1140 125 L 1140 210 L 680 210 C 670 185, 680 165, 720 150 Z"/>
-    <path filter="url(#lift)" fill="url(#gp)" d="M270 34 C 330 8, 520 10, 680 22 C 770 30, 800 62, 788 100 C 774 146, 700 172, 560 174 C 420 177, 300 166, 276 130 C 258 102, 248 54, 270 34 Z"/>
+    <path filter="url(#lift)" fill="url(#gc)" d="M1000 175 C 1110 120, 1330 112, 1520 140 L 1520 270 L 960 270 C 950 230, 960 195, 1000 175 Z"/>
+    <path filter="url(#lift)" fill="url(#gp)" d="M350 60 C 420 34, 660 34, 820 40 C 920 44, 960 78, 950 122 C 938 170, 870 198, 700 202 C 540 205, 400 198, 362 162 C 340 136, 330 80, 350 60 Z"/>
   </svg>
   <span class="tick"></span><span class="dot"></span>
   <div class="txt">
@@ -59,6 +65,8 @@
   <div class="slab"><div class="scr"><img src="screens/ui-site.png" alt=""></div></div>
   <img class="phone" src="screens/phone3d-app.png" alt="">
   <div class="badge"><b>1 mois</b><i>de maintenance<br>offert</i></div>
+  <div class="zone" id="zone"></div>
 </div>
+<script>if (location.search.includes("zone")) document.getElementById("zone").classList.add("on");</script>
 </body>
 </html>

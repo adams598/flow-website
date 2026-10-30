@@ -18,6 +18,14 @@ function setLocaleCookie(response: NextResponse, locale: string) {
 }
 
 export function proxy(request: NextRequest) {
+  const host = request.headers.get('host')?.split(':')[0]
+  if (host === 'www.flowsurmesure.com') {
+    const url = request.nextUrl.clone()
+    url.hostname = 'flowsurmesure.com'
+    url.protocol = 'https:'
+    return NextResponse.redirect(url, 308)
+  }
+
   const { pathname } = request.nextUrl
 
   if (

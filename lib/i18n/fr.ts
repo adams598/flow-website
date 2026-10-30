@@ -2,9 +2,9 @@ import { SITE } from '@/lib/site'
 
 export const fr = {
   meta: {
-    title: `${SITE.name} — Création de site internet et application sur mesure`,
+    title: `${SITE.name} — Création de site internet à Limoges`,
     description:
-      'Sites internet et applications sur mesure : visibles sur Google, avec réservation et paiement en ligne. Accompagnement de A à Z, 1er mois de maintenance offert.',
+      'Sites, applications et agents IA sur mesure à Limoges, en Haute-Vienne. Visibles sur Google, avec réservation et paiement. Premier mois de maintenance offert.',
     keywords: [
       'Flow',
       'flowsurmesure',
@@ -16,11 +16,14 @@ export const fr = {
       'développement application web',
       'refonte site internet',
       'plateforme digitale',
-      'développeur freelance',
+      'agent IA sur mesure',
+      'agent IA entreprise',
+      'création site internet Limoges',
+      'développeur web Limoges',
     ],
-    ogTitle: `${SITE.name} — Sites internet et applications sur mesure`,
+    ogTitle: `${SITE.name} — Sites sur mesure à Limoges`,
     ogDescription:
-      'On vous accompagne, de l’idée à la mise en ligne : un site qui vous amène des clients, une application pensée pour votre façon de travailler. 1er mois de maintenance offert.',
+      'Sites, applications et agents IA sur mesure à Limoges. De l’idée à la mise en ligne. Premier mois de maintenance offert.',
   },
   nav: {
     cta: 'Parler de mon projet',
@@ -50,9 +53,9 @@ export const fr = {
   },
   hero: {
     h1: `${SITE.name} — Création de sites internet et d’applications sur mesure`,
-    lead: 'Nous concevons des solutions digitales sur mesure pour simplifier vos processus, améliorer vos parcours clients et développer votre activité.',
+    lead: 'Nous concevons des solutions digitales sur mesure pour simplifier vos processus, améliorer vos parcours clients et développer votre activité. À Limoges, ou à distance.',
     secondaryCta: 'Voir les réalisations',
-    underCta: ['Site web', 'Application métier', 'Plateforme', 'Automatisation'],
+    underCta: ['Site web', 'Application métier', 'Plateforme', 'Agents IA'],
   },
   problems: {
     kicker: 'Votre contexte',
@@ -88,7 +91,7 @@ export const fr = {
   },
   offers: {
     kicker: 'Solutions',
-    title: 'Trois portes d’entrée. Une même exigence : une solution adaptée.',
+    title: 'Quatre portes d’entrée. Une même exigence : une solution adaptée.',
     unsureTitle: 'Vous ne savez pas exactement ce dont vous avez besoin ?',
     unsureBody:
       'Décrivez-nous votre idée, votre problème ou votre processus. Nous vous aiderons à déterminer la solution la plus adaptée.',
@@ -102,6 +105,9 @@ export const fr = {
       'Décrivez votre besoin : nous vous aidons à cadrer la solution la plus adaptée.',
     fallbackTitle: 'Service',
     also: 'Voir aussi',
+    tiersTitle: 'Trois façons de commencer',
+    tiersNote:
+      'Ces montants cadrent le premier jet, pas un devis ferme. Après la mise en route, l’usage des modèles et le suivi se chiffrent à part, en général quelques centaines d’euros par mois.',
     items: [
       {
         slug: 'site-web',
@@ -239,6 +245,91 @@ export const fr = {
           'Plateformes multi-utilisateurs',
         ],
       },
+      {
+        slug: 'agents-ia',
+        number: '04',
+        title: 'Agents IA',
+        h1: 'Agents IA sur mesure',
+        headline: 'Un agent qui avance le travail, avec vos règles.',
+        seoDescription:
+          'Agents IA sur mesure : un assistant sur vos contenus, un agent connecté à vos outils, ou plusieurs agents sur un processus. Fourchettes indicatives, devis après un appel.',
+        body: [
+          'Vos équipes répondent aux mêmes questions, relancent à la main, ou cherchent l’information dans plusieurs outils. Un agent reprend cette part du travail.',
+          'Il est cadré sur ce qu’il a le droit de faire. Quand la demande est sensible ou qu’il ne sait pas, il passe la main. Les montants ci-dessous cadrent le premier jet : le devis vient après un appel.',
+        ],
+        sections: [
+          {
+            title: 'Pour qui',
+            paragraphs: [
+              'Pour une activité où le même geste revient : répondre, qualifier, relancer, classer, préparer un dossier, mettre à jour un outil. Vous voulez que ça parte, sans lâcher la relation ni les décisions qui engagent.',
+            ],
+          },
+          {
+            title: 'Ce que l’agent fait',
+            paragraphs: [
+              'Il répond à partir de vos contenus, prépare une action, ou l’exécute dans les outils que vous utilisez déjà. Il ne se fait pas passer pour vous.',
+              'Deux agents qui portent le même nom n’ont pas le même coût. Un assistant sur votre FAQ n’a rien à voir avec un agent qui met à jour un dossier et envoie une relance. On cadre d’abord ce qu’il fait seul.',
+            ],
+          },
+          {
+            title: 'Comment ça se passe',
+            paragraphs: [
+              'Un appel pour décrire le processus. On choisit le niveau, on le construit, on le met entre les mains de l’équipe. Vous échangez avec la personne qui le développe.',
+            ],
+          },
+        ],
+        example: {
+          slug: '',
+          text: '',
+        },
+        cta: 'Cadrer mon agent',
+        items: [
+          'Réponses à partir de vos contenus',
+          'Qualification et relances',
+          'Tri des demandes',
+          'Recherche dans vos documents',
+          'Mise à jour de vos outils',
+          'Passage à une personne',
+        ],
+        tiers: [
+          {
+            name: 'Assistant',
+            range: '1 500 – 4 000 €',
+            summary:
+              'Il répond à partir de vos contenus, avec votre ton. Il oriente, et il passe la main dès qu’il ne sait pas.',
+            points: [
+              'Vos pages, une FAQ ou vos documents',
+              'Un canal : le site ou un outil interne',
+              'Les limites de ce qu’il peut dire',
+              'Passage à une personne',
+            ],
+          },
+          {
+            name: 'Agent métier',
+            range: '4 000 – 9 000 €',
+            summary:
+              'Il suit un processus qui se répète : relances, qualification, tri, préparation d’un dossier. Ce qui engage reste validé par quelqu’un.',
+            points: [
+              'Un processus, pas toute l’entreprise',
+              'Connexion à vos outils : mails, dossiers, agenda, CRM',
+              'Ce qu’il fait seul, et ce qu’il vous soumet',
+              'Une trace de ce qu’il a fait',
+            ],
+          },
+          {
+            name: 'Équipe d’agents',
+            range: '9 000 – 20 000 €',
+            summary:
+              'Plusieurs agents se répartissent un parcours : comprendre, chercher, préparer, agir. Un humain reste sur les cas sensibles. Au-delà de 20 000 € si le processus l’exige.',
+            points: [
+              'Plusieurs rôles sur un même processus',
+              'Vos sources et vos outils',
+              'Validation humaine aux étapes qui engagent',
+              'Un cadre pour le faire évoluer',
+            ],
+          },
+        ],
+      },
     ],
   },
   realisations: {
@@ -248,6 +339,7 @@ export const fr = {
       'Chaque projet démontre une compétence précise : produit, parcours, monétisation ou outil métier.',
     viewProject: 'Voir le projet',
     viewSite: 'Voir le site',
+    viewCode: 'Voir le code',
     label: 'Réalisation',
     back: 'Retour aux réalisations',
     fallbackTitle: 'Réalisation',
@@ -277,7 +369,7 @@ export const fr = {
         ],
         alt: 'Plateforme Objectif TCF',
         tags: ['Abonnement', 'Paiement', 'IA', 'E-learning', 'Gestion des accès'],
-        siteLink: 'https://objectif-tcf-blue.vercel.app/',
+        siteLink: 'https://objectif-tcf.org/',
         githubLink: 'https://github.com/adams598/objectif_tcf',
         problem:
           'Proposer une préparation complète aux examens TCF, TEF et IELTS, avec suivi des abonnements et outils d’administration.',
@@ -341,7 +433,7 @@ export const fr = {
         image: '/drivinchill.png',
         alt: 'Application de réservation DrivinChill',
         tags: ['Réservation', 'Stripe', 'QR Code', 'Paiement'],
-        siteLink: 'https://drivinnchill.fr/',
+        siteLink: '',
         githubLink: 'https://github.com/adams598/drivin-chill',
         problem: 'Simplifier la réservation et offrir une expérience mobile fluide.',
         objectives: [
@@ -449,7 +541,7 @@ export const fr = {
     photoAlt: `Adams, fondateur de ${SITE.name}`,
     founderName: 'Adams',
     jobTitle: 'Ingénieur informatique indépendant',
-    p1: `${SITE.name} est porté par Adams, ingénieur informatique indépendant, et s’appuie sur une approche rigoureuse du développement logiciel pour concevoir des solutions adaptées à chaque projet.`,
+    p1: `${SITE.name} est porté par Adams, ingénieur informatique indépendant, basé à Limoges, en Haute-Vienne. La même exigence sur chaque projet : une solution adaptée.`,
     p2: 'Une expertise directement impliquée dans chaque projet : de la compréhension du besoin jusqu’à la mise en production, vous échangez avec la personne qui construit votre solution.',
     p3Before: 'Un appel suffit :',
   },
@@ -499,6 +591,7 @@ export const fr = {
       'Site web',
       'Application métier',
       'Plateforme',
+      'Agent IA',
       'E-commerce',
       'Je ne sais pas encore',
     ],
@@ -608,6 +701,46 @@ export const fr = {
       },
     ],
   },
+  places: {
+    label: 'Villes',
+    items: [
+      {
+        slug: 'limoges',
+        city: 'Limoges',
+        region: 'Haute-Vienne',
+        title: 'Limoges',
+        h1: 'Création de site internet à Limoges',
+        seoDescription:
+          'Création de site internet, application métier et agent IA à Limoges. Adams, ingénieur basé en Haute-Vienne, conçoit la solution et la met en ligne. Premier mois de maintenance offert.',
+        intro:
+          'Flow est à Limoges. Pour une activité de la Haute-Vienne qui doit être trouvée, qui veut prendre des réservations, ou dont le travail passe encore par les mails et les tableurs.',
+        related: ['site-web', 'application-web', 'agents-ia'],
+        sections: [
+          {
+            title: 'Pour une activité de Limoges',
+            paragraphs: [
+              'Artisan, cabinet, commerce, formation, TPE : le besoin est souvent le même. On vous cherche sur Google, le site ne donne pas envie d’appeler, ou la réservation se fait encore par message.',
+              'Le site est écrit pour vos clients de Limoges et de l’agglomération, et pour être compris par Google. Le titre, les pages et le parcours disent ce que vous faites, puis ils font avancer le visiteur : écrire, réserver ou payer.',
+            ],
+          },
+          {
+            title: 'Ce qu’on construit sur place',
+            paragraphs: [
+              'Un site, une application métier, une plateforme, ou un agent IA branché sur vos outils. Rien n’est imposé quand votre façon de travailler ne rentre pas dans un modèle.',
+              'Adams est basé à Limoges. On peut se voir pour cadrer le besoin, puis le projet avance avec la personne qui le développe, jusqu’à la mise en ligne. Le premier mois de maintenance est offert.',
+            ],
+          },
+          {
+            title: 'Comment démarrer à Limoges',
+            paragraphs: [
+              'Décrivez l’activité et ce qui bloque aujourd’hui : pas assez de demandes, un parcours de réservation trop long, une équipe qui ressaisit les mêmes informations. Un cahier des charges n’est pas nécessaire.',
+              `Un appel au ${SITE.phoneDisplay} suffit. On cadre ensemble si vous avez besoin d’un site, d’un outil interne, d’un agent, ou des deux.`,
+            ],
+          },
+        ],
+      },
+    ],
+  },
   faq: {
     label: 'Questions fréquentes',
     title: 'FAQ — création de site et application sur mesure',
@@ -619,11 +752,19 @@ export const fr = {
     items: [
       {
         q: 'Que construit Flow ?',
-        a: 'Flow conçoit des sites internet, des applications métier et des plateformes digitales sur mesure, de la compréhension du besoin jusqu’à la mise en production.',
+        a: 'Flow conçoit des sites internet, des applications métier, des plateformes digitales et des agents IA sur mesure, de la compréhension du besoin jusqu’à la mise en production.',
+      },
+      {
+        q: 'Combien coûte un agent IA ?',
+        a: 'Trois niveaux, en indicatif : un assistant sur vos contenus, de 1 500 à 4 000 € ; un agent métier connecté à vos outils, de 4 000 à 9 000 € ; une équipe d’agents sur un processus, de 9 000 à 20 000 €, et au-delà si le périmètre l’exige. Ce n’est pas un devis. L’usage des modèles et le suivi se chiffrent à part. Un appel suffit pour cadrer le vôtre.',
       },
       {
         q: 'À qui s’adresse Flow ?',
         a: 'Aux entreprises dont l’activité évolue : vous avez une idée de produit, des processus trop manuels, un site qui ne suffit plus, ou vous cherchez un partenaire technique.',
+      },
+      {
+        q: 'Où intervient Flow ?',
+        a: 'Flow est à Limoges, en Haute-Vienne. Le projet se fait sur place ou à distance, ailleurs en France. Un appel suffit pour cadrer.',
       },
       {
         q: 'En quoi est-ce différent d’un modèle prêt à l’emploi ?',
@@ -652,16 +793,18 @@ export const fr = {
     ],
   },
   footer: {
-    blurb: 'Sites, applications métier et plateformes digitales sur mesure.',
+    blurb: 'Sites, applications et agents IA sur mesure, à Limoges.',
     rights: 'Tous droits réservés.',
     explore: 'Explorer',
     links: [
       { label: 'Sites web', href: '/services/site-web' },
       { label: 'Applications métier', href: '/services/application-web' },
       { label: 'Plateformes digitales', href: '/services/plateforme-web' },
+      { label: 'Agents IA', href: '/services/agents-ia' },
       { label: 'Réservation et paiement', href: '/guides/reservation-paiement' },
       { label: 'Refonte de site', href: '/guides/refonte-site' },
       { label: 'Site ou application', href: '/guides/site-ou-application' },
+      { label: 'Limoges', href: '/villes/limoges' },
       { label: 'Questions fréquentes', href: '/faq' },
     ],
   },

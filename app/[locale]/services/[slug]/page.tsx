@@ -103,6 +103,39 @@ export default async function ServicePage({ params }: Props) {
             </p>
           )}
 
+          {'tiers' in item ? (
+            <section className="mb-12">
+              <h2 className="font-headline font-semibold text-xl text-on-surface mb-4">
+                {dict.services.tiersTitle}
+              </h2>
+              <div className="space-y-4">
+                {item.tiers.map((tier) => (
+                  <article
+                    key={tier.name}
+                    className="rounded-2xl border border-outline-variant/10 bg-surface-container-low p-6"
+                  >
+                    <div className="mb-2 flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+                      <h3 className="font-headline font-semibold text-lg text-on-surface">{tier.name}</h3>
+                      <p className="font-label text-sm font-semibold text-primary">{tier.range}</p>
+                    </div>
+                    <p className="mb-4 font-body text-on-surface-variant leading-relaxed">{tier.summary}</p>
+                    <ul className="grid gap-2 sm:grid-cols-2">
+                      {tier.points.map((point) => (
+                        <li key={point} className="flex items-start gap-2 text-sm text-on-surface-variant">
+                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary-container" />
+                          {point}
+                        </li>
+                      ))}
+                    </ul>
+                  </article>
+                ))}
+              </div>
+              <p className="mt-4 max-w-2xl font-body text-sm leading-relaxed text-on-surface-variant">
+                {dict.services.tiersNote}
+              </p>
+            </section>
+          ) : null}
+
           <h2 className="font-headline font-semibold text-xl text-on-surface mb-4">
             {dict.services.for}
           </h2>

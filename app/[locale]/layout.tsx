@@ -16,6 +16,8 @@ import {
 import { getDictionary } from '@/lib/i18n'
 import { THEME_COOKIE, isTheme } from '@/lib/theme'
 import { JsonLd } from '@/components/JsonLd'
+import { AssistantWidget } from '@/components/AssistantWidget'
+import { ASSISTANT_ENABLED } from '@/lib/assistant'
 import { organizationJsonLd, websiteJsonLd } from '@/lib/seo'
 
 const manrope = Manrope({
@@ -115,6 +117,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         <ThemeProvider initialTheme={theme}>
           <LocaleProvider locale={locale} dict={dict}>
             {children}
+            {ASSISTANT_ENABLED && <AssistantWidget />}
           </LocaleProvider>
         </ThemeProvider>
       </body>
