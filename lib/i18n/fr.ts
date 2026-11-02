@@ -95,6 +95,45 @@ export const fr = {
     unsureTitle: 'Vous ne savez pas exactement ce dont vous avez besoin ?',
     unsureBody:
       'Décrivez-nous votre idée, votre problème ou votre processus. Nous vous aiderons à déterminer la solution la plus adaptée.',
+    start: {
+      kicker: 'Comment démarrer',
+      title: 'Commencer petit, au juste prix.',
+      intro:
+        'On part de votre problème, pas d’un catalogue. Chaque projet commence par un diagnostic offert, puis la formule la plus légère qui règle le problème.',
+      steps: [
+        {
+          name: 'Diagnostic',
+          price: 'Offert',
+          detail: '20 à 30 minutes, sur place à Limoges ou en visio',
+          description:
+            'Vous nous dites ce qui vous fait perdre du temps ou des clients. Vous recevez une page : la solution recommandée et son prix.',
+        },
+        {
+          name: 'Express',
+          price: 'Dès 490 €',
+          detail: 'Prêt en une semaine, à prix fixe',
+          description:
+            'Un problème réglé : réservation avec acompte, inscription et paiement, commande en ligne, calendrier à jour, site vitrine refait ou une tâche administrative automatisée.',
+        },
+        {
+          name: 'Sur mesure',
+          price: 'Sur devis, par lots',
+          detail: '2 à 10 semaines',
+          description:
+            'Application métier, espace client, plateforme ou agent IA, construit par étapes. Une démo avant de signer, un prix ferme pour chaque lot.',
+        },
+        {
+          name: 'Suivi',
+          price: 'Dès 29 € / mois',
+          detail: 'Facultatif, premier mois offert',
+          description:
+            'Hébergement, sauvegardes, sécurité et petites corrections, sans engagement. Les évolutions se chiffrent à part.',
+        },
+      ],
+      ownership:
+        'Sans abonnement obligatoire : vous restez propriétaire de ce que nous construisons, code et données compris.',
+      cta: 'Demander mon diagnostic offert',
+    },
   },
   services: {
     label: 'Solution',
@@ -601,7 +640,7 @@ export const fr = {
       'Cahier des charges existant',
       'Solution existante à améliorer',
     ],
-    budgets: ['< 2 000 €', '2 000 – 5 000 €', '5 000 – 10 000 €', '10 000 – 20 000 €', '20 000 €+'],
+    budgets: ['< 1 000 €', '1 000 – 2 000 €', '2 000 – 5 000 €', '5 000 – 10 000 €', '10 000 – 20 000 €', '20 000 €+'],
     timelines: ['Dès que possible', 'Dans 1–3 mois', 'Dans 3–6 mois', 'Plus tard'],
   },
   guides: {
@@ -753,6 +792,10 @@ export const fr = {
       {
         q: 'Que construit Flow ?',
         a: 'Flow conçoit des sites internet, des applications métier, des plateformes digitales et des agents IA sur mesure, de la compréhension du besoin jusqu’à la mise en production.',
+      },
+      {
+        q: 'Combien coûte un projet ?',
+        a: 'Tout commence par un diagnostic offert. Une formule Express, qui règle un problème précis à prix fixe, coûte de 490 à 990 € et elle est prête en une semaine. Un projet sur mesure se chiffre par lots après le diagnostic, avec une démo avant de signer. Il n’y a pas d’abonnement obligatoire : vous restez propriétaire de ce qui est construit, et le suivi est facultatif, à partir de 29 € par mois.',
       },
       {
         q: 'Combien coûte un agent IA ?',

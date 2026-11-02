@@ -88,6 +88,45 @@ export const en: Dictionary = {
     unsureTitle: 'Not sure exactly what you need?',
     unsureBody:
       'Describe your idea, your problem or your process. We will help you choose the right solution.',
+    start: {
+      kicker: 'How to start',
+      title: 'Start small, at a fair price.',
+      intro:
+        'We start from your problem, not from a catalogue. Every project begins with a free diagnosis, then the lightest option that solves the problem.',
+      steps: [
+        {
+          name: 'Diagnosis',
+          price: 'Free',
+          detail: '20 to 30 minutes, in Limoges or by video call',
+          description:
+            'You tell us what costs you time or customers. You receive one page: the recommended solution and its price.',
+        },
+        {
+          name: 'Express',
+          price: 'From €490',
+          detail: 'Ready in one week, fixed price',
+          description:
+            'One problem solved: booking with deposit, registration and payment, online ordering, an up-to-date calendar, a refreshed showcase site or one automated admin task.',
+        },
+        {
+          name: 'Custom',
+          price: 'Quoted, in stages',
+          detail: '2 to 10 weeks',
+          description:
+            'Business application, client portal, platform or AI agent, built step by step. A demo before you sign, a fixed price for each stage.',
+        },
+        {
+          name: 'Care',
+          price: 'From €29 / month',
+          detail: 'Optional, first month free',
+          description:
+            'Hosting, backups, security and small fixes, with no commitment. New features are quoted separately.',
+        },
+      ],
+      ownership:
+        'No mandatory subscription: you own what we build, code and data included.',
+      cta: 'Book my free diagnosis',
+    },
   },
   services: {
     label: 'Solution',
@@ -590,7 +629,7 @@ export const en: Dictionary = {
       'Existing specifications',
       'Existing solution to improve',
     ],
-    budgets: ['< €2,000', '€2,000 – €5,000', '€5,000 – €10,000', '€10,000 – €20,000', '€20,000+'],
+    budgets: ['< €1,000', '€1,000 – €2,000', '€2,000 – €5,000', '€5,000 – €10,000', '€10,000 – €20,000', '€20,000+'],
     timelines: ['As soon as possible', 'In 1–3 months', 'In 3–6 months', 'Later'],
   },
   guides: {
@@ -741,6 +780,10 @@ export const en: Dictionary = {
       {
         q: 'What does Flow build?',
         a: 'Flow designs custom websites, business applications, digital platforms and AI agents, from understanding the need through to production.',
+      },
+      {
+        q: 'How much does a project cost?',
+        a: 'Everything starts with a free diagnosis. An Express option, which solves one specific problem at a fixed price, costs €490 to €990 and is ready in one week. A custom project is quoted in stages after the diagnosis, with a demo before you sign. There is no mandatory subscription: you own what is built, and ongoing care is optional, from €29 per month.',
       },
       {
         q: 'How much does an AI agent cost?',
