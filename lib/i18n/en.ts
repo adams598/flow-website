@@ -93,10 +93,12 @@ export const en: Dictionary = {
       title: 'Start small, at a fair price.',
       intro:
         'We start from your problem, not from a catalogue. Every project begins with a free diagnosis, then the lightest option that solves the problem.',
+      marketLabel: 'Market:',
       steps: [
         {
           name: 'Diagnosis',
           price: 'Free',
+          market: '',
           detail: '20 to 30 minutes, in Limoges or by video call',
           description:
             'You tell us what costs you time or customers. You receive one page: the recommended solution and its price.',
@@ -104,6 +106,7 @@ export const en: Dictionary = {
         {
           name: 'Express',
           price: 'From €490',
+          market: '€800 to €3,000',
           detail: 'Ready in one week, fixed price',
           description:
             'One problem solved: booking with deposit, registration and payment, online ordering, an up-to-date calendar, a refreshed showcase site or one automated admin task.',
@@ -111,20 +114,22 @@ export const en: Dictionary = {
         {
           name: 'Custom',
           price: 'Quoted, in stages',
+          market: '€10,000 to €40,000',
           detail: '2 to 10 weeks',
           description:
             'Business application, client portal, platform or AI agent, built step by step. A demo before you sign, a fixed price for each stage.',
         },
         {
           name: 'Care',
-          price: 'From €29 / month',
-          detail: 'Optional, first month free',
+          price: 'From €49 / month',
+          market: '€80 to €200 / month',
+          detail: 'First month free',
           description:
-            'Hosting, backups, security and small fixes, with no commitment. New features are quoted separately.',
+            'Hosting, backups, security, fixes, one small change and a Google visibility report every month. New features are quoted separately.',
         },
       ],
       ownership:
-        'No mandatory subscription: you own what we build, code and data included.',
+        'You own what we build, code and data included. If you stop the care plan, we hand everything over to you.',
       cta: 'Book my free diagnosis',
     },
   },
@@ -783,7 +788,7 @@ export const en: Dictionary = {
       },
       {
         q: 'How much does a project cost?',
-        a: 'Everything starts with a free diagnosis. An Express option, which solves one specific problem at a fixed price, costs €490 to €990 and is ready in one week. A custom project is quoted in stages after the diagnosis, with a demo before you sign. There is no mandatory subscription: you own what is built, and ongoing care is optional, from €29 per month.',
+        a: 'Everything starts with a free diagnosis. An Express option, which solves one specific problem at a fixed price, costs €490 to €990 and is ready in one week. A custom project is quoted in stages after the diagnosis, with a demo before you sign. Ongoing care (hosting, security, fixes, small changes) starts at €49 per month, with the first month free. You own what is built: if you stop the care plan, we hand everything over to you.',
       },
       {
         q: 'How much does an AI agent cost?',

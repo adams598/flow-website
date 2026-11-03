@@ -100,10 +100,12 @@ export const fr = {
       title: 'Commencer petit, au juste prix.',
       intro:
         'On part de votre problème, pas d’un catalogue. Chaque projet commence par un diagnostic offert, puis la formule la plus légère qui règle le problème.',
+      marketLabel: 'Marché :',
       steps: [
         {
           name: 'Diagnostic',
           price: 'Offert',
+          market: '',
           detail: '20 à 30 minutes, sur place à Limoges ou en visio',
           description:
             'Vous nous dites ce qui vous fait perdre du temps ou des clients. Vous recevez une page : la solution recommandée et son prix.',
@@ -111,6 +113,7 @@ export const fr = {
         {
           name: 'Express',
           price: 'Dès 490 €',
+          market: '800 à 3 000 €',
           detail: 'Prêt en une semaine, à prix fixe',
           description:
             'Un problème réglé : réservation avec acompte, inscription et paiement, commande en ligne, calendrier à jour, site vitrine refait ou une tâche administrative automatisée.',
@@ -118,20 +121,22 @@ export const fr = {
         {
           name: 'Sur mesure',
           price: 'Sur devis, par lots',
+          market: '10 000 à 40 000 €',
           detail: '2 à 10 semaines',
           description:
             'Application métier, espace client, plateforme ou agent IA, construit par étapes. Une démo avant de signer, un prix ferme pour chaque lot.',
         },
         {
           name: 'Suivi',
-          price: 'Dès 29 € / mois',
-          detail: 'Facultatif, premier mois offert',
+          price: 'Dès 49 € / mois',
+          market: '80 à 200 € / mois',
+          detail: 'Premier mois offert',
           description:
-            'Hébergement, sauvegardes, sécurité et petites corrections, sans engagement. Les évolutions se chiffrent à part.',
+            'Hébergement, sauvegardes, sécurité, corrections, une petite modification et un rapport sur votre visibilité Google chaque mois. Les nouvelles fonctionnalités se chiffrent à part.',
         },
       ],
       ownership:
-        'Sans abonnement obligatoire : vous restez propriétaire de ce que nous construisons, code et données compris.',
+        'Vous restez propriétaire de ce que nous construisons, code et données compris. Si vous arrêtez le suivi, nous vous remettons tout.',
       cta: 'Demander mon diagnostic offert',
     },
   },
@@ -795,7 +800,7 @@ export const fr = {
       },
       {
         q: 'Combien coûte un projet ?',
-        a: 'Tout commence par un diagnostic offert. Une formule Express, qui règle un problème précis à prix fixe, coûte de 490 à 990 € et elle est prête en une semaine. Un projet sur mesure se chiffre par lots après le diagnostic, avec une démo avant de signer. Il n’y a pas d’abonnement obligatoire : vous restez propriétaire de ce qui est construit, et le suivi est facultatif, à partir de 29 € par mois.',
+        a: 'Tout commence par un diagnostic offert. Une formule Express, qui règle un problème précis à prix fixe, coûte de 490 à 990 € et elle est prête en une semaine. Un projet sur mesure se chiffre par lots après le diagnostic, avec une démo avant de signer. Le suivi (hébergement, sécurité, corrections, petites modifications) démarre à 49 € par mois, avec le premier mois offert. Vous restez propriétaire de ce qui est construit : si vous arrêtez le suivi, nous vous remettons tout.',
       },
       {
         q: 'Combien coûte un agent IA ?',

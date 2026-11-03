@@ -78,6 +78,12 @@ export const Offers = () => {
                     {String(i + 1).padStart(2, '0')}
                   </span>
                   <h3 className="font-headline font-bold text-xl text-on-surface mb-1">{step.name}</h3>
+                  {step.market && (
+                    <p className="font-label text-xs text-on-surface-variant">
+                      {dict.offers.start.marketLabel}{' '}
+                      <span className="line-through decoration-red-500 decoration-2">{step.market}</span>
+                    </p>
+                  )}
                   <p className="font-headline font-semibold text-lg text-primary mb-1">{step.price}</p>
                   <p className="font-label text-xs text-on-surface-variant mb-4">{step.detail}</p>
                   <p className="font-body text-sm text-on-surface-variant leading-relaxed">{step.description}</p>

@@ -65,7 +65,7 @@ En plus de la recherche nationale, chaque lot comporte une part de prospects **l
   6. 20 minutes, puis « Quel moment vous arrange le mieux, cette semaine ou la semaine prochaine ? Et pour préparer l'échange : <question métier> ».
   7. La ligne RGPD neutre.
 - Palier Projet : proposer la démo gratuite (livrée sous 5 jours ouvrés) aux 3 meilleurs du jour.
-- Palier Express : insister sur « prêt en une semaine », « sans abonnement » et « vous en restez propriétaire ». Toujours **sans prix**.
+- Palier Express : insister sur « prêt en une semaine », « pas un logiciel loué » et « vous en restez propriétaire, code et données compris ». Toujours **sans prix**.
 - Interdits :
   - donner un prix ;
   - promettre un résultat chiffré ;

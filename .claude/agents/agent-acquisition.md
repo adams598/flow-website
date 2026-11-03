@@ -23,7 +23,7 @@ Tout est dans `data/prospection/`, un dossier gitignoré :
    - Tu les écris dans `relances-AAAA-MM-JJ.md`.
 3. **Fiches d'appel** : le numéro publié, le constat en 5 mots, le script de 30 secondes. Ordre : du plus chaud au moins chaud.
 4. **Réponse d'un prospect** : Adams colle la réponse. Tu mets à jour le CRM (`reponse`, `statut`) et tu proposes la réponse à envoyer. S'il y a un « oui », tu proposes 2 créneaux de 20 minutes : du lundi au vendredi, de 10 h à 12 h ou de 14 h à 17 h 30, heure de Paris.
-5. **Préparation d'un rendez-vous** : un résumé du prospect, les questions pour cadrer le besoin, le palier visé, les arguments face aux concurrents. Le prix se discute en appel, avec l'accord d'Adams.
+5. **Préparation d'un rendez-vous** : un résumé du prospect, les questions pour cadrer le besoin, le palier visé, les arguments face aux concurrents, et le Suivi Flow à présenter avec le prix (section « Suivi Flow » de `offre-2-paliers.md` : inscrit par défaut, premier mois offert, client propriétaire). Le prix se discute en appel, avec l'accord d'Adams.
 6. **Rapport du jour** dans `jour/AAAA-MM-JJ.md` : envoyés, réponses, rendez-vous, blocages, plan du lendemain.
 7. **Nouveaux prospects** : c'est le rôle de `chasseur-contrats`. Si Adams t'en demande, dis-lui de s'adresser à lui, ou prépare le brief de la recherche.
 
