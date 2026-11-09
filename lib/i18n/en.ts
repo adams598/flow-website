@@ -5,7 +5,7 @@ export const en: Dictionary = {
   meta: {
     title: `${SITE.name} — Custom websites in Limoges`,
     description:
-      'Custom websites, business apps and AI agents in Limoges, Haute-Vienne. Found on Google, with online booking and payment. First month of maintenance included.',
+      'Tools that bring the money in for small businesses: online booking and deposits, e-invoicing for 2027, reminders, custom websites and apps. In Limoges, and you own the code.',
     keywords: [
       'Flow',
       'custom website',
@@ -21,7 +21,7 @@ export const en: Dictionary = {
       'Custom websites, apps and AI agents in Limoges. From the idea through to launch. First month of maintenance included.',
   },
   nav: {
-    cta: 'Talk about my project',
+    cta: 'Free diagnosis',
     ctaHref: '/#projet',
     openMenu: 'Open menu',
     closeMenu: 'Close menu',
@@ -47,89 +47,89 @@ export const en: Dictionary = {
     dark: 'Dark theme',
   },
   hero: {
-    h1: `${SITE.name} — Custom websites, apps and AI agents`,
-    lead: 'We design custom digital solutions to simplify your processes, improve customer journeys and grow your business. In Limoges, or remotely.',
+    h1: `${SITE.name} — Online booking, payments and custom tools for small businesses in Limoges`,
+    title: 'Build digital.',
+    titleAccent: 'Make it flow.',
     secondaryCta: 'See our work',
-    underCta: ['Website', 'Business app', 'Platform', 'AI agents'],
+    underCta: ['Attract', 'Book', 'Collect', 'Remind', 'Answer', 'Manage'],
   },
   problems: {
     kicker: 'Your context',
-    title: 'Your activity is evolving. Your tools should too.',
-    intro: 'Your company is growing, but your tools are becoming too limited?',
-    closing: `${SITE.name} turns these needs into concrete digital solutions.`,
+    title: 'Money gets lost between the request and the payment.',
+    intro: 'Often without anyone noticing.',
+    closing: `${SITE.name} turns each leak into a tool that works for you.`,
     items: [
       {
-        key: 'idea',
-        title: 'You have an idea',
-        description: 'You want to launch a platform, a service or a new digital product.',
+        key: 'booking',
+        title: 'Bookings get lost',
+        description: 'Nobody picks up, the customer books elsewhere.',
       },
       {
-        key: 'manual',
-        title: 'Your processes are too manual',
-        description: 'Spreadsheets, emails, forms and repetitive tasks are slowing you down.',
+        key: 'noshow',
+        title: 'Customers do not show up',
+        description: 'Without a deposit, nothing holds an appointment.',
       },
       {
-        key: 'site',
-        title: 'Your website is no longer enough',
-        description:
-          'You need a client area, payments, bookings or a real operational tool.',
+        key: 'invoices',
+        title: 'Invoices drag on',
+        description: 'Unanswered quotes, late payments chased too late.',
       },
       {
-        key: 'partner',
-        title: 'You need a technical partner',
-        description:
-          'You want someone who can design and build the solution end to end.',
+        key: 'deadline',
+        title: '2027 is coming',
+        description: 'E-invoicing becomes mandatory for French small businesses.',
       },
     ],
   },
   offers: {
-    kicker: 'Solutions',
-    title: 'Four entry points. One standard: a solution that fits.',
-    unsureTitle: 'Not sure exactly what you need?',
-    unsureBody:
-      'Describe your idea, your problem or your process. We will help you choose the right solution.',
+    kicker: 'The Flow system',
+    title: 'One tool to start. The others as you grow.',
+    system: [
+      { key: 'attract', name: 'Attract', line: 'A website that gets found, and prospects found for you.', href: '/services/site-web' },
+      { key: 'book', name: 'Book', line: 'Your customers book online, 24/7.', href: '/guides/reservation-paiement' },
+      { key: 'collect', name: 'Collect', line: 'Deposits, online payment, e-invoicing.', href: '/guides/facture-electronique-2027' },
+      { key: 'remind', name: 'Remind', line: 'Quotes and unpaid invoices chased automatically.', href: '/services/application-web' },
+      { key: 'answer', name: 'Answer', line: 'An AI assistant that answers your customers.', href: '/services/agents-ia' },
+      { key: 'manage', name: 'Manage', line: 'A custom platform to run everything.', href: '/services/plateforme-web' },
+    ],
+    unsureTitle: 'Not sure where to start?',
+    unsureBody: 'Describe your business: we tell you which tool to set up first.',
     start: {
       kicker: 'How to start',
       title: 'Start small, at a fair price.',
-      intro:
-        'We start from your problem, not from a catalogue. Every project begins with a free diagnosis, then the lightest option that solves the problem.',
+      intro: 'A free diagnosis, then the most useful tool first.',
       marketLabel: 'Market:',
       steps: [
         {
           name: 'Diagnosis',
           price: 'Free',
           market: '',
-          detail: '20 to 30 minutes, in Limoges or by video call',
-          description:
-            'You tell us what costs you time or customers. You receive one page: the recommended solution and its price.',
+          detail: '30 minutes, in Limoges or by video call',
+          description: 'We find where you lose customers or money.',
         },
         {
           name: 'Express',
           price: 'From €490',
           market: '€800 to €3,000',
-          detail: 'Ready in one week, fixed price',
-          description:
-            'One problem solved: booking with deposit, registration and payment, online ordering, an up-to-date calendar, a refreshed showcase site or one automated admin task.',
+          detail: 'Live in one week, fixed price',
+          description: 'A first tool from the system, solving one clear problem.',
         },
         {
           name: 'Custom',
           price: 'Quoted, in stages',
           market: '€10,000 to €40,000',
           detail: '2 to 10 weeks',
-          description:
-            'Business application, client portal, platform or AI agent, built step by step. A demo before you sign, a fixed price for each stage.',
+          description: 'Several connected tools, or a platform. Demo before you sign.',
         },
         {
           name: 'Care',
           price: 'From €49 / month',
           market: '€80 to €200 / month',
           detail: 'First month free',
-          description:
-            'Hosting, backups, security, fixes, one small change and a Google visibility report every month. New features are quoted separately.',
+          description: 'Hosting, security, small changes. No commitment.',
         },
       ],
-      ownership:
-        'You own what we build, code and data included. If you stop the care plan, we hand everything over to you.',
+      ownership: 'You own the code, the domain name and the data. No leasing, no hidden subscription.',
       cta: 'Book my free diagnosis',
     },
   },
@@ -667,6 +667,43 @@ export const en: Dictionary = {
         example: {
           slug: 'drivin-chill',
           text: 'See the Drivin & Chill project',
+        },
+      },
+      {
+        slug: 'facture-electronique-2027',
+        title: 'E-invoicing 2027',
+        h1: 'E-invoicing 2027: switch to the mandatory format without losing your evenings',
+        seoDescription:
+          'From 1 September 2027, French small businesses must issue their invoices electronically. We help you choose the platform, move your quotes and customers over, and automate reminders.',
+        intro:
+          'Since 1 September 2026, every French business must be able to receive electronic invoices. From 1 September 2027, small businesses must also issue them. If you still invoice in Word, in Excel or by hand, now is the time to switch, and to get paid faster while you are at it.',
+        related: ['application-web'],
+        sections: [
+          {
+            title: 'What changes for you',
+            paragraphs: [
+              'An electronic invoice is not a PDF sent by email: it goes through an approved platform, which sends it to your customer and to the tax authorities. You need to choose a platform, load your customers and templates, and change your invoicing habits.',
+              'Outside the tolerance period, an invoice in the wrong format can cost a €50 fine, up to €15,000 a year. The exact dates and rules are published by the French tax authorities: we check them with you when you switch.',
+            ],
+          },
+          {
+            title: 'What we set up',
+            paragraphs: [
+              'The simplest approved platform for your business, often offered by your bank or your software. Your customer list, products, and quote and invoice templates moved over. The link with your accountant.',
+              'And, since you are changing tools anyway, automatic reminders for unanswered quotes and unpaid invoices: compliance becomes a chance to get paid faster.',
+            ],
+          },
+          {
+            title: 'For businesses that are already equipped',
+            paragraphs: [
+              'You have an online shop, booking software or an in-house tool that produces your invoices? We connect it to the approved platform, so everything goes out in the right format without typing it twice.',
+              'You own everything we set up, and you work with the platform of your choice.',
+            ],
+          },
+        ],
+        example: {
+          slug: 'objectif-tcf',
+          text: 'See a platform with subscriptions and payments: Objectif TCF',
         },
       },
       {

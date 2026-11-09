@@ -4,7 +4,7 @@ export const fr = {
   meta: {
     title: `${SITE.name} — Création de site internet à Limoges`,
     description:
-      'Sites, applications et agents IA sur mesure à Limoges, en Haute-Vienne. Visibles sur Google, avec réservation et paiement. Premier mois de maintenance offert.',
+      'Des outils qui font rentrer l’argent des TPE : réservation et acompte en ligne, facture électronique 2027, relances, sites et applications sur mesure. À Limoges, et le code vous appartient.',
     keywords: [
       'Flow',
       'flowsurmesure',
@@ -26,7 +26,7 @@ export const fr = {
       'Sites, applications et agents IA sur mesure à Limoges. De l’idée à la mise en ligne. Premier mois de maintenance offert.',
   },
   nav: {
-    cta: 'Parler de mon projet',
+    cta: 'Diagnostic offert',
     ctaHref: '/#projet',
     openMenu: 'Ouvrir le menu',
     closeMenu: 'Fermer le menu',
@@ -52,92 +52,91 @@ export const fr = {
     dark: 'Thème sombre',
   },
   hero: {
-    h1: `${SITE.name} — Création de sites internet et d’applications sur mesure`,
-    lead: 'Nous concevons des solutions digitales sur mesure pour simplifier vos processus, améliorer vos parcours clients et développer votre activité. À Limoges, ou à distance.',
+    h1: `${SITE.name} — Réservation, paiement en ligne et outils sur mesure pour TPE à Limoges`,
+    title: 'Build digital.',
+    titleAccent: 'Make it flow.',
     secondaryCta: 'Voir les réalisations',
-    underCta: ['Site web', 'Application métier', 'Plateforme', 'Agents IA'],
+    underCta: ['Attirer', 'Réserver', 'Encaisser', 'Relancer', 'Répondre', 'Piloter'],
   },
   problems: {
     kicker: 'Votre contexte',
-    title: 'Votre activité évolue. Vos outils doivent suivre.',
-    intro: 'Votre entreprise grandit, mais vos outils deviennent trop limités ?',
-    closing: `${SITE.name} transforme ces besoins en solutions digitales concrètes.`,
+    title: 'L’argent se perd entre la demande et le paiement.',
+    intro: 'Souvent sans qu’on le voie.',
+    closing: `${SITE.name} transforme chaque fuite en outil qui travaille pour vous.`,
     items: [
       {
-        key: 'idea',
-        title: 'Vous avez une idée',
-        description:
-          'Vous souhaitez lancer une plateforme, un service ou un nouveau produit digital.',
+        key: 'booking',
+        title: 'Les réservations se perdent',
+        description: 'Personne ne décroche, le client réserve ailleurs.',
       },
       {
-        key: 'manual',
-        title: 'Vos processus sont trop manuels',
-        description:
-          'Excel, emails, formulaires et tâches répétitives ralentissent votre activité.',
+        key: 'noshow',
+        title: 'Les clients ne viennent pas',
+        description: 'Sans acompte, rien ne retient un rendez-vous.',
       },
       {
-        key: 'site',
-        title: 'Votre site ne suffit plus',
-        description:
-          'Vous avez besoin d’un espace client, d’un paiement, d’une réservation ou d’un véritable outil métier.',
+        key: 'invoices',
+        title: 'Les factures traînent',
+        description: 'Devis sans réponse, impayés relancés trop tard.',
       },
       {
-        key: 'partner',
-        title: 'Vous avez besoin d’un partenaire technique',
-        description:
-          'Vous cherchez quelqu’un capable de concevoir et développer la solution de bout en bout.',
+        key: 'deadline',
+        title: '2027 approche',
+        description: 'La facture électronique devient obligatoire pour les TPE.',
       },
     ],
   },
   offers: {
-    kicker: 'Solutions',
-    title: 'Quatre portes d’entrée. Une même exigence : une solution adaptée.',
-    unsureTitle: 'Vous ne savez pas exactement ce dont vous avez besoin ?',
-    unsureBody:
-      'Décrivez-nous votre idée, votre problème ou votre processus. Nous vous aiderons à déterminer la solution la plus adaptée.',
+    kicker: 'Le système Flow',
+    title: 'Un outil pour commencer. Les autres quand vous grandissez.',
+    system: [
+      { key: 'attract', name: 'Attirer', line: 'Un site visible et des prospects trouvés pour vous.', href: '/services/site-web' },
+      { key: 'book', name: 'Réserver', line: 'Vos clients réservent en ligne, 24 h/24.', href: '/guides/reservation-paiement' },
+      { key: 'collect', name: 'Encaisser', line: 'Acompte, paiement en ligne, facture électronique.', href: '/guides/facture-electronique-2027' },
+      { key: 'remind', name: 'Relancer', line: 'Devis et impayés relancés automatiquement.', href: '/services/application-web' },
+      { key: 'answer', name: 'Répondre', line: 'Un assistant IA qui répond à vos clients.', href: '/services/agents-ia' },
+      { key: 'manage', name: 'Piloter', line: 'Une plateforme sur mesure pour tout gérer.', href: '/services/plateforme-web' },
+    ],
+    unsureTitle: 'Vous ne savez pas par où commencer ?',
+    unsureBody: 'Décrivez votre activité : on vous dit quel outil mettre en place en premier.',
     start: {
       kicker: 'Comment démarrer',
       title: 'Commencer petit, au juste prix.',
-      intro:
-        'On part de votre problème, pas d’un catalogue. Chaque projet commence par un diagnostic offert, puis la formule la plus légère qui règle le problème.',
+      intro: 'Un diagnostic offert, puis l’outil le plus utile en premier.',
       marketLabel: 'Marché :',
       steps: [
         {
           name: 'Diagnostic',
           price: 'Offert',
           market: '',
-          detail: '20 à 30 minutes, sur place à Limoges ou en visio',
-          description:
-            'Vous nous dites ce qui vous fait perdre du temps ou des clients. Vous recevez une page : la solution recommandée et son prix.',
+          detail: '30 minutes, à Limoges ou en visio',
+          description: 'On repère où vous perdez des clients ou de l’argent.',
         },
         {
           name: 'Express',
           price: 'Dès 490 €',
           market: '800 à 3 000 €',
-          detail: 'Prêt en une semaine, à prix fixe',
-          description:
-            'Un problème réglé : réservation avec acompte, inscription et paiement, commande en ligne, calendrier à jour, site vitrine refait ou une tâche administrative automatisée.',
+          detail: 'En ligne en une semaine, à prix fixe',
+          description: 'Un premier outil du système, qui règle un problème précis.',
         },
         {
           name: 'Sur mesure',
           price: 'Sur devis, par lots',
           market: '10 000 à 40 000 €',
           detail: '2 à 10 semaines',
-          description:
-            'Application métier, espace client, plateforme ou agent IA, construit par étapes. Une démo avant de signer, un prix ferme pour chaque lot.',
+          description: 'Plusieurs outils reliés, ou une plateforme. Démo avant de signer.',
         },
         {
           name: 'Suivi',
           price: 'Dès 49 € / mois',
           market: '80 à 200 € / mois',
           detail: 'Premier mois offert',
-          description:
-            'Hébergement, sauvegardes, sécurité, corrections, une petite modification et un rapport sur votre visibilité Google chaque mois. Les nouvelles fonctionnalités se chiffrent à part.',
+          description: 'Hébergement, sécurité, petites évolutions. Sans engagement.',
         },
       ],
       ownership:
-        'Vous restez propriétaire de ce que nous construisons, code et données compris. Si vous arrêtez le suivi, nous vous remettons tout.',
-      cta: 'Demander mon diagnostic offert',
+        'Code, nom de domaine et données vous appartiennent. Pas de location, pas d’abonnement caché.',
+      cta: 'Réserver mon diagnostic offert',
     },
   },
   services: {
@@ -678,6 +677,43 @@ export const fr = {
         example: {
           slug: 'drivin-chill',
           text: 'Voir la réalisation Drivin & Chill',
+        },
+      },
+      {
+        slug: 'facture-electronique-2027',
+        title: 'Facture électronique 2027',
+        h1: 'Facture électronique 2027 : passer au format obligatoire, sans y perdre vos soirées',
+        seoDescription:
+          'Au 1er septembre 2027, les TPE et PME devront émettre leurs factures au format électronique. On choisit avec vous la plateforme, on reprend vos devis et vos clients, et on automatise les relances.',
+        intro:
+          'Depuis le 1er septembre 2026, toutes les entreprises doivent pouvoir recevoir des factures électroniques. À partir du 1er septembre 2027, les TPE et PME devront aussi les émettre. Si vous facturez encore sous Word, sous Excel ou à la main, c’est le moment de changer, et d’en profiter pour être payé plus vite.',
+        related: ['application-web'],
+        sections: [
+          {
+            title: 'Ce qui change pour vous',
+            paragraphs: [
+              'Une facture électronique n’est pas un PDF envoyé par e-mail : elle passe par une plateforme agréée, qui la transmet à votre client et à l’administration. Il faut donc choisir une plateforme, y mettre vos clients et vos modèles, et changer vos habitudes de facturation.',
+              'Hors période de tolérance, une facture qui ne respecte pas le format peut coûter 50 € d’amende, dans la limite de 15 000 € par an. Les dates et les règles exactes sont publiées par l’administration fiscale : nous les vérifions avec vous au moment du passage.',
+            ],
+          },
+          {
+            title: 'Ce qu’on met en place',
+            paragraphs: [
+              'Le choix de la plateforme agréée la plus simple pour votre activité, souvent proposée par votre banque ou votre logiciel. La reprise de votre fichier clients, de vos articles et de vos modèles de devis et de factures. Le lien avec votre expert-comptable.',
+              'Et, puisque vous changez d’outil, les relances automatiques des devis sans réponse et des factures impayées : la conformité devient l’occasion d’encaisser plus vite.',
+            ],
+          },
+          {
+            title: 'Pour les entreprises déjà équipées',
+            paragraphs: [
+              'Vous avez un site e-commerce, un logiciel de réservation ou un outil maison qui produit vos factures ? Nous le relions à la plateforme agréée, pour que tout parte au bon format sans double saisie.',
+              'Vous restez propriétaire de tout ce que nous mettons en place, et vous travaillez avec la plateforme de votre choix.',
+            ],
+          },
+        ],
+        example: {
+          slug: 'objectif-tcf',
+          text: 'Voir une plateforme avec abonnements et paiements : Objectif TCF',
         },
       },
       {

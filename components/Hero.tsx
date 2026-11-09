@@ -76,19 +76,16 @@ export const Hero = () => {
         <div className="w-full lg:w-[55%] text-center lg:text-left">
           <FadeInUp>
             {/* Titre de la page pour Google : ce que fait Flow, en clair. Le slogan garde son style. */}
-            <h1 className="kicker mb-6">{dict.hero.h1}</h1>
+            <h1 className="kicker mb-6">
+              <span aria-hidden>{SITE.name}</span>
+              <span className="sr-only">{dict.hero.h1}</span>
+            </h1>
             <p className="font-headline font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight text-on-surface">
-              Build digital.
+              {dict.hero.title}
               <br />
               <span className="bg-gradient-to-r from-primary via-primary-container to-primary-fixed bg-clip-text text-transparent">
-                Make it flow.
+                {dict.hero.titleAccent}
               </span>
-            </p>
-          </FadeInUp>
-
-          <FadeInUp delay={0.15} className="mt-8">
-            <p className="font-body text-lg md:text-xl text-on-surface-variant leading-relaxed max-w-2xl mx-auto lg:mx-0">
-              {dict.hero.lead}
             </p>
           </FadeInUp>
 

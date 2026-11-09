@@ -1,10 +1,20 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Megaphone, CalendarCheck, CreditCard, BellRing, MessageCircle, LayoutDashboard } from 'lucide-react'
 import Link from 'next/link'
 import { FadeInUp, StaggerContainer, StaggerItem } from './AnimationWrappers'
 import { useI18n } from './LocaleProvider'
+
+// Les six outils du système Flow : le client commence par un, ajoute les autres en grandissant.
+const systemIcons = {
+  attract: Megaphone,
+  book: CalendarCheck,
+  collect: CreditCard,
+  remind: BellRing,
+  answer: MessageCircle,
+  manage: LayoutDashboard,
+} as const
 
 export const Offers = () => {
   const { dict, href } = useI18n()
@@ -23,40 +33,33 @@ export const Offers = () => {
           </div>
         </FadeInUp>
 
-        <StaggerContainer className="grid md:grid-cols-2 gap-6">
-          {dict.services.items.map((service) => (
-            <StaggerItem key={service.slug}>
-              <motion.article
-                whileHover={{ y: -4 }}
-                className="h-full flex flex-col rounded-2xl border border-outline-variant/10 bg-surface-container-high p-8"
-              >
-                <span className="font-label text-xs uppercase tracking-[0.2em] text-kicker mb-4">
-                  {service.number}
-                </span>
-                <h3 className="font-headline font-bold text-2xl text-on-surface mb-3">
-                  {service.title}
-                </h3>
-                <p className="font-body text-on-surface-variant leading-relaxed mb-6">
-                  {service.headline}
-                </p>
-                <ul className="space-y-2 text-sm text-on-surface-variant flex-1 mb-8">
-                  {service.items.map((item) => (
-                    <li key={item} className="flex items-start gap-2">
-                      <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary-container shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-                <Link
-                  href={href(`/services/${service.slug}`)}
-                  className="inline-flex items-center gap-2 font-label text-sm font-semibold text-primary hover:text-primary-container transition-colors"
-                >
-                  {service.cta}
-                  <ArrowRight size={14} />
-                </Link>
-              </motion.article>
-            </StaggerItem>
-          ))}
+        <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {dict.offers.system.map((tool, i) => {
+            const Icon = systemIcons[tool.key as keyof typeof systemIcons]
+            return (
+              <StaggerItem key={tool.key}>
+                <motion.div whileHover={{ y: -4 }} className="h-full">
+                  <Link
+                    href={href(tool.href)}
+                    className="group h-full flex flex-col rounded-2xl border border-outline-variant/10 bg-surface-container-high p-7 hover:border-primary/30 transition-colors"
+                  >
+                    <div className="flex items-center justify-between mb-5">
+                      <Icon size={22} className="text-primary-container" />
+                      <span className="font-label text-xs tracking-[0.2em] text-kicker">
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+                    </div>
+                    <h3 className="font-headline font-bold text-2xl text-on-surface mb-2">{tool.name}</h3>
+                    <p className="font-body text-on-surface-variant leading-relaxed flex-1">{tool.line}</p>
+                    <ArrowRight
+                      size={16}
+                      className="mt-5 text-primary opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all"
+                    />
+                  </Link>
+                </motion.div>
+              </StaggerItem>
+            )
+          })}
         </StaggerContainer>
 
         <div className="mt-24 md:mt-28" id="demarrer">

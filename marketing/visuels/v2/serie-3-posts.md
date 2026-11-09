@@ -9,19 +9,32 @@ Page entreprise Flow = « nous ». Pour le profil perso d'Adams, repartager avec
 
 ---
 
-## Post 1 — Qui est Flow ?  (visuel : `posts/post1-flow.png`)
+## Post 1 — Qui est Flow ?  (visuel : `posts/post1-flow-linkedin.jpg`, version allégée de `post1-flow.png`)
 
-> Enchanté, nous sommes Flow 👋
+Version publiée sur la page entreprise (5 novembre 2026) :
+
+> Vos clients vous cherchent sur Google. Ils veulent réserver, commander ou payer en ligne. Et vous, vous passez vos soirées à répondre au téléphone et à remplir des tableaux.
 >
-> Nous créons des sites internet et des applications sur mesure, pour les entreprises, les artisans et les indépendants.
+> C'est pour ça que Flow existe 👋
 >
-> Un site qui vous amène des clients. Une application pensée pour votre façon de travailler.
+> Nous créons des sites internet et des applications sur mesure pour les entreprises, les artisans et les indépendants. Basés à Limoges, nous travaillons partout en France.
 >
-> Dans notre prochain post : comment on vous accompagne, étape par étape.
+> Ce que nous construisons, concrètement :
+> 🔹 un site qui vous amène des clients ;
+> 🔹 la réservation et le paiement en ligne ;
+> 🔹 des outils qui font à votre place les tâches répétitives.
 >
-> Un projet ? Écrivez-nous en message privé.
+> Déjà en ligne : une plateforme d'apprentissage avec abonnements, une plateforme de formation pour professionnels, un parcours de réservation avec paiement.
 >
-> #SiteInternet #ApplicationSurMesure #Entrepreneurs #TPE #PME
+> Dans notre prochain post : comment se passe un projet avec nous, étape par étape.
+>
+> Un projet, une question ? Écrivez-nous en message privé.
+>
+> #SiteInternet #ApplicationSurMesure #Entrepreneurs #TPE #Limoges
+
+Premier commentaire (à publier juste après, par la page) : « Pour découvrir nos réalisations : https://flowsurmesure.com »
+
+Version d'origine, plus courte : « Enchanté, nous sommes Flow 👋 Nous créons des sites internet et des applications sur mesure, pour les entreprises, les artisans et les indépendants. Un site qui vous amène des clients. Une application pensée pour votre façon de travailler. Dans notre prochain post : comment on vous accompagne, étape par étape. Un projet ? Écrivez-nous en message privé. »
 
 ## Post 2 — Comment ça marche  (visuel : `posts/post2-methode.png`)
 

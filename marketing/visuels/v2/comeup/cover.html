@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Couverture ComeUp — Flow</title>
+  <link rel="stylesheet" href="cover.css" />
+</head>
+<body>
+<div class="c">
+  <svg class="shapes" viewBox="0 0 1280 720" aria-hidden="true">
+    <defs>
+      <linearGradient id="gp" x1="60" y1="90" x2="760" y2="660" gradientUnits="userSpaceOnUse"><stop stop-color="#FFFFFF"/><stop offset="0.72" stop-color="#FFFCFA"/><stop offset="1" stop-color="#F3EBE1"/></linearGradient>
+      <linearGradient id="gc" x1="700" y1="520" x2="1300" y2="740" gradientUnits="userSpaceOnUse"><stop stop-color="#00C4D0"/><stop offset="0.3" stop-color="#007C88"/><stop offset="1" stop-color="#003E46"/></linearGradient>
+      <filter id="lift" x="-20%" y="-30%" width="140%" height="160%"><feDropShadow dx="0" dy="14" stdDeviation="12" flood-color="#041416" flood-opacity="0.3"/></filter>
+    </defs>
+    <path filter="url(#lift)" fill="url(#gc)" d="M700 600 C 860 500, 1120 480, 1300 540 L 1300 740 L 640 740 C 620 680, 640 630, 700 600 Z"/>
+    <path filter="url(#lift)" fill="url(#gp)" d="M56 150 C 66 96, 260 86, 450 92 C 640 98, 770 130, 764 250 C 758 380, 730 570, 470 620 C 280 650, 84 636, 62 540 C 46 460, 48 220, 56 150 Z"/>
+  </svg>
+
+  <div class="logo">
+    <svg viewBox="0 0 256 256" fill="none"><defs><linearGradient id="l" x1="48" y1="18" x2="112" y2="240" gradientUnits="userSpaceOnUse"><stop stop-color="#C9FDFF"/><stop offset="0.42" stop-color="#2EEAF8"/><stop offset="1" stop-color="#00A8B2"/></linearGradient><linearGradient id="r" x1="150" y1="12" x2="224" y2="248" gradientUnits="userSpaceOnUse"><stop stop-color="#7DF4FF"/><stop offset="0.48" stop-color="#00C4D4"/><stop offset="1" stop-color="#006970"/></linearGradient></defs><path d="M128 16 24 236h54L128 92Z" fill="url(#l)"/><path d="M128 16 232 236h-54L128 92Z" fill="url(#r)"/></svg>
+    Flow
+  </div>
+
+  <div class="txt">
+    <div class="kick" id="kick"></div>
+    <h1 id="title"></h1>
+    <ul id="points"></ul>
+  </div>
+
+  <span class="tick"></span><span class="dot"></span>
+  <div class="slab"><div class="scr" id="screen"></div></div>
+  <div class="badge" id="badge"></div>
+</div>
+
+<script>
+  // Une page, cinq couvertures : cover.html?s=reservation|assistant|relances|suivi|prospection
+  const S = {
+    // Niches : un métier précis, peu de concurrence sur ComeUp.
+    autoecole: {
+      title: 'Vos leçons de conduite <span class="pill">réservées en ligne.</span>',
+      points: ['Les élèves réservent leurs heures seuls', 'Planning de chaque moniteur à jour', 'Forfaits et heures payés en ligne'],
+      badge: '<b>5 jours</b><i>prêt à<br>l’emploi</i>',
+      screen: `
+        <div class="hd">Réserver une leçon <small>Auto-école</small></div>
+        <div class="row">${['Lun', 'Mar', 'Mer', 'Jeu', 'Ven'].map((d, i) =>
+          `<div class="box" style="flex:1;text-align:center;padding:8px 2px;font-size:13px;${i === 2 ? 'background:#131313;color:#fff;border-color:#131313' : ''}">${d}</div>`).join('')}</div>
+        ${[['08:00', 'Moniteur Karim', 'Complet', 'wait'], ['10:00', 'Monitrice Léa', 'Libre', 'ok'], ['14:00', 'Moniteur Karim', 'Libre', 'ok']]
+          .map(([h, m, s, k]) => `<div class="box row"><span>${h}<br><span class="muted">${m}</span></span><span class="tag ${k}">${s}</span></div>`).join('')}
+        <div class="btn">Réserver 1 h de conduite</div>
+        <div class="row"><span class="tag ok">✓ Rappel la veille</span><span class="muted">Forfait : 12 h restantes</span></div>`,
+    },
+    hebergement: {
+      title: 'Un assistant IA <span class="pill">pour vos voyageurs.</span>',
+      points: ['Répond 24 h/24 en français et en anglais', 'Arrivée, parking, animaux, petit-déjeuner', 'Vous transmet les demandes de réservation'],
+      badge: '<b>5 jours</b><i>mis en<br>ligne</i>',
+      screen: `
+        <div class="hd">Assistant <span class="live">En ligne</span></div>
+        ${[
+          ['me', 'Hello! What time is check-in?'],
+          ['bot', 'Check-in is from 4 pm. Free parking is right in front of the gîte.'],
+          ['me', 'Les chiens sont acceptés ?'],
+          ['bot', 'Oui, avec un supplément de 8 € par nuit. Je vous transmets votre demande ?'],
+        ].map(([w, t]) => `<div style="max-width:84%;align-self:${w === 'me' ? 'flex-end' : 'flex-start'};padding:10px 13px;border-radius:14px;font:500 13.5px/1.3 Inter;${w === 'me'
+          ? 'background:#131313;color:#fff;border-bottom-right-radius:4px' : 'background:#e2f7f8;color:#123;border-bottom-left-radius:4px'}">${t}</div>`).join('')}
+        <div class="row" style="margin-top:auto"><span class="tag ok">FR · EN</span><span class="muted">Hôtel · gîte · camping</span></div>`,
+    },
+    beaute: {
+      title: 'Vos rendez-vous <span class="pill">réservés en ligne.</span>',
+      points: ['Vos clientes réservent 24 h/24', 'Acompte en ligne : fini les lapins', 'Rappel automatique la veille'],
+      badge: '<b>4 jours</b><i>prêt à<br>l’emploi</i>',
+      screen: `
+        <div class="hd">Prendre rendez-vous <small>Institut</small></div>
+        ${[['Coupe et brushing', '45 min · 38 €'], ['Soin du visage', '1 h · 55 €'], ['Taille de barbe', '20 min · 15 €']]
+          .map(([p, d], i) => `<div class="box row" style="${i === 1 ? 'border:2px solid #00b8c8' : ''}"><span>${p}<br><span class="muted">${d}</span></span>${i === 1 ? '<span class="tag ink">Choisi</span>' : ''}</div>`).join('')}
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">${['10:00', '11:30', '15:00'].map((h) =>
+          `<div class="box" style="text-align:center;${h === '11:30' ? 'background:#131313;color:#fff' : ''}">${h}</div>`).join('')}</div>
+        <div class="btn">Payer l’acompte de 10 €</div>`,
+    },
+    clickcollect: {
+      title: 'Vos commandes en ligne, <span class="pill">prêtes à retirer.</span>',
+      points: ['Vos clients commandent la veille', 'Ils choisissent leur créneau de retrait', 'Paiement en ligne ou sur place'],
+      badge: '<b>6 jours</b><i>prêt à<br>vendre</i>',
+      screen: `
+        <div class="hd">Commander <small>Retrait en boutique</small></div>
+        ${[['Baguette tradition', '× 2', '2,60 €'], ['Croissant pur beurre', '× 6', '7,20 €'], ['Tarte aux pommes (6 parts)', '× 1', '16,00 €']]
+          .map(([p, q, t]) => `<div class="box row"><span>${p}<br><span class="muted">${q}</span></span><span style="font:700 14px Inter">${t}</span></div>`).join('')}
+        <div class="box row">Retrait samedi <span class="tag ink">08:30 – 09:00</span></div>
+        <div class="btn">Valider · 25,80 €</div>`,
+    },
+    devis: {
+      title: 'Vos devis estimés <span class="pill">en 2 minutes.</span>',
+      points: ['Le client estime son chantier sur votre site', 'Vous recevez une demande déjà qualifiée', 'Moins de déplacements pour rien'],
+      badge: '<b>7 jours</b><i>en ligne<br>et testé</i>',
+      screen: `
+        <div class="hd">Estimer mes travaux <small>Peinture</small></div>
+        <div class="box row">Surface à peindre <span style="font:800 16px Manrope">45 m²</span></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">${[['Murs', true], ['Plafonds', true], ['Boiseries', false], ['Enduit', false]]
+          .map(([o, c]) => `<div class="box" style="${c ? 'border:2px solid #00b8c8;color:#005f66' : ''}">${c ? '✓ ' : ''}${o}</div>`).join('')}</div>
+        <div class="box row">Estimation <span style="font:800 20px Manrope">1 350 – 1 650 €</span></div>
+        <div class="btn">Recevoir mon devis précis</div>
+        <div class="row"><span class="tag ok">✓ Demande envoyée à l’artisan</span></div>`,
+    },
+    prospection: {
+      title: 'Vos futurs clients, <span class="pill">trouvés pour vous.</span>',
+      points: ['Des entreprises qui ont besoin de vous', 'Besoin prouvé, contact vérifié', 'Message d’approche prêt à envoyer'],
+      badge: '<b>3 jours</b><i>premiers<br>prospects</i>',
+      screen: `
+        <div class="hd">Vos prospects <small>Lot n° 1</small></div>
+        ${[
+          ['Garage du Centre', 'Réservation par téléphone', '9/10'],
+          ['Atelier Bois & Co', 'Devis envoyés à la main', '9/10'],
+          ['Cabinet Ostéo Plus', 'Site illisible sur mobile', '8/10'],
+          ['Traiteur Saveurs', 'Commandes par e-mail', '8/10'],
+        ].map(([n, b, s]) => `<div class="box row"><span>${n}<br><span class="muted">${b}</span></span><span class="tag ink">${s}</span></div>`).join('')}
+        <div class="row" style="margin-top:auto"><span class="tag ok">✓ E-mails vérifiés</span><span class="tag ok">✓ Messages prêts</span></div>`,
+    },
+    reservation: {
+      title: 'La réservation en ligne, <span class="pill">avec acompte.</span>',
+      points: ['Le client choisit son créneau', 'Il paie l’acompte en ligne', 'Plus jamais de créneau vendu deux fois'],
+      badge: '<b>1 sem.</b><i>prêt à<br>l’emploi</i>',
+      screen: `
+        <div class="hd">Réserver un créneau <small>Nov.</small></div>
+        <div class="row">${['Lun 10', 'Mar 11', 'Mer 12', 'Jeu 13'].map((d, i) =>
+          `<div class="box" style="flex:1;text-align:center;padding:8px 4px;font-size:13px;${i === 1 ? 'background:#131313;color:#fff;border-color:#131313' : ''}">${d}</div>`).join('')}</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">${['09:00', '10:30', '14:00', '16:30'].map((h) =>
+          `<div class="box" style="text-align:center;${h === '10:30' ? 'border:2px solid #00b8c8;color:#005f66' : ''}">${h}</div>`).join('')}</div>
+        <div class="box row">Acompte à régler <span style="font:800 18px Manrope">30 €</span></div>
+        <div class="btn">Payer et réserver</div>
+        <div class="row"><span class="tag ok">✓ Confirmation envoyée</span><span class="muted">Agenda à jour</span></div>`,
+    },
+    assistant: {
+      title: 'L’assistant IA <span class="pill">de votre entreprise.</span>',
+      points: ['Répond à vos clients 24 h/24', 'Avec vos infos : tarifs, horaires, FAQ', 'Vous transmet les vraies demandes'],
+      badge: '<b>5 jours</b><i>mis en<br>ligne</i>',
+      screen: `
+        <div class="hd">Assistant <span class="live">En ligne</span></div>
+        ${[
+          ['me', 'Vous êtes ouverts samedi ?'],
+          ['bot', 'Oui, de 9 h à 13 h. Je vous réserve un créneau ?'],
+          ['me', 'Oui, 10 h si possible.'],
+          ['bot', 'C’est noté pour samedi 10 h. Confirmation envoyée par e-mail.'],
+        ].map(([w, t]) => `<div style="max-width:82%;align-self:${w === 'me' ? 'flex-end' : 'flex-start'};padding:10px 13px;border-radius:14px;font:500 14px/1.3 Inter;${w === 'me'
+          ? 'background:#131313;color:#fff;border-bottom-right-radius:4px' : 'background:#e2f7f8;color:#123;border-bottom-left-radius:4px'}">${t}</div>`).join('')}
+        <div class="box row" style="margin-top:auto"><span class="muted" style="font-size:13px">Écrivez votre question…</span><span class="tag ink">Envoyer</span></div>`,
+    },
+    relances: {
+      title: 'Vos relances partent <span class="pill">toutes seules.</span>',
+      points: ['Factures et devis relancés à temps', 'Arrêt automatique dès le paiement', 'Les impayés suivis en un coup d’œil'],
+      badge: '<b>3 jours</b><i>livré et<br>testé</i>',
+      screen: `
+        <div class="hd">Suivi des paiements <small>Cette semaine</small></div>
+        ${[
+          ['Facture F-1042', '480 €', 'wait', 'Relance 1 envoyée'],
+          ['Facture F-1039', '1 250 €', 'ok', '✓ Payée'],
+          ['Devis D-311', '2 900 €', 'wait', 'Relance 2 · J+7'],
+          ['Facture F-1036', '320 €', 'ok', '✓ Payée'],
+        ].map(([n, m, k, s]) => `<div class="box row"><span>${n}<br><span class="muted">${m}</span></span><span class="tag ${k}">${s}</span></div>`).join('')}
+        <div class="row" style="margin-top:auto"><span class="muted">3 relances programmées</span><span class="tag ink">Automatique</span></div>`,
+    },
+    suivi: {
+      title: 'Votre site suivi, <span class="pill">chaque mois.</span>',
+      points: ['Hébergement et sauvegardes', 'Sécurité et mises à jour', 'Une modification incluse chaque mois'],
+      badge: '<b>49 €</b><i>par mois,<br>sans engagement</i>',
+      screen: `
+        <div class="hd">Votre site <small>Rapport de novembre</small></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">${[
+          ['Sauvegarde', 'Chaque jour'], ['Sécurité', 'À jour'], ['Site', 'En ligne'], ['Modification', 'Faite'],
+        ].map(([a, b]) => `<div class="box"><span class="muted">${a}</span><br>✓ ${b}</div>`).join('')}</div>
+        <div class="box" style="flex:1;display:flex;flex-direction:column;gap:8px">
+          <span class="muted">Visites depuis Google</span>
+          <div style="flex:1;display:flex;align-items:flex-end;gap:10px">${[38, 46, 42, 58, 64, 78].map((h, i) =>
+            `<div style="flex:1;height:${h}%;border-radius:6px 6px 2px 2px;background:${i === 5 ? '#00b8c8' : '#cfeff1'}"></div>`).join('')}</div>
+        </div>`,
+    },
+  };
+  const s = S[new URLSearchParams(location.search).get('s')] || S.reservation;
+  document.getElementById('kick').textContent = 'Ingénieur web · France';
+  document.getElementById('title').innerHTML = s.title;
+  document.getElementById('points').innerHTML = s.points.map((p) => `<li>${p}</li>`).join('');
+  document.getElementById('badge').innerHTML = s.badge;
+  document.getElementById('screen').innerHTML = s.screen;
+</script>
+</body>
+</html>

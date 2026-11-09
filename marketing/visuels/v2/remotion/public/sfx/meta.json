@@ -1,0 +1,67 @@
+{
+ "notif": {
+  "source": "message-pop",
+  "duree": 1.015,
+  "pic": 0.015
+ },
+ "notif2": {
+  "source": "bubble-pop",
+  "duree": 0.38,
+  "pic": 0.241
+ },
+ "papier": {
+  "source": "papers-moved",
+  "duree": 1.6,
+  "pic": 0.5
+ },
+ "papier2": {
+  "source": "paper-crinkle",
+  "duree": 3.095,
+  "pic": 0.538
+ },
+ "whoosh": {
+  "source": "air-woosh",
+  "duree": 2.21,
+  "pic": 0.608
+ },
+ "whoosh2": {
+  "source": "cine-whoosh",
+  "duree": 1.255,
+  "pic": 1.005
+ },
+ "sweep": {
+  "source": "air-sweep",
+  "duree": 0.802,
+  "pic": 0.267
+ },
+ "plongee": {
+  "source": "tunnel-woosh (inversé)",
+  "duree": 1.33,
+  "pic": 1.3
+ },
+ "entree": {
+  "source": "light-pop-whoosh",
+  "duree": 0.176,
+  "pic": 0.029
+ },
+ "tampon": {
+  "source": "wood-hit",
+  "duree": 0.395,
+  "pic": 0.039
+ },
+ "clavier-pc": {
+  "source": "laptop-keys",
+  "duree": 1.607,
+  "pic": 0.226
+ },
+ "clic": {
+  "source": "select-click",
+  "duree": 1.105,
+  "pic": 0.068
+ },
+ "bonne-nouvelle": {
+  "source": "positive-notification (951)",
+  "duree": 2.759,
+  "pic": 0.146
+ }
+}

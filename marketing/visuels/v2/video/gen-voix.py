@@ -19,7 +19,7 @@ import numpy as np
 
 OUT = Path(__file__).resolve().parent / "audio" / "voix"
 VOICE = "fr-FR-RemyMultilingualNeural"
-BASE_RATE, BASE_PITCH = 2, -4        # % et Hz : voix A retenue par Adams (naturelle, commerciale)
+BASE_RATE, BASE_PITCH = 7, -2        # % et Hz : Rémy plus vif et plus ouvert (ton vendeur)
 SR = 48000
 # Traitement léger, sans changement de hauteur : une voix trop modifiée sonne artificielle.
 STUDIO = ("highpass=f=70,equalizer=f=150:t=q:w=1.0:g=1.5,equalizer=f=3000:t=q:w=1.4:g=1.5,"
@@ -27,17 +27,19 @@ STUDIO = ("highpass=f=70,equalizer=f=150:t=q:w=1.0:g=1.5,equalizer=f=3000:t=q:w=
 
 # Réplique = segments (texte, débit relatif %, hauteur relative Hz).
 LINES = [
-    ("01-accroche", [("Vous avez une activité qui vous tient à cœur ?", 0, 0)]),
-    ("02-quotidien", [("Entre les appels, les papiers et les relances… les journées filent vite.", 0, 0)]),
-    ("03-flow", [("Chez Flow, on vous accompagne dans votre activité, pas à pas.", 0, 0)]),
-    ("04-site", [("On crée votre site internet : vos clients vous trouvent, réservent et paient en ligne. Et si vous avez déjà un site, on l'améliore.", 0, 0)]),
-    ("05-app", [("On conçoit aussi votre application, autour de votre façon de travailler : dossiers, planning, équipe… tout au même endroit.", 0, 0)]),
-    ("05b-preuves", [("Des projets déjà en ligne, pour de vraies entreprises.", 0, 0)]),
-    ("06-tuto", [("Pour commencer, c'est simple. Rendez-vous sur flow sur mesure point com, descendez en bas de la page, et répondez à quelques questions sur votre projet.", 0, 0)]),
-    ("06c-tuto-court", [("Pour commencer, rendez-vous sur flow sur mesure point com.", 0, 0)]),
-    ("07-cotes", [("Et après la mise en ligne, on reste à vos côtés.", 0, 0),
-                  ("Et bonne nouvelle ! Le premier mois de maintenance est offert !", 3, 3)]),
-    ("08-fin", [("Flow. Parlons de votre projet.", 0, 0)]),
+    ("01-accroche", [("Vous avez une activité qui vous tient à cœur ?", 0, 2)]),
+    ("02-quotidien", [("Les appels, les papiers, les relances…", 3, 0), ("et vos journées filent !", 2, 2)]),
+    ("03-flow", [("Chez Flow, on vous accompagne, pas à pas !", 0, 1)]),
+    ("04-site", [("On crée votre site internet : vos clients vous trouvent, réservent, et paient en ligne.", 2, 0),
+                 ("Vous avez déjà un site ? On le booste !", 3, 3)]),
+    ("05-app", [("Besoin d'une application ?", 0, 3),
+                ("On la construit autour de votre façon de travailler : dossiers, planning, équipe… tout au même endroit !", 3, 0)]),
+    ("05b-preuves", [("Et ce n'est pas qu'une promesse : nos projets sont déjà en ligne !", 2, 1)]),
+    ("06-tuto", [("Pour démarrer, c'est simple :", 0, 2), ("allez sur flow sur mesure point com, descendez en bas de la page, et répondez à quelques questions.", 3, 0)]),
+    ("06c-tuto-court", [("Pour démarrer, rendez-vous sur flow sur mesure point com !", 2, 1)]),
+    ("07-cotes", [("Et après la mise en ligne ? On reste à vos côtés.", 0, 0),
+                  ("Et bonne nouvelle : le premier mois de maintenance est offert !", 5, 4)]),
+    ("08-fin", [("Un projet ? Écrivez-nous en message privé !", 2, 2)]),
 ]
 
 

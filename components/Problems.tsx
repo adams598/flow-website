@@ -1,14 +1,15 @@
 'use client'
 
-import { Lightbulb, Workflow, Globe, Users } from 'lucide-react'
+import { PhoneMissed, UserX, Receipt, CalendarClock } from 'lucide-react'
 import { FadeInUp, StaggerContainer, StaggerItem } from './AnimationWrappers'
 import { useI18n } from './LocaleProvider'
 
+// Les quatre endroits où une TPE perd de l'argent, entre la demande et le paiement.
 const icons = {
-  idea: Lightbulb,
-  manual: Workflow,
-  site: Globe,
-  partner: Users,
+  booking: PhoneMissed,
+  noshow: UserX,
+  invoices: Receipt,
+  deadline: CalendarClock,
 } as const
 
 export const Problems = () => {

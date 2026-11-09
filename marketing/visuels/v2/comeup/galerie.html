@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Galerie ComeUp — Flow</title>
+  <link rel="stylesheet" href="cover.css" />
+  <style>
+    /* Galerie : même famille que les couvertures, le texte reste à gauche dans la forme blanche,
+       la preuve (écran réel, étapes, livrable) à droite. */
+    .txt { top: 205px; width: 540px; gap: 16px; }
+    h1 { font-size: 50px; }
+    .txt li { font-size: 20px; }
+    .tag-k { display: inline-block; align-self: flex-start; padding: 6px 12px; border-radius: 999px; background: #131313; color: #fffcfa; font: 600 12px Inter; letter-spacing: 0.14em; text-transform: uppercase; }
+
+    /* Ordinateur + téléphone */
+    .laptop { position: absolute; z-index: 5; left: 680px; top: 150px; width: 540px; }
+    .laptop .ecran { border-radius: 16px 16px 6px 6px; padding: 10px; background: linear-gradient(155deg, #4a4a4a, #141414 42%, #2a2a2a); box-shadow: 0 30px 46px rgba(0,0,0,0.42), inset 0 1px 0 rgba(255,255,255,0.3); }
+    .laptop .ecran div { height: 316px; border-radius: 8px; overflow: hidden; background: #fff; }
+    .laptop img, .phone img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+    .laptop .socle { margin: 0 -34px; height: 14px; border-radius: 0 0 14px 14px; background: linear-gradient(180deg, #d6d9db, #9ea4a8); box-shadow: 0 14px 22px rgba(0,0,0,0.35); }
+    .laptop.seul { left: 660px; top: 128px; width: 580px; }
+    .laptop.seul .ecran div { height: 360px; }
+    .phone { position: absolute; z-index: 6; left: 1090px; top: 300px; width: 150px; height: 312px; border-radius: 26px; padding: 7px; background: #141414; box-shadow: 0 24px 34px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.3); transform: rotate(4deg); }
+    .phone div { height: 100%; border-radius: 20px; overflow: hidden; background: #fff; }
+    .legende { position: absolute; z-index: 7; left: 680px; top: 560px; font: 600 14px Inter; color: #d8f6f8; letter-spacing: 0.02em; }
+
+    /* Panneau large (étapes, livrables) */
+    .panneau { position: absolute; z-index: 5; left: 700px; top: 118px; width: 520px; border-radius: 24px; padding: 10px; background: linear-gradient(155deg, #4a4a4a, #141414 42%, #2a2a2a); box-shadow: 0 34px 50px rgba(0,0,0,0.42), inset 0 1px 0 rgba(255,255,255,0.35); transform: rotate(-3deg); }
+    .panneau > div { border-radius: 16px; background: #fffcfa; padding: 22px; display: flex; flex-direction: column; gap: 12px; }
+    .etape { display: flex; gap: 14px; align-items: flex-start; background: #fff; border: 1px solid #eadfd2; border-radius: 14px; padding: 14px 16px; }
+    .etape b { flex: 0 0 auto; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: #7df4ff; color: #131313; font: 800 17px Manrope; }
+    .etape strong { display: block; font: 700 16px Manrope; letter-spacing: -0.02em; }
+    .etape span { display: block; margin-top: 3px; font: 500 13px/1.35 Inter; color: #5c534c; }
+    .fiche { width: 100%; border-collapse: collapse; font: 500 11.5px Inter; }
+    .fiche th { text-align: left; padding: 8px 7px; background: #131313; color: #fff; font-weight: 600; }
+    .fiche th:first-child { border-radius: 8px 0 0 8px; } .fiche th:last-child { border-radius: 0 8px 8px 0; }
+    .fiche td { padding: 9px 7px; border-bottom: 1px solid #eadfd2; vertical-align: top; }
+    .fiche td small { display: block; color: #8a7f75; font-size: 10.5px; }
+    .note { display: inline-block; padding: 3px 7px; border-radius: 999px; background: #131313; color: #fff; font-weight: 700; }
+    .fictif { align-self: flex-start; padding: 5px 10px; border-radius: 999px; background: #fbeee2; color: #8a4a1c; font: 600 11px Inter; letter-spacing: 0.04em; }
+    .frise { display: flex; flex-direction: column; gap: 0; }
+    .jalon { display: grid; grid-template-columns: 64px 1fr; gap: 12px; align-items: start; padding: 10px 0; border-bottom: 1px dashed #eadfd2; }
+    .jalon em { font-style: normal; font: 800 15px Manrope; color: #00a8b2; }
+    .jalon strong { font: 700 14.5px Manrope; display: block; }
+    .jalon span { font: 500 12.5px Inter; color: #5c534c; }
+    .jalon.stop { border: 0; background: #e2f7f8; border-radius: 12px; padding: 12px; margin-top: 8px; }
+    .grille { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .tuile { background: #fff; border: 1px solid #eadfd2; border-radius: 12px; padding: 12px 14px; font: 600 14px Inter; }
+    .tuile small { display: block; font: 500 11.5px Inter; color: #8a7f75; margin-bottom: 4px; }
+    .barres { display: flex; align-items: flex-end; gap: 10px; height: 90px; }
+    .barres i { flex: 1; border-radius: 6px 6px 2px 2px; background: #cfeff1; }
+    .barres i:last-child { background: #00b8c8; }
+
+    /* Portrait */
+    .portrait { position: absolute; z-index: 5; left: 800px; top: 100px; width: 380px; height: 500px; border-radius: 28px; overflow: hidden; box-shadow: 0 34px 50px rgba(0,0,0,0.45); border: 6px solid #fffcfa; transform: rotate(3deg); }
+    .portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; display: block; }
+  </style>
+</head>
+<body>
+<div class="c">
+  <svg class="shapes" viewBox="0 0 1280 720" aria-hidden="true">
+    <defs>
+      <linearGradient id="gp" x1="60" y1="90" x2="760" y2="660" gradientUnits="userSpaceOnUse"><stop stop-color="#FFFFFF"/><stop offset="0.72" stop-color="#FFFCFA"/><stop offset="1" stop-color="#F3EBE1"/></linearGradient>
+      <linearGradient id="gc" x1="700" y1="520" x2="1300" y2="740" gradientUnits="userSpaceOnUse"><stop stop-color="#00C4D0"/><stop offset="0.3" stop-color="#007C88"/><stop offset="1" stop-color="#003E46"/></linearGradient>
+      <filter id="lift" x="-20%" y="-30%" width="140%" height="160%"><feDropShadow dx="0" dy="14" stdDeviation="12" flood-color="#041416" flood-opacity="0.3"/></filter>
+    </defs>
+    <path filter="url(#lift)" fill="url(#gc)" d="M700 600 C 860 500, 1120 480, 1300 540 L 1300 740 L 640 740 C 620 680, 640 630, 700 600 Z"/>
+    <path filter="url(#lift)" fill="url(#gp)" d="M56 150 C 66 96, 260 86, 450 92 C 640 98, 770 130, 764 250 C 758 380, 730 570, 470 620 C 280 650, 84 636, 62 540 C 46 460, 48 220, 56 150 Z"/>
+  </svg>
+
+  <div class="logo">
+    <svg viewBox="0 0 256 256" fill="none"><defs><linearGradient id="l" x1="48" y1="18" x2="112" y2="240" gradientUnits="userSpaceOnUse"><stop stop-color="#C9FDFF"/><stop offset="0.42" stop-color="#2EEAF8"/><stop offset="1" stop-color="#00A8B2"/></linearGradient><linearGradient id="r" x1="150" y1="12" x2="224" y2="248" gradientUnits="userSpaceOnUse"><stop stop-color="#7DF4FF"/><stop offset="0.48" stop-color="#00C4D4"/><stop offset="1" stop-color="#006970"/></linearGradient></defs><path d="M128 16 24 236h54L128 92Z" fill="url(#l)"/><path d="M128 16 232 236h-54L128 92Z" fill="url(#r)"/></svg>
+    Flow
+  </div>
+
+  <div class="txt">
+    <span class="tag-k" id="kick"></span>
+    <h1 id="title"></h1>
+    <ul id="points"></ul>
+  </div>
+  <span class="tick"></span><span class="dot"></span>
+  <div id="droite"></div>
+</div>
+
+<script>
+  // galerie.html?s=<diapo>
+  const CAP = 'captures/', PUB = '../../../../public/';
+  const appareils = (ecran, mobile, legende) => `
+    <div class="laptop${mobile ? '' : ' seul'}"><div class="ecran"><div><img src="${ecran}" alt=""></div></div><div class="socle"></div></div>
+    ${mobile ? `<div class="phone"><div><img src="${mobile}" alt=""></div></div>` : ''}
+    ${legende ? `<div class="legende">${legende}</div>` : ''}`;
+  const panneau = (html) => `<div class="panneau"><div>${html}</div></div>`;
+  const etapes = (l) => panneau(l.map(([t, d], i) => `<div class="etape"><b>${i + 1}</b><div><strong>${t}</strong><span>${d}</span></div></div>`).join(''));
+
+  const S = {
+    moi: {
+      kick: 'Qui je suis',
+      title: 'Adams, ingénieur. <span class="pill">Fondateur de Flow.</span>',
+      points: ['Un seul interlocuteur, du début à la fin', 'Vous restez propriétaire de tout', 'Livré testé, avec une vidéo d’explication'],
+      droite: `<div class="portrait"><img src="${PUB}photo.jpg" alt=""></div>`,
+    },
+    tcf: {
+      kick: 'Réalisation · Objectif TCF',
+      title: 'Une plateforme <span class="pill">avec abonnements.</span>',
+      points: ['Offres, abonnements et paiements en ligne', 'Simulations d’examen et corrections', 'Espace de gestion et statistiques'],
+      droite: appareils(CAP + 'tcf-desktop.png', CAP + 'tcf-mobile.png', 'Site en ligne · ordinateur et mobile'),
+    },
+    bai: {
+      kick: 'Réalisation · BAI Consulting',
+      title: 'Une plateforme de formation <span class="pill">pour les pros.</span>',
+      points: ['Site public et espace apprenant', 'Accès différents selon les rôles', 'Assistant IA intégré pour orienter'],
+      droite: appareils(CAP + 'bai-desktop.png', CAP + 'bai-mobile.png', 'Site en ligne · ordinateur et mobile'),
+    },
+    maia: {
+      kick: 'Réalisation · Assistant MAIA',
+      title: 'Un assistant IA <span class="pill">déjà en ligne.</span>',
+      points: ['Accueille chaque visiteur, 24 h/24', 'Propose les formations du vrai catalogue', 'Oriente vers la bonne offre en 2 clics'],
+      droite: appareils(CAP + 'bai-maia.png', null, 'Assistant MAIA · site BAI Consulting & Formation'),
+    },
+    drivin: {
+      kick: 'Réalisation · Drivin & Chill',
+      title: 'Réservation et paiement <span class="pill">en ligne.</span>',
+      points: ['Le client choisit sa séance et réserve', 'Paiement par carte sécurisé (Stripe)', 'QR code d’accès envoyé automatiquement'],
+      droite: appareils(CAP + 'drivin-desktop.png', null, 'Cinéma drive-in à Limoges · parcours de réservation'),
+    },
+    pilotage: {
+      kick: 'Réalisation · Objectif TCF',
+      title: 'Les paiements suivis <span class="pill">en un coup d’œil.</span>',
+      points: ['Offres, paiements et abonnements', 'Statistiques mises à jour en continu', 'Géré par l’équipe, sans développeur'],
+      droite: appareils(CAP + 'tcf-pilotage.png', null, 'Espace de gestion · Objectif TCF'),
+    },
+    flow: {
+      kick: 'Réalisation · Flow',
+      title: 'Mon propre site, <span class="pill">suivi chaque mois.</span>',
+      points: ['Rapide sur mobile et sur ordinateur', 'Mises à jour et sauvegardes suivies', 'Visibilité Google surveillée'],
+      droite: appareils(CAP + 'flow-desktop.png', CAP + 'flow-mobile.png', 'Site en ligne · ordinateur et mobile'),
+    },
+    'etapes-reservation': {
+      kick: 'Comment ça se passe',
+      title: 'En ligne <span class="pill">en 4 jours.</span>',
+      points: ['Vous gardez votre site actuel', 'Tout est testé avec vous', 'Les comptes sont à votre nom'],
+      droite: etapes([
+        ['Vous m’envoyez vos services', 'Durées, prix, horaires, acompte souhaité.'],
+        ['J’installe et je teste', 'Réservation, paiement, e-mails de confirmation, agenda.'],
+        ['Vos clients réservent seuls', '24 h/24, sans appel et sans double réservation.'],
+      ]),
+    },
+    'etapes-assistant': {
+      kick: 'Comment ça se passe',
+      title: 'Votre assistant <span class="pill">en 5 jours.</span>',
+      points: ['Il ne répond qu’avec vos informations', 'Vous lisez toutes les conversations', 'Vous gardez la main sur les réponses'],
+      droite: etapes([
+        ['Vous m’envoyez vos documents', 'FAQ, tarifs, horaires, conditions et vos 10 questions fréquentes.'],
+        ['Je l’entraîne et je le teste', 'Sur vos vraies questions, jusqu’à ce que les réponses soient justes.'],
+        ['Il répond, vous recevez les demandes', 'Les vraies demandes arrivent par e-mail ou dans votre outil.'],
+      ]),
+    },
+    'etapes-prospection': {
+      kick: 'Comment ça se passe',
+      title: 'Vos prospects <span class="pill">en 3 jours.</span>',
+      points: ['Vous ne cherchez plus, vous contactez', 'Chaque besoin est vérifié et sourcé', 'Jamais d’e-mail inventé'],
+      droite: etapes([
+        ['Vous me décrivez votre client idéal', 'Ce que vous vendez, à qui, et dans quelle zone.'],
+        ['Je cherche et je vérifie', 'Chaque entreprise est visitée : besoin constaté, contact publié, note sur 10.'],
+        ['Vous recevez un fichier prêt', 'Google Sheets à votre nom, avec les messages selon l’option choisie.'],
+      ]),
+    },
+    'livrable-prospection': {
+      kick: 'Ce que vous recevez',
+      title: 'Un fichier <span class="pill">prêt à l’emploi.</span>',
+      points: ['Le besoin constaté, avec son lien', 'Le bon contact, vérifié', 'Une note pour savoir par qui commencer'],
+      droite: panneau(`<span class="fictif">EXEMPLE DE LIVRABLE · DONNÉES FICTIVES</span>
+        <table class="fiche"><thead><tr><th>Entreprise</th><th>Besoin constaté</th><th>Contact</th><th>Note</th></tr></thead><tbody>
+        ${[['Garage du Centre', 'Limoges', 'Rendez-vous uniquement par téléphone', 'Gérant · e-mail vérifié', '9'],
+           ['Atelier Bois & Co', 'Tulle', 'Recrute pour saisir les devis', 'Dirigeant · téléphone', '9'],
+           ['Cabinet Ostéo Plus', 'Brive', 'Site illisible sur mobile', 'Accueil · e-mail vérifié', '8'],
+           ['Traiteur Saveurs', 'Guéret', 'Commandes par e-mail seulement', 'Gérante · formulaire', '8']]
+          .map(([n, v, b, c, s]) => `<tr><td><strong>${n}</strong><small>${v}</small></td><td>${b}<small>lien de la preuve</small></td><td>${c}</td><td><span class="note">${s}/10</span></td></tr>`).join('')}
+        </tbody></table>`),
+    },
+    'relances-sequence': {
+      kick: 'Ce qui est mis en place',
+      title: 'Des relances <span class="pill">qui savent s’arrêter.</span>',
+      points: ['Le bon ton à chaque étape', 'Envoyées depuis votre adresse', 'Arrêt dès que le client paie'],
+      droite: panneau(`<span class="fictif">EXEMPLE DE SÉQUENCE</span><div class="frise">
+        ${[['Jour 0', 'Facture envoyée', 'Échéance à 30 jours'],
+           ['J+3', 'Rappel cordial', '« Petit rappel concernant la facture F-1042… »'],
+           ['J+7', 'Relance claire', 'Montant, échéance dépassée, lien de paiement'],
+           ['J+15', 'Dernière relance', 'Ferme et courtoise, avec la suite prévue']]
+          .map(([j, t, d]) => `<div class="jalon"><em>${j}</em><div><strong>${t}</strong><span>${d}</span></div></div>`).join('')}
+        <div class="jalon stop"><em>✓</em><div><strong>Paiement reçu</strong><span>La séquence s’arrête toute seule. Aucun message de trop.</span></div></div></div>`),
+    },
+    'suivi-rapport': {
+      kick: 'Ce que vous recevez',
+      title: 'Un rapport clair, <span class="pill">chaque mois.</span>',
+      points: ['Ce qui a été fait, en une page', 'Les alertes traitées', 'Comment Google voit votre site'],
+      droite: panneau(`<span class="fictif">EXEMPLE DE RAPPORT MENSUEL</span>
+        <div class="grille">
+          <div class="tuile"><small>Sauvegardes</small>✓ 30 sur 30</div>
+          <div class="tuile"><small>Mises à jour de sécurité</small>✓ 6 appliquées</div>
+          <div class="tuile"><small>Site en ligne</small>✓ Aucune coupure</div>
+          <div class="tuile"><small>Modification du mois</small>✓ Horaires d’hiver</div>
+        </div>
+        <div class="tuile"><small>Visites depuis Google, 6 derniers mois</small><div class="barres">${[34, 40, 38, 52, 61, 74].map((h) => `<i style="height:${h}%"></i>`).join('')}</div></div>`),
+    },
+  };
+  const s = S[new URLSearchParams(location.search).get('s')] || S.moi;
+  document.getElementById('kick').textContent = s.kick;
+  document.getElementById('title').innerHTML = s.title;
+  document.getElementById('points').innerHTML = s.points.map((p) => `<li>${p}</li>`).join('');
+  document.getElementById('droite').innerHTML = s.droite;
+</script>
+</body>
+</html>
